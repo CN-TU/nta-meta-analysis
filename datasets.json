@@ -6,6 +6,20 @@
         "type": "synthetic",
         "availability": "private"
     },
+    "_generated_packets": {
+        "name": "Dataset was generated, by generating packets",
+        "year": -1,
+        "data-type": "packet_other",
+        "type": "synthetic",
+        "availability": "private"
+    },
+    "_generated_flows": {
+        "name": "Dataset was generated, by generating flows",
+        "year": -1,
+        "data-type": "flow_other",
+        "type": "synthetic",
+        "availability": "private"
+    },
     "_private_packets": {
         "name": "Dataset is packet captures on a private network",
         "year": -1,
@@ -26,5 +40,33 @@
         "data-type": "packet_other",
         "type": "synthetic",
         "availability": "public"
+    },
+    "v-spybot": {
+        "name": "V-Spybot, from BotSniffer paper",
+        "year": 2008,
+        "data-type": null,
+        "type": null,
+        "availability": null
+    },
+    "v-sdbot": {
+        "name": "V-Sdbot, from BotSniffer paper",
+        "year": 2008,
+        "data-type": null,
+        "type": null,
+        "availability": null
+    },
+    "b-http-i": {
+        "name": "B-HTTP-I, from BotSniffer paper",
+        "year": 2008,
+        "data-type": null,
+        "type": null,
+        "availability": null
+    },
+    "b-http-ii": {
+        "name": "B-HTTP-II, from BotSniffer paper",
+        "year": 2008,
+        "data-type": null,
+        "type": null,
+        "availability": null
     }
 }
