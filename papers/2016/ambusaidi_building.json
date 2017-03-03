@@ -1,0 +1,52 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD23", "_KDD5", "_KDD3", "_KDD6", "_KDD32", "_KDD24", "_KDD12", "_KDD2", "_KDD37", "_KDD36", "_KDD8", "_KDD31"],
+      "goals": [
+        "DoSDetection"
+      ]
+    },
+    {
+      "features": ["_KDD5", "_KDD27", "_KDD3", "_KDD35", "_KDD40", "_KDD37", "_KDD33", "_KDD17", "_KDD41", "_KDD30", "_KDD34", "_KDD28", "_KDD22", "_KDD4", "_KDD24", "_KDD25", "_KDD19", "_KDD32", "_KDD29"],
+      "goals": [
+        "probeDetection"
+      ]
+    },
+    {
+      "features": ["_KDD37", "_KDD17", "_KDD8", "_KDD18", "_KDD16", "_KDD1", "_KDD4", "_KDD15", "_KDD7", "_KDD22", "_KDD20", "_KDD21", "_KDD31", "_KDD19", "_KDD12", "_KDD13", "_KDD14", "_KDD6", "_KDD32", "_KDD29", "_KDD3", "_KDD40", "_KDD2"],
+      "goals": [
+        "userToRootDetection"
+      ]
+    },
+    {
+      "features": ["_KDD3", "_KDD15", "_KDD5", "_KDD10", "_KDD9", "_KDD32", "_KDD33", "_KDD22", "_KDD1", "_KDD17", "_KDD24", "_KDD11", "_KDD23"],
+      "goals": [
+        "remoteToLocalDetection"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Ambusaidi et al.", 
+    "title": "Building an Intrusion Detection System Using a Filter-Based Feature Selection Algorithm", 
+    "year": 2016
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99",
+      "nsl-kdd",
+      "kyoto2006+"
+  ],
+  "methods": [
+      {
+          "name": "Least Square Support Vector Machine based IDS",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
