@@ -1,0 +1,30 @@
+{
+    "_synthetic": {
+        "name": "Dataset was synthetically generated, and is not exactly reproduceable",
+        "year": -1,
+        "data-type": "other",
+        "type": "synthetic",
+        "availability": "private"
+    },
+    "_private_packets": {
+        "name": "Dataset is packet captures on a private network",
+        "year": -1,
+        "data-type": "packet_other",
+        "type": "real",
+        "availability": "private"
+    },
+    "_private_flows": {
+        "name": "Dataset is flow captures on a private network",
+        "year": -1,
+        "data-type": "flow_other",
+        "type": "real",
+        "availability": "private"
+    },
+    "kdd99": {
+        "name": "KDD Cup 1999 Dataset",
+        "year": 1999,
+        "data-type": "packet_other",
+        "type": "synthetic",
+        "availability": "public"
+    }
+}
