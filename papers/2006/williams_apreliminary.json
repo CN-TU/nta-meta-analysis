@@ -1,0 +1,80 @@
+{
+  "flows": [
+    {
+        "features": [
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          "octetTotalCount",
+          "packetTotalCount",
+          {"minimum": ["ipTotalLength"]},
+          {"maximum": ["ipTotalLength"]},
+          {"mean": ["ipTotalLength"]},
+          {"stdev": ["ipTotalLength"]},
+          {"minimum": ["_interPacketTimeMicroseconds"]},
+          {"maximum": ["_interPacketTimeMicroseconds"]},
+          {"mean": ["_interPacketTimeMicroseconds"]},
+          {"stdev": ["_interPacketTimeMicroseconds"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": "netramet", 
+        "window": 600
+      }
+  ], 
+  "reference": {
+    "author": "Williams et al.", 
+    "title": "A preliminary performance comparison of five machine learning algorithms for practical IP traffic flow classification", 
+    "year": 2006
+  }, 
+  "methods": [
+      {
+          "name": "Naive Bayes with discretization",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "Naive Bayes with kernel density estimation",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "C4.5 Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Bayesian Network",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "Naive Bayes Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": []
+}
+
