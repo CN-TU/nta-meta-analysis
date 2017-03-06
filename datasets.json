@@ -103,5 +103,19 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "public"
+    },
+    "abilene": {
+        "name": "Abilene US Academic Internet2 backbone network",
+        "year": 2003,
+        "data-type": null,
+        "type": "real",
+        "availability": null
+    },
+    "geant": {
+        "name": "Geant EU Academic Internet2 backbone network",
+        "year": 2003,
+        "data-type": null,
+        "type": "real",
+        "availability": null
     }
 }

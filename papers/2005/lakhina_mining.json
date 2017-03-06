@@ -1,0 +1,54 @@
+{
+  "flows": [
+    {
+        "features": [
+          {"entropy": ["sourceIPv4Address"]}, 
+          {"entropy": ["destinationIPv4Address"]}, 
+          {"entropy": ["sourceTransportPort"]}, 
+          {"entropy": ["destinationTransportPort"]} 
+        ], 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": null, 
+        "tool": null, 
+        "window": 300
+      }
+  ], 
+  "reference": {
+    "author": "Lakhina et al.", 
+    "title": "Mining anomalies using traffic feature distributions", 
+    "year": 2005
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "abilene",
+      "geant"
+  ],
+  "methods": [
+      {
+          "name": "Multiway Subspace Method",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "K-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Hierarchical Agglomeration",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
