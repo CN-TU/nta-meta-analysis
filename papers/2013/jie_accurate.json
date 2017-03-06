@@ -1,0 +1,49 @@
+{
+  "flows": [
+    {
+      "features": [
+        "protocolIdentifier", 
+        "packetTotalCount", 
+        "octetTotalCount"
+      ], 
+      "goals": [
+        "P2PTrafficClassification"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "protocolIdentifier", 
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort"
+        ]
+      }, 
+      "tool": "trafficlogger", 
+      "window": 1800
+    }
+  ], 
+  "reference": {
+    "author": "Jie et al.", 
+    "title": "Accurate classification of P2P traffic by clustering flows", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
