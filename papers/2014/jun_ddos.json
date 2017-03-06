@@ -1,0 +1,45 @@
+{
+  "flows": [
+    {
+        "features": [
+          {"entropy": ["packetTotalCount"]}, 
+          {"entropy": ["sourceTransportPort"]}, 
+          {"entropy": [{"divide": ["packetTotalCount", "_flowDurationSeconds"]}]}, 
+          {"divide": ["packetTotalCount", "_flowDurationSeconds"]}
+        ], 
+        "goals": [
+          "DDoSDetection"
+        ], 
+        "key": {
+          "bidirectional": false, 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        }, 
+        "tool": null, 
+        "window": 6
+      }
+  ], 
+  "reference": {
+    "author": "Jun et al.", 
+    "title": "DDoS Attack Detection by Using Packet Sampling and Flow Features", 
+    "year": 2014
+  }, 
+  "evaluations": null,
+  "datasets": [
+      "_generated_flows"
+  ],
+  "methods": [
+      {
+          "name": "Entropy based heuristic",
+          "supervision": null,
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ]
+}
+
