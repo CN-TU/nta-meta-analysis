@@ -31,7 +31,6 @@
       "window": 60
     }
   ], 
-  "packets": null, 
   "reference": {
     "author": "Iglesias and Zseby", 
     "title": "Time-activity footprints in IP traffic", 
