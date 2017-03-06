@@ -1,0 +1,36 @@
+{
+  "_internal_comment": "couldn't understand all the features", 
+  "flows": [
+    {
+      "features": null, 
+      "goals": [
+        "anomalyDetection"
+      ], 
+      "key": {
+        "bidirectional": false, 
+        "key_features": [
+          "protocolIdentifier", 
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "ipClassOfService", 
+          "ingressPhysicalInterface"
+        ]
+      }, 
+      "tool": "netflowv9", 
+      "window": 300
+    }
+  ], 
+  "reference": {
+    "author": "Graham et al.", 
+    "title": "Botnet detection within cloud service provider networks using flow protocols", 
+    "year": 2015
+  }, 
+  "evaluations": null,
+  "datasets": [
+      "_generated_flows"
+  ],
+  "methods": null
+}
+
