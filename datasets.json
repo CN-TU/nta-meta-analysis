@@ -92,7 +92,7 @@
     },
      "CalgaryHTTP": {
         "name": "HTTP requests to the University of Calgary",
-        "year": 1994-95,
+        "year": [1994,1995],
         "data-type": "packet_other",
         "type": "real",
         "availability": "public"
