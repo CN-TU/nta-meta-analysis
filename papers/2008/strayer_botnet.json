@@ -1,0 +1,69 @@
+{
+  "flows": [
+    {
+        "features": [
+          "_flowDurationSeconds",
+          "__whetherClientOrServerInitiatedFlow",
+          {"divide": ["octetTotalCount", "packetTotalCount"]},
+          {"divide": ["octetTotalCount", "_flowDurationSeconds"]},
+          {"divide": ["packetTotalCount", "_flowDurationSeconds"]}
+        ], 
+        "goals": [
+          "botnetDetection"
+        ], 
+        "key": {
+          "bidirectional": false,
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": null, 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Strayer et al.", 
+    "title": "Botnet Detection Based on Network Behavior", 
+    "year": 2008
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_generated_packets"
+  ],
+  "methods": [
+      {
+          "name": "C4.5 Decision Tree algorithm",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "Bayesian Network",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "Multi-Dimensional Flow Correlation",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
