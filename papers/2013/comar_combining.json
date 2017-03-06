@@ -1,0 +1,44 @@
+{
+  "_internal_note": "108 features from Narus Semantic Traffic Analyzer", 
+  "flows": [
+    {
+      "features": null, 
+      "goals": [
+        "malwareDetection"
+      ], 
+      "key": null, 
+      "tool": "narussta", 
+      "window": null
+    }
+  ], 
+  "packets": null, 
+  "reference": {
+    "author": "Comar et al.", 
+    "title": "Combining supervised and unsupervised learning for zero-day malware detection", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_flows"
+  ],
+  "methods": [
+      {
+          "name": "Tree-based Feature Transformation",
+          "supervision": "supervised",
+          "type": "regression",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "1-class SVM for known malware detection",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
