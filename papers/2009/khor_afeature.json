@@ -1,0 +1,39 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD3", "_KDD6", "_KDD12", "_KDD14", "_KDD23", "_KDD32", "_KDD40"],
+      "goals": [
+        "KDDClassification"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Khor et al.", 
+    "title": "A Feature Selection Approach for Network Intrusion Detection", 
+    "year": 2009
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99"
+  ],
+  "methods": [
+      {
+          "name": "Correlation-based Feature Selection Subset Evaluator",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "correlation"
+      },
+      {
+          "name": "Consistency Subset Evaluator",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "other"
+      }
+  ]
+}
+
