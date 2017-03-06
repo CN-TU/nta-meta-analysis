@@ -1,0 +1,47 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD1", "_KDD2", "_KDD3", "_KDD5", "_KDD7", "_KDD8", "_KDD11", "_KDD12", "_KDD14", "_KDD17", "_KDD22", "_KDD23", "_KDD24", "_KDD25", "_KDD26", "_KDD30", "_KDD32"],
+      "goals": [
+        "KDDClassification"
+      ],
+      "_note": "using Bayesian Network"
+    },
+    {
+      "features": ["_KDD3", "_KDD5", "_KDD6", "_KDD12", "_KDD23", "_KDD24", "_KDD25", "_KDD28", "_KDD31", "_KDD32", "_KDD33", "_KDD35"],
+      "goals": [
+        "KDDClassification"
+      ],
+      "_note": "using Classification and Regression Tree"
+    }
+  ], 
+  "reference": {
+    "author": "Chebrolu et al.", 
+    "title": "Feature deduction and ensemble design of intrusion detection systems", 
+    "year": 2005
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99"
+  ],
+  "methods": [
+      {
+          "name": "Classification and Regression Trees",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "Bayesian Network",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ]
+}
+
