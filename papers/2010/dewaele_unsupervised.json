@@ -1,0 +1,62 @@
+{
+  "reference": {
+    "author": "Dewaele et al.", 
+    "title": "Unsupervised host behavior classification from connection patterns", 
+    "year": 2010
+  }, 
+  "flow_aggregations": [
+  {
+    "flow": {
+      "features": null,
+      "key": {
+        "bidirectional": false,
+        "key_features": [
+          "protocolIdentifier", 
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort"
+        ]
+      },
+      "window": 900
+    },
+    "features": [
+      {"distinct": ["destinationIPv4Address", true]},
+      {"divide": [{"distinct": ["sourceTransportPort", true]}, {"distinct": ["destinationIPv4Address", true]}]},
+      {"divide": [{"distinct": ["destinationTransportPort", true]}, {"distinct": ["destinationIPv4Address", true]}]},
+      {"divide": [{"entropy": ["__destinationIPv4AddressSecondByte"]}, {"entropy": ["__destinationIPv4AddressSecondByte"]}, "__destinationIPv4AddressFourthByte"]},
+      {"divide": [{"entropy": ["__destinationIPv4AddressThirdByte"]}, {"entropy": ["__destinationIPv4AddressSecondByte"]}, "__destinationIPv4AddressFourthByte"]},
+      {"mean": ["packetTotalCount"]},
+      {"divide": [{"add": [{"map": [{"count": [{"select": [{"leq": ["octetTotalCount", 144]}]}]}, {"select": [true]}]}]}, "packetTotalCount"]},
+      {"divide": [{"add": [{"map": [{"count": [{"select": [{"geq": ["octetTotalCount", 1392]}]}]}, {"select": [true]}]}]}, "packetTotalCount"]},
+      {"entropy": [{"add": [{"map": [{"count": [{"select": [{"and": [{"less": ["octetTotalCount", 1392]}, {"greater": ["octetTotalCount", 144]}]}]}]}]}, {"select": [true]}]}]}
+    ],
+    "key": {
+      "bidirectional": false,
+      "key_features": [
+        "sourceIPv4Address"
+      ]
+    },
+    "goals": ["hostClassification"],
+    "window": null
+  }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "mawi-f"
+  ],
+  "methods": [
+      {
+          "name": "Unsupervised classification using Minimum Spanning Tree",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
