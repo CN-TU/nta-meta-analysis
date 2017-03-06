@@ -1,0 +1,53 @@
+{
+  "flows": [
+    {
+      "features": [
+        "protocolIdentifier",
+        "sourceTransportPort",
+        "destinationTransportPort",
+        "octetTotalCount",
+        "packetTotalCount",
+        "_activeForSeconds",
+        {"divide": ["octetTotalCount", "_activeForSeconds"]},
+        {"divide": ["packetTotalCount", "_activeForSeconds"]},
+        "__maximumConsecutiveSeconds",
+        "__minimumConsecutiveSeconds",
+        {"maximum": ["_interPacketTimeMicroseconds"]},
+        {"minimum": ["_interPacketTimeMicroseconds"]},
+        {"count": [{"select": [{"geq": ["_interPacketTimeMicroseconds", 1000000]}]}]}
+      ],
+      "goals": [],
+      "key": {
+        "bidirectional": false,
+        "key_features": [
+          "protocolIdentifier", 
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort"
+        ]
+      },
+      "tool": "",
+      "window": 60
+    }
+  ], 
+  "packets": null, 
+  "reference": {
+    "author": "Iglesias and Zseby", 
+    "title": "Time-activity footprints in IP traffic", 
+    "year": 2016
+  }, 
+  "evaluations": null,
+  "datasets": [
+      "mawi-f"
+  ],
+  "methods": [
+      {
+          "name": "Fuzzy Gustafson-Kessel clustering",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "mahalanobis"
+      }
+  ]
+}
+
