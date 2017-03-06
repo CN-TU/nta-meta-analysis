@@ -1,0 +1,45 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD1", "_KDD3", "_KDD6", "_KDD12", "_KDD22", "_KDD23", "_KDD24", "_KDD25", "_KDD28", "_KDD31", "_KDD32"],
+      "goals": [
+        "KDDClassification"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Imran et al.", 
+    "title": "Intrusions Detection based on Optimum Features Subset and Efficient Dataset Selection", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "nsl-kdd"
+  ],
+  "methods": [
+      {
+          "name": "Linear Discriminant Analysis",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Genetic Algorithm feature selection",
+          "supervision": null,
+          "type": "feature_selection",
+          "similarity_metric": null
+      },
+      {
+          "name": "Radial Basis Function Neural Network",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
