@@ -1,0 +1,39 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD2", "_KDD4", "_KDD8", "_KDD10", "_KDD14", "_KDD15", "_KDD19", "_KDD25", "_KDD27", "_KDD29", "_KDD31", "_KDD32", "_KDD33", "_KDD34", "_KDD35", "_KDD36", "_KDD37", "_KDD38", "_KDD40"],
+      "goals": [
+        "KDDClassification"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Li et al.", 
+    "title": "An efficient intrusion detection system based on support vector machines and gradually feature removal method", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99"
+  ],
+  "methods": [
+      {
+          "name": "Gradually Feature Removal method",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
