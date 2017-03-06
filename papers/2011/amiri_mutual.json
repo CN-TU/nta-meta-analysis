@@ -1,0 +1,75 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD5", "_KDD23", "_KDD3", "_KDD6", "_KDD35", "_KDD1"],
+      "goals": [
+        "anomalyDetection"
+      ]
+    },
+    {
+      "features": ["_KDD5", "_KDD23", "_KDD6", "_KDD2", "_KDD24", "_KDD41", "_KDD36", "_KDD3"],
+      "goals": [
+        "DoSDetection"
+      ]
+    },
+    {
+      "features": ["_KDD40", "_KDD5", "_KDD33", "_KDD23", "_KDD28", "_KDD3", "_KDD41", "_KDD35", "_KDD27", "_KDD32", "_KDD12", "_KDD24", "_KDD28"],
+      "goals": [
+        "probeDetection"
+      ]
+    },
+    {
+      "features": ["_KDD5", "_KDD1", "_KDD3", "_KDD24", "_KDD23", "_KDD2", "_KDD33", "_KDD6", "_KDD32", "_KDD4", "_KDD14", "_KDD21"],
+      "goals": [
+        "userToRootDetection"
+      ]
+    },
+    {
+      "features": ["_KDD3", "_KDD13", "_KDD22", "_KDD23", "_KDD10", "_KDD5", "_KDD35", "_KDD24", "_KDD6", "_KDD33", "_KDD37", "_KDD32", "_KDD1", "_KDD37", "_KDD39"],
+      "goals": [
+        "remoteToLocalDetection"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Amiri et al.", 
+    "title": "Mutual information-based feature selection for intrusion detection systems", 
+    "year": 2011
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99"
+  ],
+  "methods": [
+      {
+          "name": "Least Squares Support Vector Machine based IDS",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Forward feature selection algorithm",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Modified mutual information-based feature selection algorithm",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Linear correlation-based feature selection algorithm",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "correlation"
+      }
+  ]
+}
+

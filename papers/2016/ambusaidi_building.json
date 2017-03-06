@@ -43,7 +43,7 @@
   ],
   "methods": [
       {
-          "name": "Least Square Support Vector Machine based IDS",
+          "name": "Least Squares Support Vector Machine based IDS",
           "supervision": "supervised",
           "type": "classification",
           "similarity_metric": "euclidean"
