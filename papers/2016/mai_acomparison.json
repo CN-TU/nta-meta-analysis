@@ -1,0 +1,56 @@
+{
+  "flows": [
+    {
+        "features": [
+          "sourceTransportPort", 
+          "destinationTransportPort", 
+          "protocolIdentifier", 
+          {"mean": ["ipTotalLength"]}, 
+          {"divide": ["packetTotalCount", "_flowDurationSeconds"]}, 
+          {"divide": ["octetTotalCount", "_flowDurationSeconds"]}, 
+          "_connectionsTotalCount"
+        ], 
+        "goals": [
+          "botnetDetection"
+        ], 
+        "key": null, 
+        "tool": "tranalyzer", 
+        "window": 300
+      }
+  ], 
+  "reference": {
+    "author": "Mai and Park", 
+    "title": "A comparison of clustering algorithms for botnet detection based on network flow", 
+    "year": 2016
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "isot-botnet"
+  ],
+  "methods": [
+      {
+          "name": "K-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "DBSCAN",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Mean Shift clustering",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+

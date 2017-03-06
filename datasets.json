@@ -117,5 +117,12 @@
         "data-type": null,
         "type": "real",
         "availability": null
+    },
+    "isot-botnet": {
+        "name": "ISOT Botnet dataset",
+        "year": 2010,
+        "data-type": "packet_pcap",
+        "type": "generated",
+        "availability": "public"
     }
 }
