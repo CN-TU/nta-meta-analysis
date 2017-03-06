@@ -1,0 +1,52 @@
+{
+  "flows": [
+    {
+        "features": [
+          {"entropy": ["sourceIPv4Address"]}, 
+          {"entropy": ["destinationIPv4Address"]}, 
+          {"entropy": ["destinationTransportPort"]}, 
+          {"entropy": ["_flowDurationSeconds"]}, 
+          {"multiply": [{"argmax": [{"count": [{"select": [{"less": ["ipTotalLength", 128]}]}]}, {"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 128]}]}, {"select": [{"less": ["ipTotalLength", 256]}]}]}]}, {"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 256]}]}, {"select": [{"less": ["ipTotalLength", 512]}]}]}]}, {"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 512]}]}, {"select": [{"less": ["ipTotalLength", 1024]}]}]}]}, {"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 1024]}]}, {"select": [{"less": ["ipTotalLength", 1500]}]}]}]}]}, {"add": [{"entropy": [{"count": [{"select": [{"less": ["ipTotalLength", 128]}]}]}]}, {"entropy": [{"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 128]}]}, {"select": [{"less": ["ipTotalLength", 256]}]}]}]}]}, {"entropy": [{"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 256]}]}, {"select": [{"less": ["ipTotalLength", 512]}]}]}]}]}, {"entropy": [{"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 512]}]}, {"select": [{"less": ["ipTotalLength", 1024]}]}]}]}]}, {"entropy": [{"count": [{"and": [{"select": [{"geq": ["ipTotalLength", 1024]}]}, {"select": [{"less": ["ipTotalLength", 1500]}]}]}]}]}]}]}, 
+          {"get": [14, "tcpControlBits"]}
+        ], 
+        "goals": [
+          "DDoSDetection"
+        ], 
+        "key": {
+          "bidirectional": false, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": null, 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Qin et al.", 
+    "title": "DDoS Attack Detection Using Flow Entropy and Clustering Technique", 
+    "year": 2015
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "darpa-ideval1999"
+  ],
+  "methods": [
+      {
+          "name": "K-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+

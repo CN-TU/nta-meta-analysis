@@ -124,5 +124,12 @@
         "data-type": "packet_pcap",
         "type": "generated",
         "availability": "public"
+    },
+    "darpa-ideval1999": {
+        "name": "DARPA IDeval 1999 intrusion detection dataset",
+        "year": 1999,
+        "data-type": "packet_pcap",
+        "type": "generated",
+        "availability": "public"
     }
 }
