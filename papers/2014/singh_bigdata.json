@@ -1,0 +1,51 @@
+{
+  "flows": [
+    {
+        "features": [
+          {"add": ["ipHeaderLength", "tcpHeaderLength"]},
+          {"stdev": [{"minimum": ["ipTotalLength"]}]},
+          "tcpPshTotalCount",
+          {"minimum": ["_interPacketTimeMicroseconds"]},
+          {"maximum": ["ipTotalLength"]}
+        ], 
+        "goals": [
+          "P2PBotnetDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": "hadoop", 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Singh et al.", 
+    "title": "Big Data Analytics framework for Peer-to-Peer Botnet detection using Random Forests", 
+    "year": 2014
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_generated_packets"
+  ],
+  "methods": [
+      {
+          "name": "Random Forest algorithm",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
