@@ -1,0 +1,33 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD2", "_KDD3", "_KDD5", "_KDD6", "_KDD23", "_KDD24", "_KDD33", "_KDD34", "_KDD35", "_KDD36"],
+      "goals": [
+        "KDDClassification"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Zargari et al.", 
+    "title": "Feature Selection in the Corrected KDD-dataset", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "nsl-kdd"
+  ],
+  "methods": [
+      {
+          "name": "Random Forest algorithm",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
