@@ -1,0 +1,39 @@
+{
+  "flows": [
+    {
+        "features": [
+          "packetTotalCount", 
+          "octetTotalCount"
+        ], 
+        "goals": [
+          "HTTPIntrusionDetection"
+        ], 
+        "key": null, 
+        "tool": "ipfix", 
+        "window": null
+    }
+  ], 
+  "reference": {
+    "author": "van der Toorn et al.", 
+    "title": "A first look at HTTP(S) intrusion detection using NetFlow/IPFIX", 
+    "year": 2015
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_flows"
+  ],
+  "methods": [
+      {
+          "name": "Signature based IDS",
+          "supervision": "supervised",
+          "type": "heuristic",
+          "similarity_metric": "other"
+      }
+  ]
+}
+
