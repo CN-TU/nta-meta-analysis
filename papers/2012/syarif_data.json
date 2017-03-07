@@ -1,0 +1,107 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD3", "_KDD4", "_KDD5", "_KDD6", "_KDD12", "_KDD14", "_KDD16", "_KDD25", "_KDD28", "_KDD29", "_KDD30", "_KDD37", "_KDD40", "_KDD41"],
+      "goals": [
+        "KDDClassification"
+      ],
+      "_note": "using Genetic Algorithm"
+    },
+    {
+      "features": ["_KDD5", "_KDD6", "_KDD28", "_KDD29", "_KDD30", "_KDD37", "_KDD40", "_KDD41"],
+      "goals": [
+        "KDDClassification"
+      ],
+      "_note": "using Particle Swarm Optimization"
+    }
+  ], 
+  "reference": {
+    "author": "Syarif et al.", 
+    "title": "Data Mining Approaches for Network Intrusion Detection: from Dimensionality Reduction to Misuse and Anomaly Detection", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "nsl-kdd"
+  ],
+  "methods": [
+      {
+          "name": "Genetic Algorithm",
+          "supervision": null,
+          "type": "feature_selection",
+          "similarity_metric": null
+      },
+      {
+          "name": "Particle Swarm Optimization",
+          "supervision": null,
+          "type": "feature_selection",
+          "similarity_metric": null
+      },
+      {
+          "name": "Principal Component Analysis",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Independent Component Analysis",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": null
+      },
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Nearest Neighbour",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean" 
+      },
+      {
+          "name": "Rule Induction",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "K-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "K-medoids",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "l1"
+      },
+      {
+          "name": "Expectation Maximization clustering",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Distance based outlier detection",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
