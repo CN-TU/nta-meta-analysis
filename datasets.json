@@ -131,5 +131,12 @@
         "data-type": "packet_pcap",
         "type": "generated",
         "availability": "public"
+    },
+    "unibs2009": {
+        "name": "UNIBS-2009 University of Brescia traces",
+        "year": 2009,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "on_demand"
     }
 }
