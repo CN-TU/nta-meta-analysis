@@ -1,0 +1,49 @@
+{
+  "reference": {
+    "author": "Tegeler et al.", 
+    "title": "BotFinder: Finding Bots in Network Traffic Without Deep Packet Inspection", 
+    "year": 2012
+  }, 
+  "flow_aggregations": [
+    {
+      "flow": {
+        "features": null,
+        "key": null,
+        "window": null
+      },
+      "features": [
+        {"mean": ["_interFlowTimeSeconds"]},
+        {"mean": ["_flowDurationSeconds"]},
+        {"divide": ["octetTotalCount", "_flowTotalCount"]},
+        "__FFTBinarySampling"
+      ],
+      "key": {
+        "bidirectional": "separate_directions",
+        "key_features": null
+      },
+      "goals": ["botnetDetection"],
+      "window": null,
+      "tool": "netflow"
+    }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_generated_packets",
+      "_private_packets",
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Clustering based on local Shrinking",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
