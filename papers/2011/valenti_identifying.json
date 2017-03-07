@@ -1,0 +1,116 @@
+{
+  "reference": {
+    "author": "Valenti et al.", 
+    "title": "Identifying Key Features for P2P Traffic Classification", 
+    "year": 2011
+  }, 
+  "flow_aggregations": [
+    {
+      "features": [
+        "_flowTotalCount", 
+        "packetTotalCount",
+        "octetTotalCount",
+
+        {"subtract": ["_flowTotalCount", {"get_previous": ["_flowTotalCount"]}]},
+        {"subtract": ["packetTotalCount", {"get_previous": ["packetTotalCount"]}]},
+        {"subtract": ["octetTotalCount", {"get_previous": ["octetTotalCount"]}]},
+
+        {"divide": ["packetTotalCount", "_flowTotalCount"]},
+        {"divide": ["octetTotalCount", "_flowTotalCount"]},
+        {"divide": ["octetTotalCount", "packetTotalCount"]},
+
+        {"mean": ["packetTotalCount"]},
+        {"mean": ["octetTotalCount"]},
+        {"mean": [{"divide": ["octetTotalCount", "packetTotalCount"]}]},
+
+        {"stdev": ["packetTotalCount"]},
+        {"stdev": ["octetTotalCount"]},
+        {"stdev": [{"divide": ["octetTotalCount", "packetTotalCount"]}]},
+
+
+        {"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+        {"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+        {"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+
+        {"subtract": [{"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]}]},
+        {"subtract": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]}]},
+        {"subtract": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]}]},
+
+        {"divide": [{"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+"_flowTotalCount"]},
+        {"divide": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+"packetTotalCount"]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]},
+"octetTotalCount"]},
+
+        {"divide": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"apply": ["_flowTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+
+        {"mean": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"mean": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"mean": [{"divide": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]}]},
+
+        {"stdev": [{"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"stdev": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]},
+        {"stdev": [{"divide": [{"apply": ["octetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"leq": ["octetTotalCount", 12]}]}]}]}]},
+
+
+        {"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+        {"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+        {"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+
+        {"subtract": [{"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]}]},
+        {"subtract": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]}]},
+        {"subtract": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"get_previous": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]}]},
+
+        {"divide": [{"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+"_flowTotalCount"]},
+        {"divide": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+"packetTotalCount"]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]},
+"octetTotalCount"]},
+
+        {"divide": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"apply": ["_flowTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"divide": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+
+        {"mean": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"mean": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"mean": [{"divide": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]}]},
+
+        {"stdev": [{"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"stdev": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]},
+        {"stdev": [{"divide": [{"apply": ["octetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}, {"apply": ["packetTotalCount", {"select": [{"greater": ["octetTotalCount", 12]}]}]}]}]}
+      ],
+      "key": {
+        "bidirectional": false, 
+        "key_features": ["sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"]
+      },
+      "tool": null,
+      "window": [5, 120]
+    }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "unibs2009"
+  ],
+  "methods": [
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
