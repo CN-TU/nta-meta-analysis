@@ -1,0 +1,56 @@
+{
+  "flows": [
+    {
+        "features": [
+          "packetTotalCount", 
+          "octetTotalCount", 
+          "minimumIpTotalLength", 
+          "maximumIpTotalLength", 
+          {"mean": ["ipTotalLength"]}, 
+          {"stdev": ["ipTotalLength"]}, 
+          {"minimum": ["_interPacketTimeMicroseconds"]}, 
+          {"maximum": ["_interPacketTimeMicroseconds"]}, 
+          {"mean": ["_interPacketTimeMicroseconds"]}, 
+          {"stdev": ["_interPacketTimeMicroseconds"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": null, 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Zhang et al.", 
+    "title": "Robust Network Traffic Identification with Unknown Applications", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Application Signature with Flow Correlation",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      }
+  ]
+}
+
