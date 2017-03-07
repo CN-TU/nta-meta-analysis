@@ -1,0 +1,50 @@
+{
+  "flows": [
+    {
+        "features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier", 
+          {"mean": ["ipTotalLength"]}, 
+          {"variance": ["ipTotalLength"]}, 
+          "packetTotalCount", 
+          {"divide": ["packetTotalCount", "_flowDurationSeconds"]}, 
+          {"get": [1, {"map": ["ipTotalLength", {"select": [true]}]}]}, 
+          {"mean": ["_interPacketTimeMicroseconds"]}, 
+          "newConnectionDeltaCount", 
+          {"divide": [{"count": [{"select": [{"and": [{"equal": ["sourceIPv4Address", "sourceIPv4Address"]}, {"equal": ["sourceTransportPort", "sourceTransportPort"]}]}]}]}, {"count": [{"select": [{"leq": ["_age", 3600]}]}]}]}
+        ], 
+        "goals": [
+          "botnetDetection"
+        ], 
+        "key": null, 
+        "tool": null, 
+        "window": 300
+      }
+  ], 
+  "reference": {
+    "author": "Zhao et al.", 
+    "title": "Botnet detection based on traffic behavior analysis and flow intervals", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_generated_packets"
+  ],
+  "methods": [
+      {
+          "name": "Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+

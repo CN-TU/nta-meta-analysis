@@ -1,0 +1,33 @@
+{
+  "packets": [
+    {
+      "features": ["_KDD3", "_KDD5", "_KDD6", "_KDD10", "_KDD17", "_KDD18", "_KDD32", "_KDD33", "_KDD35", "_KDD36", "_KDD38"],
+      "goals": [
+        "KDDClassification"
+      ]
+    }
+  ], 
+  "reference": {
+    "author": "Zhang and Wang", 
+    "title": "An Effective Feature Selection Approach for Network Intrusion Detection", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "nsl-kdd"
+  ],
+  "methods": [
+      {
+          "name": "Bayesian Network",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ]
+}
+
