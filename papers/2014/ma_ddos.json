@@ -1,0 +1,44 @@
+{
+  "flows": [
+    {
+        "features": [
+          {"entropy": ["sourceIPv4Address"]}, 
+          {"entropy": ["destinationIPv4Address"]}
+        ], 
+        "goals": [
+          "DDoSDetection"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+          ],
+          "_comment": "all packets belong to the same flow"
+        }, 
+        "tool": null, 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Ma and Chen", 
+    "title": "DDoS Detection Method Based on Chaos Analysis of Network Traffic Entropy", 
+    "year": 2014
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "mit-lincoln-ddos"
+  ],
+  "methods": [
+      {
+          "name": "Autoregressive model",
+          "supervision": "unsupervised",
+          "type": "other",
+          "similarity_metric": null
+      }
+  ]
+}
+

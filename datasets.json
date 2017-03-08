@@ -138,5 +138,12 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "on_demand"
+    },
+    "mit-lincoln-ddos": {
+        "name": "MIT Lincoln Lab (DDoS 1.0)",
+        "year": 2000,
+        "data-type": "packet_pcap",
+        "type": "generated",
+        "availability": "public"
     }
 }
