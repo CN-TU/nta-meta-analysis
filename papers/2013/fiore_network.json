@@ -1,0 +1,36 @@
+{
+  "packets": [
+      {
+          "features": [
+              "_KDD1", "_KDD2", "_KDD3", "_KDD4", "_KDD5", "_KDD6", "_KDD7", "_KDD8", "_KDD9", "_KDD23", "_KDD24", "_KDD25", "_KDD26", "_KDD27", "_KDD28", "_KDD29", "_KDD30", "_KDD31", "_KDD32", "_KDD33", "_KDD34", "_KDD35", "_KDD36", "_KDD37", "_KDD38", "_KDD39", "_KDD40", "_KDD41"
+          ],
+          "goals": [
+              "anomalyDetection"
+          ],
+          "tool": null
+      }
+  ],
+  "reference": {
+    "author": "Fiore et al.", 
+    "title": "Network anomaly detection with the restricted Boltzmann machine", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "kdd99"
+  ],
+  "methods": [
+      {
+          "name": "Restricted Boltzmann Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ]
+}
+
