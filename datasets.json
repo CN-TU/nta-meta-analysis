@@ -145,5 +145,12 @@
         "data-type": "packet_pcap",
         "type": "generated",
         "availability": "public"
+    },
+    "sigcomm2008": {
+        "name": "SIGCOMM 2008 Traces",
+        "year": 2008,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
     }
 }
