@@ -1,0 +1,49 @@
+{
+  "flows": [
+    {
+        "features": [
+          "_interPacketTimeMicroseconds",
+          "ipTotalLength"
+        ], 
+        "goals": [
+          "trafficClassification"
+        ],
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "tcpdump", 
+        "window": null,
+        "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Crotti et al.", 
+    "title": "Traffic Classification through Simple Statistical Fingerprinting", 
+    "year": 2007
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Fingerprinting based on packet sizes and interarrival times",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "correlation"
+      }
+  ]
+}
+

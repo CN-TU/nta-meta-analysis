@@ -1,27 +1,38 @@
 {
-"tranalyzer": {
-"url": "http://tranalyzer.com",
-"name": "Tranalyzer",
-"availability": "opensource"
-},
-"narussta": {
-"url": null,
-"name": "Narus Semantic Traffic Analyzer",
-"availability": "proprietary"
-},
-"ipfix": {
-"url": null,
-"name": "IPFIX",
-"availability": "opensource"
-},
-{"trafficlogger": {
-"url": null,
-"name": "Traffic Logger",
-"availability": "proprietary"
-},
-{"netramet": {
-"url": "https://www.caida.org/tools/measurement/netramet/",
-"name": "NeTraMet",
-"availability": "opensource"
-}
+    "tranalyzer": 
+    {
+        "url": "http://tranalyzer.com",
+        "name": "Tranalyzer",
+        "availability": "opensource"
+    },
+    "narussta": 
+    {
+        "url": null,
+        "name": "Narus Semantic Traffic Analyzer",
+        "availability": "proprietary"
+    },
+    "ipfix": 
+    {
+        "url": null,
+        "name": "IPFIX",
+        "availability": "opensource"
+    },
+    "trafficlogger": 
+    {
+        "url": null,
+        "name": "Traffic Logger",
+        "availability": "proprietary"
+    },
+    "netramet": 
+    {
+        "url": "https://www.caida.org/tools/measurement/netramet/",
+        "name": "NeTraMet",
+        "availability": "opensource"
+    },
+    "tcpdump":
+    {
+        "url": "http://www.tcpdump.org/",
+        "name": "tcpdump",
+        "availability": "opensource"
+    }
 }
