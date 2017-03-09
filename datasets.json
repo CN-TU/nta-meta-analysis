@@ -153,6 +153,13 @@
         "type": "real",
         "availability": "public"
     },
+    "caida-backscatter": {
+        "name": "The UCSD CAIDA Backscatter Dataset",
+        "year": 2008,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
     "BLINC": {
         "name": "BLINC Genome Campus (GN) and Residential University (UN1, UN2) datasets",
         "year": [2003,2004],
@@ -181,4 +188,5 @@
         "type": "generated",
         "availability": "public"
     }
+
 }
