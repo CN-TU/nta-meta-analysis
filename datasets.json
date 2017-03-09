@@ -180,6 +180,13 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "public"
+    },
+    "darpa1998": {
+        "name": "1998 DARPA Intrusion Detection data set",
+        "year": 1998,
+        "data-type": "packet_pcap",
+        "type": "generated",
+        "availability": "public"
     }
 
 }
