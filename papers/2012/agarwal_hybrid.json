@@ -1,0 +1,71 @@
+{
+  "flows": [
+      {
+          "features": [
+              {"divide": [{"entropy": ["octetTotalCount"]}, {"distinct": ["octetTotalCount", {"select": [true]}]}]},
+              {"divide": [{"entropy": ["sourceIPv4Address"]}, {"distinct": ["sourceIPv4Address", {"select": [true]}]}]},
+              {"divide": [{"entropy": ["sourceTransportPort"]}, {"distinct": ["sourceTransportPort", {"select": [true]}]}]},
+              {"divide": [{"entropy": ["destinationIPv4Address"]}, {"distinct": ["destinationIPv4Address", {"select": [true]}]}]},
+              {"divide": [{"entropy": ["destinationTransportPort"]}, {"distinct": ["destinationTransportPort", {"select": [true]}]}]},
+              {"divide": [{"entropy": ["protocolIdentifier"]}, {"distinct": ["protocolIdentifier", {"select": [true]}]}]}
+          ],
+          "key": {
+              "bidirectional": true,
+              "key_features": []
+          },
+          "goals": [
+              "anomalyDetection"
+          ],
+          "traffic_type": "ip",
+          "window": 60
+      },
+      {
+          "features": [
+              {"distinct": ["sourceIPv4Address", {"select": [true]}]},
+              {"distinct": ["sourceTransportPort", {"select": [true]}]},
+              {"distinct": ["destinationIPv4Address", {"select": [true]}]},
+              {"distinct": ["destinationTransportPort", {"select": [true]}]},
+              {"distinct": ["protocolIdentifier", {"select": [true]}]},
+              {"distinct": ["octetTotalCount", {"select": [true]}]}
+          ],
+          "key": {
+              "bidirectional": true,
+              "key_features": []
+          },
+          "goals": [
+              "anomalyDetection"
+          ],
+          "window": 60,
+          "traffic_type": "ip"
+      }
+  ], 
+  "reference": {
+    "author": "Agarwal et al.", 
+    "title": "Hybrid Approach for Detection of Anomaly Network Traffic using Data Mining Techniques", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "darpa1998"
+  ],
+  "methods": [
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Threshold based rule",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ]
+}
+
