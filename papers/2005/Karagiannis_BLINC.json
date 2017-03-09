@@ -45,7 +45,7 @@
         "features": [
           "protocolIdentifier",
           "destinationTransportPort", 
-          "_payload" 
+          "__payload" 
         ], 
         "goals": [
           "trafficClassification"
@@ -73,7 +73,7 @@
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "destinationIPv4Address",
@@ -97,7 +97,7 @@
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "destinationIPv4Address",
@@ -119,7 +119,7 @@
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "destinationIPv4Address"

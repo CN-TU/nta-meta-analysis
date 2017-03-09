@@ -50,7 +50,7 @@
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": true, 
+          "bidirectional": "separate_directions", 
           "key_features": [
             "protocolIdentifier", 
             "sourceIPv4Address", 
