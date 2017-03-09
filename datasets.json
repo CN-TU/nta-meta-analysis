@@ -158,7 +158,7 @@
         "year": 2008,
         "data-type": "packet_pcap",
         "type": "real",
-        "availability": "public"
+        "availability": "on_demand"
     },
     "BLINC": {
         "name": "BLINC Genome Campus (GN) and Residential University (UN1, UN2) datasets",
@@ -187,6 +187,19 @@
         "data-type": "packet_pcap",
         "type": "generated",
         "availability": "public"
+    },
+    "caida-backbone2009": {
+        "name": "The CAIDA Anonymized Internet Traces 2009 Dataset",
+        "year": 2009,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "on_demand"
+    },
+    "cambridge2003": {
+        "name": "Cambridge Traces from Genome Campus network in August 2003",
+        "year": 2003,
+        "data-type": "flow_other",
+        "type": "real",
+        "availability": "public"
     }
-
 }

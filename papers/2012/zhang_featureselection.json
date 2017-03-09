@@ -1,0 +1,113 @@
+{
+  "flows": [
+      {
+          "features": [
+              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
+              {"basedon": [{"basedon": ["octetTotalCount"]}, "_client_to_server"]},
+              {"basedon": [{"basedon": ["octetTotalCount"]}, "_server_to_client"]}
+          ],
+          "key": {
+              "bidirectional": "separate_directions",
+              "key_features": [
+                  "protocolIdentifier",
+                  "sourceIPv4Address",
+                  "sourceTransportPort",
+                  "destinationIPv4Address",
+                  "destinationTransportPort"
+              ]
+          },
+          "goals": [
+              "trafficClassification"
+          ],
+          "traffic_type": "tcp"
+      },
+      {
+          "features": [
+              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
+              {"basedon": [{"basedon": ["octetTotalCount"]}, "_client_to_server"]}
+          ],
+          "key": {
+              "bidirectional": "separate_directions",
+              "key_features": [
+                  "protocolIdentifier",
+                  "sourceIPv4Address",
+                  "sourceTransportPort",
+                  "destinationIPv4Address",
+                  "destinationTransportPort"
+              ]
+          },
+          "goals": [
+              "trafficClassification"
+          ],
+          "traffic_type": "tcp"
+      },
+      {
+          "features": [
+              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
+              {"basedon": [{"basedon": ["octetTotalCount"]}, "_server_to_client"]},
+              {"basedon": [{"basedon": ["tcpControlBits"]}, "_server_to_client"]},
+              {"divide": [{"add": ["__windowAdvertisement"]}, "totalPacketCount"]}
+          ],
+          "key": {
+              "bidirectional": "separate_directions",
+              "key_features": [
+                  "protocolIdentifier",
+                  "sourceIPv4Address",
+                  "sourceTransportPort",
+                  "destinationIPv4Address",
+                  "destinationTransportPort"
+              ]
+          },
+          "goals": [
+              "trafficClassification"
+          ],
+          "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Zhang et al.", 
+    "title": "Feature selection for optimizing traffic classification", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "cambridge2003",
+      "unibs2009",
+      "caida-backbone2009"
+  ],
+  "methods": [
+      {
+          "name": "Weighted Symmetrical Uncertainty with AUC metric (WSU_AUC)",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Selects the Robust and Stable Features (SRSF)",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Naive Bayes with Kernel",
+          "supevision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "C4.5 Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
