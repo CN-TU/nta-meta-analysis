@@ -1,0 +1,68 @@
+{
+  "reference": {
+    "author": "Erman et al.", 
+    "title": "Traffic Classification Using Clustering Algorithms", 
+    "keywords": "machine learning, unsupervised clustering", 
+    "year": 2006
+  }, 
+  "methods": [
+      {
+          "name": "k-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "DBSCAN",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "AutoClass",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "AucklandIV",
+      "CalgaryHTTP"
+  ],
+  "flows": [
+    {
+        "features": [
+          {"log": ["packetTotalCount"]},
+          {"log":[{"mean": ["ipTotalLength"]}]},
+          {"log":[{"mean": ["ipPayloadLength"]}]},
+          {"log": ["octetTotalCount"]},
+          {"log": [{"basedon": ["octetTotalCount","_server_to_client"]}]},
+	  {"log": [{"basedon": ["octetTotalCount","_client_to_server"]}]},
+          {"log":[{"mean": ["_interPacketTime"]}]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": null, 
+        "maximum_idle": 90,
+	"traffic_type": "TCP" 
+    }
+  ] 
+}
+

@@ -1,0 +1,72 @@
+{
+  "reference": {
+    "author": "Moore et al.", 
+    "title": "Internet traffic classification using bayesian analysis techniques", 
+    "keywords": "flow classification, internet traffic, traffic identification", 
+    "year": 2005
+  }, 
+  "methods": [
+      {
+          "name": "Naïve Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "probability"
+      },
+      {
+          "name": "Kernel density estimation",
+          "supervision": "supervised",
+          "type": "statistics",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Fast Correlation-Based Filter (FCBF)",
+          "supervision": "unsupervised",
+          "type": "statistics",
+          "similarity_metric": "correlation"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "flows": [
+    {
+        "features": [
+          {"basedon": ["destinationTransportPort"]},
+          {"basedon": ["sourceTransportPort"]},
+          {"basedon": ["_pushed_data_packets","_client_to_server"]},
+          {"basedon": ["_pushed_data_packets","_server_to_client"]},
+          {"basedon": ["tcpWindowSize", "_server_to_client"]},
+          {"basedon": ["tcpWindowSize", "_client_to_server"]},
+          {"basedon": [{"mean": ["ipTotalLength"]}, "_server_to_client"]},
+          {"basedon": ["octetTotalCount", "_client_to_server"]},
+          {"basedon": ["__data_bytes_inthe_wire_variance","_server_to_client"]},
+          {"basedon": [{"min": ["ipPayloadLength"]}, "_client_to_server"]},
+          {"basedon": ["__RTT_samples", "_client_to_server"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": null,
+        "window": null,
+        "maximum_idle": null,
+	"traffic_type": "TCP" 
+    }
+  ] 
+}
+
