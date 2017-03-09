@@ -152,5 +152,12 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "public"
+    },
+    "caida-backscatter": {
+        "name": "The UCSD CAIDA Backscatter Dataset",
+        "year": 2008,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
     }
 }

@@ -1,0 +1,44 @@
+{
+  "packets": [
+    {
+        "features": [
+          "timestamp",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "ipTotalLength"
+        ], 
+        "goals": [
+          "trafficClassification",
+          "anomalyDetection",
+          "attackClassification",
+          "trafficVisualization"
+        ], 
+        "tool": null, 
+        "window": null,
+        "traffic_type": "icmp"
+      }
+  ], 
+  "reference": {
+    "author": "Shin-Ying Huang and Yennun Huang", 
+    "title": "Network forensic analysis using growing hierarchical SOM", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["clustering_metrics"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "caida-backscatter"
+  ],
+  "methods": [
+      {
+          "name": "Growing Hierarchical Self-Organizing Map",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
