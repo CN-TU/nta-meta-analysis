@@ -1,0 +1,58 @@
+{
+  "flows": [
+    {
+        "features": [
+          "packetTotalCount", 
+          "octetTotalCount", 
+          "minimumIpTotalLength", 
+          "maximumIpTotalLength", 
+          {"mean": ["ipTotalLength"]}, 
+          {"stdev": ["ipTotalLength"]}, 
+          {"minimum": ["_interPacketTimeMicroseconds"]}, 
+          {"maximum": ["_interPacketTimeMicroseconds"]}, 
+          {"mean": ["_interPacketTimeMicroseconds"]}, 
+          {"stdev": ["_interPacketTimeMicroseconds"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": null, 
+        "window": null,
+        "traffic_type": "ip"
+      }
+  ], 
+  "reference": {
+    "author": "Zhang et al.", 
+    "title": "An Effective Network Traffic Classification Method with Unknown Flow Detection", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "mawi-f",
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Compound Classification method for Correlated Flows",
+          "supervision": "semi_supervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+

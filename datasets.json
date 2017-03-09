@@ -160,4 +160,26 @@
         "type": "real",
         "availability": "public"
     }
+    "BLINC": {
+        "name": "BLINC Genome Campus (GN) and Residential University (UN1, UN2) datasets",
+        "year": [2003,2004],
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "private"
+    },
+    "NZIX_II": {
+        "name": " GPS-synchronized IP header traces at the New Zealand Internet Exchange",
+        "year": 2000,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
+    "LeipzigII": {
+        "name": "University of Leipzig Internet access link dataset",
+        "year": 2003,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    }
+
 }

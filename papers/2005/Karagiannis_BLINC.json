@@ -1,0 +1,134 @@
+{
+  "reference": {
+    "author": "Karagiannis et al.", 
+    "title": "BLINC: Multilevel Traffic Classification in the Dark", 
+    "keywords": "traffic classification, host behavior, transport layer", 
+    "year": 2005
+  }, 
+  "methods": [
+      {
+          "name": "comparison with database items",
+          "supervision": "supervised",
+          "type": "heuristics",
+          "similarity_metric": "exact_matching"
+      },
+      {
+          "name": "statistical reports",
+          "supervision": "descriptive",
+          "type": "statistics",
+          "similarity_metric": "exact_matching"
+      },
+      {
+          "name": "graph clusters",
+          "supervision": "descriptive",
+          "type": "heuristics",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "comparison with known models",
+          "supervision": "supervised",
+          "type": "heuristics",
+          "similarity_metric": "exact_matching"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate","classification_loss"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "BLINC"
+  ],
+  "flows": [
+    {
+        "features": [
+          "protocolIdentifier",
+          "destinationTransportPort", 
+          "__payload" 
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": ["CoralReef", "tcpdump"],
+        "window": 300,
+        "maximum_idle": 64,
+	"traffic_type": "IP" 
+    },
+    {
+        "features": [
+	  {"basedon": ["sourceTransportPort"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": false, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address",
+            "sourceTransportPort"  
+          ]
+        },
+        "tool": ["CoralReef", "tcpdump"],
+        "window": 64,
+	"traffic_type": "IP" 
+    },
+    {
+        "features": [
+          "protocolIdentifier",
+          {"mean": ["ipTotalLength"]}, 
+	  {"basedon": ["sourceTransportPort"]},
+	  {"basedon": ["destinationTransportPort"]},
+	  {"basedon": ["sourceIPv4Address"]},
+	  {"basedon": ["destinationIPv4Address"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": false, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address",
+            "sourceTransportPort",  
+            "destinationTransportPort"
+          ]
+        },
+        "tool": ["CoralReef", "tcpdump"],
+        "window": 64,
+	"traffic_type": "IP" 
+    },
+    {
+        "features": [
+          "sourceIPv4Address", 
+          "destinationIPv4Address", 
+	  {"basedon": ["destinationIPv4Address"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": false, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address"
+          ]
+        },
+        "tool": ["CoralReef", "tcpdump"],
+        "window": 64,
+	"traffic_type": "IP" 
+      }
+  ] 
+}
+
