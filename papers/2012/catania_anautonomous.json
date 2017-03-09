@@ -1,0 +1,42 @@
+{
+  "flows": [
+      {
+          "features": [
+              "_flowDurationSeconds",
+              "protocolIdentifier",
+              "sourceTransportPort",
+              "destinationTransportPort",
+              "sourceIPv4Address",
+              "destinationIPv4Address"
+          ],
+          "key": null,
+          "goals": [
+              "anomalyDetection"
+          ],
+          "traffic_type": "ip"
+      }
+  ], 
+  "reference": {
+    "author": "Catania et al.", 
+    "title": "An autonomous labeling approach to support vector machines algorithms for network traffic anomaly detection", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "darpa1998"
+  ],
+  "methods": [
+      {
+          "name": "Support Vector Machine based on hypersphere",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
