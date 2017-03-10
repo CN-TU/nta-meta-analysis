@@ -1,0 +1,88 @@
+{
+  "flows": [
+    {
+      "features": [
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {"basedon": ["packetTotalCount", "_client_to_server"]},
+          {"basedon": ["packetTotalCount", "_server_to_client"]},
+          {"basedon": ["octetTotalCount", "_client_to_server"]},
+          {"basedon": ["octetTotalCount", "_server_to_client"]},
+          {"basedon": [{"minimum": ["_interPacketTimeMicroseconds"]}, "_client_to_server"]},
+          {"basedon": [{"minimum": ["_interPacketTimeMicroseconds"]}, "_server_to_client"]},
+          {"basedon": [{"stdev": ["_interPacketTimeMicroseconds"]}, "_client_to_server"]},
+          {"basedon": [{"stdev": ["_interPacketTimeMicroseconds"]}, "_server_to_client"]},
+          {"basedon": [{"mean": ["_interPacketTimeMicroseconds"]}, "_client_to_server"]},
+          {"basedon": [{"mean": ["_interPacketTimeMicroseconds"]}, "_server_to_client"]},
+          {"basedon": [{"maximum": ["_interPacketTimeMicroseconds"]}, "_client_to_server"]},
+          {"basedon": [{"maximum": ["_interPacketTimeMicroseconds"]}, "_server_to_client"]},
+          {"basedon": [{"minimum": ["octetTotalCount"]}, "_client_to_server"]},
+          {"basedon": [{"minimum": ["octetTotalCount"]}, "_server_to_client"]},
+          {"basedon": [{"maximum": ["octetTotalCount"]}, "_client_to_server"]},
+          {"basedon": [{"maximum": ["octetTotalCount"]}, "_server_to_client"]},
+          {"basedon": [{"stdev": ["octetTotalCount"]}, "_client_to_server"]},
+          {"basedon": [{"stdev": ["octetTotalCount"]}, "_server_to_client"]},
+          {"basedon": [{"mean": ["octetTotalCount"]}, "_client_to_server"]},
+          {"basedon": [{"mean": ["octetTotalCount"]}, "_server_to_client"]}
+      ],
+      "key": {
+          "bidirectional": "separate_directions",
+          "key_features": null
+      },
+      "goals": [
+          "applicationClassificationEncryptedTraffic"
+      ],
+      "tool": "netmate"
+    }
+  ], 
+  "reference": {
+    "author": "Alshammari and Zincir-Heywood", 
+    "title": "Machine learning based encrypted traffic classification: Identifying SSH and Skype", 
+    "year": 2009
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets",
+      "mawi-f",
+      "nlanr-amp",
+      "darpa-ideval1999"
+  ],
+  "methods": [
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "AdaBoost",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "C4.5 Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Repeated Incremental Error to Produce Error Reduction (RIPPER)",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
