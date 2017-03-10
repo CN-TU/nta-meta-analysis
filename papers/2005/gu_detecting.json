@@ -1,0 +1,40 @@
+{
+  "packets": [
+    {
+        "features": [
+          "destinationTransportPort",
+          "protocolIdentifier",
+          "tcpControlBits"
+        ], 
+        "goals": [
+          "anomalyDetection"
+        ],
+        "tool": null, 
+        "window": null,
+        "traffic_type": "ip"
+      }
+  ], 
+  "reference": {
+    "author": "Gu et al.", 
+    "title": "Detecting anomalies in network traffic using maximum entropy estimation", 
+    "year": 2005
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Maximum Entropy estimation and relative entropy",
+          "supervision": "supervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
