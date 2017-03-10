@@ -1,0 +1,261 @@
+{
+  "flow_aggregations": [
+      {
+          "features": [
+              {"distinct": ["sourceIPv4Address", {"select": [true]}]},
+              {"distinct": ["destinationIPv4Address", {"select": [true]}]},
+              {"divide": [{"distinct": ["sourceIPv4Address", {"select": [true]}]}, {"distinct": ["destinationIPv4Address", {"select": [true]}]}]},
+              {"distinct": ["sourceTransportPort", {"select": [true]}]},
+              {"distinct": ["destinationTransportPort", {"select": [true]}]},
+              {"divide": ["packetTotalCount", "_durationSeconds"]},
+              {"divide": ["packetTotalCount", {"distinct": ["destinationIPv4Address", {"select": [true]}]}]},
+              {"divide": ["_icmpTotalCount", "packetTotalCount"]},
+              {"divide": ["tcpSynTotalCount", "packetTotalCount"]}
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": []
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  {"get": [16, "sourceIPv4Address"]}
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  "sourceIPv4Address"
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  {"get": [24, "sourceIPv4Address"]}
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  {"get": [16, "destinationIPv4Address"]}
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  {"get": [24, "destinationIPv4Address"]}
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      },
+      {
+          "features": [
+              "octetTotalCount",
+              "packetTotalCount",
+              "flowTotalCount"
+          ],
+          "flow": {
+              "key": {
+                  "bidirectional": true,
+                  "key_features": [
+                      "protocolIdentifier",
+                      "sourceIPv4Address",
+                      "sourceTransportPort",
+                      "destinationIPv4Address",
+                      "destinationTransportPort"
+                  ]
+              },
+              "window": 20,
+              "traffic_type": "ip"
+          },
+          "key": {
+              "bidirectional": true,
+              "key_features": [
+                  "destinationIPv4Address"
+              ]
+          },
+          "window": 20,
+          "goals": [
+              "attackDetection"
+          ]
+      }
+  ],
+  "reference": {
+    "author": "Casas et al.", 
+    "title": "Knowledge-independent traffic monitoring: Unsupervised detection of network attacks", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "mawi-f",
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "Signature Based detection",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "exact_matching"
+      },
+      {
+          "name": "DBSCAN clustering",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Subspace Clustering and Evidence Accumulation based algorithm",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
