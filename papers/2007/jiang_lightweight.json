@@ -1,0 +1,90 @@
+{
+  "reference": {
+    "author": "Jiang et al.", 
+    "title": "Lightweight application classification for network management", 
+    "year": 2007
+  }, 
+  "methods": [
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "manual_verification",
+    	  "ground_truth_tool": "traffic data was hand-classified into a number of application classes including web browsing (WWW), Email, Bulk, Attack, P2P, Database,Multimedia, Service, Interaction, and Games"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "flows": [
+    {
+        "features": [
+            "sourceIPv4Address",
+            "destinationIPv4Address",
+            "sourceTransportPort",
+            "destinationTransportPort",
+            "ipClassOfService",
+            "flowStartSysUpTime",
+            "flowEndSysUpTime",
+            "tcpControlBits",
+            "octetTotalCount",
+            "packetTotalCount",
+            "_flowDurationSeconds",
+            {"mean": ["octetTotalCount"]},
+            {"divide": ["octetTotalCount", "_flowDurationSeconds"]},
+            {"divide": ["packetTotalCount", "_flowDurationSeconds"]},
+            {"maximum": ["sourceTransportPort", "destinationTransportPort"]},
+            {"minimum": ["sourceTransportPort", "destinationTransportPort"]}
+        ], 
+        "goals": [
+            "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": false,
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address",
+            "sourceTransportPort",
+            "destinationTransportPort",
+            "protocolIdentifier",
+            "ipClassOfService",
+            "ingressPhysicalInterface"
+          ]
+        },
+        "tool": "nprobe",
+    	"traffic_type": "tcp"
+    },
+    {
+        "features": [
+            "ipClassOfService",
+            "tcpControlBits",
+            {"minimum": ["sourceTransportPort", "destinationTransportPort"]}
+        ], 
+        "goals": [
+            "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": false,
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address",
+            "sourceTransportPort",
+            "destinationTransportPort",
+            "protocolIdentifier",
+            "ipClassOfService",
+            "ingressPhysicalInterface"
+          ]
+        },
+        "tool": "nprobe",
+    	"traffic_type": "tcp"
+    }
+  ] 
+}
+
