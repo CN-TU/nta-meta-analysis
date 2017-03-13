@@ -222,5 +222,12 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "on_demand"
+    },
+    "sperottoIPOM2009": {
+        "name": "A Labeled Data Set For Flow-based Intrusion Detection",
+        "year": [2008],
+        "data-type": "flow_other",
+        "type": "real",
+        "availability": "public"
     }
 }

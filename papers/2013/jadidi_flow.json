@@ -1,0 +1,53 @@
+{
+  "flows": [
+    {
+        "features": [
+          "octetTotalCount", 
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "tcpControlBits"
+        ], 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": null,
+        "window": null,
+        "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Jadidi et al.", 
+    "title": "Flow-Based Anomaly Detection Using Neural Network Optimized with GSA Algorithm", 
+    "year": 2013
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "labeled_data",
+          "ground_truth_tool": "part of dataset"
+      }
+  ],
+  "datasets": [
+      "sperottoIPOM2009"
+  ],
+  "methods": [
+      {
+          "name": "Multi-Layer Perceptron (1 hidden layer)",
+          "supervision": "supervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
