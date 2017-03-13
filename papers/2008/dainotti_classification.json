@@ -1,0 +1,53 @@
+{
+  "packets": [
+      {
+          "features": [
+              "_interPacketTimeMicroseconds",
+              "octetTotalCount"
+          ],
+          "goals": [
+              "trafficClassification"
+          ]
+      }
+  ],
+  "flows": [
+      {
+          "key": {
+              "bidirectional": false,
+              "key_features": [
+                  "protocolIdentifier",
+                  "sourceIPv4Address",
+                  "destinationIPv4Address",
+                  "destinationTransportPort"
+              ]
+          },
+          "goals": [
+              "trafficClassification"
+          ],
+          "window": 60
+      }
+  ],
+  "reference": {
+    "author": "Dainotti et al.", 
+    "title": "Classification of Network Traffic via Packet-Level Hidden Markov Models", 
+    "year": 2008
+  }, 
+  "datasets": [
+      "_generated_packets"
+  ],
+  "methods": [
+      {
+          "name": "Hidden Markov Model",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ]
+}
+
