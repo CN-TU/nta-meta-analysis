@@ -1,8 +1,8 @@
 {
   "reference": {
     "author": "Zander et al.", 
-    "title": "Self-learning IP Traffic Classification based on Statistical Flow Characteristics", 
-    "keywords": "traffic classification, statistics, flow analysis", 
+    "title": "Automated Traffic Classification and Application Identification using Machine Learning", 
+    "keywords": "machine learning, protocols, telecommunication traffic, decoding, IP networks, computer network management, engineering management, surveillance, cryptography, internet", 
     "year": 2005
   }, 
   "methods": [
@@ -21,7 +21,7 @@
   ],
   "evaluations": [
       {
-          "metrics": ["clustering_metrics"],
+          "metrics": ["clustering_metrics", "error_rate", "error_rate_variation"],
           "method_evaluation": "both",
           "ground_truth": "labeled_data",
 	  "ground_truth_tool": "_own_separation_based_metric"
@@ -43,7 +43,8 @@
           {"basedon": [{"mean": ["_interPacketTime"]}, "_client_to_server"]},
           {"basedon": [{"variance": ["_interPacketTime"]}, "_server_to_client"]},
           {"basedon": [{"variance": ["_interPacketTime"]}, "_client_to_server"]},
-	  "octetTotalCount",
+          {"basedon": [{"variance": ["octetTotalCount"]}, "_server_to_client"]},
+          {"basedon": [{"variance": ["octetTotalCount"]}, "_client_to_server"]},
 	  "flowDurationMilliseconds"
         ], 
         "goals": [
