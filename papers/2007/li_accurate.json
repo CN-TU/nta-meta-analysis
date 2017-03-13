@@ -1,0 +1,76 @@
+{
+  "reference": {
+    "author": "Li et al.", 
+    "title": "Accurate Classification of the Internet Traffic Based on the SVM Method", 
+    "keywords": "network traffic, internet flow classification, support vector machine, discriminator selection", 
+    "year": 2007
+  }, 
+  "methods": [
+      {
+          "name": "Support Vector Machine",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "X-fold Cross Validation",
+  	  "supervision": "nest",
+	  "type": "statistics",
+	  "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Sequential forward selection",
+  	  "supervision": "nest",
+	  "type": "feature_selection",
+	  "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Plus-m-minus-r algorithm (forward selection)",
+  	  "supervision": "nest",
+	  "type": "feature_selection",
+	  "similarity_metric": "euclidean"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection",
+	  "ground_truth_tool": "I7-filter"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "flows": [
+    {
+        "features": [
+          {"mean": ["ipTotalLength"]},
+          {"variance": [{"basedon": ["ipTotalLength","_server_to_client"]}]},
+          {"variance": [{"basedon": ["ipTotalLength","_client_to_server"]}]},
+          "protocolIdentifier", 
+	  "flowDurationMilliseconds",
+          "destinationTransportPort",
+          {"divide": [{"basedon": ["packetTotalCount","_client_to_server"]},{"basedon": ["packetTotalCount","_server_to_client"]}]},
+	  "tcpSynTotalCount"
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": [""],
+        "window": null,
+        "maximum_idle": null,
+	"traffic_type": "IP" 
+    }
+  ] 
+}
+

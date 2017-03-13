@@ -21,15 +21,16 @@
       {
           "name": "Fast Correlation-Based Filter (FCBF)",
           "supervision": "unsupervised",
-          "type": "statistics",
+          "type": "feature_selection",
           "similarity_metric": "correlation"
       }
   ],
   "evaluations": [
       {
           "metrics": ["error_rate"],
-          "method_evaluation": "external"
-      }
+          "method_evaluation": "external",
+          "ground_truth": "manual_verification"
+     }
   ],
   "datasets": [
       "_private_packets"

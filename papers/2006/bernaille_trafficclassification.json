@@ -1,0 +1,52 @@
+{
+  "reference": {
+    "author": "Bernaille et al.", 
+    "title": "Traffic Classification on the fly", 
+    "keywords": "traffic classification, applications, machine Learning", 
+    "year": 2006
+  }, 
+  "methods": [
+      {
+          "name": "k-means",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection",
+	  "ground_truth_tool": "Quosmos"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "flows": [
+    {
+        "features": [
+          {"basedon": ["ipTotalLength","_server_to_client"]},
+	  {"basedon": ["ipTotalLength","_client_to_server"]}
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "protocolIdentifier", 
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort"
+          ]
+        },
+        "tool": null, 
+        "maximum_idle": null,
+	"traffic_type": "TCP" 
+    }
+  ]
+}
+

@@ -28,7 +28,9 @@
   "evaluations": [
       {
           "metrics": ["error_rate"],
-          "method_evaluation": "external"
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection",
+	  "ground_truth_tool": "_own_payload_based"
       }
   ],
   "datasets": [

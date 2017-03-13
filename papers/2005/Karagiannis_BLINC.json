@@ -34,37 +34,15 @@
   "evaluations": [
       {
           "metrics": ["error_rate","classification_loss"],
-          "method_evaluation": "external"
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection",
+	  "ground_truth_tool": "_own_payload_based"
       }
   ],
   "datasets": [
       "BLINC"
   ],
   "flows": [
-    {
-        "features": [
-          "protocolIdentifier",
-          "destinationTransportPort", 
-          "__payload" 
-        ], 
-        "goals": [
-          "trafficClassification"
-        ], 
-        "key": {
-          "bidirectional": true, 
-          "key_features": [
-            "protocolIdentifier", 
-            "sourceIPv4Address", 
-            "sourceTransportPort", 
-            "destinationIPv4Address", 
-            "destinationTransportPort"
-          ]
-        },
-        "tool": ["CoralReef", "tcpdump"],
-        "window": 300,
-        "maximum_idle": 64,
-	"traffic_type": "IP" 
-    },
     {
         "features": [
 	  {"basedon": ["sourceTransportPort"]}
