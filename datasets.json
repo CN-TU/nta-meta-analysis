@@ -208,5 +208,19 @@
         "data-type": "packet_other",
         "type": "real",
         "availability": "public"
+    },
+    "lbnl/icsi": {
+        "name": "LBNL/ICSI Enterprise Tracing Project",
+        "year": [2004, 2005],
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
+    "caida-oc48": {
+        "name": "CAIDA Anonymized OC38 Internet Traces Dataset",
+        "year": [2002, 2003],
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "on_demand"
     }
 }

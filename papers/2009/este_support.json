@@ -1,0 +1,59 @@
+{
+ "flows": [
+    {
+        "traffic_type": "tcp",
+        "features": [
+            {"map": [{"multiply": [{"add": [{"add": ["transportOctetDeltaCount", 40]}, 1000]}, {"subtract": [{"multiply": ["flowDirection", 2]}, 1]}]}, {"select": [{"greater": ["transportOctetDeltaCount", 0]}]} ]}
+        ], 
+        "goals": [
+          "ApplicationProtocolDetection"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+              "sourceIPv4Address",
+              "destinationIPv4Address",
+              "sourceTransportPort",
+              "destinationTransportPort"
+          ]
+        }, 
+        "tool": null, 
+        "window": null
+      }
+  ], 
+  "reference": {
+    "author": "Este et al.", 
+    "title": "Support vector Machines for TCP traffic classification", 
+    "year": 2009
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "educated_guess"
+      }
+  ],
+  "datasets": [
+      "unibs2009",
+      "lbnl/icsi",
+      "caida-oc48"
+  ],
+  "methods": [
+      {
+          "name": "Single-class Support Vector Machines",
+          "supervision": "supervised",
+          "learning": "cross-validation",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Multi-class Support Vector Machine",
+          "supervision": "supervised",
+          "learning": "cross-validation",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+
+  ]
+}
+
