@@ -32,7 +32,7 @@
   ], 
   "reference": {
     "author": "Zhang et al.", 
-    "title": "Robust Network Traffic Identification", 
+    "title": "Robust Network Traffic Classification", 
     "year": 2015
   }, 
   "evaluations": [
