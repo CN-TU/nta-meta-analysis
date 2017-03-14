@@ -48,7 +48,9 @@
   "evaluations": [
       {
           "metrics": ["error_rate", "error_rate_variation"],
-          "method_evaluation": "external"
+          "method_evaluation": "external",
+          "ground_truth": "manual_verification",
+          "ground_truth_tool": "guessed from port number"
       }
   ],
   "datasets": ["_private_packets"]
