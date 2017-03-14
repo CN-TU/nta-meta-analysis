@@ -7,36 +7,37 @@
   }, 
   "methods": [
       {
-          "name": "Support Vector Machine",
+          "name": "Naïve Bayes Classifier",
           "supervision": "supervised",
           "type": "classification",
-          "similarity_metric": "euclidean"
+          "similarity_metric": "probabilistic"
       },
       {
-          "name": "X-fold Cross Validation",
-  	  "supervision": "nest",
-	  "type": "statistics",
-	  "similarity_metric": "euclidean"
+          "name": "C4.5 Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
       },
       {
-          "name": "Sequential forward selection",
-  	  "supervision": "nest",
+          "name": "Adaboost+C4.5 Decision Tree",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Correlation based filter",
+  	  "supervision": "unsupervised",
 	  "type": "feature_selection",
-	  "similarity_metric": "euclidean"
-      },
-      {
-          "name": "Plus-m-minus-r algorithm (forward selection)",
-  	  "supervision": "nest",
-	  "type": "feature_selection",
-	  "similarity_metric": "euclidean"
+	  "similarity_metric": "correlation"
       }
   ],
   "evaluations": [
       {
           "metrics": ["error_rate"],
           "method_evaluation": "external",
-          "ground_truth": "packet_inspection",
-	  "ground_truth_tool": "I7-filter"
+          "ground_truth": ["manual_verification","method_comparison"],
+	  "ground_truth_tool": null,
+	  "note": "other metrics: complexity, temporal_stability"
       }
   ],
   "datasets": [
@@ -45,14 +46,18 @@
   "flows": [
     {
         "features": [
-          {"mean": ["ipTotalLength"]},
-          {"variance": [{"basedon": ["ipTotalLength","_server_to_client"]}]},
-          {"variance": [{"basedon": ["ipTotalLength","_client_to_server"]}]},
-          "protocolIdentifier", 
-	  "flowDurationMilliseconds",
-          "destinationTransportPort",
-          {"divide": [{"basedon": ["packetTotalCount","_client_to_server"]},{"basedon": ["packetTotalCount","_server_to_client"]}]},
-	  "tcpSynTotalCount"
+          {"basedon": ["sourceTransportPort","_server_to_client"]},
+          {"basedon": ["destinationTransportPort","_client_to_server"]},
+	  {"basedon": ["_push_pkts","_server_to_client"]},
+	  {"basedon": ["_push_pkts","_client_to_server"]},
+	  {"basedon": ["__bytes_in_initial_window","_server_to_client"]},
+	  {"basedon": ["__bytes_in_initial_window","_client_to_server"]},
+	  {"divide": ["octetTotalCount","packetTotalCount"]},
+	  {"basedon": ["ipTotalLength","_client_to_server"]},
+	  {"basedon": ["__pkts_with_payload","_server_to_client"]},
+          {"basedon": [{"variance": ["ipPayloadLength"]},"_client_to_server"]},
+	  {"basedon": ["minimumIpTotalLength","_server_to_client"]},
+	  {"basedon": ["__totalRTTsamples","_client_to_server"]}
         ], 
         "goals": [
           "trafficClassification"
@@ -63,13 +68,14 @@
             "sourceIPv4Address", 
             "sourceTransportPort", 
             "destinationIPv4Address", 
-            "destinationTransportPort"
+            "destinationTransportPort",
+	    "flowStartSeconds"
           ]
         },
         "tool": [""],
-        "window": null,
+        "window": 5,
         "maximum_idle": null,
-	"traffic_type": "IP" 
+	"traffic_type": "TCP" 
     }
   ] 
 }
