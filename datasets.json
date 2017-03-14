@@ -90,6 +90,13 @@
         "type": "real",
         "availability": "public"
     },
+    "AucklandVIII": {
+        "name": "Auckland VIII datasets",
+        "year": 2003,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
     "CalgaryHTTP": {
         "name": "HTTP requests to the University of Calgary",
         "year": [1994,1995],
@@ -257,5 +264,12 @@
         "data-type": "packet_pcap",
         "type": "real",
         "availability": "public"
+    },
+    "cesca-i": {
+        "name": "CESCA-I data set from Anella Cientifica (Catalan R&D network)",
+        "year": 2004,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "on_demand"
     }
 }

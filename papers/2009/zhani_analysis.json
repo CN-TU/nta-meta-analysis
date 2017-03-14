@@ -1,0 +1,90 @@
+{
+  "flows": [
+    {
+      "features": [
+          {"divide": [{"apply": ["octetTotalCount", {"select": [{"less": ["octetTotalCount", 100]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["octetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 100]}, {"less": ["octetTotalCount", 500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["octetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 500]}, {"less": ["octetTotalCount", 500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["octetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 800]}, {"less": ["octetTotalCount", 1500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["packetTotalCount", {"select": [{"less": ["octetTotalCount", 100]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["packetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 100]}, {"less": ["octetTotalCount", 500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["packetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 500]}, {"less": ["octetTotalCount", 500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["packetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 800]}, {"less": ["octetTotalCount", 1500]}]}]}]}, "_flowDurationSeconds"]}
+      ],
+      "key": {
+          "bidirectional": true,
+          "key_features": []
+      },
+      "goals": [
+          "trafficRatePrediction"
+      ],
+      "tool": "libtrace",
+      "traffic_type": "ip",
+      "window": 0.6
+    },
+    {
+      "features": [
+          {"divide": [{"apply": ["octetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 800]}, {"less": ["octetTotalCount", 1500]}]}]}]}, "_flowDurationSeconds"]},
+          {"divide": [{"apply": ["packetTotalCount", {"select": [{"and": [{"geq": ["octetTotalCount", 800]}, {"less": ["octetTotalCount", 1500]}]}]}]}, "_flowDurationSeconds"]}
+      ],
+      "key": {
+          "bidirectional": true,
+          "key_features": []
+      },
+      "goals": [
+          "trafficRatePrediction"
+      ],
+      "tool": "libtrace",
+      "traffic_type": "ip",
+      "window": 0.6
+    }
+  ], 
+  "reference": {
+    "author": "Zhani et al.", 
+    "title": "Analysis and Prediction of Real Network Traffic", 
+    "year": 2009
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_distance"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "AucklandVIII",
+      "cesca-i"
+  ],
+  "methods": [
+      {
+          "name": "Neurofuzzy model",
+          "supervision": "supervised",
+          "type": "regression",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "AutoRegressive Moving Average model (ARMA)",
+          "supervision": "supervised",
+          "type": "regression",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Integrated AutoRegressive Moving Average model (ARIMA)",
+          "supervision": "supervised",
+          "type": "regression",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Correlation based feature selection",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "correlation"
+      },
+      {
+          "name": "Mutual Information based feature selection",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
