@@ -1,0 +1,53 @@
+{
+    "flows": [
+    {
+        "features": [
+            {"log": ["packetTotalCount"]},
+            {"log": ["octetTotalCount"]},
+            {"log": [{"mean": ["ipTotalLength"]}]},
+            {"log": [{"mean": ["transportOctetDeltaCount"]}]},
+            {"log": ["flowDurationMilliseconds"]},
+            {"log": [{"mean": ["_interPacketTime"]}]}
+        ], 
+        "goals": [
+            "applicationClassification"
+        ], 
+        "key": {
+            "bidirectional": false, 
+            "key_features": [
+                "sourceIPv4Address", 
+                "sourceTransportPort",
+                "destinationIPv4Address",
+                "destinationTransportPort"
+            ]
+        },
+        "tool": null,
+        "window": null,
+        "maximum_idle": 900,
+        "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Erman et al.", 
+    "title": "Identifying and discriminating between web and peer-to-peer traffic in the network core", 
+    "year": 2007
+  }, 
+  "methods": [
+      {
+          "name": "k Nearest Neighbors",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "error_rate_variation"],
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection",
+          "ground_truth_tool": "bro"
+      }
+  ],
+  "datasets": ["_private_packets"]
+}
+
