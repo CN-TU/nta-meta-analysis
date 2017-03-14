@@ -1,0 +1,67 @@
+{
+    "flows": [
+    {
+        "features": [
+            {"minimum": ["_interPacketTimeMilliseconds"]},
+            {"maximum": ["_interPacketTimeMilliseconds"]},
+            {"mean": ["_interPacketTimeMilliseconds"]},
+            {"stddev": ["_interPacketTimeMilliseconds"]},
+            {"minimum": ["_interPacketLengthVariantion"]},
+            {"maximum": ["_interPacketLengthVariantion"]},
+            {"mean": ["_interPacketLengthVariantion"]},
+            {"stddev": ["_interPacketLengthVariantion"]},
+            {"minimum": ["ipTotalLength"]},
+            {"maximum": ["ipTotalLength"]},
+            {"mean": ["ipTotalLength"]},
+            {"stddev": ["ipTotalLength"]}
+        ], 
+        "goals": [
+            "classificationForQoS"
+        ], 
+        "key": {
+            "bidirectional": "separate_directions",
+            "key_features": [
+                "protocolIdentifier",
+                "sourceIPv4Address",
+                "sourceTransportPort",
+                "destinationIPv4Address",
+                "destinationTransportPort"
+            ]
+        },
+        "tool": null,
+        "window": 25,
+        "window_type": "packets",
+        "maximum_idle": 60,
+        "traffic_type": ["tcp", "udp"]
+    }
+    ], 
+    "reference": {
+        "author": "Nguyen et al.", 
+        "title": "Timely and Continuous Machine-Learning-Based Classification for Interactive IP Traffic", 
+        "year": 2012,
+        "source_code": "http://caia.swin.edu.au/urp/diffuse/downloads.html"
+    }, 
+    "methods": [
+        {
+            "name": "C4.5 Decision Tree",
+            "supervision": "supervised",
+            "type": "classification",
+            "similarity_metric": "mutual_information"
+        },
+        {
+            "name": "Naïve Bayes",
+            "supervision": "supervised",
+            "type": "classification",
+            "similarity_metric": "probability"
+        }
+    ],
+    "evaluations": [
+        {
+          "metrics": ["error_rate", "error_rate_variation"],
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection"
+        }
+    ],
+    "datasets": ["_private_packets"]
+}
+
