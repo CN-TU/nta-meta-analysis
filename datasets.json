@@ -229,5 +229,33 @@
         "data-type": "flow_other",
         "type": "real",
         "availability": "public"
+    },
+    "abilene2": {
+        "name": "captures from the Merit Abilene (MRA)",
+        "year": 2005,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
+    "colorado": {
+        "name": "captures from the Colorado State University",
+        "year": 2004,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
+    "pittsburg": {
+        "name": "captures from the Pittsburgh Supercomputing Center (PSC), Carnegie Mellon University",
+        "year": 2005,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
+    "columbia": {
+        "name": "captures from the Columbia University (Broadway)",
+        "year": 2004,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
     }
 }
