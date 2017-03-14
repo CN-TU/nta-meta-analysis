@@ -1,0 +1,52 @@
+{
+  "reference": {
+    "author": "Constantinou et al.", 
+    "title": "Identifying Known and Unknown Peer-to-Peer Traffic", 
+    "keywords": "peer-to-peer traffic, traffic classification", 
+    "year": 2006
+  }, 
+  "methods": [
+      {
+          "name": "Estimation of network diameter and client-server-volume per port",
+          "supervision": "unsupervised",
+          "type": "heuristics",
+          "similarity_metric": "other"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": "labeled_data",
+	  "ground_truth_tool": "_own_port_based_method"
+      }
+  ],
+  "datasets": [
+      "abilene2",
+      "colorado",
+      "pittsburgh",
+      "columbia"
+  ],
+  "flows": [
+    {
+        "features": [
+          "destinationTransportPort",
+          "sourceTransportPort"
+        ], 
+        "goals": [
+          "trafficClassification"
+        ], 
+        "key": {
+          "bidirectional": "false", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "destinationIPv4Address" 
+          ]
+        },
+        "tool": null, 
+        "maximum_idle": null,
+	"traffic_type": "IP" 
+    }
+  ]
+}
+
