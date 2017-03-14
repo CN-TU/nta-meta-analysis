@@ -1,0 +1,56 @@
+{
+    "flows": [
+    {
+        "features": [
+            {"map": [{"multiply": ["octetTotalCount", {"subtract": [{"multiply": ["flowDirection", 2]}, 1]}]}, {"select": [true]} ]},
+            {"map": ["flowStartMilliseconds", {"select": [true]} ]}
+        ], 
+        "goals": [
+            "applicationClassificationEncrypted(Multiplexed)Traffic"
+        ], 
+        "key": {
+            "bidirectional": true, 
+            "key_features": [
+                "sourceIPv4Address", 
+                "destinationIPv4Address"
+            ]
+        },
+        "tool": null,
+        "window": 600,
+        "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Wright et al.", 
+    "title": "On Inferring Application Protocol Behaviors in Encrypted Network Traffic", 
+    "year": 2006
+  }, 
+  "methods": [
+      {
+          "name": "Hidden Markov Model",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "Viterbi",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": null
+      },
+      {
+          "name": "k Nearest Neighbors",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "error_rate_variation"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": ["_private_packets"]
+}
+
