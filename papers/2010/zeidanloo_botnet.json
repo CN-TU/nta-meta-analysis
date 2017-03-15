@@ -1,0 +1,44 @@
+{
+    "flows": [
+    {
+        "features": [
+          "sourceTransportPort",
+          "destinationTransportPort",
+          {"divide": ["octetTotalCount", "_flowDurationSeconds"]},
+          {"divide": ["octetTotalCount", "packetTotalCount"]}
+        ], 
+        "goals": [
+          "botnetDetection"
+        ], 
+        "key": {
+          "bidirectional": true, 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "argus",
+        "window": null,
+        "traffic_type": "tcp"
+      }
+  ], 
+  "reference": {
+    "author": "Zeidanloo et al.", 
+    "title": "Botnet detection based on traffic monitoring", 
+    "year": 2010
+  }, 
+  "evaluations": null,
+  "datasets": null,
+  "methods": [
+      {
+          "name": "clustering by hand in plotted graphs",
+          "supervision": "unsupervised",
+          "type": "clustering",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
