@@ -1,0 +1,73 @@
+{
+    "flows": [
+    {
+        "features": [
+              {"basedon": [{"minimum": ["octetTotalCount"]}, "_client_to_server"]},
+              {"basedon": [{"mean": ["octetTotalCount"]}, "_client_to_server"]},
+              {"basedon": [{"maximum": ["octetTotalCount"]}, "_client_to_server"]},
+              {"basedon": [{"stdev": ["octetTotalCount"]}, "_client_to_server"]},
+              {"basedon": [{"minimum": ["octetTotalCount"]}, "_server_to_client"]},
+              {"basedon": [{"mean": ["octetTotalCount"]}, "_server_to_client"]},
+              {"basedon": [{"maximum": ["octetTotalCount"]}, "_server_to_client"]},
+              {"basedon": [{"stdev": ["octetTotalCount"]}, "_server_to_client"]},
+              {"basedon": [{"minimum": ["_interPacketTime"]}, "_client_to_server"]},
+              {"basedon": [{"mean": ["_interPacketTime"]}, "_client_to_server"]},
+              {"basedon": [{"maximum": ["_interPacketTime"]}, "_client_to_server"]},
+              {"basedon": [{"stdev": ["_interPacketTime"]}, "_client_to_server"]},
+              {"basedon": [{"minimum": ["_interPacketTime"]}, "_server_to_client"]},
+              {"basedon": [{"mean": ["_interPacketTime"]}, "_server_to_client"]},
+              {"basedon": [{"maximum": ["_interPacketTime"]}, "_server_to_client"]},
+              {"basedon": [{"stdev": ["_interPacketTime"]}, "_server_to_client"]},
+              "_flowDurationSeconds",
+              {"basedon": ["packetTotalCount", "_client_to_server"]},
+              {"basedon": ["packetTotalCount", "_server_to_client"]},
+              {"basedon": ["octetTotalCount", "_client_to_server"]},
+              {"basedon": ["octetTotalCount", "_server_to_client"]}
+        ],
+        "key": {
+            "bidirectional": "separate_directions",
+            "key_features": [
+                "protocolIdentifier",
+                "sourceIPv4Address",
+                "sourceTransportPort",
+                "destinationIPv4Address",
+                "destinationTransportPort"
+            ]
+        },
+        "goals": [
+            "trafficClassification"
+        ],
+        "maximum_idle": 60
+    }
+    ], 
+    "reference": {
+        "author": "Yang et al.", 
+        "title": "A P2P Network Traffic Classification Method Using SVM", 
+        "year": 2008
+    }, 
+    "evaluations": [
+        {
+            "metrics": ["error_rate"],
+            "method_evaluation": "external",
+            "ground_truth": "pattern matching"
+        }
+    ],
+    "datasets": [
+        "_private_packets"
+    ],
+    "methods": [
+        {
+            "name": "Support Vector Machines",
+            "supervision": "supervised",
+            "type": "classification",
+            "similarity_metric": "euclidean"
+        },
+        {
+            "name": "Sequential Forward Selection",
+            "supervision": "nest",
+            "type": "feature_selection",
+            "similarity_metric": "euclidean"
+        }
+    ]
+}
+
