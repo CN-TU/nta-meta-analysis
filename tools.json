@@ -40,5 +40,11 @@
         "url": "https://www.juniper.net/us/en/local/pdf/app-notes/3500204-en.pdf",
         "name": "J-Flow",
         "availability": "proprietary"
+    },
+    "argus":
+    {
+        "url": "https://www.qosient.com/argus/",
+        "name": "argus",
+        "availability": "opensource"
     }
 }
