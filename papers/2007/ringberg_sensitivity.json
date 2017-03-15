@@ -1,0 +1,221 @@
+{
+  "flow_aggregations": [
+    {"flow": {
+        "features": null, 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "j-flow", 
+        "window": null,
+        "traffic_type": "ip"
+      },
+      "features": [
+        {"entropy": "sourceIPv4Address"},
+        {"entropy": "destinationIPv4Addres"},
+        {"entropy": "sourceTransportPort"},
+        {"entropy": "destinationTransportPort"}
+      ],
+      "goals": [
+        "anomalyDetection"
+      ],
+      "key": {
+        "bidirectional":"separate_directions",
+        "key_features": [
+          "_ingressRouter"
+        ]
+      },
+      "tool": null,
+      "window": 300,
+      "traffic_type":"ip"
+    },
+    {"flow": {
+        "features": null, 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "j-flow", 
+        "window": null,
+        "traffic_type": "ip"
+      },
+      "features": [
+        {"entropy": "sourceIPv4Address"},
+        {"entropy": "destinationIPv4Addres"},
+        {"entropy": "sourceTransportPort"},
+        {"entropy": "destinationTransportPort"}
+      ],
+      "goals": [
+        "anomalyDetection"
+      ],
+      "key": {
+        "bidirectional":"separate_directions",
+        "key_features": [
+          "_ingressRouter",
+          "ingressPhysicalInterface"
+        ]
+      },
+      "tool": null,
+      "window": 300,
+      "traffic_type":"ip"
+    },
+    {"flow": {
+        "features": null, 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "j-flow", 
+        "window": null,
+        "traffic_type": "ip"
+      },
+      "features": [
+        {"entropy": "sourceIPv4Address"},
+        {"entropy": "destinationIPv4Addres"},
+        {"entropy": "sourceTransportPort"},
+        {"entropy": "destinationTransportPort"}
+      ],
+      "goals": [
+        "anomalyDetection"
+      ],
+      "key": {
+        "bidirectional":"separate_directions",
+        "key_features": [
+          "_ingressRouter",
+          "_egressRouter"
+        ]
+      },
+      "tool": null,
+      "window": 300,
+      "traffic_type":"ip"
+    },
+    {"flow": {
+        "features": null, 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "j-flow", 
+        "window": null,
+        "traffic_type": "ip"
+      },
+      "features": [
+        {"entropy": "sourceIPv4Address"},
+        {"entropy": "destinationIPv4Addres"},
+        {"entropy": "sourceTransportPort"},
+        {"entropy": "destinationTransportPort"}
+      ],
+      "goals": [
+        "anomalyDetection"
+      ],
+      "key": {
+        "bidirectional":"separate_directions",
+        "key_features": [
+          "_ingressRouter"
+        ]
+      },
+      "tool": null,
+      "window": 900,
+      "traffic_type":"ip"
+    },
+    {"flow": {
+        "features": null, 
+        "goals": [
+          "anomalyDetection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort", 
+            "protocolIdentifier"
+          ]
+        }, 
+        "tool": "j-flow", 
+        "window": null,
+        "traffic_type": "ip"
+      },
+      "features": [
+        {"entropy": "sourceIPv4Address"},
+        {"entropy": "destinationIPv4Addres"},
+        {"entropy": "sourceTransportPort"},
+        {"entropy": "destinationTransportPort"}
+      ],
+      "goals": [
+        "anomalyDetection"
+      ],
+      "key": {
+        "bidirectional":"separate_directions",
+        "key_features": [
+          "_ingressRouter",
+          "ingressPhysicalInterface"
+        ]
+      },
+      "tool": null,
+      "window": 900,
+      "traffic_type":"ip"
+    }
+  ],
+  "reference": {
+    "author": "Ringberg et al.", 
+    "title": "Sensitivity of PCA for traffic anomaly detection", 
+    "year": 2007
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "abilene",
+      "geant"
+  ],
+  "methods": [
+      {
+          "name": "Principal Component Analysis based Anomaly Detection",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
