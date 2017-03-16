@@ -1,0 +1,72 @@
+{
+  "reference": {
+    "author": "Mahmood et al.", 
+    "title": "An Efficient Clustering Scheme to Exploit Hierarchical Data in Network Traffic Analysis", 
+    "keywords": "traffic analysis, network management, network monitoring, clustering, classification and association rules, hierarchical clustering", 
+    "year": 2008
+  }, 
+  "methods": [
+      {
+          "name": "Echidna: hierarchical distance-based (best)",
+          "supervision": "unsupervised",
+          "type": ["clustering","heuristic"],
+          "similarity_metric": "other"
+      },
+      {
+          "name": "AutoFocus (competitor)",
+          "supervision": "unsupervised",
+          "type": ["clustering","heuristic"],
+          "similarity_metric": "other"
+      },
+      {
+          "name": "ADWICE - BIRCH (competitor)",
+          "supervision": "unsupervised",
+          "type": ["clustering","heuristic"],
+          "similarity_metric":  ["euclidean","manhattan"]
+      }
+  ],
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "external",
+          "ground_truth": ["labeled_data","method_comparison"],
+	  "ground_truth_tool": null,
+	  "note": "other metrics: time complexity"
+      }
+  ],
+  "datasets": [
+      "darpa1998"
+  ],
+  "flows": [
+    {
+        "features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort",
+          "protocolIdentifier", 
+	  "octetTotalCount"
+        ], 
+        "goals": [
+          "trafficClassification",
+	  "anomaly_detection"
+        ], 
+        "key": {
+          "bidirectional": "separate_directions", 
+          "key_features": [
+            "sourceIPv4Address", 
+            "sourceTransportPort", 
+            "destinationIPv4Address", 
+            "destinationTransportPort",
+            "protocolIdentifier", 
+	    "octetTotalCount"
+          ]
+        },
+        "tool": [""],
+        "window": null,
+        "maximum_idle": null,
+	"traffic_type": "IP" 
+    }
+  ] 
+}
+
