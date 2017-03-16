@@ -1,0 +1,87 @@
+{
+  "flows": [
+    {
+      "goals": [
+        "anomalyDetection"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"
+        ]
+      }, 
+      "tool": "j-flow", 
+      "window": null,
+      "traffic_type": "ip",
+      "features": [
+        {"ifelse": [{"leq": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]}, 
+        {"ifelse": [{"greater": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]}, 
+        {"ifelse": [{"leq": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]}, 
+        {"ifelse": [{"greater": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]}, 
+        "flowDurationMilliseconds",
+        "packetTotalCount",
+        "octetTotalCount",
+        {"mean": ["ipTotalCount"]},
+        {"mean": ["_interPacketTimeMilliseconds"]},
+        "tcpControlBits",
+        {"mode": ["ipClassOfService"]},
+        {"count": {"select": [{"equal": ["ipClassOfService", {"mode": ["ipClassOfService"]}]}]}},
+        {"distinct": ["ipClassOfService", {"select": [true]}]},
+        "__sourceIPv4AddressBelongsToCertainISP",
+        "__destinationIPv4AddressBelongsToCertainISP"
+      ]
+    }
+  ],
+  "reference": {
+    "author": "Jin et al.", 
+    "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "abilene",
+      "geant"
+  ],
+  "methods": [
+      {
+          "name": "Adaboost with Decision Stumps (BStump)",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Boosting decision trees",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Maximum entropy",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "Traffic Activity Graph",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "other"
+      }
+  ]
+}
+
