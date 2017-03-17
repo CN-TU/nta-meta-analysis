@@ -7,7 +7,7 @@
             {"log": [{"mean": ["ipTotalLength"]}]},
             {"log": [{"mean": ["transportOctetDeltaCount"]}]},
             {"log": ["flowDurationMilliseconds"]},
-            {"log": [{"mean": ["_interPacketTime"]}]}
+            {"log": [{"mean": ["_interPacketTimeMicroseconds"]}]}
         ], 
         "goals": [
             "applicationClassification"

@@ -47,7 +47,7 @@
           {"basedon": [{"mean": ["ipTotalLength"]}, "_server_to_client"]},
           {"basedon": ["octetTotalCount", "_client_to_server"]},
           {"basedon": ["__data_bytes_inthe_wire_variance","_server_to_client"]},
-          {"basedon": [{"min": ["ipPayloadLength"]}, "_client_to_server"]},
+          {"basedon": [{"minimum": ["ipPayloadLength"]}, "_client_to_server"]},
           {"basedon": ["__RTT_samples", "_client_to_server"]}
         ], 
         "goals": [

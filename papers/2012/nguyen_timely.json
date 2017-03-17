@@ -5,15 +5,15 @@
             {"minimum": ["_interPacketTimeMilliseconds"]},
             {"maximum": ["_interPacketTimeMilliseconds"]},
             {"mean": ["_interPacketTimeMilliseconds"]},
-            {"stddev": ["_interPacketTimeMilliseconds"]},
+            {"stdev": ["_interPacketTimeMilliseconds"]},
             {"minimum": ["_interPacketLengthVariantion"]},
             {"maximum": ["_interPacketLengthVariantion"]},
             {"mean": ["_interPacketLengthVariantion"]},
-            {"stddev": ["_interPacketLengthVariantion"]},
+            {"stdev": ["_interPacketLengthVariantion"]},
             {"minimum": ["ipTotalLength"]},
             {"maximum": ["ipTotalLength"]},
             {"mean": ["ipTotalLength"]},
-            {"stddev": ["ipTotalLength"]}
+            {"stdev": ["ipTotalLength"]}
         ], 
         "goals": [
             "classificationForQoS"
