@@ -98,7 +98,7 @@
       },
       {
           "name": "Naive Bayes with Kernel",
-          "supevision": "supervised",
+          "supervision": "supervised",
           "type": "classification",
           "similarity_metric": null
       },
