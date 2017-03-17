@@ -1,0 +1,101 @@
+{
+  "flows": [
+    {
+      "goals": [
+        "trafficClassification"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"
+        ]
+      }, 
+      "tool": null, 
+      "window": null,
+      "traffic_type": "ip",
+      "features": [
+        "transportOctetDeltaCount",
+        {"basedon": ["transportOctetDeltaCount","_server_to_client"]},
+        {"basedon": ["transportOctetDeltaCount","_client_to_server"]},
+
+        {"divide":[{"basedon": ["transportOctetDeltaCount","_server_to_client"]}, {"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"divide":[{"basedon": ["packetTotalCount","_server_to_client"]}, {"basedon": ["packetTotalCount","_client_to_server"]}]},
+
+        {"mean": ["transportOctetDeltaCount"]},
+        {"minimum": ["transportOctetDeltaCount"]},
+        {"maximum": ["transportOctetDeltaCount"]},
+        {"quantile": ["transportOctetDeltaCount", 0.25]},
+        {"median": ["transportOctetDeltaCount"]},
+        {"quantile": ["transportOctetDeltaCount", 0.75]},
+        {"stdev": ["transportOctetDeltaCount"]},
+
+        {"mean": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"minimum": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"maximum": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"quantile": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}, 0.25]},
+        {"median": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"quantile": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}, 0.75]},
+        {"stdev": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        
+        {"mean": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"minimum": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"maximum": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"quantile": [0.25, {"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"median": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"quantile": [0.75, {"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"stdev": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+
+        {"divide": [{"leq": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}, 50]}, {"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"divide": [{"leq": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}, 50]}, {"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"divide": [{"leq": ["transportOctetDeltaCount", 50]}, "transportOctetDeltaCount"]},
+
+        {"divide": [{"geq": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}, 1300]}, {"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"divide": [{"geq": [{"basedon": ["transportOctetDeltaCount","_client_to_server"]}, 1300]}, {"basedon": ["transportOctetDeltaCount","_client_to_server"]}]},
+        {"divide": [{"geq": ["transportOctetDeltaCount", 1300]}, "transportOctetDeltaCount"]},
+
+        "applicationName",
+
+        "protocolIdentifier",
+        {"less": ["sourceTransportPort", 1024]},
+        {"less": ["destinationTransportPort", 1024]},
+
+        {"basedon": ["tcpPshTotalCount","_server_to_client"]},
+        {"basedon": ["tcpAckTotalCount","_server_to_client"]},
+        {"basedon": ["tcpPshTotalCount","_client_to_server"]},
+        {"basedon": ["tcpAckTotalCount","_client_to_server"]},
+        {"basedon": ["tcpPshTotalCount","_server_to_client"]},
+
+        {"divide": [{"count": [{"equal": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 0]}]}, {"count": [{"basedon": ["_transportPayloadLength","_client_to_server"]}]}]},
+        {"divide": [{"count": [{"equal": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 0]}]}, {"count": [{"basedon": ["_transportPayloadLength","_server_to_client"]}]}]},
+        {"divide": [{"count": [{"equal": ["_transportPayloadLength", 0]}]}, {"count": ["_transportPayloadLength"]}]}
+      ]
+    }
+  ],
+  "reference": {
+    "author": "Bujlow et al.", 
+    "title": "A method for classification of network traffic based on C5.0 Machine Learning Algorithm", 
+    "year": 2012
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "C5.0",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+
