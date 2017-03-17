@@ -45,8 +45,8 @@
           {"log":[{"mean": ["ipPayloadLength"]}]},
           {"log": ["octetTotalCount"]},
           {"log": [{"basedon": ["octetTotalCount","_server_to_client"]}]},
-	  {"log": [{"basedon": ["octetTotalCount","_client_to_server"]}]},
-          {"log":[{"mean": ["_interPacketTime"]}]}
+          {"log": [{"basedon": ["octetTotalCount","_client_to_server"]}]},
+          {"log":[{"mean": ["_interPacketTimeMicroseconds"]}]}
         ], 
         "goals": [
           "trafficClassification"

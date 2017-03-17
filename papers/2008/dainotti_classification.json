@@ -12,6 +12,7 @@
   ],
   "flows": [
       {
+          "features": null,
           "key": {
               "bidirectional": false,
               "key_features": [
