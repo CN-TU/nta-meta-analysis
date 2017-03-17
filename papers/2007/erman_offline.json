@@ -1,0 +1,64 @@
+{
+  "flows": [
+    {
+      "goals": [
+        "trafficClassification"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"
+        ]
+      }, 
+      "tool": null, 
+      "window": null,
+      "traffic_type": "ip",
+      "features": [
+        "packetTotalCount",
+        {"mean": ["totalLengthIPv4"]},
+        "octetTotalCount",
+        {"add": [{"add": [{"map": ["ipHeaderLength", {"select": [true]}]}]}, {"add": [{"map": ["_transportHeaderLength", {"select": [true]}]}]}]},
+
+        {"basedon": ["packetTotalCount","_server_to_client"]},
+        {"basedon": ["octetTotalCount","_server_to_client"]},
+        {"basedon": ["transportOctetDeltaCount","_server_to_client"]},
+        {"add": [{"add": [{"map": [{"basedon": ["ipHeaderLength","_server_to_client"]}, {"select": [true]}]}]}, {"add": [{"map": [{"basedon": ["_transportHeaderLength","_server_to_client"]}, {"select": [true]}]}]}]},
+
+        {"basedon": ["packetTotalCount","_client_to_server"]},
+        {"basedon": ["octetTotalCount","_client_to_server"]},
+        {"add": [{"add": [{"map": [{"basedon": ["ipHeaderLength","_client_to_server"]}, {"select": [true]}]}]}, {"add": [{"map": [{"basedon": ["_transportHeaderLength","_client_to_server"]}, {"select": [true]}]}]}]}
+      ]
+    }
+  ],
+  "reference": {
+    "author": "Erman et al.", 
+    "title": "Offline/realtime traffic classification using semi-supervised learning", 
+    "year": 2007
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "error_distance", "time"],
+          "method_evaluation": "external"
+      },
+      {
+          "metrics": ["clustering_metrics"],
+          "method_evaluation": "internal"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "K-means",
+          "supervision": "semi-supervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      }
+  ]
+}
+
