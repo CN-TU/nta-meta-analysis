@@ -2,7 +2,7 @@
   "flows": [
     {
       "goals": [
-        "anomalyDetection"
+        "trafficClassification"
       ], 
       "key": {
         "bidirectional": "separate_directions", 
@@ -14,7 +14,7 @@
           "protocolIdentifier"
         ]
       }, 
-      "tool": "j-flow", 
+      "tool": null, 
       "window": null,
       "traffic_type": "ip",
       "features": [
@@ -48,8 +48,7 @@
       }
   ],
   "datasets": [
-      "abilene",
-      "geant"
+      "_private_flows"
   ],
   "methods": [
       {
