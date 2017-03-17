@@ -27,14 +27,13 @@
   "flows": [
     {
         "features": [
-          {"basedon": ["ipTotalLength","_server_to_client"]},
-	  {"basedon": ["ipTotalLength","_client_to_server"]}
+            {"map": [{"multiply": ["ipTotalLength", {"subtract": [{"multiply": ["flowDirection", 2]}, 1]}]}, {"slice": [0, 4, {"select": [true]}]} ]}
         ], 
         "goals": [
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": true, 
           "key_features": [
             "protocolIdentifier", 
             "sourceIPv4Address", 

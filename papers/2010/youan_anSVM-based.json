@@ -1,9 +1,9 @@
 {
   "reference": {
-    "author": "Li et al.", 
-    "title": "Accurate Classification of the Internet Traffic Based on the SVM Method", 
-    "keywords": "network traffic, internet flow classification, support vector machine, discriminator selection", 
-    "year": 2007
+    "author": "Yuan et al.", 
+    "title": "An SVM-based machine learning method for accurate internet traffic classification", 
+    "keywords": "internet traffic, network traffic classification, machine learning, feature selection, SVM", 
+    "year": 2010
   }, 
   "methods": [
       {
@@ -45,13 +45,13 @@
   "flows": [
     {
         "features": [
-          {"mean": ["ipTotalLength"]},
-          {"variance": [{"basedon": ["ipTotalLength","_server_to_client"]}]},
+	  {"mean": ["ipTotalLength"]},
           {"variance": [{"basedon": ["ipTotalLength","_client_to_server"]}]},
-          "protocolIdentifier", 
+          {"variance": [{"basedon": ["ipTotalLength","_server_to_client"]}]},
 	  "flowDurationMilliseconds",
-          "destinationTransportPort",
-          {"divide": [{"basedon": ["packetTotalCount","_client_to_server"]},{"basedon": ["packetTotalCount","_server_to_client"]}]},
+          "protocolIdentifier",
+	  "destinationTransportPort",
+	  {"divide": ["octetTotalCount","packetTotalCount"]},
 	  "tcpSynTotalCount"
         ], 
         "goals": [
@@ -63,7 +63,8 @@
             "sourceIPv4Address", 
             "sourceTransportPort", 
             "destinationIPv4Address", 
-            "destinationTransportPort"
+            "destinationTransportPort",
+            "protocolIdentifier" 
           ]
         },
         "tool": [""],

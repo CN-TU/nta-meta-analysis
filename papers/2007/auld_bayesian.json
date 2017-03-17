@@ -1,0 +1,100 @@
+{
+    "flows": [
+    {
+        "features": [
+            {"basedon": ["tcpPshTotalCount", "_server_to_client"]},
+            {"basedon": ["__initialWindow", "_server_to_client"]},
+            {"basedon": ["__initialWindow", "_client_to_server"]},
+            {"basedon": [{"mean": ["_segmentSize"]}, "_server_to_client"]},
+            {"basedon": [{"median": ["octetTotalCount"]}, "_client_to_server"]},
+            {"basedon": [{"count": [{"select": [{"greater": ["transportOctetDeltaCount", 0]}]}]}, "_client_to_server"]},
+            {"basedon": [{"variance": ["octetTotalCount"]}, "_server_to_client"]},
+            {"basedon": [{"minimum": ["_segmentSize"]}, "_client_to_server"]},
+            {"basedon": ["__RTTSamplestcptrace", "_client_to_server"]},
+            {"basedon": ["tcpPshTotalCount", "_client_to_server"]}
+        ], 
+        "goals": [
+            "applicationCategoryClassification"
+        ], 
+        "key": {
+            "bidirectional": "separate_directions",
+            "key_features": [
+                "sourceIPv4Address",
+                "sourceTransportPort",
+                "destinationIPv4Address",
+                "destinationTransportPort"
+            ]
+        },
+        "tool": null,
+        "window": null,
+        "traffic_type": "tcp"
+    },
+    {
+        "features": [
+            {"_1stQuartile": ["OctetTotalCount"]},
+            {"basedon": ["__postLossACK", "_server_to_client"]},
+            {"basedon": [{"apply": ["tcpAckTotalCount", {"select": [{"get": [5, "tcpOptions"]}]}]}, "_client_to_server"]},
+            {"basedon": [{"maximum": ["_interPacketTime"]}, "_client_to_server"]},
+            {"basedon": [{"_1stQuartile": "OctetTotalCount"}, "_client_to_server"]},
+            {"basedon": [{"_3rdlargestFFTComponent": ["_interPacketTime"]}, "_server_to_client"]},
+            {"basedon": ["tcpPshTotalCount", "_client_to_server"]},
+            {"basedon": ["_flowDurationSeconds", "_server_to_client"]},
+            {"basedon": ["tcpPshTotalCount", "_server_to_client"]},
+            "__totalIdleTime",
+            {"basedon": [{"minimum": ["octetTotalCount"]}, "_client_to_server"]},
+            {"basedon": ["tcpAckTotalCount", "_server_to_client"]},
+            {"basedon": [{"_3rdQuartile": ["_interPacketTime"]}, "_server_to_client"]},
+            {"basedon": [{"maximum": ["octetTotalCount"]}, "_client_to_server"]},
+            {"basedon": [{"stdev": ["__fullSizeRTT"]}, "_client_to_server"]},
+            {"basedon": [{"stdev": ["__fullSizeRTT"]}, "_server_to_client"]},
+            {"basedon": [{"divide": [{"mean": ["octetTotalCount"]}, "_flowDurationSeconds"]}, "_client_to_server"]},
+            {"basedon": [{"shr": ["tcpWindowSize", "tcpWindowScale"]}, "_client_to_server"]},
+            "__transitionsTransactionBulk",
+            {"median": ["octetTotalCount"]}            
+        ], 
+        "goals": [
+            "applicationCategoryClassification"
+        ], 
+        "key": {
+            "bidirectional": "separate_directions",
+            "key_features": [
+                "sourceIPv4Address",
+                "sourceTransportPort",
+                "destinationIPv4Address",
+                "destinationTransportPort"
+            ]
+        },
+        "tool": null,
+        "window": null,
+        "traffic_type": "tcp"
+    }
+    ], 
+    "reference": {
+        "author": "Auld et al.", 
+        "title": "Bayesian Neural Networks for Internet Traffic Classification", 
+        "year": 2007
+    }, 
+    "methods": [
+        {
+            "name": "Naïve Bayes",
+            "supervision": "supervised",
+            "type": "classification",
+            "similarity_metric": "probability"
+        },
+        {
+            "name": "Bayesian Network",
+            "supervision": "supervised",
+            "type": "classification",
+            "similarity_metric": null
+        }
+    ],
+    "evaluations": [
+        {
+          "metrics": ["error_rate", "error_rate_variation"],
+          "method_evaluation": "external",
+          "ground_truth": "packet_inspection"
+        }
+    ],
+    "datasets": ["_private_packets"]
+}
+
