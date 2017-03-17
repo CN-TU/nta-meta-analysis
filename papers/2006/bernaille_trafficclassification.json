@@ -27,7 +27,7 @@
   "flows": [
     {
         "features": [
-            {"map": [{"multiply": ["ipTotalLength", {"subtract": [{"multiply": ["flowDirection", 2]}, 1]}]}, {"slice": [0, 4, {"select": [true]}]} ]}
+            {"map": [{"multiply": ["ipTotalLength", {"subtract": [{"multiply": ["flowDirection", 2]}, 1]}]}, {"slice": [0, 5, {"select": [true]}]} ]}
         ], 
         "goals": [
           "trafficClassification"
