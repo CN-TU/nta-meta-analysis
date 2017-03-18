@@ -251,7 +251,7 @@
         "type": "real",
         "availability": "public"
     },
-    "pittsburg": {
+    "pittsburgh": {
         "name": "captures from the Pittsburgh Supercomputing Center (PSC), Carnegie Mellon University",
         "year": 2005,
         "data-type": "packet_pcap",
