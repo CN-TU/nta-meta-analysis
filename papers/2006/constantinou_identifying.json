@@ -37,7 +37,7 @@
           "trafficClassification"
         ], 
         "key": {
-          "bidirectional": "false", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "destinationIPv4Address" 

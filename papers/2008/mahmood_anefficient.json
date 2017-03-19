@@ -52,7 +52,7 @@
 	  "anomaly_detection"
         ], 
         "key": {
-          "bidirectional": "false", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
