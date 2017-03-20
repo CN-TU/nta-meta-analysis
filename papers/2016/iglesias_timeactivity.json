@@ -32,9 +32,9 @@
   }, 
   "evaluations": [
       {
-          "metrics": ["error_rate"],
+          "metrics": ["error_rate", "clustering_metrics"],
           "method_evaluation": "both",
-          "ground_truth": ["labeled_data","manual_verification","clustering_metrics"],
+          "ground_truth": ["labeled_data","manual_verification"],
 	      "ground_truth_tool": null
       }
   ],
