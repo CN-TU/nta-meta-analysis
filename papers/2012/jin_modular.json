@@ -29,7 +29,7 @@
         {"mean": ["_interPacketTimeMilliseconds"]},
         "tcpControlBits",
         {"mode": ["ipClassOfService"]},
-        {"count": {"select": [{"equal": ["ipClassOfService", {"mode": ["ipClassOfService"]}]}]}},
+        {"count": [{"select": [{"equal": ["ipClassOfService", {"mode": ["ipClassOfService"]}]}]}]},
         {"distinct": ["ipClassOfService", {"select": [true]}]},
         "__sourceIPv4AddressBelongsToCertainISP",
         "__destinationIPv4AddressBelongsToCertainISP"
