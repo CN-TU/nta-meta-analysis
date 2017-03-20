@@ -31,11 +31,11 @@
     },
     {
         "features": [
-            {"quantile": ["OctetTotalCount", 0.25]},
+            {"quantile": ["octetTotalCount", 0.25]},
             {"basedon": ["__postLossACK", "_server_to_client"]},
             {"basedon": [{"apply": ["tcpAckTotalCount", {"select": [{"get": [5, "tcpOptions"]}]}]}, "_client_to_server"]},
             {"basedon": [{"maximum": ["_interPacketTimeMicroseconds"]}, "_client_to_server"]},
-            {"basedon": [{"quantile": ["OctetTotalCount", 0.25]}, "_client_to_server"]},
+            {"basedon": [{"quantile": ["octetTotalCount", 0.25]}, "_client_to_server"]},
             {"basedon": [{"apply": ["__3rdLargestFFTComponent", "_interPacketTimeMicroseconds"]}, "_server_to_client"]},
             {"basedon": ["tcpPshTotalCount", "_client_to_server"]},
             {"basedon": ["_flowDurationSeconds", "_server_to_client"]},
