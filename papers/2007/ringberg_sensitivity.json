@@ -137,7 +137,7 @@
       },
       "features": [
         {"entropy": ["sourceIPv4Address"]},
-        {"entropy": ["destinationIPv4Addres]"},
+        {"entropy": ["destinationIPv4Address"]},
         {"entropy": ["sourceTransportPort"]},
         {"entropy": ["destinationTransportPort"]}
       ],
