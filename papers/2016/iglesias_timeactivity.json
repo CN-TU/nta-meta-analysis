@@ -19,10 +19,9 @@
         "key_features": [
           "sourceIPv4Address", 
           "destinationIPv4Address",
-          "protocolIdentifier", 
+          "protocolIdentifier"
         ]
       },
-      "tool": "",
       "window": 60
     }
   ], 
@@ -36,7 +35,7 @@
           "metrics": ["error_rate"],
           "method_evaluation": "both",
           "ground_truth": ["labeled_data","manual_verification","clustering_metrics"],
-	  "ground_truth_tool": null,
+	      "ground_truth_tool": null
       }
   ],
   "datasets": [
