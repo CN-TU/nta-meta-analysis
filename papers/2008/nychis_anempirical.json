@@ -1,0 +1,66 @@
+{
+  "flows": [
+    {
+      "goals": [
+        "anomalyDectection"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"
+        ]
+      }, 
+      "tool": ["argus", "netflow", "snort"], 
+      "window": null,
+      "traffic_type": "ip",
+      "features": [
+        "sourceIPv4Address", 
+        "sourceTransportPort", 
+        "destinationIPv4Address", 
+        "destinationTransportPort", 
+        "protocolIdentifier",
+        "packetTotalCount",
+        "octetTotalCount",
+        "flowDurationMilliseconds",
+        "flowDirection",
+        "_connectionState"
+      ]
+    }
+  ],
+  "reference": {
+    "author": "Nychis et al.", 
+    "title": "An empirical evaluation of entropy-based traffic anomaly detection", 
+    "year": 2008
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["wavelet_score"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "abilene",
+      "geant",
+      "pittsburgh",
+      "pittsburgh2008"
+  ],
+  "methods": [
+      {
+          "name": "Wavelet Analysis",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "Entropy-based Traffic Anomaly Detection",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "mutual_information"
+      }
+  ]
+}
+

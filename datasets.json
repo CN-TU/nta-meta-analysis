@@ -258,6 +258,13 @@
         "type": "real",
         "availability": "public"
     },
+    "pittsburgh2008": {
+        "name": "captures from the Pittsburgh Supercomputing Center (PSC), Carnegie Mellon University",
+        "year": 2008,
+        "data-type": "packet_pcap",
+        "type": "real",
+        "availability": "public"
+    },
     "columbia": {
         "name": "captures from the Columbia University (Broadway)",
         "year": 2004,
