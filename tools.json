@@ -41,10 +41,22 @@
         "name": "J-Flow",
         "availability": "proprietary"
     },
+    "netflow":
+    {
+        "url": "http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/index.html",
+        "name": "NetFlow",
+        "availability": "proprietary"
+    },
     "argus":
     {
         "url": "https://www.qosient.com/argus/",
         "name": "argus",
+        "availability": "opensource"
+    },
+    "snort":
+    {
+        "url": "https://www.snort.org/",
+        "name": "Snort",
         "availability": "opensource"
     }
 }
