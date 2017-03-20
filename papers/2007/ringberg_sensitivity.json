@@ -20,10 +20,10 @@
         "traffic_type": "ip"
       },
       "features": [
-        {"entropy": "sourceIPv4Address"},
-        {"entropy": "destinationIPv4Addres"},
-        {"entropy": "sourceTransportPort"},
-        {"entropy": "destinationTransportPort"}
+        {"entropy": ["sourceIPv4Address"]},
+        {"entropy": ["destinationIPv4Addres"]},
+        {"entropy": ["sourceTransportPort"]},
+        {"entropy": ["destinationTransportPort"]}
       ],
       "goals": [
         "anomalyDetection"
@@ -58,10 +58,10 @@
         "traffic_type": "ip"
       },
       "features": [
-        {"entropy": "sourceIPv4Address"},
-        {"entropy": "destinationIPv4Addres"},
-        {"entropy": "sourceTransportPort"},
-        {"entropy": "destinationTransportPort"}
+        {"entropy": ["sourceIPv4Address"]},
+        {"entropy": ["destinationIPv4Addres"]},
+        {"entropy": ["sourceTransportPort"]},
+        {"entropy": ["destinationTransportPort"]}
       ],
       "goals": [
         "anomalyDetection"
@@ -97,10 +97,10 @@
         "traffic_type": "ip"
       },
       "features": [
-        {"entropy": "sourceIPv4Address"},
-        {"entropy": "destinationIPv4Addres"},
-        {"entropy": "sourceTransportPort"},
-        {"entropy": "destinationTransportPort"}
+        {"entropy": ["sourceIPv4Address"]},
+        {"entropy": ["destinationIPv4Addres"]},
+        {"entropy": ["sourceTransportPort"]},
+        {"entropy": ["destinationTransportPort"]}
       ],
       "goals": [
         "anomalyDetection"
@@ -136,10 +136,10 @@
         "traffic_type": "ip"
       },
       "features": [
-        {"entropy": "sourceIPv4Address"},
-        {"entropy": "destinationIPv4Addres"},
-        {"entropy": "sourceTransportPort"},
-        {"entropy": "destinationTransportPort"}
+        {"entropy": ["sourceIPv4Address"]},
+        {"entropy": ["destinationIPv4Addres]"},
+        {"entropy": ["sourceTransportPort"]},
+        {"entropy": ["destinationTransportPort"]}
       ],
       "goals": [
         "anomalyDetection"
@@ -174,10 +174,10 @@
         "traffic_type": "ip"
       },
       "features": [
-        {"entropy": "sourceIPv4Address"},
-        {"entropy": "destinationIPv4Addres"},
-        {"entropy": "sourceTransportPort"},
-        {"entropy": "destinationTransportPort"}
+        {"entropy": ["sourceIPv4Address"]},
+        {"entropy": ["destinationIPv4Addres"]},
+        {"entropy": ["sourceTransportPort"]},
+        {"entropy": ["destinationTransportPort"]}
       ],
       "goals": [
         "anomalyDetection"
