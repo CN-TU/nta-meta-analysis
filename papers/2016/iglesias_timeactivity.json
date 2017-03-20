@@ -2,29 +2,24 @@
   "flows": [
     {
       "features": [
-        "protocolIdentifier",
-        "sourceTransportPort",
-        "destinationTransportPort",
-        "octetTotalCount",
-        "packetTotalCount",
+        {"log": ["octetTotalCount"]},
+        {"log": ["packetTotalCount"]},
         "_activeForSeconds",
-        {"divide": ["octetTotalCount", "_activeForSeconds"]},
-        {"divide": ["packetTotalCount", "_activeForSeconds"]},
+        {"log": [{"divide": ["octetTotalCount", "_activeForSeconds"]}]},
+        {"log": [{"divide": ["packetTotalCount", "_activeForSeconds"]}]},
         "__maximumConsecutiveSeconds",
         "__minimumConsecutiveSeconds",
         {"maximum": ["_interPacketTimeMicroseconds"]},
         {"minimum": ["_interPacketTimeMicroseconds"]},
         {"count": [{"select": [{"geq": ["_interPacketTimeMicroseconds", 1000000]}]}]}
       ],
-      "goals": [],
+      "goals": ["trafficClassification"], 
       "key": {
         "bidirectional": false,
         "key_features": [
-          "protocolIdentifier", 
           "sourceIPv4Address", 
-          "sourceTransportPort", 
-          "destinationIPv4Address", 
-          "destinationTransportPort"
+          "destinationIPv4Address",
+          "protocolIdentifier", 
         ]
       },
       "tool": "",
@@ -36,7 +31,14 @@
     "title": "Time-activity footprints in IP traffic", 
     "year": 2016
   }, 
-  "evaluations": null,
+  "evaluations": [
+      {
+          "metrics": ["error_rate"],
+          "method_evaluation": "both",
+          "ground_truth": ["labeled_data","manual_verification","clustering_metrics"],
+	  "ground_truth_tool": null,
+      }
+  ],
   "datasets": [
       "mawi-f"
   ],
@@ -46,6 +48,30 @@
           "supervision": "unsupervised",
           "type": "clustering",
           "similarity_metric": "mahalanobis"
+      },
+      {
+          "name": "Consensus clustering: classif. entropy, partition index, Xie and Beni index, clustering gain",
+          "supervision": "nest",
+          "type": "other",
+          "similarity_metric": "mahalanobis"
+      },
+      {
+          "name": "Consensus cluster validity",
+          "supervision": "nest",
+          "type": "other",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "MAD-based outlier removal",
+          "supervision": "unsupervised",
+          "type": "anomaly_detection",
+          "similarity_metric": "mahalanobis"
+      },
+      {
+          "name": "Maximum-relevance minimum-redundancy filter",
+          "supervision": "semi-supervised",
+          "type": "statistics",
+          "similarity_metric": ["correlation","mutual_information"]
       }
   ]
 }
