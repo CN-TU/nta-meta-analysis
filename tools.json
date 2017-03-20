@@ -58,5 +58,11 @@
         "url": "https://www.snort.org/",
         "name": "Snort",
         "availability": "opensource"
+    },
+    "nprobe":
+    {
+        "url": "http://www.vodun.org/papers/net-papers/moore_architecture_of_a_network_monitor.pdf",
+        "name": "Nprobe",
+        "availability": "opensource"
     }
 }
