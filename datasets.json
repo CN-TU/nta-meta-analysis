@@ -58,30 +58,37 @@
     "v-spybot": {
         "name": "V-Spybot, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
+    },
+    "v-rbot": {
+        "name": "V-Rbot, from BotSniffer paper",
+        "year": 2008,
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "v-sdbot": {
         "name": "V-Sdbot, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "b-http-i": {
         "name": "B-HTTP-I, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "b-http-ii": {
         "name": "B-HTTP-II, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "AucklandIV": {
         "name": "Auckland IV datasets",
@@ -114,29 +121,29 @@
     "abilene": {
         "name": "Abilene US Academic Internet2 backbone network",
         "year": 2003,
-        "data-type": null,
+        "data-type": "flow_netflow",
         "type": "real",
-        "availability": null
+        "availability": "private"
     },
     "geant": {
         "name": "Geant EU Academic Internet2 backbone network",
         "year": 2003,
-        "data-type": null,
+        "data-type": "flow_netflow",
         "type": "real",
-        "availability": null
+        "availability": "private"
     },
     "isot-botnet": {
         "name": "ISOT Botnet dataset",
         "year": 2010,
         "data-type": "packet_pcap",
-        "type": "generated",
+        "type": "synthetic",
         "availability": "public"
     },
     "darpa-ideval1999": {
         "name": "DARPA IDeval 1999 intrusion detection dataset",
         "year": 1999,
         "data-type": "packet_pcap",
-        "type": "generated",
+        "type": "synthetic",
         "availability": "public"
     },
     "unibs2009": {
@@ -150,7 +157,7 @@
         "name": "MIT Lincoln Lab (DDoS 1.0)",
         "year": 2000,
         "data-type": "packet_pcap",
-        "type": "generated",
+        "type": "synthetic",
         "availability": "public"
     },
     "sigcomm2008": {
@@ -192,7 +199,7 @@
         "name": "1998 DARPA Intrusion Detection data set",
         "year": 1998,
         "data-type": "packet_pcap",
-        "type": "generated",
+        "type": "synthetic",
         "availability": "public"
     },
     "caida-backbone2009": {

@@ -2,7 +2,7 @@
   "packets": [
     {
         "features": [
-          "timestamp",
+          "flowStartSeconds",
           "sourceIPv4Address",
           "destinationIPv4Address",
           "ipTotalLength"

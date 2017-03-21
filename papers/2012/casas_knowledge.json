@@ -39,7 +39,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {
@@ -70,7 +70,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {
@@ -101,7 +101,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {
@@ -132,7 +132,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {
@@ -163,7 +163,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {
@@ -194,7 +194,7 @@
           "features": [
               "octetTotalCount",
               "packetTotalCount",
-              "flowTotalCount"
+              "_flowTotalCount"
           ],
           "flow": {
               "key": {

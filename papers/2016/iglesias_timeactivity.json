@@ -24,6 +24,25 @@
       },
       "traffic_type": "ip",
       "window": 60
+    },
+    {
+      "features": [
+        {"log": ["octetTotalCount"]},
+        {"log": [{"divide": ["octetTotalCount", "_activeForSeconds"]}]},
+        {"maximum": ["_interPacketTimeMicroseconds"]},
+        {"minimum": ["_interPacketTimeMicroseconds"]}
+      ],
+      "goals": ["trafficClassification"], 
+      "key": {
+        "bidirectional": false,
+        "key_features": [
+          "sourceIPv4Address", 
+          "destinationIPv4Address",
+          "protocolIdentifier"
+        ]
+      },
+      "traffic_type": "ip",
+      "window": 60
     }
   ], 
   "reference": {
