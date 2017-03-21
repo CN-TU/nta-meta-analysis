@@ -18,17 +18,17 @@
       "window": null,
       "traffic_type": "tcp",
       "features": [
-        {"basedon": ["packetTotalCount","_server_to_client"]},
-        {"basedon": ["transportOctetDeltaCount","_server_to_client"]},
-        {"basedon": ["tcpPshTotalCount","_client_to_server"]},
-        {"basedon": ["tcpPshTotalCount","_server_to_client"]},
-        {"mean": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]},
-        {"max": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]},
-        {"variance": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]},
-        {"mean": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]},
-        {"max": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]},
-        {"variance": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]},
-        "flowDurationMilliseconds"
+        {"log": [{"basedon": ["packetTotalCount","_server_to_client"]}]},
+        {"log": [{"basedon": ["transportOctetDeltaCount","_server_to_client"]}]},
+        {"log": [{"basedon": ["tcpPshTotalCount","_client_to_server"]}]},
+        {"log": [{"basedon": ["tcpPshTotalCount","_server_to_client"]}]},
+        {"log": [{"mean": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
+        {"log": [{"max": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
+        {"log": [{"variance": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
+        {"log": [{"mean": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
+        {"log": [{"max": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
+        {"log": [{"variance": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
+        {"log": ["flowDurationMilliseconds"]}
       ]
     }
   ],
