@@ -121,16 +121,16 @@
     "abilene": {
         "name": "Abilene US Academic Internet2 backbone network",
         "year": 2003,
-        "data-type": null,
+        "data-type": "flow_netflow",
         "type": "real",
-        "availability": null
+        "availability": "private"
     },
     "geant": {
         "name": "Geant EU Academic Internet2 backbone network",
         "year": 2003,
-        "data-type": null,
+        "data-type": "flow_netflow",
         "type": "real",
-        "availability": null
+        "availability": "private"
     },
     "isot-botnet": {
         "name": "ISOT Botnet dataset",
