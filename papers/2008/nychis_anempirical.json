@@ -38,7 +38,8 @@
   }, 
   "evaluations": [
       {
-          "metrics": ["wavelet_score"],
+          "metrics": null,
+          "ground_truth": ["labeled_data"],
           "method_evaluation": "external"
       }
   ],
