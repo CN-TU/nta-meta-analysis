@@ -2,7 +2,7 @@
   "flows": [
       {
           "features": [
-              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": ["destinationTransportPort", "_client_to_server"]},
               {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
               {"basedon": [{"basedon": ["octetTotalCount"]}, "_client_to_server"]},
               {"basedon": [{"basedon": ["octetTotalCount"]}, "_server_to_client"]}
@@ -24,7 +24,7 @@
       },
       {
           "features": [
-              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": ["destinationTransportPort", "_client_to_server"]},
               {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
               {"basedon": [{"basedon": ["octetTotalCount"]}, "_client_to_server"]}
           ],
@@ -45,7 +45,7 @@
       },
       {
           "features": [
-              {"basedon": ["destinationTransportPort", "_client_to_sever"]},
+              {"basedon": ["destinationTransportPort", "_client_to_server"]},
               {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
               {"basedon": [{"basedon": ["octetTotalCount"]}, "_server_to_client"]},
               {"basedon": [{"basedon": ["tcpControlBits"]}, "_server_to_client"]},
