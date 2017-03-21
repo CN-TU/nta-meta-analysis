@@ -5,7 +5,7 @@
         "anomalyDetection"
       ], 
       "key": {
-        "bidirectional": "separate_directions", 
+        "bidirectional": true, 
         "key_features": [
           "sourceIPv4Address", 
           "sourceTransportPort", 

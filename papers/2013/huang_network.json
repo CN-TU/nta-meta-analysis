@@ -25,7 +25,7 @@
   }, 
   "evaluations": [
       {
-          "metrics": ["clustering_metrics"],
+          "metrics": ["error_rate"],
           "method_evaluation": "external"
       }
   ],
@@ -33,12 +33,18 @@
       "caida-backscatter"
   ],
   "methods": [
-      {
-          "name": "Growing Hierarchical Self-Organizing Map",
-          "supervision": "unsupervised",
-          "type": "clustering",
-          "similarity_metric": "euclidean"
-      }
+    {
+        "name": "Growing Hierarchical Self-Organizing Map",
+        "supervision": "unsupervised",
+        "type": "clustering",
+        "similarity_metric": "euclidean"
+    },
+    {
+        "name": "K-means",
+        "supervision": "unsupervised",
+        "type": "clustering",
+        "similarity_metric": "euclidean"
+    }
   ]
 }
 

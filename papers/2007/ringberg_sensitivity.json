@@ -6,7 +6,7 @@
           "anomalyDetection"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -29,7 +29,7 @@
         "anomalyDetection"
       ],
       "key": {
-        "bidirectional":"separate_directions",
+        "bidirectional":false,
         "key_features": [
           "_ingressRouter"
         ]
@@ -44,7 +44,7 @@
           "anomalyDetection"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -67,7 +67,7 @@
         "anomalyDetection"
       ],
       "key": {
-        "bidirectional":"separate_directions",
+        "bidirectional":false,
         "key_features": [
           "_ingressRouter",
           "ingressPhysicalInterface"
@@ -83,7 +83,7 @@
           "anomalyDetection"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -106,7 +106,7 @@
         "anomalyDetection"
       ],
       "key": {
-        "bidirectional":"separate_directions",
+        "bidirectional":false,
         "key_features": [
           "_ingressRouter",
           "_egressRouter"
@@ -122,7 +122,7 @@
           "anomalyDetection"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -145,7 +145,7 @@
         "anomalyDetection"
       ],
       "key": {
-        "bidirectional":"separate_directions",
+        "bidirectional":false,
         "key_features": [
           "_ingressRouter"
         ]
@@ -160,7 +160,7 @@
           "anomalyDetection"
         ], 
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -183,7 +183,7 @@
         "anomalyDetection"
       ],
       "key": {
-        "bidirectional":"separate_directions",
+        "bidirectional":false,
         "key_features": [
           "_ingressRouter",
           "ingressPhysicalInterface"

@@ -1,18 +1,19 @@
 {
   "packets": [
     {
-        "features": [
-          "destinationTransportPort",
-          "protocolIdentifier",
-          "tcpControlBits"
-        ], 
-        "goals": [
+      "features": [
+        {"less": ["destinationTransportPort", 1024]},
+        {"greater": ["destinationTransportPort", 49151]},
+        "protocolIdentifier",
+        "tcpControlBits"
+      ], 
+      "goals": [
           "anomalyDetection"
-        ],
-        "tool": null, 
-        "window": null,
-        "traffic_type": "ip"
-      }
+      ],
+      "tool": null, 
+      "window": null,
+      "traffic_type": "ip"
+    }
   ], 
   "reference": {
     "author": "Gu et al.", 
@@ -29,12 +30,18 @@
       "_private_packets"
   ],
   "methods": [
-      {
-          "name": "Maximum Entropy estimation and relative entropy",
-          "supervision": "supervised",
-          "type": "anomaly_detection",
-          "similarity_metric": "mutual_information"
-      }
+    {
+        "name": "Relative entropy",
+        "supervision": "supervised",
+        "type": "anomaly_detection",
+        "similarity_metric": "mutual_information"
+    },
+    {
+        "name": "Greedy algorithm based on Maximum Entropy Estimation",
+        "supervision": "supervised",
+        "type": "feature_selection",
+        "similarity_metric": "mutual_information"
+    }
   ]
 }
 

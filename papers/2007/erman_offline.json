@@ -55,9 +55,15 @@
   "methods": [
       {
           "name": "K-means",
-          "supervision": "semi-supervised",
-          "type": "classification",
+          "supervision": "unsupervised",
+          "type": "clustering",
           "similarity_metric": "euclidean"
+      },
+      {
+          "name": "Backward greedy feature selection",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "other"
       }
   ]
 }

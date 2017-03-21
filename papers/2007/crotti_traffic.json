@@ -1,15 +1,26 @@
 {
-  "flows": [
-    {
+  "flow_aggregations": [{
+    "goals": [
+      "trafficClassification"
+    ],
+    "key": {
+      "bidirectional": false, 
+      "key_features": [
+        "applicationName"
+      ]
+    },
+    "features": [
+      "_pdfOf_interPacketTimeMicroseconds",
+      "pdfOfIpTotalLength"
+    ],
+    "flows": [
+      {
         "features": [
           "_interPacketTimeMicroseconds",
           "ipTotalLength"
         ], 
-        "goals": [
-          "trafficClassification"
-        ],
         "key": {
-          "bidirectional": "separate_directions", 
+          "bidirectional": false, 
           "key_features": [
             "sourceIPv4Address", 
             "sourceTransportPort", 
@@ -22,7 +33,8 @@
         "window": null,
         "traffic_type": "tcp"
       }
-  ], 
+    ]
+  }],
   "reference": {
     "author": "Crotti et al.", 
     "title": "Traffic Classification through Simple Statistical Fingerprinting", 
