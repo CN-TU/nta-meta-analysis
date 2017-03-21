@@ -37,6 +37,7 @@
   ],
   "datasets": [
       "v-spybot",
+      "v-rbot",
       "v-sdbot",
       "b-http-i",
       "b-http-ii",
