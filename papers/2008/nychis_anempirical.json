@@ -2,7 +2,7 @@
   "flows": [
     {
       "goals": [
-        "anomalyDectection"
+        "anomalyDetection"
       ], 
       "key": {
         "bidirectional": "separate_directions", 
