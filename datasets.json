@@ -79,16 +79,16 @@
     "b-http-i": {
         "name": "B-HTTP-I, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "b-http-ii": {
         "name": "B-HTTP-II, from BotSniffer paper",
         "year": 2008,
-        "data-type": null,
-        "type": null,
-        "availability": null
+        "data-type": "packet_pcap",
+        "type": "synthetic",
+        "availability": "private"
     },
     "AucklandIV": {
         "name": "Auckland IV datasets",
