@@ -9,19 +9,19 @@
       {
           "name": "Echidna: hierarchical distance-based (best)",
           "supervision": "unsupervised",
-          "type": ["clustering","heuristic"],
+          "type": ["clustering","heuristics"],
           "similarity_metric": "other"
       },
       {
           "name": "AutoFocus (competitor)",
           "supervision": "unsupervised",
-          "type": ["clustering","heuristic"],
+          "type": ["clustering","heuristics"],
           "similarity_metric": "other"
       },
       {
           "name": "ADWICE - BIRCH (competitor)",
           "supervision": "unsupervised",
-          "type": ["clustering","heuristic"],
+          "type": ["clustering","heuristics"],
           "similarity_metric":  ["euclidean","manhattan"]
       }
   ],
