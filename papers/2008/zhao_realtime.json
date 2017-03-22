@@ -1,0 +1,108 @@
+{
+  "flows": [
+    {
+      "goals": [
+        "trafficClassification"
+      ], 
+      "key": {
+        "bidirectional": "separate_directions", 
+        "key_features": [
+          "sourceIPv4Address", 
+          "sourceTransportPort", 
+          "destinationIPv4Address", 
+          "destinationTransportPort", 
+          "protocolIdentifier"
+        ]
+      }, 
+      "tool": null,
+      "window": null,
+      "traffic_type": "tcp",
+      "features": [
+        {"sum": [{"slice": [{"map": ["_interPacketTimeMicroseconds", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": ["ethernetTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": ["ipTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"sum": [{"slice": [{"map": ["ethernetHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]},
+
+        {"sum": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"sum": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]},
+
+        {"sum": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"sum": [{"sum": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]}
+      ]
+    }
+  ],
+  "reference": {
+    "author": "Zhao et al.", 
+    "title": "Real-time feature selection in traffic classification", 
+    "year": 2008
+  }, 
+  "evaluations": [
+      {
+          "metrics": ["error_rate", "time"],
+          "method_evaluation": "external"
+      }
+  ],
+  "datasets": [
+      "_private_packets"
+  ],
+  "methods": [
+      {
+          "name": "C4.5",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Random Forest",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "mutual_information"
+      },
+      {
+          "name": "Naive Bayes",
+          "supervision": "supervised",
+          "type": "classification",
+          "similarity_metric": "probability"
+      },
+      {
+          "name": "K-means",
+          "supervision": "unsupervised",
+          "type": "classification",
+          "similarity_metric": "euclidean"
+      },
+      {
+          "name": "EM",
+          "supervision": "unsupervised",
+          "type": "classification",
+          "similarity_metric": "probability"
+      },
+      {
+          "name": "CFS",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "correlation"
+      },
+      {
+          "name": "Consistency-based subset evaluation",
+          "supervision": "supervised",
+          "type": "feature_selection",
+          "similarity_metric": "exact_matching"
+      },
+      {
+          "name": "ClassifierSubsetEval",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "other"
+      },
+      {
+          "name": "wrappersubseteval",
+          "supervision": "unsupervised",
+          "type": "feature_selection",
+          "similarity_metric": "other"
+      }
+  ]
+}

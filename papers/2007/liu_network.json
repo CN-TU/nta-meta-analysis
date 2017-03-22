@@ -50,7 +50,7 @@
       {
           "name": "K-means",
           "supervision": "supervised",
-          "type": "traffic_classification",
+          "type": "classification",
           "similarity_metric": "correlation"
       },
       {
