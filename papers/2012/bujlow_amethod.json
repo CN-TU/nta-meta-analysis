@@ -49,13 +49,13 @@
         {"quantile": [0.75, {"basedon": ["_transportPayloadLength","_client_to_server"]}]},
         {"stdev": [{"basedon": ["_transportPayloadLength","_client_to_server"]}]},
 
-        {"divide": [{"count": [{"select": [{"leq": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 50]}]}, {"basedon": ["packetTotalCount","_server_to_client"]}]},
-        {"divide": [{"count": [{"select": [{"leq": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 50]}]}, {"basedon": ["packetTotalCount","_client_to_server"]}]},
-        {"divide": [{"count": [{"select": [{"leq": ["_transportPayloadLength", 50]}]}, "packetTotalCount"]},
+        {"divide": [{"count": [{"select": [{"leq": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 50]}]}]}, {"basedon": ["packetTotalCount","_server_to_client"]}]},
+        {"divide": [{"count": [{"select": [{"leq": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 50]}]}]}, {"basedon": ["packetTotalCount","_client_to_server"]}]},
+        {"divide": [{"count": [{"select": [{"leq": ["_transportPayloadLength", 50]}]}]}, "packetTotalCount"]},
 
-        {"divide": [{"count": [{"select": [{"geq": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 1300]}]}, {"basedon": ["packetTotalCount","_server_to_client"]}]},
-        {"divide": [{"count": [{"select": [{"geq": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 1300]}]}, {"basedon": ["packetTotalCount","_client_to_server"]}]},
-        {"divide": [{"count": [{"select": [{"geq": ["_transportPayloadLength", 1300]}]}, "packetTotalCount"]},
+        {"divide": [{"count": [{"select": [{"geq": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 1300]}]}]}, {"basedon": ["packetTotalCount","_server_to_client"]}]},
+        {"divide": [{"count": [{"select": [{"geq": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 1300]}]}]}, {"basedon": ["packetTotalCount","_client_to_server"]}]},
+        {"divide": [{"count": [{"select": [{"geq": ["_transportPayloadLength", 1300]}]}]}, "packetTotalCount"]},
 
         "applicationName",
 
@@ -69,9 +69,9 @@
         {"basedon": ["tcpAckTotalCount","_client_to_server"]},
         {"basedon": ["tcpPshTotalCount","_server_to_client"]},
 
-        {"divide": [{"count": [{"select": [{"equal": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 0]}]}, {"count": [{"basedon": ["_transportPayloadLength","_client_to_server"]}]}]},
-        {"divide": [{"count": [{"select": [{"equal": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 0]}]}, {"count": [{"basedon": ["_transportPayloadLength","_server_to_client"]}]}]},
-        {"divide": [{"count": [{"select": [{"equal": ["_transportPayloadLength", 0]}]}, {"count": ["_transportPayloadLength"]}]}
+        {"divide": [{"count": [{"select": [{"equal": [{"basedon": ["_transportPayloadLength","_client_to_server"]}, 0]}]}]}, {"count": [{"basedon": ["_transportPayloadLength","_client_to_server"]}]}]},
+        {"divide": [{"count": [{"select": [{"equal": [{"basedon": ["_transportPayloadLength","_server_to_client"]}, 0]}]}]}, {"count": [{"basedon": ["_transportPayloadLength","_server_to_client"]}]}]},
+        {"divide": [{"count": [{"select": [{"equal": ["_transportPayloadLength", 0]}]}]}, {"count": ["_transportPayloadLength"]}]}
       ]
     }
   ],

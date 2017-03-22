@@ -23,10 +23,10 @@
         {"log": [{"basedon": ["tcpPshTotalCount","_client_to_server"]}]},
         {"log": [{"basedon": ["tcpPshTotalCount","_server_to_client"]}]},
         {"log": [{"mean": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
-        {"log": [{"max": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
+        {"log": [{"maximum": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
         {"log": [{"variance": [{"map": [{"basedon": ["ipPayloadLength", "_client_to_server"]}, {"select": [true]}]}]}]},
         {"log": [{"mean": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
-        {"log": [{"max": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
+        {"log": [{"maximum": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
         {"log": [{"variance": [{"map": [{"basedon": ["ipPayloadLength", "_server_to_client"]}, {"select": [true]}]}]}]},
         {"log": ["flowDurationMilliseconds"]}
       ]
