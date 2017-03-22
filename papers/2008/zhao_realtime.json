@@ -18,20 +18,20 @@
       "window": null,
       "traffic_type": "tcp",
       "features": [
-        {"sum": [{"slice": [{"map": ["_interPacketTimeMicroseconds", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": ["ethernetTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": ["ipTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"sum": [{"slice": [{"map": ["ethernetHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]},
+        {"add": [{"slice": [{"map": ["_interPacketTimeMicroseconds", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": ["ethernetTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": ["ipTotalLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"add": [{"slice": [{"map": ["ethernetHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]},
 
-        {"sum": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"sum": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]},
+        {"add": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"add": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_client_to_server"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]},
 
-        {"sum": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
-        {"sum": [{"sum": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"sum": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]}
+        {"add": [{"slice": [{"map": [{"basedon": ["_interPacketTimeMicroseconds", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": [{"basedon": ["ethernetTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"slice": [{"map": [{"basedon": ["ipTotalLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]},
+        {"add": [{"add": [{"slice": [{"map": [{"basedon": ["ethernetHeaderLength", "_server_to_client"]}, {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": [{"basedon": ["ipHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}, {"add": [{"slice": [{"map": [{"basedon": ["tcpHeaderLength", {"select": [true]}]}, 0, {"divide": [{"count": [{"select": [true]}]}, 4]}]}]}]}]}]}
       ]
     }
   ],
