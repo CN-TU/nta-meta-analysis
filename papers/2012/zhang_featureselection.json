@@ -49,7 +49,7 @@
               {"basedon": [{"minimum": ["__segmentSize"]}, "_client_to_server"]},
               {"basedon": [{"basedon": ["octetTotalCount"]}, "_server_to_client"]},
               {"basedon": [{"basedon": ["tcpControlBits"]}, "_server_to_client"]},
-              {"divide": [{"add": ["__windowAdvertisement"]}, "totalPacketCount"]}
+              {"divide": [{"add": ["__windowAdvertisement"]}, "packetTotalCount"]}
           ],
           "key": {
               "bidirectional": "separate_directions",

@@ -27,7 +27,7 @@
         "octetTotalCount",
         "flowDurationMilliseconds",
         "flowDirection",
-        "_connectionState"
+        "__connectionState"
       ]
     }
   ],

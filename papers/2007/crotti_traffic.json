@@ -10,8 +10,8 @@
       ]
     },
     "features": [
-      "_pdfOf_interPacketTimeMicroseconds",
-      "pdfOfIpTotalLength"
+      "__pdfOf_interPacketTimeMicroseconds",
+      "__pdfOf_ipTotalLength"
     ],
     "flows": [
       {

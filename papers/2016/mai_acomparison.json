@@ -8,7 +8,7 @@
           {"mean": ["ipTotalLength"]}, 
           {"divide": ["packetTotalCount", "_flowDurationSeconds"]}, 
           {"divide": ["octetTotalCount", "_flowDurationSeconds"]}, 
-          "_connectionsTotalCount"
+          "__connectionsTotalCount"
         ], 
         "goals": [
           "botnetDetection"
