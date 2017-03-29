@@ -21,15 +21,15 @@
       "window": 900
     },
     "features": [
-      {"distinct": ["destinationIPv4Address", true]},
-      {"divide": [{"distinct": ["sourceTransportPort", true]}, {"distinct": ["destinationIPv4Address", true]}]},
-      {"divide": [{"distinct": ["destinationTransportPort", true]}, {"distinct": ["destinationIPv4Address", true]}]},
-      {"divide": [{"entropy": ["__destinationIPv4AddressSecondByte"]}, {"entropy": ["__destinationIPv4AddressSecondByte"]}, "__destinationIPv4AddressFourthByte"]},
-      {"divide": [{"entropy": ["__destinationIPv4AddressThirdByte"]}, {"entropy": ["__destinationIPv4AddressSecondByte"]}, "__destinationIPv4AddressFourthByte"]},
-      {"mean": ["packetTotalCount"]},
-      {"divide": [{"add": [{"map": [{"count": [{"select": [{"leq": ["octetTotalCount", 144]}]}]}, {"select": [true]}]}]}, "packetTotalCount"]},
-      {"divide": [{"add": [{"map": [{"count": [{"select": [{"geq": ["octetTotalCount", 1392]}]}]}, {"select": [true]}]}]}, "packetTotalCount"]},
-      {"entropy": [{"add": [{"map": [{"count": [{"select": [{"and": [{"less": ["octetTotalCount", 1392]}, {"greater": ["octetTotalCount", 144]}]}]}]}]}, {"select": [true]}]}]}
+      {"distinct": ["destinationIPv4Address", {"select": [true]}]},
+      {"divide": [{"distinct": ["sourceTransportPort", {"select": [true]}]}, {"distinct": ["destinationIPv4Address", {"select": [true]}]}]},
+      {"divide": [{"distinct": ["destinationTransportPort", {"select": [true]}]}, {"distinct": ["destinationIPv4Address", {"select": [true]}]}]},
+      {"divide": [{"entropy": ["__destinationIPv4AddressSecondByte"]}, {"entropy": ["__destinationIPv4AddressFourthByte"]}]},
+      {"divide": [{"entropy": ["__destinationIPv4AddressThirdByte"]}, {"entropy": ["__destinationIPv4AddressFourthByte"]}]},
+      {"divide": ["packetTotalCount", "_flowTotalCount"]},
+      {"divide": [{"count": [{"select": [{"leq": ["octetTotalCount", 144]}]}]}, "packetTotalCount"]},
+      {"divide": [{"count": [{"select": [{"geq": ["octetTotalCount", 1392]}]}]}, "packetTotalCount"]},
+      {"entropy": [{"count": [{"select": [{"and": [{"less": ["octetTotalCount", 1392]}, {"greater": ["octetTotalCount", 144]}]}]}]}]}
     ],
     "key": {
       "bidirectional": false,
