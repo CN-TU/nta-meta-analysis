@@ -15,10 +15,12 @@
       "_usenix"
     ],
     "pages_number_of": 16,
-    "bibtex_volume": "missing",
-    "bibtex_issue": "missing",
-    "bibtex_page_range": "139--154",
-    "bibtex_type": "inproceedings",
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "missing",
+      "issue": "missing",
+      "pages": "139--154"
+    },
     "access_open": true,
     "curated_by": "ferreira, d.",
     "curated_last_revision": "24-04-2017",
