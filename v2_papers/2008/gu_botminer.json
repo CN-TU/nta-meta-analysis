@@ -1,0 +1,1380 @@
+{
+  "reference": {
+    "title": "BotMiner: clustering analysis of network traffic for protocol- and structure-independent botnet detection",
+    "1st_author": "gu, g.",
+    "authors": [
+      "Gu, Guofei",
+      "Perdisci, Roberto",
+      "Zhang, Junjie",
+      "Lee, Wenke"
+    ],
+    "publication_name": "17th conference on security symposium",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2008,
+    "organization_publishers": [
+      "_usenix"
+    ],
+    "pages_number_of": 16,
+    "bibtex_volume": "missing",
+    "bibtex_issue": "missing",
+    "bibtex_page_range": "139--154",
+    "bibtex_type": "inproceedings",
+    "access_open": true,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "24-04-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "traffic on backbone router at college of computing at georgia tech",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp"
+        ],
+        "generation": "captured",
+        "generation_year": 2007,
+        "covered_period": "days",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": []
+      },
+      {
+        "dataset_name": "mix of campus traffic with botnet traffic",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp"
+        ],
+        "generation": "altered_captured",
+        "generation_year": "missing",
+        "covered_period": "hours",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "irc-rbot",
+          "irc-sdbot",
+          "irc-spybot",
+          "irc-n",
+          "http-1",
+          "http-2",
+          "p2p-storm",
+          "p2p-nugache"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [
+      {
+        "tool": "fcapture",
+        "detail": "https://github.com/fatshaw/work/tree/master/github/fcapture",
+        "availability": "public",
+        "_comment": "deprecated"
+      },
+      {
+        "tool": "_own_java_scripts",
+        "availability": "private"
+      },
+      {
+        "tool": "_own_r_scripts",
+        "availability": "private"
+      },
+      {
+        "tool": "snort",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "_quantile",
+    "transformations": [
+      "filtering",
+      "flow_extraction"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [],
+    "flow_aggregations": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "botnet_detection",
+        "active_timeout": 86400,
+        "features": [
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0,
+                  0.05
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0,
+                  0.05
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0,
+                  0.05
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0,
+                  0.05
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.05,
+                  0.1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.05,
+                  0.1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.05,
+                  0.1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.05,
+                  0.1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.1,
+                  0.15
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.1,
+                  0.15
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.1,
+                  0.15
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.1,
+                  0.15
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.15,
+                  0.2
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.15,
+                  0.2
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.15,
+                  0.2
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.15,
+                  0.2
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.2,
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.2,
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.2,
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.2,
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.25,
+                  0.3
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.25,
+                  0.3
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.25,
+                  0.3
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.25,
+                  0.3
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.3,
+                  0.35
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.3,
+                  0.35
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.3,
+                  0.35
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.3,
+                  0.35
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.35,
+                  0.4
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.35,
+                  0.4
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.35,
+                  0.4
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.35,
+                  0.4
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.4,
+                  0.45
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.4,
+                  0.45
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.4,
+                  0.45
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.4,
+                  0.45
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.45,
+                  0.5
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.45,
+                  0.5
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.45,
+                  0.5
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.45,
+                  0.5
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.5,
+                  0.55
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.5,
+                  0.55
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.5,
+                  0.55
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.5,
+                  0.55
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.55,
+                  0.6
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.55,
+                  0.6
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.55,
+                  0.6
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.55,
+                  0.6
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.6,
+                  0.65
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.6,
+                  0.65
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.6,
+                  0.65
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.6,
+                  0.65
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.65,
+                  0.7
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.65,
+                  0.7
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.65,
+                  0.7
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.65,
+                  0.7
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.7,
+                  0.75
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.7,
+                  0.75
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.7,
+                  0.75
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.7,
+                  0.75
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.75,
+                  0.8
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.75,
+                  0.8
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.75,
+                  0.8
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.75,
+                  0.8
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.8,
+                  0.85
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.8,
+                  0.85
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.8,
+                  0.85
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.8,
+                  0.85
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.85,
+                  0.9
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.85,
+                  0.9
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.85,
+                  0.9
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.85,
+                  0.9
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.9,
+                  0.95
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.9,
+                  0.95
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.9,
+                  0.95
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.9,
+                  0.95
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "_flowStartHours",
+                  0.95,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  "packetTotalCount",
+                  0.95,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "packetTotalCount"
+                    ]
+                  },
+                  0.95,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "quantile_range": [
+                  {
+                    "divide": [
+                      "octetTotalCount",
+                      "_flowDurationSeconds"
+                    ]
+                  },
+                  0.95,
+                  1
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "botnet_detection",
+        "active_timeout": 86400,
+        "features": [
+          {
+            "mean": [
+              "_flowStartHours"
+            ]
+          },
+          {
+            "variance": [
+              "_flowStartHours"
+            ]
+          },
+          {
+            "mean": [
+              "packetTotalCount"
+            ]
+          },
+          {
+            "variance": [
+              "packetTotalCount"
+            ]
+          },
+          {
+            "mean": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "packetTotalCount"
+                ]
+              }
+            ]
+          },
+          {
+            "variance": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "packetTotalCount"
+                ]
+              }
+            ]
+          },
+          {
+            "mean": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "_flowDurationSeconds"
+                ]
+              }
+            ]
+          },
+          {
+            "variance": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "_flowDurationSeconds"
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "k-means",
+        "subname": "x-means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced"
+      },
+      {
+        "name": "two step clustering",
+        "subname": "using x-means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed"
+      },
+      {
+        "name": "a-plane clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "_multiple",
+        "tools": [
+          {
+            "tool": "snort",
+            "availability": "public"
+          }
+        ],
+        "source": "own_proposed",
+        "subname": "a-plane two step clustering algorithm",
+        "parameters_provided": false
+      },
+      {
+        "name": "cross-plane correlation",
+        "learning": "no",
+        "role": "main",
+        "type": "heuristics",
+        "metric/decision_criteria": "vote",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true,
+        "subname": "cross-plane correlation with davies-bouldin validation index for dendogram cut"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "false positive rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "detection rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "botnet_detection",
+    "subgoals": [
+      "botnet_detection",
+      "p2p_botnet_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "fast_processing",
+      "enhanced_functionality",
+      "good_transportability",
+      "_independent_on_protocol_and_structure_used_by_botnet"
+    ],
+    "reproducibility": "replicable"
+  }
+}

@@ -1,0 +1,730 @@
+{
+  "reference": {
+    "title": "a preliminary performance comparison of five machine learning algorithms for practical ip traffic flow classification",
+    "1st_author": "williams, n.",
+    "authors": [
+      "williams, n.",
+      "zander, s.",
+      "armitage, g."
+    ],
+    "publication_name": "acm sigcomm computer communication review",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2006,
+    "organization_publishers": ["acm"],
+    "pages_number_of": 9,
+    "bibtex_volume": "36",
+    "bibtex_issue": "5",
+    "bibtex_page_range": "5--16",
+    "bibtex_type": "inproceedings",
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "20-04-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "nlanr auckland-vi",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp",
+          "icmp"
+        ],
+        "generation": "captured",
+        "generation_year": 2001,
+        "covered_period": "hours",
+        "details": [
+          "_anonimized",
+          "no_payload"
+        ],
+        "subsets": [
+          "auckland-vi-20010611",
+          "auckland-vi-20010612"
+        ]
+      },
+      {
+        "dataset_name": "nlanr leipzig-ii",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp",
+          "icmp"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "hours",
+        "details": [
+          "_anonimized",
+          "no_payload"
+        ],
+        "subsets": [
+          "leipzig-ii-20030221"
+        ]
+      },
+      {
+        "dataset_name": "nlanr nzix-ii",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp",
+          "icmp"
+        ],
+        "generation": "captured",
+        "generation_year": 2000,
+        "covered_period": "hours",
+        "details": [
+          "_anonimized",
+          "no_payload"
+        ],
+        "subsets": [
+          "nzix-ii-20000706"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "tool": "netmate",
+        "availability": "public",
+        "detail": "none"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "filtering",
+      "sampling"
+    ],
+    "final_data_format": "numerical_vectors",
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 600,
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 600,
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "protocolIdentifier",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "active_timeout": 600,
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "feature_selections": [
+      {
+        "name": "consistency-based feature selection",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "correlation-based feature selection",
+        "type": "filter",
+        "classifier": "none",
+        "role": "main"
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "tool": "weka",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "naive_bayes",
+        "subname": "naive bayes with discretization",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "tool": "weka",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "naive_bayes",
+        "subname": "naive bayes with kernel density estimation",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "tool": "weka",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "decision_tree",
+        "subname": "c4.5 decision tree",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "tool": "weka",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "bayes_network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "tool": "weka",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "decision_tree",
+        "subname": "naive bayes decision tree",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "tool": "weka",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "computational time performance",
+        "type": "internal",
+        "metrics": [
+          "computing_resources-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "_algorithm_comparison",
+    "claimed_improvements": [
+      "_comparison_of_previous_methods"
+    ],
+    "reproducibility": "replicable"
+  }
+}
