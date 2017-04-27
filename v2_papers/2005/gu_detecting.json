@@ -1,0 +1,130 @@
+{
+  "reference": {
+    "title": "Detecting Anomalies in Network Traffic Using Maximum Entropy Estimation",
+    "authors": [
+      "Gu, Yu",
+      "McCallum, Andrew",
+      "Towsley, Don"
+    ],
+    "publication_name": "Proceedings of the 5th ACM SIGCOMM conference on Internet Measurement",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2005,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "",
+      "issue": "",
+      "pages": ""
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "27-04-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "days",
+        "details": [],
+        "subsets": []
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "nominal_vectors",
+    "feature_selections": [
+      {
+        "name": "Greedy algorithm based on Maximum Entropy Estimation",
+        "type": "wrapper",
+        "classifier": "maximum decrease of the K-L divergence",
+        "role": "main"
+      }
+    ],
+    "packets": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          {
+            "less": [
+              "destinationTransportPort",
+              1024
+            ]
+          },
+          {
+            "greater": [
+              "destinationTransportPort",
+              49151
+            ]
+          },
+          "protocolIdentifier",
+          "tcpControlBits"
+        ]
+      }
+    ],
+    "flows": [],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Entropy",
+        "subname": "Maximum Entropy estimation and relative entropy",
+        "learning": "supervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": []
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "fast_processing",
+      "enhanced_functionality"
+    ],
+    "reproducibility": "replicable"
+  }
+}
