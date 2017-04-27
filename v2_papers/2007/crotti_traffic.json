@@ -1,0 +1,140 @@
+{
+  "reference": {
+    "title": "Traffic Classification through Simple Statistical Fingerprinting",
+    "1st_author": "crotti, m.",
+    "authors": [
+      "Crotti, Manuel",
+      "Dusi, Maurizio",
+      "Gringoli, Francesco",
+      "Salgarelli, Luca"
+    ],
+    "publication_name": "ACM SIGCOMM Computer Communication Review",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2007,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 10,
+    "bibtex": {
+      "type": "article",
+      "volume": "37",
+      "issue": "1",
+      "pages": "5-6"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "26-04-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "days",
+        "details": [
+          null
+        ],
+        "subsets": []
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "tool": "tcpdump",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_protocol_detection",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": false,
+        "features": [
+          "_interPacketTimeMicroseconds",
+          "ipTotalLength"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Statistical Fingerprinting",
+        "subname": "Fingerprints of application layer protocols",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification",
+      "fast_processing",
+      "reduced_computational_resources"
+    ],
+    "reproducibility": "replicable"
+  }
+}
