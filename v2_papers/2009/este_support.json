@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "08-05-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "09-05-2017",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -149,7 +149,8 @@
                 "select": [
                   {
                     "greater": [
-                      "transportOctetDeltaCount"
+                      "transportOctetDeltaCount",
+                      0
                     ]
                   }
                 ]
