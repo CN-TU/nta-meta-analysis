@@ -1,0 +1,124 @@
+{
+  "reference": {
+    "title": "on inferring application protocol behaviors in encrypted network traffic",
+    "authors": [
+      "wright, charles",
+      "monrose, fabian",
+      "masson, gerald"
+    ],
+    "publication_name": "journal of machine learning research",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2006,
+    "bibtex": {
+      "type": "article",
+      "volume": "7",
+      "issue": "12/1/2006",
+      "pages": "2745 -- 2769"
+    },
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "10-05-2017",
+    "curated_revision_number": 1,
+    "pages_number_of": 25
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "modified, collected traffic from uplink of george mason university",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2003,
+        "covered_period": "months",
+        "details": [
+          "preprocessed",
+          "no_payload"
+        ],
+        "subsets": [
+          "SMTP",
+          "HTTP",
+          "HTTPS",
+          "FTP",
+          "SSH",
+          "Telnet",
+          "AOL Instant"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      null
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          {
+            "map": [
+              {
+                "multiply": [
+                  "octetTotalCount",
+                  {
+                    "subtract": [
+                      {
+                        "multiply": [
+                          "flowDirection",
+                          2
+                        ]
+                      },
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "map": [
+              "flowStartMilliseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "￼￼sourceIPv4Address",
+          "destinationIPv4Address"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": []
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false
+  },
+  "result": {
+    "claimed_improvements": []
+  }
+}
