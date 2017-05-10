@@ -20,8 +20,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "09-05-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "10-05-2017",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -92,27 +92,62 @@
     "flow_aggregations": []
   },
   "analysis_method": {
-    "supervised_learning": false,
+    "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
     "tools": [],
-    "algorithms": []
+    "algorithms": [
+      {
+        "name": "mlp",
+        "subname": "multi layer perceptron",
+        "learning": "supervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
   },
   "evaluation": {
     "algorithm_comparison": false,
     "internal_validation": false,
-    "external_validation": false,
+    "external_validation": true,
     "dpi-based_validation": false,
     "port-based_validation": false,
-    "pre-knowledge-based_validation": false,
+    "pre-knowledge-based_validation": true,
     "manual_verification": false,
     "implementation_in_real_scenario": false,
     "train_test_separation": false,
-    "methods": []
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "confusion matrix",
+        "type": "external",
+        "metrics": [
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
   },
   "result": {
-    "subgoals": [],
-    "claimed_improvements": []
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
   }
 }
