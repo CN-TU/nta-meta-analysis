@@ -9,16 +9,17 @@
     "publication_name": "journal of machine learning research",
     "publication_type": "peer_reviewed_journal",
     "year": 2006,
+    "pages_number_of": 25,
     "bibtex": {
       "type": "article",
       "volume": "7",
       "issue": "12/1/2006",
       "pages": "2745 -- 2769"
     },
+    "access_open": true,
     "curated_by": "vormayr, g.",
     "curated_last_revision": "10-05-2017",
-    "curated_revision_number": 1,
-    "pages_number_of": 25
+    "curated_revision_number": 1
   },
   "data": {
     "datasets": [
@@ -49,14 +50,23 @@
     ]
   },
   "preprocessing": {
-    "performed_feature_selection": false,
+    "performed_feature_selection": true,
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
     "tools": [],
-    "normalization_type": "no",
+    "normalization_type": "range",
     "transformations": [
-      null
+      "no",
+      "log"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "_unknown",
+        "classifier": "_unknown",
+        "role": "main"
+      }
     ],
     "flows": [
       {
@@ -67,58 +77,95 @@
         "idle_timeout": "missing",
         "bidirectional": true,
         "features": [
-          {
-            "map": [
-              {
-                "multiply": [
-                  "octetTotalCount",
-                  {
-                    "subtract": [
-                      {
-                        "multiply": [
-                          "flowDirection",
-                          2
-                        ]
-                      },
-                      1
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "map": [
-              "flowStartMilliseconds"
-            ]
-          }
+          {},
+          {}
         ],
         "key_features": [
-          "￼￼sourceIPv4Address",
+          "sourceIPv4Address",
           "destinationIPv4Address"
         ]
       }
     ]
   },
   "analysis_method": {
-    "supervised_learning": false,
+    "supervised_learning": true,
     "unsupervised_learning": false,
-    "semisupervised_learning": false,
+    "semisupervised_learning": true,
     "anomaly_detection": false,
-    "tools": []
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "hidden markov model",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "viterbi",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "parameters_provided": false,
+        "learning": "supervised",
+        "source": "referenced"
+      },
+      {
+        "name": "k nearest neighbors",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "vector quantization",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
   },
   "evaluation": {
     "algorithm_comparison": false,
     "internal_validation": false,
     "external_validation": false,
     "dpi-based_validation": false,
-    "port-based_validation": false,
+    "port-based_validation": true,
     "pre-knowledge-based_validation": false,
     "manual_verification": false,
     "implementation_in_real_scenario": false,
-    "train_test_separation": false
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "true positive/false positive rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix",
+          "roc/uac",
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
   },
   "result": {
-    "claimed_improvements": []
+    "main_goal": "traffic_classification",
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_data_description"
+    ],
+    "subgoals": [
+      "application_classification",
+      "classification_of_encrypted_traffic",
+      "_classification_of_tunneled_traffic"
+    ],
+    "reproducibility": "no"
   }
 }
