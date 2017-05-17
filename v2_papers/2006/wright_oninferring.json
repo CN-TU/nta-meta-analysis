@@ -18,8 +18,8 @@
     },
     "access_open": true,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "10-05-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "17-05-2017",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -77,8 +77,31 @@
         "idle_timeout": "missing",
         "bidirectional": true,
         "features": [
-          {},
-          {}
+          {
+            "map": [
+              {
+                "multiply": [
+                  "octetTotalCount",
+                  {
+                    "subtract": [
+                      {
+                        "multiply": [
+                          "flowDirection",
+                          2
+                        ]
+                      },
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "map": [
+              "flowStartMilliseconds"
+            ]
+          }
         ],
         "key_features": [
           "sourceIPv4Address",
@@ -105,12 +128,12 @@
       },
       {
         "name": "viterbi",
+        "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "parameters_provided": false,
-        "learning": "supervised",
-        "source": "referenced"
+        "source": "referenced",
+        "parameters_provided": false
       },
       {
         "name": "k nearest neighbors",
@@ -157,14 +180,14 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "focus_main": "methodology/framework",
-    "claimed_improvements": [
-      "improved_data_description"
-    ],
     "subgoals": [
       "application_classification",
       "classification_of_encrypted_traffic",
       "_classification_of_tunneled_traffic"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_data_description"
     ],
     "reproducibility": "no"
   }
