@@ -1,4 +1,5 @@
 {
+  "version": "v2",
   "reference": {
     "title": "on inferring application protocol behaviors in encrypted network traffic",
     "authors": [
@@ -19,7 +20,7 @@
     "access_open": true,
     "curated_by": "vormayr, g.",
     "curated_last_revision": "17-05-2017",
-    "curated_revision_number": 3
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -94,12 +95,22 @@
                     ]
                   }
                 ]
+              },
+              {
+                "select": [
+                  true
+                ]
               }
             ]
           },
           {
             "map": [
-              "flowStartMilliseconds"
+              "flowStartMilliseconds",
+              {
+                "select": [
+                  true
+                ]
+              }
             ]
           }
         ],
