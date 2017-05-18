@@ -1,4 +1,5 @@
 {
+  "version": "v2",
   "reference": {
     "title": "Support vector Machines for TCP traffic classification",
     "authors": [
@@ -21,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "09-05-2017",
-    "curated_revision_number": 2
+    "curated_last_revision": "18-05-2017",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
