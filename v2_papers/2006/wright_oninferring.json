@@ -1,0 +1,205 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "on inferring application protocol behaviors in encrypted network traffic",
+    "authors": [
+      "wright, charles",
+      "monrose, fabian",
+      "masson, gerald"
+    ],
+    "publication_name": "journal of machine learning research",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2006,
+    "pages_number_of": 25,
+    "bibtex": {
+      "type": "article",
+      "volume": "7",
+      "issue": "12/1/2006",
+      "pages": "2745 -- 2769"
+    },
+    "access_open": true,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "17-05-2017",
+    "curated_revision_number": 4
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "modified, collected traffic from uplink of george mason university",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2003,
+        "covered_period": "months",
+        "details": [
+          "preprocessed",
+          "no_payload"
+        ],
+        "subsets": [
+          "SMTP",
+          "HTTP",
+          "HTTPS",
+          "FTP",
+          "SSH",
+          "Telnet",
+          "AOL Instant"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [
+      "no",
+      "log"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "_unknown",
+        "classifier": "_unknown",
+        "role": "main"
+      }
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          {
+            "map": [
+              {
+                "multiply": [
+                  "octetTotalCount",
+                  {
+                    "subtract": [
+                      {
+                        "multiply": [
+                          "flowDirection",
+                          2
+                        ]
+                      },
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "select": [
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "map": [
+              "flowStartMilliseconds",
+              {
+                "select": [
+                  true
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": true,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "hidden markov model",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "viterbi",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "k nearest neighbors",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "vector quantization",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "true positive/false positive rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix",
+          "roc/uac",
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification",
+      "classification_of_encrypted_traffic",
+      "_classification_of_tunneled_traffic"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_data_description"
+    ],
+    "reproducibility": "no"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Flow-Based Anomaly Detection Using Neural Network Optimized with GSA Algorithm",
+    "authors": [
+      "Jadidi, Zahra",
+      "Sheikhan, Mansour"
+    ],
+    "publication_name": "33rd international conference on distributed computing systems workshops",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2013,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "missing",
+      "issue": "missing",
+      "pages": "76--81"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "18-05-2017",
+    "curated_revision_number": 3
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "A Labeled Data Set For Flow-based Intrusion Detection",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "tcp"
+        ],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "days",
+        "details": [
+          "preprocessed",
+          "_anonymized"
+        ],
+        "subsets": [
+          "SSH",
+          "HTTP"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "tool": "_own_matlab_scripts",
+        "detail": "Matlab R2012a",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "range",
+    "transformations": [
+      "filtering",
+      "feature_operation"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "validation",
+        "main_goal": "anomaly_detection",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          "octetTotalCount",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "tcpControlBits"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "mlp",
+        "subname": "multi layer perceptron",
+        "learning": "supervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "confusion matrix",
+        "type": "external",
+        "metrics": [
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
+  }
+}
