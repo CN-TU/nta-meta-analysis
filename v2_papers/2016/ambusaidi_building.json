@@ -1,0 +1,738 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Building an Intrusion Detection System Using a Filter-Based Feature Selection Algorithm",
+    "authors": [
+      "Ambusaidi, Mohammed A.",
+      "He, Xiangjian",
+      "Nanda, Priyadarsi",
+      "Tan, Zhiyuan"
+    ],
+    "publication_name": "IEEE Transactions on Computers",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2016,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 13,
+    "bibtex": {
+      "type": "article",
+      "volume": "65",
+      "issue": "10",
+      "pages": "2986--2998"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "19-06-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "KDD99",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "tcp"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "months",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "10 percent",
+          "testdata",
+          "corrected labels"
+        ],
+        "anonymized": true
+      },
+      {
+        "dataset_name": "NSL-Kdd",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "tcp"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "kddtrain+",
+          "kddtest+",
+          "kddtest-21"
+        ],
+        "anonymized": true
+      },
+      {
+        "dataset_name": "Kyoto 2006+",
+        "availability": "public",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": [
+          2009,
+          2007
+        ],
+        "covered_period": "days",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "(27...31)-08-2009",
+          "(1...3)-11-2007"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [
+      "no"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Flexible Mutual Information Feature Selection",
+        "type": "filter",
+        "role": "main"
+      },
+      {
+        "name": "Flexible Linear Correlation Feature Selection",
+        "type": "filter",
+        "role": "competitor"
+      },
+      {
+        "name": "Mutual Information Feature Selection",
+        "type": "filter",
+        "role": "competitor"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD23",
+          "_KDD6",
+          "_KDD3",
+          "_KDD36",
+          "_KDD12",
+          "_KDD24",
+          "_KDD37",
+          "_KDD2",
+          "_KDD32",
+          "_KDD9",
+          "_KDD31",
+          "_KDD29",
+          "_KDD26",
+          "_KDD17",
+          "_KDD33",
+          "_KDD35",
+          "_KDD39",
+          "_KDD34"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS KDD99"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD23",
+          "_KDD6",
+          "_KDD9",
+          "_KDD32",
+          "_KDD18",
+          "_KDD19",
+          "_KDD15",
+          "_KDD17",
+          "_KDD16",
+          "_KDD14",
+          "_KDD7",
+          "_KDD20",
+          "_KDD11",
+          "_KDD21",
+          "_KDD13",
+          "_KDD8",
+          "_KDD22",
+          "_KDD29",
+          "_KDD31",
+          "_KDD41",
+          "_KDD1",
+          "_KDD26",
+          "_KDD10",
+          "_KDD37"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS (B=0.3) KDD99"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD7",
+          "_KDD17",
+          "_KDD32",
+          "_KDD18",
+          "_KDD20",
+          "_KDD9",
+          "_KDD15",
+          "_KDD14",
+          "_KDD21",
+          "_KDD16",
+          "_KDD8",
+          "_KDD22",
+          "_KDD19",
+          "_KDD13",
+          "_KDD11",
+          "_KDD29",
+          "_KDD1",
+          "_KDD41",
+          "_KDD31",
+          "_KDD10",
+          "_KDD27",
+          "_KDD26",
+          "_KDD12",
+          "_KDD28"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS (B=1) KDD99"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD23",
+          "_KDD29",
+          "_KDD12",
+          "_KDD24",
+          "_KDD3",
+          "_KDD36",
+          "_KDD32",
+          "_KDD2",
+          "_KDD8",
+          "_KDD31",
+          "_KDD25",
+          "_KDD1",
+          "_KDD11",
+          "_KDD39",
+          "_KDD10",
+          "_KDD4",
+          "_KDD19"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FLCFS KDD99"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD30",
+          "_KDD6",
+          "_KDD3",
+          "_KDD4",
+          "_KDD29",
+          "_KDD12",
+          "_KDD33",
+          "_KDD26",
+          "_KDD37",
+          "_KDD39",
+          "_KDD34",
+          "_KDD25",
+          "_KDD38",
+          "_KDD23",
+          "_KDD35",
+          "_KDD36",
+          "_KDD28"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS NSL-KDD"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD3",
+          "_KDD26",
+          "_KDD9",
+          "_KDD18",
+          "_KDD22",
+          "_KDD20",
+          "_KDD21",
+          "_KDD14",
+          "_KDD8",
+          "_KDD11",
+          "_KDD12",
+          "_KDD7",
+          "_KDD17",
+          "_KDD16",
+          "_KDD19",
+          "_KDD1",
+          "_KDD15",
+          "_KDD41",
+          "_KDD32",
+          "_KDD13",
+          "_KDD28",
+          "_KDD36"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS (B=0.3) NSL-KDD"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD22",
+          "_KDD9",
+          "_KDD26",
+          "_KDD18",
+          "_KDD20",
+          "_KDD14",
+          "_KDD21",
+          "_KDD16",
+          "_KDD8",
+          "_KDD11",
+          "_KDD1",
+          "_KDD17",
+          "_KDD7",
+          "_KDD12",
+          "_KDD19",
+          "_KDD15",
+          "_KDD40",
+          "_KDD32",
+          "_KDD13",
+          "_KDD10",
+          "_KDD28",
+          "_KDD31",
+          "_KDD27",
+          "_KDD2",
+          "_KDD36",
+          "_KDD23",
+          "_KDD3"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS (B=1) NSL-KDD"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD29",
+          "_KDD12",
+          "_KDD33",
+          "_KDD39",
+          "_KDD4",
+          "_KDD23",
+          "_KDD34",
+          "_KDD25",
+          "_KDD26",
+          "_KDD38",
+          "_KDD8",
+          "_KDD35",
+          "_KDD19",
+          "_KDD32",
+          "_KDD18",
+          "_KDD3",
+          "_KDD6",
+          "_KDD40",
+          "_KDD30",
+          "_KDD5",
+          "_KDD27",
+          "_KDD22"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FLCFS NSL-KDD"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "sourceIPv4Address",
+          "_KDD3",
+          "_KDD33",
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS Kyoto2006+"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "sourceIPv4Address",
+          "_KDD3",
+          "_KDD33",
+          "flowStartSeconds",
+          "_KDD25",
+          "_KDD38"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS(B=0.3) Kyoto2006+"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "sourceIPv4Address",
+          "_KDD25",
+          "__malwareDetection",
+          "_KDD29",
+          "_KDD38",
+          "_KDD36",
+          "__ashulaDetection",
+          "_KDD39",
+          "_KDD26",
+          "__idsDetection",
+          "__labelOfSession",
+          "_KDD23",
+          "_KDD32",
+          "_KDD1",
+          "_KDD3"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "MIFS(B=1) Kyoto2006+"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD33",
+          "__ashulaDetection",
+          "_KDD3",
+          "_KDD38",
+          "_KDD26",
+          "_KDD29",
+          "_KDD23"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FLCFS Kyoto2006+"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD23",
+          "_KDD5",
+          "_KDD3",
+          "_KDD6",
+          "_KDD32",
+          "_KDD24",
+          "_KDD12",
+          "_KDD2",
+          "_KDD37",
+          "_KDD36",
+          "_KDD8",
+          "_KDD31"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS KDD99 DoS"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD5",
+          "_KDD27",
+          "_KDD3",
+          "_KDD35",
+          "_KDD40",
+          "_KDD37",
+          "_KDD33",
+          "_KDD17",
+          "_KDD41",
+          "_KDD30",
+          "_KDD34",
+          "_KDD28",
+          "_KDD22",
+          "_KDD4",
+          "_KDD24",
+          "_KDD25",
+          "_KDD19",
+          "_KDD32",
+          "_KDD29"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS KDD99 Probe"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD37",
+          "_KDD17",
+          "_KDD8",
+          "_KDD18",
+          "_KDD16",
+          "_KDD1",
+          "_KDD4",
+          "_KDD15",
+          "_KDD7",
+          "_KDD22",
+          "_KDD20",
+          "_KDD21",
+          "_KDD31",
+          "_KDD19",
+          "_KDD12",
+          "_KDD13",
+          "_KDD14",
+          "_KDD6",
+          "_KDD32",
+          "_KDD29",
+          "_KDD3",
+          "_KDD40",
+          "_KDD2"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS KDD99 U2R"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "_KDD3",
+          "_KDD15",
+          "_KDD5",
+          "_KDD10",
+          "_KDD9",
+          "_KDD32",
+          "_KDD33",
+          "_KDD22",
+          "_KDD1",
+          "_KDD17",
+          "_KDD24",
+          "_KDD11",
+          "_KDD23",
+          "_KDD8",
+          "_KDD6"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ],
+        "_comment": "FMIFS KDD99 R2L"
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "svm",
+        "subname": "Least Squares Support Vector Machine",
+        "role": "main",
+        "tools": [],
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "metrics": [
+          "accuracy"
+        ],
+        "type": "external",
+        "source": "popular"
+      },
+      {
+        "name": "false positive rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "recall",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "type": "external",
+        "source": "popular"
+      },
+      {
+        "name": "f-1",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time of execution",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection",
+      "attack_classification",
+      "user_to_root_detection",
+      "remote_to_local_detection"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "replicable"
+  }
+}
