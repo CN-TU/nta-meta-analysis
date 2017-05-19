@@ -1,4 +1,5 @@
 {
+  "version": "v2",
   "reference": {
     "title": "BotMiner: clustering analysis of network traffic for protocol- and structure-independent botnet detection",
     "1st_author": "gu, g.",
@@ -23,8 +24,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "24-04-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "19-05-2017",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -41,8 +42,7 @@
         "covered_period": "days",
         "details": [
           "preprocessed"
-        ],
-        "subsets": []
+        ]
       },
       {
         "dataset_name": "mix of campus traffic with botnet traffic",
