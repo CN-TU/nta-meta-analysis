@@ -1,17 +1,19 @@
 {
+  "version": "v2",
   "reference": {
     "title": "a preliminary performance comparison of five machine learning algorithms for practical ip traffic flow classification",
-    "1st_author": "williams, n.",
     "authors": [
-      "williams, n.",
-      "zander, s.",
-      "armitage, g."
+      "Williams, Nigel",
+      "Zander, Sebastian",
+      "Armitage, Grenville"
     ],
     "publication_name": "acm sigcomm computer communication review",
     "publication_type": "peer_reviewed_conference",
     "year": 2006,
+    "organization_publishers": [
+      "acm"
+    ],
     "pages_number_of": 9,
-    "organization_publishers": ["acm"],
     "bibtex": {
       "type": "inproceedings",
       "volume": "36",
@@ -20,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "20-04-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "19-05-2017",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -38,13 +40,13 @@
         "generation_year": 2001,
         "covered_period": "hours",
         "details": [
-          "_anonimized",
           "no_payload"
         ],
         "subsets": [
           "auckland-vi-20010611",
           "auckland-vi-20010612"
-        ]
+        ],
+        "anonymized": true
       },
       {
         "dataset_name": "nlanr leipzig-ii",
@@ -59,12 +61,12 @@
         "generation_year": 2003,
         "covered_period": "hours",
         "details": [
-          "_anonimized",
           "no_payload"
         ],
         "subsets": [
           "leipzig-ii-20030221"
-        ]
+        ],
+        "anonymized": true
       },
       {
         "dataset_name": "nlanr nzix-ii",
@@ -79,12 +81,12 @@
         "generation_year": 2000,
         "covered_period": "hours",
         "details": [
-          "_anonimized",
           "no_payload"
         ],
         "subsets": [
           "nzix-ii-20000706"
-        ]
+        ],
+        "anonymized": true
       }
     ]
   },
@@ -96,8 +98,8 @@
     "tools": [
       {
         "tool": "netmate",
-        "availability": "public",
-        "detail": "none"
+        "detail": "none",
+        "availability": "public"
       }
     ],
     "normalization_type": "no",
@@ -106,6 +108,20 @@
       "sampling"
     ],
     "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "consistency-based feature selection",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "correlation-based feature selection",
+        "type": "filter",
+        "classifier": "none",
+        "role": "main"
+      }
+    ],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -573,20 +589,6 @@
           "destinationIPv4Address",
           "destinationTransportPort"
         ]
-      }
-    ],
-    "feature_selections": [
-      {
-        "name": "consistency-based feature selection",
-        "type": "filter",
-        "classifier": "none",
-        "role": "competitor"
-      },
-      {
-        "name": "correlation-based feature selection",
-        "type": "filter",
-        "classifier": "none",
-        "role": "main"
       }
     ]
   },
