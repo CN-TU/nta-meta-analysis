@@ -1,0 +1,311 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "A Signal Analysis of Network Traffic Anomalies",
+    "authors": [
+      "Barford, Paul",
+      "Kline, Jeffery",
+      "Plonka, David",
+      "Ron, Amos"
+    ],
+    "publication_name": "ACM SIGCOMM Workshop on Internet measurment",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2002,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "missing",
+      "issue": "2",
+      "pages": "71--82"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "30-05-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_flows",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2002,
+        "covered_period": "months",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "dataset_name": "_snmp_counters",
+        "availability": "private",
+        "format": "_snmp",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2002,
+        "covered_period": "months",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "time_series",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [],
+    "flow_aggregations": [
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  "forward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  "backward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  "forward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  "backward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "originalFlowsPresent",
+                  "forward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": "main",
+        "active_timeout": 0,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "originalFlowsPresent",
+                  "backward_flows"
+                ]
+              },
+              300
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "floor": [
+              {
+                "divide": [
+                  "flowStartSeconds",
+                  300
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Wavelet Analysis",
+        "subname": "Integrated Measurement Analysis Platform for Internet Traffic",
+        "learning": "no",
+        "role": "main",
+        "type": "statistics",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      },
+      {
+        "name": "Holt-Winters Forecasting",
+        "subname": "Exponential smoothing",
+        "learning": "no",
+        "role": "competitor",
+        "type": "statistics",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "tool": "RRDTOOL",
+            "detail": "",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": []
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "ddos_detection",
+      "dos_detection",
+      "_measurement_failure_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
+  }
+}
