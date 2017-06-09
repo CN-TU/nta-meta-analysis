@@ -1,0 +1,299 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Offline/realtime traffic classification using semi-supervised learning",
+    "authors": [
+      "Erman, Jeffrey",
+      "Mahanti, Anirban",
+      "Arlitt, Martin",
+      "Cohen, Ira",
+      "Williamson, Carey"
+    ],
+    "publication_name": "Performance",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2007,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 16,
+    "bibtex": {
+      "type": "",
+      "volume": "",
+      "issue": "",
+      "pages": ""
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "09-06-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_flows",
+        "types": [
+          "ipv4",
+          "tls",
+          "http",
+          "_bittorrent",
+          "_ftp"
+        ],
+        "generation_year": 2006,
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Backward greedy feature selection",
+        "type": "wrapper",
+        "classifier": "none",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": false,
+        "features": [
+          "packetTotalCount",
+          {
+            "mean": [
+              "totalLengthIPv4"
+            ]
+          },
+          "octetTotalCount",
+          {
+            "add": [
+              {
+                "add": [
+                  {
+                    "map": [
+                      "ipHeaderLength",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "add": [
+                  {
+                    "map": [
+                      "_transportHeaderLength",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward_flows"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward_flows"
+            ]
+          },
+          {
+            "apply": [
+              "transportOctetDeltaCount",
+              "backward_flows"
+            ]
+          },
+          {
+            "add": [
+              {
+                "add": [
+                  {
+                    "map": [
+                      {
+                        "basedon": [
+                          "ipHeaderLength",
+                          "backward_flows"
+                        ]
+                      },
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "add": [
+                  {
+                    "map": [
+                      {
+                        "basedon": [
+                          "_transportHeaderLength",
+                          "_server_to_client"
+                        ]
+                      },
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward_flows"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward_flows"
+            ]
+          },
+          {
+            "add": [
+              {
+                "add": [
+                  {
+                    "map": [
+                      {
+                        "basedon": [
+                          "ipHeaderLength",
+                          "_client_to_server"
+                        ]
+                      },
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "add": [
+                  {
+                    "map": [
+                      {
+                        "basedon": [
+                          "_transportHeaderLength",
+                          "_client_to_server"
+                        ]
+                      },
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": true,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "K-means",
+        "subname": "K-means using with manual labeling of a subset of flows",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "error_distance",
+          "time-based",
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "normal classification metrics",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "replicable"
+  }
+}
