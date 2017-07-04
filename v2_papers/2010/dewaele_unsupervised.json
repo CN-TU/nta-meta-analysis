@@ -1,0 +1,297 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Unsupervised host behavior classification from connection patterns",
+    "authors": [
+      "Dewaele, Guillaume",
+      "Himura, Yosuke",
+      "Borgnat, Pierre",
+      "Fukuda, Kensuke",
+      "Abry, Patrice",
+      "Michel, Olivier",
+      "Fontugne, Romain",
+      "Cho, Kenjiro",
+      "Esaki, Hiroshi"
+    ],
+    "publication_name": "International Journal of Network Management",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2010,
+    "organization_publishers": [
+      "wiley"
+    ],
+    "pages_number_of": 20,
+    "bibtex": {
+      "type": "article",
+      "volume": "20",
+      "issue": "5",
+      "pages": "317--337"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "04-07-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "MAWI",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "minutes",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [
+          "08-01-2008",
+          "09-01-2008",
+          "10-01-2008",
+          "15-01-2008",
+          "16-01-2008",
+          "17-01-2008",
+          "22-01-2008",
+          "50_other_testing_subsets"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [],
+    "normalization_type": "_non_linear_normalization",
+    "transformations": [
+      "entropy"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [],
+    "flow_aggregations": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "_host_classification",
+        "active_timeout": 900,
+        "features": [
+          {
+            "distinct": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "distinct": [
+                  "sourceTransportPort"
+                ]
+              },
+              {
+                "distinct": [
+                  "destinationIPv4Address"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "distinct": [
+                  "destinationTransportPort"
+                ]
+              },
+              {
+                "distinct": [
+                  "destinationIPv4Address"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "__destinationIPv4AddressSecondByte"
+                ]
+              },
+              {
+                "entropy": [
+                  "__destinationIPv4AddressFourthByte"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "__destinationIPv4AddressThirdByte"
+                ]
+              },
+              {
+                "entropy": [
+                  "__destinationIPv4AddressFourthByte"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              "packetTotalCount",
+              "_flowTotalCount"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "divide": [
+                  {
+                    "count": [
+                      {
+                        "select": [
+                          {
+                            "leq": [
+                              "octetTotalCount",
+                              144
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "packetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "divide": [
+                  {
+                    "count": [
+                      {
+                        "select": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              1392
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "packetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "entropy": [
+                  {
+                    "count": [
+                      {
+                        "select": [
+                          {
+                            "and": [
+                              {
+                                "less": [
+                                  "octetTotalCount",
+                                  1392
+                                ]
+                              },
+                              {
+                                "greater": [
+                                  "octetTotalCount",
+                                  144
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Minimum Spanning Tree Clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "tools": [],
+        "parameters_provided": true,
+        "source": "own_proposed",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "cluster comparison",
+        "type": "external",
+        "metrics": [],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification",
+      "_host_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "enhanced_functionality"
+    ],
+    "reproducibility": "replicable"
+  }
+}
