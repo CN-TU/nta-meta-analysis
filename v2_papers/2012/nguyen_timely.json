@@ -1,0 +1,269 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Timely and Continuous Machine-Learning-Based Classification for Interactive IP Traffic",
+    "authors": [
+      "Nguyen, Thuy",
+      "Armitage, Gernville",
+      "Branch, Philip",
+      "Zander, Sebastian"
+    ],
+    "publication_name": "IEEE/ACM Transactions on Networking",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2012,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "article",
+      "volume": "20",
+      "issue": "6",
+      "pages": "1880--1894",
+      "doi": "10.1109/TNET.2012.2187305"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "05-07-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2005,
+        "covered_period": "months",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "May 2005",
+          "September 2005",
+          "Game: Wolfenstein:ET"
+        ],
+        "anonymized": false
+      },
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "_rtp"
+        ],
+        "generation": "captured",
+        "generation_year": [
+          2006,
+          2007
+        ],
+        "covered_period": "months",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "days",
+        "details": [
+          "raw",
+          "no_payload"
+        ],
+        "subsets": [
+          "common applications"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "tool": "netmate",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "flow_extraction",
+      "sampling"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "classification_for_qos",
+        "idle_timeout": 60,
+        "bidirectional": true,
+        "features": [
+          {
+            "minimum": [
+              "_interPacketTimeMilliseconds"
+            ]
+          },
+          {
+            "maximum": [
+              "_interPacketTimeMilliseconds"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketTimeMilliseconds"
+            ]
+          },
+          {
+            "stdev": [
+              "_interPacketTimeMilliseconds"
+            ]
+          },
+          {
+            "minimum": [
+              "_interPacketLengthVariation"
+            ]
+          },
+          {
+            "maximum": [
+              "_interPacketLengthVariation"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketLengthVariation"
+            ]
+          },
+          {
+            "stdev": [
+              "_interPacketLengthVariation"
+            ]
+          },
+          {
+            "minimum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "maximum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "stdev": [
+              "ipTotalLength"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "tool": "weka",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "naive_bayes",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "tool": "weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "decision_tree",
+        "subname": "c4.5 decision tree",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "tool": "weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "recall",
+        "type": "external",
+        "metrics": [],
+        "source": "popular"
+      },
+      {
+        "name": "precission",
+        "type": "external",
+        "metrics": [],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "classification_for_qos"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ]
+  }
+}
