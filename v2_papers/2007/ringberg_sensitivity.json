@@ -1,0 +1,324 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Sensitivity of PCA for traffic anomaly detection",
+    "authors": [
+      "Ringberg, Haakon",
+      "Soule, Augustin",
+      "Rexford, Jennifer",
+      "Diot, Christophe"
+    ],
+    "publication_name": "SIGMETRICS",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2007,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "",
+      "volume": "",
+      "issue": "",
+      "pages": ""
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "07-07-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "Abilene",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2005,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "dataset_name": "Géant",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2005,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [
+      {
+        "tool": "J-Flow",
+        "detail": "",
+        "availability": "commercial"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [],
+    "flow_aggregations": [
+      {
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        },
+        "active_timeout": 300,
+        "key_features": [
+          "_ingressRouter"
+        ]
+      },
+      {
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        },
+        "active_timeout": 300,
+        "key_features": [
+          "_ingressRouter",
+          "ingressPhysicalInterface"
+        ]
+      },
+      {
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        },
+        "active_timeout": 300,
+        "key_features": [
+          "_ingressRouter",
+          "_egressRouter"
+        ]
+      },
+      {
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        },
+        "active_timeout": 900,
+        "key_features": [
+          "_ingressRouter"
+        ]
+      },
+      {
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        }
+      },
+      {
+        "active_timeout": 900,
+        "key_features": [
+          "_ingressRouter",
+          "ingressPhysicalInterface"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Principal Component Analysis",
+        "subname": "",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "false positive rate, total detections",
+        "metrics": [
+          "accuracy"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "_challenges_of_existing_methods_disclosed"
+    ]
+  }
+}
