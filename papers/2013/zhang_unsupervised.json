@@ -45,7 +45,7 @@
   ], 
   "reference": {
     "author": "Zhang et al.", 
-    "title": "An Effective Network Traffic Classification Method with Unknown Flow Detection", 
+    "title": "Unsupervised traffic classification using flow statistical properties and IP packet payload", 
     "year": 2013
   }, 
   "evaluations": [
