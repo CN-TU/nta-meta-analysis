@@ -1,7 +1,7 @@
 {
+  "version": "v2",
   "reference": {
     "title": "Traffic Classification through Simple Statistical Fingerprinting",
-    "1st_author": "crotti, m.",
     "authors": [
       "Crotti, Manuel",
       "Dusi, Maurizio",
@@ -19,7 +19,7 @@
       "type": "article",
       "volume": "37",
       "issue": "1",
-      "pages": "5-6"
+      "pages": "7--16"
     },
     "access_open": false,
     "curated_by": "bachl, m.",
@@ -38,9 +38,6 @@
         "generation": "captured",
         "generation_year": "missing",
         "covered_period": "days",
-        "details": [
-          null
-        ],
         "subsets": []
       }
     ]
@@ -66,7 +63,6 @@
       {
         "selection": "expert_knowledge",
         "role": "main",
-        "main_goal": "application_protocol_detection",
         "active_timeout": 0,
         "idle_timeout": 0,
         "bidirectional": false,

@@ -1,4 +1,5 @@
 {
+  "version": "v2",
   "reference": {
     "title": "Detecting Anomalies in Network Traffic Using Maximum Entropy Estimation",
     "authors": [
@@ -17,7 +18,7 @@
       "type": "inproceedings",
       "volume": "",
       "issue": "",
-      "pages": ""
+      "pages": "345--350"
     },
     "access_open": false,
     "curated_by": "bachl, m.",

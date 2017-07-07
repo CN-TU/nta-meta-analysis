@@ -2,7 +2,6 @@
   "version": "v2",
   "reference": {
     "title": "BotMiner: clustering analysis of network traffic for protocol- and structure-independent botnet detection",
-    "1st_author": "gu, g.",
     "authors": [
       "Gu, Guofei",
       "Perdisci, Roberto",
@@ -25,7 +24,8 @@
     "access_open": true,
     "curated_by": "ferreira, d.",
     "curated_last_revision": "19-05-2017",
-    "curated_revision_number": 2
+    "curated_revision_number": 2,
+    "1st_author": "gu, g."
   },
   "data": {
     "datasets": [
@@ -42,7 +42,8 @@
         "covered_period": "days",
         "details": [
           "preprocessed"
-        ]
+        ],
+        "subsets": []
       },
       {
         "dataset_name": "mix of campus traffic with botnet traffic",
@@ -1307,6 +1308,7 @@
       },
       {
         "name": "a-plane clustering",
+        "subname": "a-plane two step clustering algorithm",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -1318,19 +1320,18 @@
           }
         ],
         "source": "own_proposed",
-        "subname": "a-plane two step clustering algorithm",
         "parameters_provided": false
       },
       {
         "name": "cross-plane correlation",
+        "subname": "cross-plane correlation with davies-bouldin validation index for dendogram cut",
         "learning": "no",
         "role": "main",
         "type": "heuristics",
         "metric/decision_criteria": "vote",
         "tools": [],
         "source": "own_proposed",
-        "parameters_provided": true,
-        "subname": "cross-plane correlation with davies-bouldin validation index for dendogram cut"
+        "parameters_provided": true
       }
     ]
   },
