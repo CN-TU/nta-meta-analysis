@@ -16,10 +16,10 @@
     ],
     "pages_number_of": 12,
     "bibtex": {
-      "type": "",
-      "volume": "",
-      "issue": "",
-      "pages": ""
+      "type": "inproceedings",
+      "volume": "35",
+      "issue": "1",
+      "pages": "109--120"
     },
     "access_open": false,
     "curated_by": "bachl, m.",
@@ -66,7 +66,6 @@
     "tools": [
       {
         "tool": "J-Flow",
-        "detail": "",
         "availability": "commercial"
       }
     ],
@@ -78,6 +77,7 @@
     "flows": [],
     "flow_aggregations": [
       {
+        "active_timeout": 300,
         "features": [
           {
             "entropy": [
@@ -100,6 +100,9 @@
             ]
           }
         ],
+        "key_features": [
+          "__ingressRouter"
+        ],
         "flow": {
           "features": null,
           "key_features": [
@@ -109,13 +112,10 @@
             "destinationTransportPort",
             "protocolIdentifier"
           ]
-        },
-        "active_timeout": 300,
-        "key_features": [
-          "_ingressRouter"
-        ]
+        }
       },
       {
+        "active_timeout": 300,
         "features": [
           {
             "entropy": [
@@ -138,44 +138,9 @@
             ]
           }
         ],
-        "flow": {
-          "features": null,
-          "key_features": [
-            "sourceIPv4Address",
-            "sourceTransportPort",
-            "destinationIPv4Address",
-            "destinationTransportPort",
-            "protocolIdentifier"
-          ]
-        },
-        "active_timeout": 300,
         "key_features": [
-          "_ingressRouter",
+          "__ingressRouter",
           "ingressPhysicalInterface"
-        ]
-      },
-      {
-        "features": [
-          {
-            "entropy": [
-              "sourceIPv4Address"
-            ]
-          },
-          {
-            "entropy": [
-              "destinationIPv4Address"
-            ]
-          },
-          {
-            "entropy": [
-              "sourceTransportPort"
-            ]
-          },
-          {
-            "entropy": [
-              "destinationTransportPort"
-            ]
-          }
         ],
         "flow": {
           "features": null,
@@ -186,14 +151,10 @@
             "destinationTransportPort",
             "protocolIdentifier"
           ]
-        },
+        }
+      },
+      {
         "active_timeout": 300,
-        "key_features": [
-          "_ingressRouter",
-          "_egressRouter"
-        ]
-      },
-      {
         "features": [
           {
             "entropy": [
@@ -216,6 +177,10 @@
             ]
           }
         ],
+        "key_features": [
+          "__ingressRouter",
+          "__egressRouter"
+        ],
         "flow": {
           "features": null,
           "key_features": [
@@ -225,11 +190,45 @@
             "destinationTransportPort",
             "protocolIdentifier"
           ]
-        },
+        }
+      },
+      {
         "active_timeout": 900,
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
         "key_features": [
-          "_ingressRouter"
-        ]
+          "__ingressRouter"
+        ],
+        "flow": {
+          "features": null,
+          "key_features": [
+            "sourceIPv4Address",
+            "sourceTransportPort",
+            "destinationIPv4Address",
+            "destinationTransportPort",
+            "protocolIdentifier"
+          ]
+        }
       },
       {
         "features": [
@@ -268,7 +267,7 @@
       {
         "active_timeout": 900,
         "key_features": [
-          "_ingressRouter",
+          "__ingressRouter",
           "ingressPhysicalInterface"
         ]
       }
@@ -283,7 +282,6 @@
     "algorithms": [
       {
         "name": "Principal Component Analysis",
-        "subname": "",
         "learning": "unsupervised",
         "role": "main",
         "type": "anomaly_detection",
