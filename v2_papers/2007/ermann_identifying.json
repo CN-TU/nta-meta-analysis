@@ -1,0 +1,153 @@
+{
+  "version": "v2",
+  "reference": {
+    "title": "Identifying and Discriminating Between Web and Peer-to-Peer Traffic in the Network Core",
+    "authors": [
+      "Erman, Jeffrey",
+      "Mahanti, Anirban",
+      "Arlitt, Martin",
+      "Williamson, Carey"
+    ],
+    "publication_name": "Proceedings of the 16th International Conference on World Wide Web",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2007,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 10,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "16",
+      "issue": "1",
+      "pages": "883--892",
+      "doi": "10.1145/1242572.1242692"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "10-07-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "dataset_name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2006,
+        "covered_period": "hours",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "9-10am",
+          "9-10pm",
+          "April 6",
+          "April 7",
+          "April 8",
+          "April 9",
+          "tcp"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "log"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "application_classification",
+        "idle_timeout": 900,
+        "bidirectional": false,
+        "features": [
+          "packetTotalCount",
+          "octetTotalCount",
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "transportOctetDeltaCount"
+            ]
+          },
+          "flowDurationMilliseconds",
+          {
+            "mean": [
+              "_interPacketTimeMicroseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "k nearest neighbors",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
+  }
+}
