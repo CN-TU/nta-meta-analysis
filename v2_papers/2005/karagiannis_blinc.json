@@ -1,0 +1,187 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "BLINC: Multilevel Traffic Classification in the Dark",
+    "authors": [
+      "Karagiannis, Thomas",
+      "Papagiannaki, Konstantina",
+      "Faloutsos, Michalis"
+    ],
+    "publication_name": "Proceedings of the 2005 conference on Applications, technologies, architectures, and protocols for computer communications",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2005,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "229--240",
+      "booktitle": "Proceedings of the 2005 Conference on Applications, Technologies, Architectures, and Protocols for Computer Communications",
+      "series": "SIGCOMM '05",
+      "isbn": "1-59593-009-4",
+      "url": "http://doi.acm.org/10.1145/1080091.1080119",
+      "doi": "10.1145/1080091.1080119"
+    },
+    "access_open": false,
+    "curated_by": "dferreira",
+    "curated_last_revision": "15-09-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "Genome campus",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "19-08-2003"
+        ]
+      },
+      {
+        "name": "Residential university",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "20-01-2004",
+          "23-01-2004"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "coral_reef",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "tcpdump",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "not_applicable",
+    "transformations": [
+      "no"
+    ],
+    "final_data_format": "_graph",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "role": "main",
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address"
+        ],
+        "idle_timeout": 64,
+        "bidirectional": false,
+        "main_goal": "network_properties_monitoring"
+      },
+      {
+        "role": "main",
+        "main_goal": "application_classification",
+        "idle_timeout": 64,
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort"
+        ],
+        "bidirectional": false
+      },
+      {
+        "role": "main",
+        "main_goal": "application_classification",
+        "idle_timeout": 64,
+        "bidirectional": false,
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "graph matching",
+        "learning": "no",
+        "role": "main",
+        "type": "_graph_matching",
+        "metric/decision_criteria": "_heuristic",
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": true,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "completeness",
+        "type": "internal",
+        "metrics": [
+          "_completeness"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification",
+      "improved_data_description"
+    ]
+  }
+}
