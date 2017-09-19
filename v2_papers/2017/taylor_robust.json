@@ -1,0 +1,663 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Robust Smartphone App Identification Via Encrypted Network Traffic Analysis",
+    "authors": [
+      "Taylor, Vincent F",
+      "Spolaor, Riccardo",
+      "Conti, Mauro",
+      "Martinovic, Ivan"
+    ],
+    "publication_name": "IEEE Transactions on Information Forensics and Security",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2017,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 13,
+    "bibtex": {
+      "type": "article",
+      "publisher": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "dferreira",
+    "curated_last_revision": "19-09-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "Traffic from Android Apps",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "missing",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "Dataset-1",
+          "Dataset-1a",
+          "Dataset-2",
+          "Dataset-3",
+          "Dataset-4",
+          "Dataset-4a",
+          "Dataset-5",
+          "Dataset-5a"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          {
+            "minimum": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "maximum": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "mean": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "median": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "mad": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "stdev": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "variance": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "moment": [
+              "octetTotalCount",
+              3
+            ]
+          },
+          {
+            "moment": [
+              "octetTotalCount",
+              4
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.1
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.2
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.3
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.4
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.6
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.7
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.8
+            ]
+          },
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.9
+            ]
+          },
+          "packetTotalCount",
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "median": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mad": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "variance": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "moment": [
+                  "octetTotalCount",
+                  3
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "moment": [
+                  "octetTotalCount",
+                  4
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.1
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.2
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.3
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.4
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.6
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.7
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.8
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.9
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "median": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mad": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "variance": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "moment": [
+                  "octetTotalCount",
+                  3
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "moment": [
+                  "octetTotalCount",
+                  4
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.1
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.2
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.3
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.4
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.6
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.7
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.8
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.9
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "pandas",
+        "availability": "public"
+      },
+      {
+        "name": "scikit-learn",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Random Forest",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Ambiguity detection",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "sckit-learn",
+            "availability": "public"
+          }
+        ],
+        "source": "own_proposed",
+        "parameters_provided": true
+      },
+      {
+        "name": "Classification validation",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "availability": "public"
+          }
+        ],
+        "source": "own_proposed",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "recall",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "completeness",
+        "type": "external",
+        "metrics": [
+          "_completeness"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "new_phenomena_disclosed",
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "reproducible"
+  }
+}
