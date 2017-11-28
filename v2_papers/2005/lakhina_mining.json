@@ -1,0 +1,307 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Mining Anomalies Using Traffic Feature Distributions",
+    "authors": [
+      "Lakhina, Anukool",
+      "Crovella, Mark",
+      "Diot, Christophe"
+    ],
+    "publication_name": "Proceedings of the 2005 conference on applications, technologies, architectures, and protocols for computer communications",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2005,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "35",
+      "issue": "4",
+      "pages": "217--228"
+    },
+    "access_open": false,
+    "curated_by": "maloku, b.",
+    "curated_last_revision": "27-11-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "abilene",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "5-minute bins"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "geant",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "5-minute bins"
+        ],
+        "anonymized": false
+      },
+      {
+        "name": "abilene_with_manual_injected_attacks",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2003,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "5-minute bins"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "own_matlab_scripts",
+        "detail": "none",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "range",
+    "transformations": [
+      "sampling",
+      "time_series"
+    ],
+    "final_data_format": "time_series",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "active_timeout": 300,
+        "idle_timeout": 0,
+        "bidirectional": false,
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": 300,
+        "idle_timeout": 0,
+        "bidirectional": false,
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ],
+        "key_features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          }
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "multiway subspace method",
+        "subname": "multiway subspace method",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "hierarchical agglomerative",
+        "subname": "hierarchical agglomerative",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "k-means",
+        "subname": "k-means",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "detection rate",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "inter cluster variation",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "intra cluster variation",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection",
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification",
+      "new_phenomena_disclosed"
+    ],
+    "reproducibility": "replicable"
+  }
+}
