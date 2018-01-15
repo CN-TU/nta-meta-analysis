@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.1",
   "reference": {
     "title": "Detecting Anomalies in Network Traffic Using Maximum Entropy Estimation",
     "authors": [
@@ -16,8 +16,6 @@
     "pages_number_of": 6,
     "bibtex": {
       "type": "inproceedings",
-      "volume": "",
-      "issue": "",
       "pages": "345--350"
     },
     "access_open": false,
@@ -28,7 +26,7 @@
   "data": {
     "datasets": [
       {
-        "dataset_name": "_private_packets",
+        "name": "_private_packets",
         "availability": "private",
         "format": "packet",
         "types": [
