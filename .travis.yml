@@ -1,0 +1,13 @@
+language: python
+
+python:
+    - 3.5
+
+install:
+    - pip install simplejson six requests jsonschema
+
+before_script:
+    - git clone https://github.com/CN-TU/nta-meta-analysis-specification.git
+    - git clone https://github.com/dcferreira/nta-meta-analysis-verification.git
+
+script: cd ~/nta-meta-analysis-verification && ./verify_all.sh ~/nta-meta-analysis ~/nta-meta-analysis-specification
