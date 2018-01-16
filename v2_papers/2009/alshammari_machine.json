@@ -1,0 +1,450 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Machine Learning Based Encrypted Traffic Classification: Identifying SSH and Skype",
+    "authors": [
+      "Alshammari, Riyad",
+      "Zincir-Heywood, A Nur"
+    ],
+    "publication_name": "Computational Intelligence for Security and Defense Applications, 2009. CISDA 2009. IEEE Symposium on",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2009,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 8,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "1--8",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "16-01-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "MAWI",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "hours",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "AMP",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "missing",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "Dalhousie",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2007,
+        "covered_period": "weeks",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "DARPA99",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "week1",
+          "week2"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "NetMate",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "Weka",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Support Vector Machine",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "Weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "RIPPER",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "Weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "AdaBoost",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "Weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Naive Bayes",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "name": "Weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Decision Tree",
+        "subname": "C4.5",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "Weka",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Detection Rate",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "False Positive Rate",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification",
+      "classification_of_encrypted_traffic",
+      "traffic_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "new_phenomena_disclosed"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
