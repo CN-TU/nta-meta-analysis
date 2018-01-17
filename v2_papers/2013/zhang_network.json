@@ -370,7 +370,7 @@
     "pre-knowledge-based_validation": false,
     "manual_verification": false,
     "implementation_in_real_scenario": false,
-    "train_test_separation": false,
+    "train_test_separation": true,
     "methods": [
       {
         "name": "accuracy",
