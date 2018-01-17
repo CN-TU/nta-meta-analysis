@@ -86,7 +86,7 @@
         "selection": "expert_knowledge",
         "role": "competitor",
         "main_goal": "application_classification",
-        "bidirectional": false,
+        "bidirectional": true,
         "features": [
           {
             "apply": [
