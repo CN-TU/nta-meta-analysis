@@ -119,7 +119,7 @@
           "_KDD_dstHostSameSrvRate",
           "_KDD_dstHostDiffSrvRate",
           "_KDD_dstHostSameSrcPortRate",
-          "_KDD_dstHostSrvDifHostRate",
+          "_KDD_dstHostSrvDiffHostRate",
           "_KDD_dstHostSerrorRate",
           "_KDD_dstHostSrvSerrorRate",
           "_KDD_dstHostRerrorRate",
