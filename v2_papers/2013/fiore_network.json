@@ -1,0 +1,201 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Network anomaly detection with the restricted Boltzmann machine",
+    "authors": [
+      "Fiore, Ugo",
+      "Palmieri, Francesco",
+      "Castiglione, Aniello",
+      "De Santis, Alfredo"
+    ],
+    "publication_name": "Neurocomputing",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2013,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 11,
+    "bibtex": {
+      "type": "article",
+      "volume": "122",
+      "pages": "13--23",
+      "publisher": "Elsevier"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "13-01-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "KDD99",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "train_10_percent"
+        ],
+        "anonymized": false
+      },
+      {
+        "name": "Botnet infected traffic",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": "missing",
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "normal_workstation",
+          "infected_workstation"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "no"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          "_durationSeconds",
+          "protocolIdentifier",
+          "ipClassOfService",
+          "_KDD_connectionFlag",
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          "_KDD_land",
+          "_KDD_wrongFragment",
+          "_KDD_urgent",
+          "_KDD_count",
+          "_KDD_srvCount",
+          "_KDD_serrorRate",
+          "_KDD_srvSerrorRate",
+          "_KDD_rerrorRate",
+          "_KDD_srvRerrorRate",
+          "_KDD_sameSrvRate",
+          "_KDD_diffSrvRate",
+          "_KDD_srvDiffHostRate",
+          "_KDD_dstHostCount",
+          "_KDD_dstHostSrvCount",
+          "_KDD_dstHostSameSrvRate",
+          "_KDD_dstHostDiffSrvRate",
+          "_KDD_dstHostSameSrcPortRate",
+          "_KDD_dstHostSrvDifHostRate",
+          "_KDD_dstHostSerrorRate",
+          "_KDD_dstHostSrvSerrorRate",
+          "_KDD_dstHostRerrorRate",
+          "_KDD_dstHostSrvRerrorRate"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Restricted Boltzmann Machine",
+        "subname": "Discriminative Restricted Boltzmann Machine",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "speed",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "good_transportability",
+      "data_stream_oriented",
+      "enhanced_functionality"
+    ],
+    "reproducibility": "replicable"
+  }
+}
