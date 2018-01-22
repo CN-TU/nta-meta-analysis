@@ -1,0 +1,325 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "time-activity footprints in ip traffic",
+    "authors": [
+      "Iglesias, Félix",
+      "Zseby, Tanja"
+    ],
+    "publication_name": "computer networks",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2016,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "article",
+      "volume": "107, Part 1",
+      "issue": "missing",
+      "pages": "64--75"
+    },
+    "access_open": false,
+    "curated_by": "fiv",
+    "curated_last_revision": "20-01-2018",
+    "curated_revision_number": 2
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "mawi-2015",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2015,
+        "covered_period": "minutes",
+        "details": [
+          "raw",
+          "no_payload"
+        ],
+        "subsets": [
+          "01-01-2015",
+          "15-04-2015",
+          "31-07-2015"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "tshark",
+        "detail": "v2.0.0",
+        "availability": "public"
+      },
+      {
+        "name": "own_perl_scripts",
+        "detail": "none",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "range",
+    "transformations": [
+      "flow_extraction",
+      "log",
+      "time_series",
+      "feature_operation",
+      "class_separation"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "max-relevance min-redundancy filter (correlation and MI based)",
+        "type": "filter",
+        "classifier": "none",
+        "role": "main"
+      }
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 60,
+        "idle_timeout": 60,
+        "bidirectional": false,
+        "features": [
+          {
+            "log": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "log": [
+              "packetTotalCount"
+            ]
+          },
+          "_activeForSeconds",
+          {
+            "log": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "_activeForSeconds"
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "divide": [
+                  "packetTotalCount",
+                  "_activeForSeconds"
+                ]
+              }
+            ]
+          },
+          "__maximumConsecutiveSeconds",
+          "__minimumConsecutiveSeconds",
+          {
+            "maximum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "minimum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          "__numberof_activity_intervals"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "protocolIdentifier"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 60,
+        "idle_timeout": 60,
+        "bidirectional": false,
+        "features": [
+          {
+            "log": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "log": [
+              {
+                "divide": [
+                  "octetTotalCount",
+                  "_activeForSeconds"
+                ]
+              }
+            ]
+          },
+          {
+            "maximum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "minimum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "protocolIdentifier"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [
+      {
+        "name": "matlab_fuzzyclusteringtoolbox",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "own_matlab_scripts",
+        "detail": "none",
+        "availability": "private"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "fuzzy clustering",
+        "subname": "gustafson-kessel",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mahalanobis",
+        "tools": [
+          {
+            "name": "matlab_fuzzyclusteringtoolbox",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "mad-based outlier removal",
+        "subname": "double mad",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "own_matlab_scripts",
+            "detail": "none",
+            "availability": "private"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "manual verification",
+        "type": "external",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "weighted vote",
+        "type": "nest",
+        "metrics": [
+          "vote"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "classification entropy",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "partition index",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "xie and benix index",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "clustering gain",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "own cluster validity",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_data_description",
+      "improved_traffic_classification",
+      "fast_processing",
+      "_flaw_detection"
+    ],
+    "reproducibility": "replicable"
+  }
+}
