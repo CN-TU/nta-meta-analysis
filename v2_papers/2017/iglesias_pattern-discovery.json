@@ -1,0 +1,458 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "pattern discovery in internet background radiation",
+    "authors": [
+      "Iglesias, Félix",
+      "Zseby, Tanja"
+    ],
+    "publication_name": "ieee transactions on big data",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2017,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "article",
+      "volume": "PP",
+      "issue": "99",
+      "pages": "1--14"
+    },
+    "access_open": false,
+    "curated_by": "fiv",
+    "curated_last_revision": "20-01-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "CAIDA_darkspace_flowtuples",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [
+          "ip",
+          "_ibr"
+        ],
+        "generation": "captured",
+        "generation_year": 2012,
+        "covered_period": "months",
+        "details": [
+          "no_payload",
+          "preprocessed"
+        ],
+        "subsets": [
+          "Jan2012-Jun2012"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "CAIDA_darkspace_pcaps",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "ip",
+          "_ibr"
+        ],
+        "generation": "captured",
+        "generation_year": 2015,
+        "covered_period": "hours",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "01-11-2015"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "_own_perl_scripts",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "feature_aggregation",
+      "feature_operation",
+      "flow_extraction"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 3600,
+        "idle_timeout": 0,
+        "bidirectional": false,
+        "features": [
+          {
+            "count": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "mode": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "destinationIPv4Address",
+                      {
+                        "mode": [
+                          "destinationIPv4Address"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "mode": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "sourceTransportPort",
+                      {
+                        "mode": [
+                          "sourceTransportPort"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "destinationTransportPort"
+            ]
+          },
+          {
+            "mode": [
+              "destinationTransportPort"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "destinationTransportPort",
+                      {
+                        "mode": [
+                          "destinationTransportPort"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "protocolIdentifier"
+            ]
+          },
+          {
+            "mode": [
+              "protocolIdentifier"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "protocolIdentifier",
+                      {
+                        "mode": [
+                          "protocolIdentifier"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "ipTTL"
+            ]
+          },
+          {
+            "mode": [
+              "ipTTL"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "ipTTL",
+                      {
+                        "mode": [
+                          "ipTTL"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "tcpControlBits"
+            ]
+          },
+          {
+            "mode": [
+              "tcpControlBits"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "tcpControlBits",
+                      {
+                        "mode": [
+                          "tcpControlBits"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mode": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "ipTotalLength",
+                      {
+                        "mode": [
+                          "ipTotalLength"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "packetTotalCount"
+        ],
+        "key_features": [
+          "sourceIPv4Address"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [
+      {
+        "name": "matlab_fuzzyclusteringtoolbox",
+        "availability": "public"
+      },
+      {
+        "name": "own_matlab_scripts",
+        "availability": "private"
+      },
+      {
+        "name": "matlab_kmedoids",
+        "availability": "commercial"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "fuzzy clustering",
+        "subname": "gustafson-kessel",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mahalanobis",
+        "tools": [
+          {
+            "name": "matlab_fuzzyclusteringtoolbox",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "k-medoids",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "matlab_kmedoids",
+            "detail": "R2016a",
+            "availability": "commercial"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "clustering consensus",
+        "learning": "nest",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "vote",
+        "tools": [
+          {
+            "name": "own_matlab_tools",
+            "availability": "private"
+          }
+        ],
+        "source": "own_proposed",
+        "parameters_provided": false
+      },
+      {
+        "name": "mad-based outlier removal",
+        "subname": "double mad",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "own_matlab_scripts",
+            "availability": "private"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "manual verification",
+        "type": "external",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "weighted vote",
+        "type": "nest",
+        "metrics": [
+          "vote"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "partition index",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "xie and benix index",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "Davies-Bouldin index",
+        "type": "internal",
+        "metrics": [
+          "clustering_metrics"
+        ],
+        "source": "referenced"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "improved_data_description",
+      "new_phenomena_disclosed",
+      "big_data_oriented",
+      "_no_packet_inspection",
+      "data_stream_oriented"
+    ],
+    "reproducibility": "replicable"
+  }
+}
