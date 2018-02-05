@@ -1,0 +1,432 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Analysis and Prediction of Real Network Traffic",
+    "authors": [
+      "Zhani, Mohamed Faten",
+      "Elbiaze, Halima",
+      "Kamoun, Farouk"
+    ],
+    "publication_name": "JNW",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2009,
+    "organization_publishers": [
+      "_academy_publisher"
+    ],
+    "pages_number_of": 11,
+    "bibtex": {
+      "type": "article",
+      "volume": "4",
+      "pages": "855--865",
+      "number": "9"
+    },
+    "access_open": true,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "05-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "nlanr auckland-viii",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "tcp",
+          "udp",
+          "icmp"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "weeks",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [
+          "60min_from_10am",
+          "5days"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "cesca-i",
+        "availability": "lost_source",
+        "format": "packet",
+        "generation": "captured",
+        "generation_year": 2004,
+        "subsets": [
+          "50min_from_10am"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "libtrace",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_rate_prediction",
+        "active_timeout": 0.6,
+        "bidirectional": true,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              800
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              1500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          }
+        ],
+        "key_features": []
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "traffic_rate_prediction",
+        "active_timeout": 0.6,
+        "bidirectional": true,
+        "features": [
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "less": [
+                          "octetTotalCount",
+                          100
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              100
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              800
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              1500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "less": [
+                          "octetTotalCount",
+                          100
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              100
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "apply": [
+                  "packetTotalCount",
+                  {
+                    "select": [
+                      {
+                        "and": [
+                          {
+                            "geq": [
+                              "octetTotalCount",
+                              800
+                            ]
+                          },
+                          {
+                            "less": [
+                              "octetTotalCount",
+                              1500
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_flowDurationSeconds"
+            ]
+          }
+        ],
+        "key_features": []
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "ARMA",
+        "subname": "AutoRegressive Moving Average",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "regression",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [],
+        "source": "referenced"
+      },
+      {
+        "name": "ARIMA",
+        "subname": "Integrated AutoRegressive Moving Average",
+        "learning": "supervised",
+        "role": "main",
+        "type": "regression",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [],
+        "source": "referenced"
+      },
+      {
+        "name": "neurofuzzy",
+        "subname": "α_SNF",
+        "learning": "supervised",
+        "role": "main",
+        "type": "regression",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [],
+        "source": "referenced"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "root-mean-square error",
+        "type": "external",
+        "metrics": [
+          "error_distance"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "standard deviation of root-mean-square error",
+        "type": "external",
+        "metrics": [
+          "error_distance"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "_traffic_rate_prediction",
+    "subgoals": [
+      "traffic_rate_prediction"
+    ],
+    "focus_main": "pattern_analysis",
+    "claimed_improvements": [
+      "improved_data_description"
+    ],
+    "reproducibility": "replicable"
+  }
+}
