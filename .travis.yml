@@ -5,9 +5,7 @@ python:
 
 install:
     - pip install simplejson six requests jsonschema
-
-before_script:
-    - git clone https://github.com/CN-TU/nta-meta-analysis-specification.git ~/nta-meta-analysis-specification
-    - git clone https://github.com/CN-TU/nta-meta-analysis-verification.git ~/nta-meta-analysis-verification
+    - git clone https://github.com/CN-TU/nta-meta-analysis-specification.git ~/nta-meta-analysis-specification && (cd nta-meta-analysis-specification && git rev-parse HEAD)
+    - git clone https://github.com/CN-TU/nta-meta-analysis-verification.git ~/nta-meta-analysis-verification && (cd nta-meta-analysis-verification && git rev-parse HEAD)
 
 script: cd ~/nta-meta-analysis-verification && ./verify_all.sh $TRAVIS_BUILD_DIR ~/nta-meta-analysis-specification
