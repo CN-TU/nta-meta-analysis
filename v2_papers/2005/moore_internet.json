@@ -1,0 +1,443 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Internet Traffic Classification Using Bayesian Analysis Techniques",
+    "authors": [
+      "Moore, Andrew W.",
+      "Zuev, Denis"
+    ],
+    "publication_name": "proceedings of the 2005 acm sigmetrics international conference on measurement and modeling of computer systems",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2005,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 11,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "33",
+      "issue": "1",
+      "pages": "50--60"
+    },
+    "access_open": false,
+    "curated_by": "maloku, b.",
+    "curated_last_revision": "05-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "genome_campus",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "hours",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "28-min_entry01",
+          "28-min_entry02",
+          "28-min_entry03",
+          "28-min_entry04",
+          "28-min_entry05",
+          "28-min_entry06",
+          "28-min_entry07",
+          "28-min_entry08",
+          "28-min_entry09",
+          "28-min_entry10"
+        ],
+        "anonymized": false
+      },
+      {
+        "name": "genome_campus-2004",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "hours",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "tcptrace",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "netdude",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "filtering"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [
+      {
+        "name": "feature selection with fast correlation based-filter (FCBF) ",
+        "type": "wrapper",
+        "classifier": "naive_bayes",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "in_dataset",
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "active_timeout": 1860,
+        "bidirectional": true,
+        "features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "tcpSourcePort",
+          "tcpDestinationPort",
+          {
+            "apply": [
+              "_pushedDataPackets",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpWindowSize",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpWindowSize",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "ipPayloadLength"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "median": [
+                  "ipTotalLength"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__dataBytesInTheWireVariance",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "ipPayloadLength"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__RTTSamples",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "_pushedDataPackets",
+              "forward"
+            ]
+          },
+          "_flowDurationSeconds",
+          {
+            "mean": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "variance": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "mean": [
+              "ipPayloadLength"
+            ]
+          },
+          {
+            "variance": [
+              "ipPayloadLength"
+            ]
+          },
+          {
+            "entropy": [
+              "__effective_bandwidth"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "tcpSourcePort",
+          "tcpDestinationPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "active_timeout": 1860,
+        "bidirectional": true,
+        "features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "tcpSourcePort",
+          "tcpDestinationPort",
+          {
+            "apply": [
+              "_pushedDataPackets",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpWindowSize",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpWindowSize",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "ipPayloadLength"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "median": [
+                  "ipTotalLength"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__dataBytesInTheWireVariance",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "ipPayloadLength"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__RTTSamples",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "_pushedDataPackets",
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "tcpSourcePort",
+          "tcpDestinationPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Naïve Bayes",
+        "subname": "Naïve Bayes",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "name": "weka",
+            "detail": "3.4",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naı̈ve Bayes with kernel density estimation",
+        "subname": "Naı̈ve Bayes with kernel density estimation",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "statistics",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "weka",
+            "detail": "3.4",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naïve Bayes with FCBF prefiltering",
+        "subname": "Naïve Bayes with FCBF prefiltering",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "name": "weka",
+            "detail": "3.4",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naı̈ve Bayes with kernel density estimation and FCBF prefiltering",
+        "subname": "Naı̈ve Bayes with kernel density estimation and FCBF prefiltering",
+        "learning": "supervised",
+        "role": "main",
+        "type": "statistics",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "weka",
+            "detail": "3.4",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "trust",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "accuracy by bytes",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "reduced_computational_resources"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
