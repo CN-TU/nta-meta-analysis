@@ -1,0 +1,416 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "An Effective Network Traffic Classification Method with Unknown Flow Detection",
+    "authors": [
+      "Zhang, Jun",
+      "Chen, Chao",
+      "Xiang, Yang",
+      "Zhou, Wanlei",
+      "Vasilakos, Athanasios V"
+    ],
+    "publication_name": "IEEE Transactions on Network and Service Management",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2013,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 15,
+    "bibtex": {
+      "type": "article",
+      "volume": "10",
+      "pages": "133--147",
+      "publisher": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "06-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "mawi wide",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "days",
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [
+          "march_2008_72hours"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "isp",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2010,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "7_days_from_27_november_2010"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "no"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": true,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Decision Tree",
+        "subname": "C4.5 Decision Tree",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "KNN",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naive Bayes",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Bayesian Network",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "K-means",
+        "subname": "K-means using with manual labeling of a subset of flows",
+        "learning": "semisupervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "K-means",
+        "subname": "K-means with label propagation through bag of flows",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "f-1",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "training purity",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "propagation rate",
+        "type": "external_and_internal",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "own_proposed"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification",
+      "traffic_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "enhanced_functionality"
+    ],
+    "reproducibility": "replicable"
+  }
+}
