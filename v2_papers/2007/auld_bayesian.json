@@ -1,0 +1,442 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Bayesian Neural Networks for Internet Traffic Classification",
+    "authors": [
+      "Auld, Tom",
+      "Moore, Andrew W.",
+      "Gull, Stephen F."
+    ],
+    "publication_name": "IEEE Transactions on Neural Networks",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2007,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 17,
+    "bibtex": {
+      "type": "article",
+      "volume": "18",
+      "issue": "1",
+      "pages": "223--239",
+      "doi": "10.1109/TNN.2006.883010",
+      "month": "Jan"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "02-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "GRIDprobe/Internet Traffic Classification Using Bayesian Analysis Techniques",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "tcp"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "minutes",
+        "details": [
+          "preprocessed",
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "tcptrace",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "nprobe",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "_histogram_equalization",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Remove features with near zero weight in input layer",
+        "type": "filter",
+        "classifier": "none"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "bidirectional": true,
+        "features": [
+          {
+            "basedon": [
+              "tcpPshTotalCount",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              "__initialWindow",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              "__initialWindow",
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "mean": [
+                  "_segmentSize"
+                ]
+              },
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "median": [
+                  "octetTotalCount"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "transportOctetDeltaCount",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "variance": [
+                  "octetTotalCount"
+                ]
+              },
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "minimum": [
+                  "_segmentSize"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              "__RTTSamplestcptrace",
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              "tcpPshTotalCount",
+              "_client_to_server"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          {
+            "quantile": [
+              "octetTotalCount",
+              0.25
+            ]
+          },
+          {
+            "basedon": [
+              "__postLossACK",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "apply": [
+                  "tcpAckTotalCount",
+                  {
+                    "select": [
+                      {
+                        "equal": [
+                          {
+                            "get": [
+                              5,
+                              "tcpOptions"
+                            ]
+                          },
+                          32
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "quantile": [
+                  "octetTotalCount",
+                  0.25
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              "__3rdLargestFFTComponentOfinterPacketTime",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              "tcpPshTotalCount",
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              "_flowDurationSeconds",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              "tcpPshTotalCount",
+              "_server_to_client"
+            ]
+          },
+          "__totalIdleTime",
+          {
+            "basedon": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              "tcpAckTotalCount",
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "quantile": [
+                  "_interPacketTimeMicroseconds",
+                  0.75
+                ]
+              },
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "stdev": [
+                  "__fullSizeRTT"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "stdev": [
+                  "__fullSizeRTT"
+                ]
+              },
+              "_server_to_client"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "divide": [
+                  {
+                    "mean": [
+                      "octetTotalCount"
+                    ]
+                  },
+                  "_flowDurationSeconds"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          {
+            "basedon": [
+              {
+                "left_shift": [
+                  "tcpWindowSize",
+                  "tcpWindowScale"
+                ]
+              },
+              "_client_to_server"
+            ]
+          },
+          "__transitionsTransactionBulk",
+          {
+            "median": [
+              "octetTotalCount"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "naive_bayes",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "neural_network",
+        "subname": "bayesian",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "error_rate",
+        "type": "external",
+        "metrics": [
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "replicable"
+  }
+}
