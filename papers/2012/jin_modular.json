@@ -3,25 +3,25 @@
     {
       "goals": [
         "trafficClassification"
-      ], 
+      ],
       "key": {
-        "bidirectional": true, 
+        "bidirectional": true,
         "key_features": [
-          "sourceIPv4Address", 
-          "sourceTransportPort", 
-          "destinationIPv4Address", 
-          "destinationTransportPort", 
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
           "protocolIdentifier"
         ]
-      }, 
-      "tool": null, 
+      },
+      "tool": null,
       "window": null,
       "traffic_type": "ip",
       "features": [
-        {"ifelse": [{"leq": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]}, 
-        {"ifelse": [{"greater": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]}, 
-        {"ifelse": [{"leq": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]}, 
-        {"ifelse": [{"greater": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]}, 
+        {"ifelse": [{"leq": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]},
+        {"ifelse": [{"greater": ["sourceTransportPort", 1024]}, "sourceTransportPort", -1]},
+        {"ifelse": [{"leq": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]},
+        {"ifelse": [{"greater": ["destinationTransportPort", 1024]}, "destinationTransportPort", -1]},
         "flowDurationMilliseconds",
         "packetTotalCount",
         "octetTotalCount",
@@ -30,17 +30,17 @@
         "tcpControlBits",
         {"mode": ["ipClassOfService"]},
         {"count": [{"select": [{"equal": ["ipClassOfService", {"mode": ["ipClassOfService"]}]}]}]},
-        {"distinct": ["ipClassOfService", {"select": [true]}]},
+        {"count": [{"distinct": ["ipClassOfService", {"select": [true]}]}]},
         "__sourceIPv4AddressBelongsToCertainISP",
         "__destinationIPv4AddressBelongsToCertainISP"
       ]
     }
   ],
   "reference": {
-    "author": "Jin et al.", 
-    "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks", 
+    "author": "Jin et al.",
+    "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks",
     "year": 2012
-  }, 
+  },
   "evaluations": [
       {
           "metrics": ["error_rate", "time"],

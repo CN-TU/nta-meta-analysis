@@ -3,17 +3,17 @@
     {
       "goals": [
         "trafficClassification"
-      ], 
+      ],
       "key": {
-        "bidirectional": "separate_directions", 
+        "bidirectional": "separate_directions",
         "key_features": [
-          "sourceIPv4Address", 
-          "sourceTransportPort", 
-          "destinationIPv4Address", 
-          "destinationTransportPort", 
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
           "protocolIdentifier"
         ]
-      }, 
+      },
       "tool": "nprobe",
       "window": null,
       "traffic_type": "tcp",
@@ -33,10 +33,10 @@
     }
   ],
   "reference": {
-    "author": "Liu et al.", 
-    "title": "Network Traffic Classification Using K-means Clustering", 
+    "author": "Liu et al.",
+    "title": "Network Traffic Classification Using K-means Clustering",
     "year": 2007
-  }, 
+  },
   "evaluations": [
       {
           "metrics": ["error_rate"],
