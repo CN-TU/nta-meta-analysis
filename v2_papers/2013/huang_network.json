@@ -1,0 +1,147 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Network forensic analysis using growing hierarchical SOM",
+    "authors": [
+      "Huang, Shin-Ying",
+      "Huang, Yennun"
+    ],
+    "publication_name": "International Conference on Data Mining Workshops",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2013,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 8,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "536--543"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "07-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "caida-backscatter",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "icmp"
+        ],
+        "generation": "captured",
+        "generation_year": [
+          2006,
+          2007,
+          2008
+        ],
+        "covered_period": "minutes",
+        "details": [],
+        "subsets": [
+          "2006",
+          "2007",
+          "2008"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_visualization",
+        "features": [
+          "flowStartSeconds",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "ipTotalLength"
+        ]
+      }
+    ],
+    "flows": [],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Growing Hierarchical Self-Organizing Map",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "K-means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Recognition rate",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Visual inspection",
+        "type": "internal",
+        "metrics": [],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "traffic_visualization",
+      "ddos_detection",
+      "attack_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_data_description"
+    ],
+    "reproducibility": "replicable"
+  }
+}

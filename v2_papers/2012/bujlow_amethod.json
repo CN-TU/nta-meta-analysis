@@ -1,0 +1,631 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "A method for classification of network traffic based on C5.0 Machine Learning Algorithm",
+    "authors": [
+      "Bujlow, Tomasz",
+      "Riaz, Tahir",
+      "Pedersen, Jens Myrup"
+    ],
+    "publication_name": "Workshop on Computing, Networking and Communications",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2012,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 5,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "237--241"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "06-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2012,
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [],
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "features": [
+          "transportOctetDeltaCount",
+          {
+            "map": [
+              "transportOctetDeltaCount",
+              "backward"
+            ]
+          },
+          {
+            "map": [
+              "transportOctetDeltaCount",
+              "forward"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "map": [
+                  "transportOctetDeltaCount",
+                  "backward"
+                ]
+              },
+              {
+                "map": [
+                  "transportOctetDeltaCount",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "map": [
+                  "packetTotalCount",
+                  "backward"
+                ]
+              },
+              {
+                "map": [
+                  "packetTotalCount",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "mean": [
+              "_transportPayloadLength"
+            ]
+          },
+          {
+            "minimum": [
+              "_transportPayloadLength"
+            ]
+          },
+          {
+            "maximum": [
+              "_transportPayloadLength"
+            ]
+          },
+          {
+            "quantile": [
+              "_transportPayloadLength",
+              0.25
+            ]
+          },
+          {
+            "median": [
+              "_transportPayloadLength"
+            ]
+          },
+          {
+            "quantile": [
+              "_transportPayloadLength",
+              0.75
+            ]
+          },
+          {
+            "stdev": [
+              "_transportPayloadLength"
+            ]
+          },
+          {
+            "mean": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "minimum": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "maximum": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "quantile": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              },
+              0.25
+            ]
+          },
+          {
+            "median": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "quantile": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              },
+              0.75
+            ]
+          },
+          {
+            "stdev": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "mean": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "minimum": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "maximum": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "quantile": [
+              0.25,
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "median": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "quantile": [
+              0.75,
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "stdev": [
+              {
+                "map": [
+                  "_transportPayloadLength",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "leq": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "backward"
+                            ]
+                          },
+                          50
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "map": [
+                  "packetTotalCount",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "leq": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "forward"
+                            ]
+                          },
+                          50
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "map": [
+                  "packetTotalCount",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "leq": [
+                          "_transportPayloadLength",
+                          50
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "packetTotalCount"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "geq": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "backward"
+                            ]
+                          },
+                          1300
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "map": [
+                  "packetTotalCount",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "geq": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "forward"
+                            ]
+                          },
+                          1300
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "map": [
+                  "packetTotalCount",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "geq": [
+                          "_transportPayloadLength",
+                          1300
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "packetTotalCount"
+            ]
+          },
+          "applicationName",
+          "protocolIdentifier",
+          {
+            "less": [
+              "sourceTransportPort",
+              1024
+            ]
+          },
+          {
+            "less": [
+              "destinationTransportPort",
+              1024
+            ]
+          },
+          {
+            "map": [
+              "tcpPshTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "map": [
+              "tcpAckTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "map": [
+              "tcpPshTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "map": [
+              "tcpAckTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "map": [
+              "tcpPshTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "equal": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "forward"
+                            ]
+                          },
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "count": [
+                  {
+                    "map": [
+                      "_transportPayloadLength",
+                      "forward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "equal": [
+                          {
+                            "map": [
+                              "_transportPayloadLength",
+                              "backward"
+                            ]
+                          },
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "count": [
+                  {
+                    "map": [
+                      "_transportPayloadLength",
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "count": [
+                  {
+                    "select": [
+                      {
+                        "equal": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "count": [
+                  "_transportPayloadLength"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "flows": [],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "C5.0",
+        "availability": "public"
+      }
+    ],
+    "algorithms": []
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Average error rate",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Training time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

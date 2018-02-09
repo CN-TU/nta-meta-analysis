@@ -1,0 +1,146 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Anomaly Detection in IP Networks",
+    "authors": [
+      "Thottan, Marina",
+      "Ji, Chuanyi"
+    ],
+    "publication_name": "IEEE Transactions on Signal Processing",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2005,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "article",
+      "volume": "51",
+      "issue": "8",
+      "pages": "2191--2204"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "07-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_snmp_counters",
+        "availability": "private",
+        "format": "_snmp",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 1995,
+        "covered_period": "hours",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "_snmp_counters",
+        "availability": "private",
+        "format": "_snmp",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 1995,
+        "covered_period": "hours",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "__ipInReceives",
+          "__ipOutRequests",
+          "__ipInDelivers"
+        ]
+      }
+    ],
+    "flows": [],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Statistical Analysis",
+        "subname": "statistical signal processing technique based on abrupt change detection using the SNMP MIB",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": true,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "Average Prediction Time",
+        "type": "external",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "Average Detection Time",
+        "type": "external",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "Average Mean Time Between False Alarms",
+        "type": "external",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "own_proposed"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

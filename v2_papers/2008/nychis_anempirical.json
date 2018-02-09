@@ -1,0 +1,207 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "An empirical evaluation of entropy-based traffic anomaly detection",
+    "authors": [
+      "Nychis, George",
+      "Sekar, Vyas",
+      "Andersen, David G.",
+      "Kim, Hyong",
+      "Zhang, Hui"
+    ],
+    "publication_name": "Internet Measurement Conference",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2008,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "06-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "CMU-2005",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2005,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "CMU-2008",
+        "availability": "private",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "Abilene",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 2006,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "GÈANT",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 2005,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "Georgia Tech",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "Argus",
+        "availability": "public"
+      },
+      {
+        "name": "Snort",
+        "availability": "public"
+      },
+      {
+        "name": "Netflow",
+        "availability": "commercial"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "entropy"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": true,
+        "features": [
+          "__numberOfConcurrentOutgoingConnections",
+          "__numberOfConcurrentIncomingConnections",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "packetTotalCount",
+          "flowDurationMilliseconds"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Wavelet Analysis",
+        "subname": "Wavelet Analysis as done by Barford et al. (2002)",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "no",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Entropy-based Traffic Anomaly Detection",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": true,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "Visual inspection",
+        "metrics": []
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "ddos_detection",
+      "attack_classification",
+      "probe_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

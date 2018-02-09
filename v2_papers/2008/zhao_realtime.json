@@ -1,0 +1,412 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Real-time feature selection in traffic classification",
+    "authors": [
+      "Zhao, Jing-jing",
+      "Huang, Xiao-hong",
+      "Sun, Qiong",
+      "Ma, Yan"
+    ],
+    "publication_name": "The Journal of China Universities of Posts and Telecommunications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2008,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 5,
+    "bibtex": {
+      "type": "peer_reviewed_journal",
+      "issue": "15",
+      "pages": "68--72"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "06-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation_year": "missing",
+        "details": [],
+        "subsets": [
+          "Dataset1",
+          "Dataset2"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Correlation-based feature selection with the BestFirst search method",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "Correlation-based feature selection with the GeneticSearch search method",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "Consistency-based feature selection with the BestFirst search method",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "Consistency-based feature selection with the GeneticSearch search method",
+        "type": "filter",
+        "classifier": "none",
+        "role": "competitor"
+      },
+      {
+        "name": "ClassifierSubsetEval",
+        "type": "wrapper",
+        "classifier": "Naive Bayes",
+        "role": "competitor"
+      },
+      {
+        "name": "WrapperSubsetEval",
+        "type": "wrapper",
+        "classifier": "Naive Bayes",
+        "role": "main"
+      }
+    ],
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "features": [
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "_interPacketTimeMicroseconds",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ethernetTotalLength",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ipTotalLength",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "__controlDataLengthPerPacket",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "_interPacketTimeMicroseconds",
+                      "forward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ethernetTotalLength",
+                      "forward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ipTotalLength",
+                      "forward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "__controlDataLengthPerPacket",
+                      "forward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "_interPacketTimeMicroseconds",
+                      "backward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ethernetTotalLength",
+                      "backward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "ipTotalLength",
+                      "backward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "quantile": [
+                  {
+                    "map": [
+                      "__controlDataLengthPerPacket",
+                      "backward"
+                    ]
+                  },
+                  0.25
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "flows": [],
+    "flow_aggregations": [],
+    "_comment": "The features in the paper are not 100% clear to me, but I think that is what they meant."
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "WEKA",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "CS4.5",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Random Forest",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naive Bayes",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "K-Means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Expectation Maximization",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Recall",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "data_stream_oriented"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

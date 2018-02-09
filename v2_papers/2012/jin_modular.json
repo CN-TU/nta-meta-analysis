@@ -1,0 +1,400 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks",
+    "authors": [
+      "Jin, Yu",
+      "Duffield, Nick",
+      "Jeffrey, Erman",
+      "Haffner, Patrick",
+      "Sen, Subhabrata",
+      "Zhang, Zhi-Li"
+    ],
+    "publication_name": "ACM Transactions on Knowledge Discovery from Data",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2012,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 34,
+    "bibtex": {
+      "type": "article",
+      "volume": "6",
+      "issue": "1",
+      "pages": "1--34"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "05-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_private_flows",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "captured",
+        "generation_year": 2008,
+        "covered_period": "minutes",
+        "details": [],
+        "subsets": [
+          "05-03-2008",
+          "12-03-2008",
+          "05-04-2008",
+          "05-03-2009"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "class_separation"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": true,
+        "features": [
+          {
+            "ifelse": [
+              {
+                "leq": [
+                  "sourceTransportPort",
+                  1024
+                ]
+              },
+              "sourceTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "greater": [
+                  "sourceTransportPort",
+                  1024
+                ]
+              },
+              "sourceTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "leq": [
+                  "destinationTransportPort",
+                  1024
+                ]
+              },
+              "destinationTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "greater": [
+                  "destinationTransportPort",
+                  1024
+                ]
+              },
+              "destinationTransportPort",
+              -1
+            ]
+          },
+          "flowDurationMilliseconds",
+          "packetTotalCount",
+          "octetTotalCount",
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketTimeSeconds"
+            ]
+          },
+          "tcpControlBits",
+          {
+            "mode": [
+              "ipClassOfService"
+            ]
+          },
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "equal": [
+                      "ipClassOfService",
+                      {
+                        "mode": [
+                          "ipClassOfService"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "count": [
+              {
+                "distinct": [
+                  {
+                    "map": [
+                      "ipClassOfService",
+                      {
+                        "select": [
+                          true
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "__sourceIPv4AddressBelongsToCertainISP",
+          "__destinationIPv4AddressBelongsToCertainISP"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      },
+      {
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": true,
+        "features": [
+          {
+            "ifelse": [
+              {
+                "leq": [
+                  "sourceTransportPort",
+                  1024
+                ]
+              },
+              "sourceTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "greater": [
+                  "sourceTransportPort",
+                  1024
+                ]
+              },
+              "sourceTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "leq": [
+                  "destinationTransportPort",
+                  1024
+                ]
+              },
+              "destinationTransportPort",
+              -1
+            ]
+          },
+          {
+            "ifelse": [
+              {
+                "greater": [
+                  "destinationTransportPort",
+                  1024
+                ]
+              },
+              "destinationTransportPort",
+              -1
+            ]
+          },
+          "flowDurationMilliseconds",
+          "packetTotalCount",
+          "octetTotalCount",
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketTimeSeconds"
+            ]
+          },
+          "tcpControlBits",
+          "__sourceIPv4AddressBelongsToCertainISP",
+          "__destinationIPv4AddressBelongsToCertainISP"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Adaboost with Decision Stumps",
+        "subname": "BStump",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Decision tree",
+        "subname": "Boosting decision trees",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Maximum entropy",
+        "subname": "L1-Maxent",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Naive Bayes",
+        "subname": "Weka implementation of Naive Bayes",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Traffic Activity Graph",
+        "subname": "Colored Traffic Activity Graph",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Error Rate",
+        "type": "external",
+        "metrics": [
+          "classification_loss"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Bit Error Rate",
+        "type": "external",
+        "metrics": [
+          "classification_loss"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "F1 Scores",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Training Tme",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "fast_processing"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

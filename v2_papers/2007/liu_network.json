@@ -1,0 +1,329 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Network Traffic Classification Using K-means Clustering",
+    "authors": [
+      "Liu, Yingqiu",
+      "Li, Wei",
+      "Li, Yunchun"
+    ],
+    "publication_name": "Second International Multisymposium on Computer and Computational Sciences",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2007,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings",
+      "volume": "1",
+      "issue": "1",
+      "pages": "360--365"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "05-02-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "minutes",
+        "details": [],
+        "subsets": [
+          "20-08-2003-01:37",
+          "20-08-2003-04:39",
+          "20-08-2003-14:55"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "WEKA",
+        "detail": "Waikato Environment for Knowledge Analysis",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "log"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "CFS",
+        "type": "filter",
+        "classifier": "none",
+        "role": "main"
+      },
+      {
+        "name": "Consistency-based subset evaluation",
+        "type": "wrapper",
+        "classifier": "exact_matching",
+        "role": "main"
+      },
+      {
+        "name": "Information gain attribute evaluation",
+        "type": "wrapper",
+        "classifier": "none",
+        "role": "main"
+      },
+      {
+        "name": "Backward and Forward Greedy Search",
+        "type": "wrapper",
+        "classifier": "none",
+        "role": "main"
+      },
+      {
+        "name": "Best First",
+        "type": "wrapper",
+        "classifier": "none",
+        "role": "main"
+      },
+      {
+        "name": "Ranker",
+        "type": "wrapper",
+        "classifier": "none",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 0,
+        "idle_timeout": 0,
+        "bidirectional": true,
+        "features": [
+          {
+            "log": [
+              {
+                "map": [
+                  "packetTotalCount",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "map": [
+                  "transportOctetDeltaCount",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "map": [
+                  "tcpPshTotalCount",
+                  "forward"
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "map": [
+                  "tcpPshTotalCount",
+                  "backward"
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "mean": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "forward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "maximum": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "forward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "variance": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "forward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "mean": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "maximum": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              {
+                "variance": [
+                  {
+                    "map": [
+                      "ipPayloadLength",
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "log": [
+              "flowDurationMilliseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "nProbe",
+        "detail": "An Extensible NetFlow v5/v9/IPFIX Probe for IPv4/v6",
+        "availability": "commercial"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "K-means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "C4.5",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Recall",
+        "type": "external",
+        "metrics": [
+          "_recall"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
