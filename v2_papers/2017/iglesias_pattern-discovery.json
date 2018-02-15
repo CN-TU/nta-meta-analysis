@@ -97,7 +97,7 @@
         "bidirectional": false,
         "features": [
           {
-            "count": [
+            "distinct": [
               "destinationIPv4Address"
             ]
           },
@@ -125,7 +125,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "sourceTransportPort"
             ]
           },
@@ -153,7 +153,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "destinationTransportPort"
             ]
           },
@@ -181,7 +181,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "protocolIdentifier"
             ]
           },
@@ -209,7 +209,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "ipTTL"
             ]
           },
@@ -237,7 +237,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "tcpControlBits"
             ]
           },
@@ -265,7 +265,7 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               "ipTotalLength"
             ]
           },
