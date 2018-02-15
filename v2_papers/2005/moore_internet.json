@@ -176,7 +176,7 @@
           },
           {
             "apply": [
-              "__RTTSamples",
+              "__rttSamples",
               "forward"
             ]
           },
@@ -293,7 +293,7 @@
           },
           {
             "apply": [
-              "__RTTSamples",
+              "__rttSamples",
               "forward"
             ]
           },
