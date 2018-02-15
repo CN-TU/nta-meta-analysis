@@ -159,17 +159,13 @@
             ]
           },
           {
-            "count": [
+            "distinct": [
               {
-                "distinct": [
+                "map": [
+                  "ipClassOfService",
                   {
-                    "map": [
-                      "ipClassOfService",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
+                    "select": [
+                      true
                     ]
                   }
                 ]

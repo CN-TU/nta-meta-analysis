@@ -46,8 +46,8 @@
   },
   "preprocessing": {
     "performed_feature_selection": true,
-    "packet_analysis_oriented": true,
-    "flow_analysis_oriented": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
     "tools": [],
     "normalization_type": "no",
@@ -91,212 +91,134 @@
         "role": "main"
       }
     ],
-    "packets": [
+    "flows": [
       {
         "selection": "expert_knowledge",
         "role": "main",
         "main_goal": "traffic_classification",
         "features": [
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "_interPacketTimeMicroseconds",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "ethernetTotalLength",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "ipTotalLength",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "__controlDataLengthPerPacket",
+              0.25
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      "forward"
-                    ]
-                  },
+                  "_interPacketTimeMicroseconds",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      "forward"
-                    ]
-                  },
+                  "ethernetTotalLength",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      "forward"
-                    ]
-                  },
+                  "ipTotalLength",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      "forward"
-                    ]
-                  },
+                  "__controlDataLengthPerPacket",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      "backward"
-                    ]
-                  },
+                  "_interPacketTimeMicroseconds",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      "backward"
-                    ]
-                  },
+                  "ethernetTotalLength",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      "backward"
-                    ]
-                  },
+                  "ipTotalLength",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      "backward"
-                    ]
-                  },
+                  "__controlDataLengthPerPacket",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
         ]
       }
     ],
-    "flows": [],
     "flow_aggregations": [],
     "_comment": "The features in the paper are not 100% clear to me, but I think that is what they meant."
   },

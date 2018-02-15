@@ -84,45 +84,45 @@
         "bidirectional": true,
         "features": [
           {
-            "basedon": [
+            "apply": [
               "tcpPshTotalCount",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "__initialWindow",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "__initialWindow",
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "mean": [
                   "_segmentSize"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "median": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "count": [
                   {
@@ -137,39 +137,39 @@
                   }
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "variance": [
                   "octetTotalCount"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "_segmentSize"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
-              "__RTTSamplestcptrace",
-              "_client_to_server"
+            "apply": [
+              "__rttSamplesTcpTrace",
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "tcpPshTotalCount",
-              "_client_to_server"
+              "forward"
             ]
           }
         ],
@@ -193,13 +193,13 @@
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "__postLossACK",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "apply": [
                   "tcpAckTotalCount",
@@ -220,114 +220,114 @@
                   }
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "quantile": [
                   "octetTotalCount",
                   0.25
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "__3rdLargestFFTComponentOfinterPacketTime",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "tcpPshTotalCount",
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "_flowDurationSeconds",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "tcpPshTotalCount",
-              "_server_to_client"
+              "backward"
             ]
           },
           "__totalIdleTime",
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "tcpAckTotalCount",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "quantile": [
                   "_interPacketTimeMicroseconds",
                   0.75
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "__fullSizeRTT"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "__fullSizeRTT"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "divide": [
                   {
@@ -338,18 +338,18 @@
                   "_flowDurationSeconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "left_shift": [
                   "tcpWindowSize",
                   "tcpWindowScale"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           "__transitionsTransactionBulk",

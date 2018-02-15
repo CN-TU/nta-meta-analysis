@@ -61,25 +61,25 @@
         "bidirectional": false,
         "features": [
           {
-            "map": [
+            "apply": [
               "packetTotalCount",
               "forward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "octetTotalCount",
               "forward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "minimumIpTotalLength",
               "forward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "maximumIpTotalLength",
               "forward"
             ]
@@ -145,25 +145,25 @@
             ]
           },
           {
-            "map": [
+            "apply": [
               "packetTotalCount",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "octetTotalCount",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "minimumIpTotalLength",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "maximumIpTotalLength",
               "backward"
             ]
@@ -226,13 +226,6 @@
                   "backward"
                 ]
               }
-            ]
-          },
-          {
-            "slice": [
-              0,
-              512,
-              "__flowPayload"
             ]
           }
         ],

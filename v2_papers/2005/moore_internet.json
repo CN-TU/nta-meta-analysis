@@ -176,7 +176,7 @@
           },
           {
             "apply": [
-              "__RTTSamples",
+              "__rttSamples",
               "forward"
             ]
           },
@@ -209,7 +209,7 @@
           },
           {
             "entropy": [
-              "__effective_bandwidth"
+              "__effectiveBandwidth"
             ]
           }
         ],
@@ -293,7 +293,7 @@
           },
           {
             "apply": [
-              "__RTTSamples",
+              "__rttSamples",
               "forward"
             ]
           },
