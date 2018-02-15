@@ -135,7 +135,7 @@
               "_interPacketTimeMicroseconds"
             ]
           },
-          "__numberof_activity_intervals"
+          "__numberOfActivityIntervals"
         ],
         "key_features": [
           "sourceIPv4Address",
