@@ -98,199 +98,115 @@
         "main_goal": "traffic_classification",
         "features": [
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "_interPacketTimeMicroseconds",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "ethernetTotalLength",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "ipTotalLength",
+              0.25
             ]
           },
           {
-            "add": [
-              {
-                "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      {
-                        "select": [
-                          true
-                        ]
-                      }
-                    ]
-                  },
-                  0.25
-                ]
-              }
+            "quantile": [
+              "__controlDataLengthPerPacket",
+              0.25
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      "forward"
-                    ]
-                  },
+                  "_interPacketTimeMicroseconds",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      "forward"
-                    ]
-                  },
+                  "ethernetTotalLength",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      "forward"
-                    ]
-                  },
+                  "ipTotalLength",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      "forward"
-                    ]
-                  },
+                  "__controlDataLengthPerPacket",
                   0.25
                 ]
-              }
+              },
+              "forward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "_interPacketTimeMicroseconds",
-                      "backward"
-                    ]
-                  },
+                  "_interPacketTimeMicroseconds",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ethernetTotalLength",
-                      "backward"
-                    ]
-                  },
+                  "ethernetTotalLength",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "ipTotalLength",
-                      "backward"
-                    ]
-                  },
+                  "ipTotalLength",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           },
           {
-            "add": [
+            "apply": [
               {
                 "quantile": [
-                  {
-                    "map": [
-                      "__controlDataLengthPerPacket",
-                      "backward"
-                    ]
-                  },
+                  "__controlDataLengthPerPacket",
                   0.25
                 ]
-              }
+              },
+              "backward"
             ]
           }
         ],
