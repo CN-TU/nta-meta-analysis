@@ -209,7 +209,7 @@
           },
           {
             "entropy": [
-              "__effective_bandwidth"
+              "__effectiveBandwidth"
             ]
           }
         ],
