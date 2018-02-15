@@ -72,188 +72,188 @@
         "bidirectional": true,
         "features": [
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "mean": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "octetTotalCount"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "octetTotalCount"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "mean": [
                   "octetTotalCount"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "octetTotalCount"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "octetTotalCount"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "mean": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "minimum": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "mean": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "maximum": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               {
                 "stdev": [
                   "_interPacketTimeMicroseconds"
                 ]
               },
-              "_server_to_client"
+              "backward"
             ]
           },
           "_flowDurationSeconds",
           {
-            "basedon": [
+            "apply": [
               "packetTotalCount",
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "packetTotalCount",
-              "_server_to_client"
+              "backward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "octetTotalCount",
-              "_client_to_server"
+              "forward"
             ]
           },
           {
-            "basedon": [
+            "apply": [
               "octetTotalCount",
-              "_server_to_client"
+              "backward"
             ]
           }
         ],
