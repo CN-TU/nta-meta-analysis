@@ -46,8 +46,8 @@
   },
   "preprocessing": {
     "performed_feature_selection": true,
-    "packet_analysis_oriented": true,
-    "flow_analysis_oriented": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
     "tools": [],
     "normalization_type": "no",
@@ -91,7 +91,7 @@
         "role": "main"
       }
     ],
-    "packets": [
+    "flows": [
       {
         "selection": "expert_knowledge",
         "role": "main",
@@ -293,10 +293,16 @@
               }
             ]
           }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
         ]
       }
     ],
-    "flows": [],
     "flow_aggregations": [],
     "_comment": "The features in the paper are not 100% clear to me, but I think that is what they meant."
   },

@@ -52,7 +52,7 @@
     "transformations": [],
     "final_data_format": "mixed_vectors",
     "feature_selections": [],
-    "packets": [
+    "flows": [
       {
         "selection": "expert_knowledge",
         "role": "main",
@@ -60,13 +60,13 @@
         "features": [
           "transportOctetDeltaCount",
           {
-            "map": [
+            "apply": [
               "transportOctetDeltaCount",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "transportOctetDeltaCount",
               "forward"
             ]
@@ -74,13 +74,13 @@
           {
             "divide": [
               {
-                "map": [
+                "apply": [
                   "transportOctetDeltaCount",
                   "backward"
                 ]
               },
               {
-                "map": [
+                "apply": [
                   "transportOctetDeltaCount",
                   "forward"
                 ]
@@ -90,13 +90,13 @@
           {
             "divide": [
               {
-                "map": [
+                "apply": [
                   "packetTotalCount",
                   "backward"
                 ]
               },
               {
-                "map": [
+                "apply": [
                   "packetTotalCount",
                   "forward"
                 ]
@@ -244,13 +244,13 @@
           },
           {
             "quantile": [
-              0.25,
               {
                 "map": [
                   "_transportPayloadLength",
                   "forward"
                 ]
-              }
+              },
+              0.25
             ]
           },
           {
@@ -265,13 +265,13 @@
           },
           {
             "quantile": [
-              0.75,
               {
                 "map": [
                   "_transportPayloadLength",
                   "forward"
                 ]
-              }
+              },
+              0.75
             ]
           },
           {
@@ -285,61 +285,51 @@
             ]
           },
           {
-            "divide": [
+            "apply": [
               {
-                "count": [
+                "divide": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "leq": [
+                        "select": [
                           {
-                            "map": [
+                            "leq": [
                               "_transportPayloadLength",
-                              "backward"
+                              50
                             ]
-                          },
-                          50
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "packetTotalCount"
                 ]
               },
-              {
-                "map": [
-                  "packetTotalCount",
-                  "backward"
-                ]
-              }
+              "backward"
             ]
           },
           {
-            "divide": [
+            "apply": [
               {
-                "count": [
+                "divide": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "leq": [
+                        "select": [
                           {
-                            "map": [
+                            "leq": [
                               "_transportPayloadLength",
-                              "forward"
+                              50
                             ]
-                          },
-                          50
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "packetTotalCount"
                 ]
               },
-              {
-                "map": [
-                  "packetTotalCount",
-                  "forward"
-                ]
-              }
+              "forward"
             ]
           },
           {
@@ -362,61 +352,51 @@
             ]
           },
           {
-            "divide": [
+            "apply": [
               {
-                "count": [
+                "divide": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "geq": [
+                        "select": [
                           {
-                            "map": [
+                            "geq": [
                               "_transportPayloadLength",
-                              "backward"
+                              1300
                             ]
-                          },
-                          1300
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "packetTotalCount"
                 ]
               },
-              {
-                "map": [
-                  "packetTotalCount",
-                  "backward"
-                ]
-              }
+              "backward"
             ]
           },
           {
-            "divide": [
+            "apply": [
               {
-                "count": [
+                "divide": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "geq": [
+                        "select": [
                           {
-                            "map": [
+                            "geq": [
                               "_transportPayloadLength",
-                              "forward"
+                              1300
                             ]
-                          },
-                          1300
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "packetTotalCount"
                 ]
               },
-              {
-                "map": [
-                  "packetTotalCount",
-                  "forward"
-                ]
-              }
+              "forward"
             ]
           },
           {
@@ -453,31 +433,31 @@
             ]
           },
           {
-            "map": [
+            "apply": [
               "tcpPshTotalCount",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "tcpAckTotalCount",
               "backward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "tcpPshTotalCount",
               "forward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "tcpAckTotalCount",
               "forward"
             ]
           },
           {
-            "map": [
+            "apply": [
               "tcpPshTotalCount",
               "backward"
             ]
@@ -485,32 +465,27 @@
           {
             "divide": [
               {
-                "count": [
+                "apply": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "equal": [
+                        "select": [
                           {
-                            "map": [
+                            "equal": [
                               "_transportPayloadLength",
-                              "forward"
+                              0
                             ]
-                          },
-                          0
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "forward"
                 ]
               },
               {
                 "count": [
-                  {
-                    "map": [
-                      "_transportPayloadLength",
-                      "forward"
-                    ]
-                  }
+                  "forward"
                 ]
               }
             ]
@@ -518,32 +493,27 @@
           {
             "divide": [
               {
-                "count": [
+                "apply": [
                   {
-                    "select": [
+                    "count": [
                       {
-                        "equal": [
+                        "select": [
                           {
-                            "map": [
+                            "equal": [
                               "_transportPayloadLength",
-                              "backward"
+                              0
                             ]
-                          },
-                          0
+                          }
                         ]
                       }
                     ]
-                  }
+                  },
+                  "backward"
                 ]
               },
               {
                 "count": [
-                  {
-                    "map": [
-                      "_transportPayloadLength",
-                      "backward"
-                    ]
-                  }
+                  "backward"
                 ]
               }
             ]
@@ -564,17 +534,19 @@
                   }
                 ]
               },
-              {
-                "count": [
-                  "_transportPayloadLength"
-                ]
-              }
+              "packetTotalCount"
             ]
           }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
         ]
       }
     ],
-    "flows": [],
     "flow_aggregations": []
   },
   "analysis_method": {
