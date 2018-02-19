@@ -208,7 +208,7 @@
                       {
                         "equal": [
                           {
-                            "get": [
+                            "get_bits": [
                               5,
                               "tcpOptions"
                             ]
