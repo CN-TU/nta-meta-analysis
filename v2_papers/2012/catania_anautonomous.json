@@ -1,0 +1,238 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "An autonomous labeling approach to support vector machines algorithms for network traffic anomaly detection",
+    "authors": [
+      "Catania, Carlos A",
+      "Bromberg, Facundo",
+      "Garino, Carlos Garc{\\'\\i}a"
+    ],
+    "publication_name": "Expert Systems with Applications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2012,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 8,
+    "bibtex": {
+      "type": "article",
+      "volume": "39",
+      "pages": "1822--1829",
+      "number": "22"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "19-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "DARPA1998",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "role": "main",
+        "features": [
+          {
+            "divide": [
+              "flowDurationMilliseconds",
+              3600000
+            ]
+          },
+          {
+            "divide": [
+              "flowDurationMilliseconds",
+              60000
+            ]
+          },
+          "_flowDurationSeconds",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          {
+            "slice_bits": [
+              0,
+              8,
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              8,
+              16,
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              16,
+              24,
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              24,
+              32,
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              0,
+              8,
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              8,
+              16,
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              16,
+              24,
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "slice_bits": [
+              24,
+              32,
+              "destinationIPv4Address"
+            ]
+          },
+          "protocolIdentifier"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
+        ],
+        "selection": "expert_knowledge"
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "libsvm",
+        "availability": "public"
+      },
+      {
+        "name": "SNORT",
+        "detail": "v2.8.3.2",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Support Vector Machine",
+        "subname": "one-class support vector machine",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "libsvm",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "SNORT",
+        "learning": "no",
+        "role": "validation",
+        "type": "heuristics",
+        "metric/decision_criteria": "no",
+        "tools": [],
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "ROC Curve",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "detection rate",
+        "type": "external",
+        "metrics": [
+          "_false_negative_rate"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "false alarm",
+        "type": "external",
+        "metrics": [
+          "_false_positive_rate"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection",
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
+  }
+}
