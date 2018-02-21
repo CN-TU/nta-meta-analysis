@@ -1,0 +1,640 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection",
+    "authors": [
+      "Mirsky, Yisroel",
+      "Doitshman, Tomer",
+      "Elocivi, Yuval",
+      "Shabtai, Asaf"
+    ],
+    "publication_name": "Network and Distributed System Security Symposium--NDSS 2018",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2018,
+    "organization_publishers": [
+      "_internet_society"
+    ],
+    "pages_number_of": 15,
+    "bibtex": {
+      "type": "inproceedings"
+    },
+    "access_open": true,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "20-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "private_iot_mirai_generated_dataset",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 2017,
+        "covered_period": "missing",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "pow": [
+              {
+                "add": [
+                  {
+                    "pow": [
+                      {
+                        "apply": [
+                          {
+                            "mean": [
+                              "octetTotalCount"
+                            ]
+                          },
+                          "forward"
+                        ]
+                      },
+                      2
+                    ]
+                  },
+                  {
+                    "pow": [
+                      {
+                        "apply": [
+                          {
+                            "mean": [
+                              "octetTotalCount"
+                            ]
+                          },
+                          "backward"
+                        ]
+                      },
+                      2
+                    ]
+                  }
+                ]
+              },
+              0.5
+            ]
+          },
+          {
+            "pow": [
+              {
+                "add": [
+                  {
+                    "pow": [
+                      {
+                        "stdev": [
+                          {
+                            "map": [
+                              {
+                                "pow": [
+                                  "octetTotalCount",
+                                  2
+                                ]
+                              },
+                              "forward"
+                            ]
+                          }
+                        ]
+                      },
+                      2
+                    ]
+                  },
+                  {
+                    "pow": [
+                      {
+                        "stdev": [
+                          {
+                            "map": [
+                              {
+                                "pow": [
+                                  "octetTotalCount",
+                                  2
+                                ]
+                              },
+                              "backward"
+                            ]
+                          }
+                        ]
+                      },
+                      2
+                    ]
+                  }
+                ]
+              },
+              0.5
+            ]
+          },
+          "__sumOfResidualProductsBetweenTwoStreams",
+          {
+            "divide": [
+              "__sumOfResidualProductsBetweenTwoStreams",
+              {
+                "multiply": [
+                  {
+                    "apply": [
+                      {
+                        "stdev": [
+                          "octetTotalCount"
+                        ]
+                      },
+                      "forward"
+                    ]
+                  },
+                  {
+                    "apply": [
+                      {
+                        "stdev": [
+                          "octetTotalCount"
+                        ]
+                      },
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort"
+        ],
+        "_name": "Socket"
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "pow": [
+              {
+                "add": [
+                  {
+                    "pow": [
+                      {
+                        "apply": [
+                          {
+                            "mean": [
+                              "octetTotalCount"
+                            ]
+                          },
+                          "forward"
+                        ]
+                      },
+                      2
+                    ]
+                  },
+                  {
+                    "pow": [
+                      {
+                        "apply": [
+                          {
+                            "mean": [
+                              "octetTotalCount"
+                            ]
+                          },
+                          "backward"
+                        ]
+                      },
+                      2
+                    ]
+                  }
+                ]
+              },
+              0.5
+            ]
+          },
+          {
+            "pow": [
+              {
+                "add": [
+                  {
+                    "pow": [
+                      {
+                        "stdev": [
+                          {
+                            "map": [
+                              {
+                                "pow": [
+                                  "octetTotalCount",
+                                  2
+                                ]
+                              },
+                              "forward"
+                            ]
+                          }
+                        ]
+                      },
+                      2
+                    ]
+                  },
+                  {
+                    "pow": [
+                      {
+                        "stdev": [
+                          {
+                            "map": [
+                              {
+                                "pow": [
+                                  "octetTotalCount",
+                                  2
+                                ]
+                              },
+                              "backward"
+                            ]
+                          }
+                        ]
+                      },
+                      2
+                    ]
+                  }
+                ]
+              },
+              0.5
+            ]
+          },
+          "__sumOfResidualProductsBetweenTwoStreams",
+          {
+            "divide": [
+              "__sumOfResidualProductsBetweenTwoStreams",
+              {
+                "multiply": [
+                  {
+                    "apply": [
+                      {
+                        "stdev": [
+                          "octetTotalCount"
+                        ]
+                      },
+                      "forward"
+                    ]
+                  },
+                  {
+                    "apply": [
+                      {
+                        "stdev": [
+                          "octetTotalCount"
+                        ]
+                      },
+                      "backward"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address"
+        ],
+        "_name": "Channel"
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address"
+        ],
+        "_name": "SrcIP"
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceMacAddress"
+        ],
+        "_name": "SrcMAC-IP"
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [
+      {
+        "name": "own_python_scripts",
+        "availability": "public"
+      },
+      {
+        "name": "Suricata",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Autoencoder",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "own_python_scripts",
+            "availability": "public"
+          }
+        ],
+        "source": "own_proposed",
+        "parameters_provided": true,
+        "subname": "KitNET"
+      },
+      {
+        "name": "suricata",
+        "learning": "no",
+        "role": "competitor",
+        "type": "heuristics",
+        "metric/decision_criteria": "exact_matching",
+        "tools": [
+          {
+            "name": "Suricata",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Isolation Forests",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "source": "referenced"
+      },
+      {
+        "name": "Gaussian Mixture Models",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "source": "referenced"
+      },
+      {
+        "name": "Gaussian Mixture Models",
+        "subname": "Incremental GMM",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "source": "referenced"
+      },
+      {
+        "name": "pcStream2",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "clustering",
+        "source": "referenced",
+        "metric/decision_criteria": "mahalanobis"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "TPR",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "FNR",
+        "type": "external",
+        "metrics": [
+          "_fnr"
+        ],
+        "source": "popular",
+        "_note": "false negative rate"
+      },
+      {
+        "name": "AUC",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Equal Error Rate",
+        "type": "external",
+        "metrics": [
+          "_fnr",
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "processing rate",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "reduced_computational_resources"
+    ]
+  }
+}
