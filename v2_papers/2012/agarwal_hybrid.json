@@ -1,0 +1,290 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Hybrid Approach for Detection of Anomaly Network Traffic using Data Mining Techniques",
+    "authors": [
+      "Agarwal, Basant",
+      "Mittal, Namita"
+    ],
+    "publication_name": "Procedia Technology",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2012,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 8,
+    "bibtex": {
+      "type": "article",
+      "volume": "6",
+      "pages": "996--1003",
+      "publisher": "Elsevier"
+    },
+    "access_open": true,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "23-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "DARPA99",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "week2"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [
+      "entropy"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "active_timeout": 60,
+        "bidirectional": true,
+        "features": [
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "octetTotalCount"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "octetTotalCount"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "sourceIPv4Address"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "sourceIPv4Address"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "sourceTransportPort"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "sourceTransportPort"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "destinationIPv4Address"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "destinationIPv4Address"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "destinationTransportPort"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "destinationTransportPort"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "divide": [
+              {
+                "entropy": [
+                  "protocolIdentifier"
+                ]
+              },
+              {
+                "log": [
+                  {
+                    "distinct": [
+                      "protocolIdentifier"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": []
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "competitor",
+        "main_goal": "anomaly_detection",
+        "active_timeout": 60,
+        "bidirectional": true,
+        "features": [
+          {
+            "distinct": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "distinct": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "distinct": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "distinct": [
+              "destinationTransportPort"
+            ]
+          },
+          {
+            "distinct": [
+              "protocolIdentifier"
+            ]
+          },
+          {
+            "subtract": [
+              "packetTotalCount",
+              {
+                "distinct": [
+                  "octetTotalCount"
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": []
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "SVM",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Threshold based rule",
+        "learning": "no",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "exact_matching",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "no"
+  }
+}
