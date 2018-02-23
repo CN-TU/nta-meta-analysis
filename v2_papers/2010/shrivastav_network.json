@@ -1,0 +1,181 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Network Traffic Classification using Semi-Supervised Approach",
+    "authors": [
+      "Shrivastav, Amita",
+      "Tiwari, Aruna"
+    ],
+    "publication_name": "International Conference on Machine Learning and Computing (ICMLC), 2010",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2010,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 5,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "345--349",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "23-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "KDD99",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "tcp"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "months",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "decimal_scaling",
+    "transformations": [
+      "no"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "bidirectional": true,
+        "features": [
+          "_KDD1",
+          "_KDD2",
+          "_KDD3",
+          "_KDD4",
+          "_KDD5",
+          "_KDD6",
+          "_KDD7",
+          "_KDD8",
+          "_KDD9",
+          "_KDD10",
+          "_KDD11",
+          "_KDD12",
+          "_KDD13",
+          "_KDD14",
+          "_KDD15",
+          "_KDD16",
+          "_KDD17",
+          "_KDD18",
+          "_KDD19",
+          "_KDD20",
+          "_KDD21",
+          "_KDD22",
+          "_KDD23",
+          "_KDD24",
+          "_KDD25",
+          "_KDD26",
+          "_KDD27",
+          "_KDD28",
+          "_KDD29",
+          "_KDD30",
+          "_KDD31",
+          "_KDD32",
+          "_KDD33",
+          "_KDD34",
+          "_KDD35",
+          "_KDD36",
+          "_KDD37",
+          "_KDD38",
+          "_KDD39",
+          "_KDD40",
+          "_KDD41"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": true,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "own_matlab_scripts",
+        "availability": "private"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "K-means",
+        "subname": "K-means with probabilistic cluster labeling",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "own_matlab_scripts",
+            "availability": "private"
+          }
+        ],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "enhanced_functionality"
+    ],
+    "reproducibility": "no"
+  }
+}
