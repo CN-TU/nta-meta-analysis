@@ -1,0 +1,266 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Anomalous Payload-based Network Intrusion Detection",
+    "authors": [
+      "Wang, Ke",
+      "Stolfo, Salvatore J."
+    ],
+    "publication_name": "International Workshop on Recent Advances in Intrusion Detection",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2004,
+    "organization_publishers": [
+      "springer"
+    ],
+    "pages_number_of": 20,
+    "bibtex": {
+      "type": "inproceedings"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "26-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "DARPA99",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "week1",
+          "week3",
+          "week4",
+          "week5"
+        ],
+        "anonymized": false
+      },
+      {
+        "name": "CUCS",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "tcp"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "A",
+          "B"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "__payload"
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          {
+            "slice_bits": [
+              "__payload",
+              0,
+              {
+                "multiply": [
+                  100,
+                  8
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          {
+            "slice_bits": [
+              "__payload",
+              {
+                "subtract": [
+                  {
+                    "multiply": [
+                      "_transportPayloadLength",
+                      8
+                    ]
+                  },
+                  {
+                    "multiply": [
+                      100,
+                      8
+                    ]
+                  }
+                ]
+              },
+              {
+                "multiply": [
+                  "_transportPayloadLength",
+                  8
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          "__payload"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "features": [
+          {
+            "slice_bits": [
+              "__payload",
+              0,
+              {
+                "multiply": [
+                  1000,
+                  8
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "PAYL",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "mahalanobis",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false,
+        "subname": "payload-based anomaly detection"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": true,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Receiver Operating Characteristics",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Performance",
+        "type": "internal",
+        "metrics": [
+          "__memory",
+          "time-based"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "detection rate",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "false positive rate",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "fast_processing",
+      "reduced_computational_resources",
+      "improved_data_description"
+    ],
+    "reproducibility": "reproducible"
+  }
+}
