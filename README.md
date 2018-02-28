@@ -1,5 +1,8 @@
 # nta-meta-analysis
 
+[![Documentation Status](https://readthedocs.org/projects/nta-meta-analysis/badge/?version=latest)](https://nta-meta-analysis.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/CN-TU/nta-meta-analysis.svg?branch=master)](https://travis-ci.org/CN-TU/nta-meta-analysis)
+
 This repository contains work performed by the Communications Network Group at TU Wien, Institute of Telecommunications.
 
 More information about this work can be found here: https://www.cn.tuwien.ac.at/network-traffic/ntadatabase/
