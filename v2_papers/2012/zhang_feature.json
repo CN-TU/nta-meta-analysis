@@ -45,19 +45,19 @@
       },
       {
         "name": "UNIBS",
+        "availability": "public_on_demand",
+        "format": "packet",
         "types": [
           "ip"
         ],
+        "generation": "captured",
         "generation_year": 2009,
+        "covered_period": "days",
         "details": [
           "no_payload"
         ],
         "subsets": [],
-        "anonymized": true,
-        "availability": "public_on_demand",
-        "format": "packet",
-        "generation": "captured",
-        "covered_period": "days"
+        "anonymized": true
       },
       {
         "name": "CAIDA 2009",
@@ -187,7 +187,9 @@
         "_comment": "SU_ACC+SRSF in Cambridge data with NBK"
       },
       {
+        "selection": "feature_selection",
         "role": "main",
+        "main_goal": "application_classification",
         "bidirectional": true,
         "features": [
           "destinationTransportPort",
@@ -216,8 +218,6 @@
           "destinationIPv4Address",
           "destinationTransportPort"
         ],
-        "selection": "feature_selection",
-        "main_goal": "application_classification",
         "_comment": "WSU_AUC+SRSF in Cambridge data with C4.5"
       },
       {
@@ -346,6 +346,7 @@
     "focus_main": "features",
     "claimed_improvements": [
       "improved_traffic_classification"
-    ]
+    ],
+    "reproducibility": "reproducible"
   }
 }
