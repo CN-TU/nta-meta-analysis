@@ -1,0 +1,351 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Feature selection for optimizing traffic classification",
+    "authors": [
+      "Zhang, Hongli",
+      "Lu, Gang",
+      "Qassrawi, Mahmoud T",
+      "Zhang, Yu",
+      "Yu, Xiangzhan"
+    ],
+    "publication_name": "Computer Communications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2012,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 15,
+    "bibtex": {
+      "type": "article",
+      "volume": "35",
+      "pages": "1457--1471",
+      "publisher": "Elsevier",
+      "number": "12"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "02-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "Cambridge 2003",
+        "availability": "lost_source",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2003,
+        "covered_period": "hours",
+        "details": [],
+        "subsets": []
+      },
+      {
+        "name": "UNIBS",
+        "types": [
+          "ip"
+        ],
+        "generation_year": 2009,
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true,
+        "availability": "public_on_demand",
+        "format": "packet",
+        "generation": "captured",
+        "covered_period": "days"
+      },
+      {
+        "name": "CAIDA 2009",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2009,
+        "details": [
+          "no_payload"
+        ],
+        "subsets": [],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "tcpdump",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Weighted Symmetrical Uncertainty with AUC metric (WSU_AUC)",
+        "type": "hybrid",
+        "classifier": "Naive Bayes with Kernel Estimation Method",
+        "role": "main"
+      },
+      {
+        "name": "Weighted Symmetrical Uncertainty with AUC metric (WSU_AUC)",
+        "type": "hybrid",
+        "classifier": "C4.5 Decision Tree",
+        "role": "main"
+      },
+      {
+        "name": "Symmetrical Uncertainty with Accuracy metric (SU_ACC)",
+        "type": "hybrid",
+        "classifier": "Naive Bayes with Kernel Estimation Method",
+        "role": "competitor"
+      },
+      {
+        "name": "Symmetrical Uncertainty with Accuracy metric (SU_ACC)",
+        "type": "hybrid",
+        "classifier": "Naive Bayes with Kernel Estimation Method",
+        "role": "competitor"
+      },
+      {
+        "name": "Select Robust and Stable Features (SRSF)",
+        "type": "filter",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          "destinationTransportPort",
+          {
+            "minimum": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "apply": [
+              "__initialWindowBytes",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__initialWindowBytes",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ],
+        "_comment": "WSU_AUC+SRSF in Cambridge data with NBK"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          "destinationTransportPort",
+          "tcpPshTotalCount",
+          {
+            "get": [
+              "_maximumSegmentSize",
+              0
+            ]
+          },
+          {
+            "apply": [
+              "__initialWindowBytes",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ],
+        "_comment": "SU_ACC+SRSF in Cambridge data with NBK"
+      },
+      {
+        "role": "main",
+        "bidirectional": true,
+        "features": [
+          "destinationTransportPort",
+          {
+            "minimum": [
+              "octetTotalCount"
+            ]
+          },
+          {
+            "apply": [
+              "__initialWindowBytes",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "__initialWindowBytes",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ],
+        "selection": "feature_selection",
+        "main_goal": "application_classification",
+        "_comment": "WSU_AUC+SRSF in Cambridge data with C4.5"
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "application_classification",
+        "bidirectional": true,
+        "features": [
+          "destinationTransportPort",
+          "tcpPshTotalCount",
+          {
+            "get": [
+              "_maximumSegmentSize",
+              0
+            ]
+          },
+          {
+            "apply": [
+              "__totalFullSizeRTTSamplesCount",
+              "forward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ],
+        "_comment": "SU_ACC+SRSF in Cambridge data with C4.5"
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Naive Bayes",
+        "subname": "Naive Bayes with Kernel Estimation method",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Decision Tree",
+        "subname": "C4.5 Decision Tree",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "TPR",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "FPR",
+        "type": "external",
+        "metrics": [
+          "_fpr"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "flow accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "byte accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification",
+      "traffic_classification"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ]
+  }
+}
