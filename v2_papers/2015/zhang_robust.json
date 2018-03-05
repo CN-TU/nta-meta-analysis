@@ -1,0 +1,345 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Robust network traffic classification",
+    "authors": [
+      "Zhang, Jun",
+      "Chen, Xiao",
+      "Xiang, Yang",
+      "Zhou, Wanlei",
+      "Wu, Jie"
+    ],
+    "publication_name": "IEEE/ACM Transactions on Networking (TON)",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2015,
+    "organization_publishers": [
+      "ieee",
+      "acm"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "article",
+      "volume": "23",
+      "pages": "1257--1270",
+      "number": "4",
+      "publisher": "IEEE Press"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "05-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "KEIO",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2006,
+        "covered_period": "minutes",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      },
+      {
+        "name": "WIDE",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": [
+          2008,
+          2009
+        ],
+        "covered_period": "hours",
+        "details": [],
+        "subsets": [
+          "18-03-2008",
+          "31-03-2009"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "ISP Australia",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2010,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "l7-filter",
+        "availability": "public"
+      },
+      {
+        "name": "tstat",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "application_classification",
+        "idle_timeout": 900,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": true,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "K-means",
+        "subname": "K-means using with manual labeling of a subset of flows",
+        "learning": "semisupervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "parameters_provided": true,
+        "source": "referenced"
+      },
+      {
+        "name": "K-means",
+        "subname": "K-means with Robust Traffic Classification (RTC)",
+        "learning": "semisupervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": true
+      },
+      {
+        "name": "SVM",
+        "subname": "One-class SVM",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Random forest",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Random Forest",
+        "subname": "Random Forest with BoF-based Traffic Classification",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "TPR",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "FPR",
+        "type": "external",
+        "metrics": [
+          "_fpr"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "f-1",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "flow accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "byte accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "FNR",
+        "type": "external",
+        "metrics": [
+          "_fnr"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "attack_classification",
+      "traffic_classification",
+      "application_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
