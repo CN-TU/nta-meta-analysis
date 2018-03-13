@@ -1,0 +1,151 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Characterization of Network-Wide Anomalies in Traffic Flows",
+    "authors": [
+      "Lakhina, Anukool",
+      "Crovella, Mark",
+      "Diot, Christophe"
+    ],
+    "publication_name": "IMC",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2004,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "inproceedings"
+    },
+    "access_open": false,
+    "curated_by": "bachl, m.",
+    "curated_last_revision": "26-02-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "abilene",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [
+      {
+        "name": "NetFlow",
+        "availability": "commercial"
+      },
+      {
+        "name": "Juniper Traffic Sampling",
+        "availability": "commercial"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "sampling",
+      "time_series"
+    ],
+    "final_data_format": "time_series",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "intermediate",
+        "main_goal": "anomaly_detection",
+        "active_timeout": 300,
+        "bidirectional": false,
+        "features": [
+          "octetTotalCount"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ],
+    "flow_aggregations": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": false,
+        "active_timeout": 600,
+        "features": [
+          "octetTotalCount",
+          "packetTotalCount",
+          "_flowTotalCount"
+        ],
+        "key_features": [
+          "_ingressRouter",
+          "__egressRouter"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Principal Component Analysis",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "statistics",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": true,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "Precision determined by manual validation",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "new_phenomena_disclosed"
+    ]
+  }
+}
