@@ -1,0 +1,642 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "DDoS attack detection using flow entropy and clustering technique",
+    "authors": [
+      "Qin, Xi",
+      "Xu, Tongge",
+      "Wang, Chao"
+    ],
+    "publication_name": "Computational Intelligence and Security (CIS), 2015 11th International Conference on",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2015,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 4,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "412--415",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "15-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "DARPA IDeval",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "private_mix",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "mixed",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "entropy"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "ddos_detection",
+        "bidirectional": true,
+        "features": [
+          {
+            "entropy": [
+              "sourceIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "destinationTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              "_flowDurationSeconds"
+            ]
+          },
+          {
+            "subtract": [
+              0,
+              {
+                "multiply": [
+                  {
+                    "add": [
+                      {
+                        "argmax": [
+                          {
+                            "count": [
+                              {
+                                "select": [
+                                  {
+                                    "less": [
+                                      "ipTotalLength",
+                                      128
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "count": [
+                              {
+                                "select": [
+                                  {
+                                    "and": [
+                                      {
+                                        "geq": [
+                                          "ipTotalLength",
+                                          128
+                                        ]
+                                      },
+                                      {
+                                        "less": [
+                                          "ipTotalLength",
+                                          256
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "count": [
+                              {
+                                "select": [
+                                  {
+                                    "and": [
+                                      {
+                                        "geq": [
+                                          "ipTotalLength",
+                                          256
+                                        ]
+                                      },
+                                      {
+                                        "less": [
+                                          "ipTotalLength",
+                                          512
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "count": [
+                              {
+                                "select": [
+                                  {
+                                    "and": [
+                                      {
+                                        "geq": [
+                                          "ipTotalLength",
+                                          512
+                                        ]
+                                      },
+                                      {
+                                        "less": [
+                                          "ipTotalLength",
+                                          1024
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "count": [
+                              {
+                                "select": [
+                                  {
+                                    "and": [
+                                      {
+                                        "geq": [
+                                          "ipTotalLength",
+                                          1024
+                                        ]
+                                      },
+                                      {
+                                        "less": [
+                                          "ipTotalLength",
+                                          1500
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      1
+                    ]
+                  },
+                  {
+                    "add": [
+                      {
+                        "add": [
+                          {
+                            "add": [
+                              {
+                                "add": [
+                                  {
+                                    "multiply": [
+                                      {
+                                        "divide": [
+                                          {
+                                            "count": [
+                                              {
+                                                "select": [
+                                                  {
+                                                    "less": [
+                                                      "ipTotalLength",
+                                                      128
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "packetTotalCount"
+                                        ]
+                                      },
+                                      {
+                                        "log": [
+                                          {
+                                            "divide": [
+                                              {
+                                                "count": [
+                                                  {
+                                                    "select": [
+                                                      {
+                                                        "less": [
+                                                          "ipTotalLength",
+                                                          128
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              "packetTotalCount"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "multiply": [
+                                      {
+                                        "divide": [
+                                          {
+                                            "count": [
+                                              {
+                                                "select": [
+                                                  {
+                                                    "and": [
+                                                      {
+                                                        "geq": [
+                                                          "ipTotalLength",
+                                                          128
+                                                        ]
+                                                      },
+                                                      {
+                                                        "less": [
+                                                          "ipTotalLength",
+                                                          256
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "packetTotalCount"
+                                        ]
+                                      },
+                                      {
+                                        "log": [
+                                          {
+                                            "divide": [
+                                              {
+                                                "count": [
+                                                  {
+                                                    "select": [
+                                                      {
+                                                        "and": [
+                                                          {
+                                                            "geq": [
+                                                              "ipTotalLength",
+                                                              128
+                                                            ]
+                                                          },
+                                                          {
+                                                            "less": [
+                                                              "ipTotalLength",
+                                                              256
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              "packetTotalCount"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "multiply": [
+                                  {
+                                    "divide": [
+                                      {
+                                        "count": [
+                                          {
+                                            "select": [
+                                              {
+                                                "and": [
+                                                  {
+                                                    "geq": [
+                                                      "ipTotalLength",
+                                                      256
+                                                    ]
+                                                  },
+                                                  {
+                                                    "less": [
+                                                      "ipTotalLength",
+                                                      512
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "packetTotalCount"
+                                    ]
+                                  },
+                                  {
+                                    "log": [
+                                      {
+                                        "divide": [
+                                          {
+                                            "count": [
+                                              {
+                                                "select": [
+                                                  {
+                                                    "and": [
+                                                      {
+                                                        "geq": [
+                                                          "ipTotalLength",
+                                                          256
+                                                        ]
+                                                      },
+                                                      {
+                                                        "less": [
+                                                          "ipTotalLength",
+                                                          512
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "packetTotalCount"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "multiply": [
+                              {
+                                "divide": [
+                                  {
+                                    "count": [
+                                      {
+                                        "select": [
+                                          {
+                                            "and": [
+                                              {
+                                                "geq": [
+                                                  "ipTotalLength",
+                                                  512
+                                                ]
+                                              },
+                                              {
+                                                "less": [
+                                                  "ipTotalLength",
+                                                  1024
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "packetTotalCount"
+                                ]
+                              },
+                              {
+                                "log": [
+                                  {
+                                    "divide": [
+                                      {
+                                        "count": [
+                                          {
+                                            "select": [
+                                              {
+                                                "and": [
+                                                  {
+                                                    "geq": [
+                                                      "ipTotalLength",
+                                                      512
+                                                    ]
+                                                  },
+                                                  {
+                                                    "less": [
+                                                      "ipTotalLength",
+                                                      1024
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "packetTotalCount"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "multiply": [
+                          {
+                            "divide": [
+                              {
+                                "count": [
+                                  {
+                                    "select": [
+                                      {
+                                        "and": [
+                                          {
+                                            "geq": [
+                                              "ipTotalLength",
+                                              1024
+                                            ]
+                                          },
+                                          {
+                                            "less": [
+                                              "ipTotalLength",
+                                              1500
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "packetTotalCount"
+                            ]
+                          },
+                          {
+                            "log": [
+                              {
+                                "divide": [
+                                  {
+                                    "count": [
+                                      {
+                                        "select": [
+                                          {
+                                            "and": [
+                                              {
+                                                "geq": [
+                                                  "ipTotalLength",
+                                                  1024
+                                                ]
+                                              },
+                                              {
+                                                "less": [
+                                                  "ipTotalLength",
+                                                  1500
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "packetTotalCount"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "minimum": [
+              {
+                "get": [
+                  14,
+                  "tcpControlBits"
+                ]
+              },
+              {
+                "get": [
+                  11,
+                  "tcpControlBits"
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "K-means",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "DF-Rate",
+        "type": "external",
+        "metrics": [
+          "recall",
+          "_fpr"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "Detection Rate",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "ddos_detection",
+      "anomaly_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "replicable"
+  }
+}
