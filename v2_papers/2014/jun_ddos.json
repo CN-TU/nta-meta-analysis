@@ -130,7 +130,7 @@
   "evaluation": {
     "algorithm_comparison": true,
     "internal_validation": false,
-    "external_validation": false,
+    "external_validation": true,
     "dpi-based_validation": false,
     "port-based_validation": false,
     "pre-knowledge-based_validation": true,
