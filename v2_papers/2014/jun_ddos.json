@@ -1,0 +1,161 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "DDoS attack detection by using packet sampling and flow features",
+    "authors": [
+      "Jun, Jae-Hyun",
+      "Ahn, Cheol-Woong",
+      "Kim, Sung-Ho"
+    ],
+    "publication_name": "proceedings of the 29th annual ACM symposium on applied computing",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2014,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 2,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "711--712",
+      "organization": "ACM"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "16-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "private OPNET simulated data",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 2015,
+        "covered_period": "missing",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "entropy"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "role": "main",
+        "active_timeout": 6,
+        "bidirectional": true,
+        "features": [
+          "packetTotalCount"
+        ],
+        "key_features": [],
+        "main_goal": "ddos_detection",
+        "selection": "expert_knowledge"
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "ddos_detection",
+        "active_timeout": 6,
+        "bidirectional": true,
+        "features": [
+          {
+            "entropy": [
+              "destinationIPv4Address"
+            ]
+          },
+          {
+            "entropy": [
+              "sourceTransportPort"
+            ]
+          },
+          {
+            "entropy": [
+              {
+                "divide": [
+                  "packetTotalCount",
+                  "_flowDurationSeconds"
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "threshold comparison",
+        "learning": "no",
+        "role": "main",
+        "type": "heuristics",
+        "metric/decision_criteria": "_comparison",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "Packet ratio after filtering",
+        "type": "external",
+        "metrics": [],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "ddos_detection",
+      "anomaly_detection"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "no"
+  }
+}
