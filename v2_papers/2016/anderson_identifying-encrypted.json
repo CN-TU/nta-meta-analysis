@@ -1,0 +1,262 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "identifying encrypted malware traffic with contextual flow data",
+    "authors": [
+      "Anderson, Blake",
+      "McGrew, David"
+    ],
+    "publication_name": "proceedings of the 2016 acm workshop on artificial intelligence and security",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2016,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "35--46"
+    },
+    "access_open": false,
+    "curated_by": "fiv",
+    "curated_last_revision": "30-01-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "anderson2016-threatgrid-malware-data",
+        "availability": "private",
+        "format": "_packet_and_flow",
+        "types": [
+          "dns",
+          "http",
+          "_tls"
+        ],
+        "generation": "captured",
+        "generation_year": 2016,
+        "covered_period": "months",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "anderson2016-bening-data-DMZ-network",
+        "availability": "private",
+        "format": "_packet_and_flow",
+        "types": [
+          "dns",
+          "http",
+          "_tls"
+        ],
+        "generation": "captured",
+        "generation_year": 2016,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "april_training-test",
+          "march_validation"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "joy",
+        "detail": "v2.0",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "zscore",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "statistical significance of model coefficients",
+        "type": "hybrid",
+        "classifier": "l1-logistic regression",
+        "role": "main"
+      }
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 300,
+        "idle_timeout": 0,
+        "bidirectional": true,
+        "features": [
+          "ipPayloadLength",
+          "__tcpPayloadLength",
+          "__udpPayloadLength",
+          "__icmpPayloadLength",
+          "protocolIdentifier",
+          "__binnarymappingInterPacketTimeMilliseconds",
+          "__binarymappingPayloadLength",
+          "__bynarymappgin256byteDistributionPayload",
+          "__tlsBinarymapping176hexCodesInOfferedCiphersuites",
+          "__tlsBinarymapping21TLSextensions",
+          "__tlsPublicKeyLength",
+          "__tlsSrvSelectedCiphersuite",
+          "__tlsSrvSupportedExtensions",
+          "__tlsSrvNumberOfCertificates",
+          "__tlsSrvNumberOfSANnames",
+          "__tlsSrvValidityInDays",
+          "__tlsSrvSelfSignedCertificateFlag",
+          "__dnsDomainNameLength",
+          "__dnsFqdnLength",
+          "__dnsBinarymapping40mostCommonSuffixes",
+          "__dnsNotCommonSuffix",
+          "__dnsBinarymapping32mostCommonTTLvalues",
+          "__dnsNotCommonTTLvalue",
+          "__dnsNumberOfNumericalCharacters",
+          "__dnsNumberOfNonAlphaNumericalCharacters",
+          "__dnsNumberOfreturnedIPaddresses",
+          "__dnsDomainNameInTop100Alexa",
+          "__dnsDomainNameInTop1KAlexa",
+          "__dnsDomainNameInTop10KAlexa",
+          "__dnsDomainNameInTop100KAlexa",
+          "__dnsDomainNameInTop1MAlexa",
+          "__dnsDomainNameNotInAlexa",
+          "__httpBinarymappingCommonHeaderValues",
+          "__httpBinarymappingCommonContentTypes",
+          "__httpBinarymappingCommonUserAgents",
+          "__httpBinarymappingCommonAcceptLanguages",
+          "__httpBinarymappingCommonServers",
+          "__httpOtherCode",
+          "__httpOtherHeaderValue",
+          "__httpOtherContentType",
+          "__httpOtherUserAgent",
+          "__httpOtherAcceptLanguage",
+          "__httpOtherServer",
+          "__httpOtherCode"
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "scikit-learn",
+        "detail": "python",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "l1-logistic regression",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "regression",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "SVM",
+        "subname": "Gaussian kernel, exhaustive parameter search CV",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Xfold-cross-validation",
+        "subname": "10-fold",
+        "learning": "nest",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "second-order correlation analysis",
+        "type": "external",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "own_proposed"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "traffic_classification"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "improved_data_description",
+      "_valid_for_encrypted_data"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
