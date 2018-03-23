@@ -1,0 +1,203 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "An effective feature selection approach for network intrusion detection",
+    "authors": [
+      "Zhang, Fengli",
+      "Wang, Dan"
+    ],
+    "publication_name": "Networking, Architecture and Storage (NAS), 2013 IEEE Eighth International Conference on",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2013,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 5,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "307--311",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "21-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "NSL-KDD",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Feature reduction with Bayesian Network",
+        "type": "wrapper",
+        "classifier": "Bayesian Network",
+        "role": "main"
+      },
+      {
+        "name": "FCBF (information gain-based)",
+        "type": "filter",
+        "role": "competitor"
+      },
+      {
+        "name": "Gain Ratio-based",
+        "type": "filter",
+        "role": "competitor"
+      },
+      {
+        "name": "ReliefF",
+        "type": "filter",
+        "role": "competitor"
+      },
+      {
+        "name": "Chi-Square-based",
+        "type": "filter",
+        "role": "competitor"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "bidirectional": true,
+        "features": [
+          "_KDD3",
+          "_KDD5",
+          "_KDD6",
+          "_KDD10",
+          "_KDD17",
+          "_KDD18",
+          "_KDD32",
+          "_KDD33",
+          "_KDD35",
+          "_KDD36",
+          "_KDD38"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "WEKA",
+        "detail": "version 3.6.6",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Bayesian Network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "tools": [
+          {
+            "name": "WEKA",
+            "detail": "version 3.6.6",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Accuracy of Classification",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "True Positive Rate",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "False Positive Rate",
+        "type": "external",
+        "metrics": [
+          "_fpr"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "attack_classification",
+      "traffic_classification"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_traffic_classification",
+      "reduced_computational_resources"
+    ],
+    "reproducibility": "replicable"
+  }
+}

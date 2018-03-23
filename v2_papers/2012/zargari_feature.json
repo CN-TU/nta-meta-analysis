@@ -1,0 +1,213 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Feature Selection in the Corrected KDD-dataset ",
+    "authors": [
+      "Zargari, Shahrzad",
+      "Voorhis, Dave"
+    ],
+    "publication_name": "Emerging Intelligent Data and Web Technologies (EIDWT), 2012 Third International Conference on",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2012,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 7,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "174--180",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "23-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "NSL-KDD",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "Weka",
+        "detail": "v3.7.4",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Correlation-based Feature Subset Selection",
+        "role": "competitor",
+        "type": "filter"
+      },
+      {
+        "name": "Information Gain-based Feature Selection",
+        "type": "filter",
+        "role": "competitor"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "study_based",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "bidirectional": true,
+        "features": [
+          "_KDD3",
+          "_KDD5",
+          "_KDD6",
+          "_KDD39"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "attack_classification",
+        "bidirectional": true,
+        "features": [
+          "_KDD2",
+          "_KDD3",
+          "_KDD5",
+          "_KDD6"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "competitor",
+        "main_goal": "attack_classification",
+        "bidirectional": true,
+        "features": [
+          "_KDD5",
+          "_KDD3",
+          "_KDD23",
+          "_KDD24"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "Weka",
+        "detail": "v3.7.4",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Random Forest",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "Weka",
+            "detail": "v3.7.4",
+            "availability": "public"
+          }
+        ],
+        "source": "missing",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "correctly classified",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Kappa Stat",
+        "type": "external",
+        "metrics": [
+          "_kappa_coefficient"
+        ],
+        "source": "missing"
+      },
+      {
+        "name": "FpNormal",
+        "type": "missing",
+        "metrics": [],
+        "source": "missing"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "attack_classification",
+      "anomaly_detection"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "replicable"
+  }
+}

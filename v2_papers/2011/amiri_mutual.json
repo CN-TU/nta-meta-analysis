@@ -1,0 +1,309 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Mutual information-based feature selection for intrusion detection systems",
+    "authors": [
+      "Amiri, Fatemeh",
+      "Yousefi, MohammadMahdi Rezaei",
+      "Lucas, Caro",
+      "Shakery, Azadeh",
+      "Yazdani, Nasser"
+    ],
+    "publication_name": "Journal of Network and Computer Applications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2011,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 16,
+    "bibtex": {
+      "type": "article",
+      "volume": "34",
+      "pages": "1184--1199",
+      "number": "4",
+      "publisher": "Elsevier"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "13-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "KDD99",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "10%_training_set"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "range",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Forward Feature Selection Algorithm (FFSA)",
+        "type": "filter",
+        "role": "competitor"
+      },
+      {
+        "name": "Modified mutual information-based feature selection algorithm",
+        "type": "filter",
+        "role": "main"
+      },
+      {
+        "name": "Linear correlation-based feature selection algorithm",
+        "role": "main",
+        "type": "filter"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD5",
+          "_KDD23",
+          "_KDD3",
+          "_KDD6",
+          "_KDD35",
+          "_KDD1"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "dos_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD5",
+          "_KDD23",
+          "_KDD6",
+          "_KDD2",
+          "_KDD24",
+          "_KDD41",
+          "_KDD36",
+          "_KDD3"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "probe_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD40",
+          "_KDD5",
+          "_KDD33",
+          "_KDD23",
+          "_KDD28",
+          "_KDD3",
+          "_KDD41",
+          "_KDD35",
+          "_KDD27",
+          "_KDD32",
+          "_KDD12",
+          "_KDD24",
+          "_KDD28"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "user_to_root_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD5",
+          "_KDD1",
+          "_KDD3",
+          "_KDD24",
+          "_KDD23",
+          "_KDD2",
+          "_KDD33",
+          "_KDD6",
+          "_KDD32",
+          "_KDD4",
+          "_KDD14",
+          "_KDD21"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "remote_to_local_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD3",
+          "_KDD13",
+          "_KDD22",
+          "_KDD23",
+          "_KDD10",
+          "_KDD5",
+          "_KDD35",
+          "_KDD24",
+          "_KDD6",
+          "_KDD33",
+          "_KDD37",
+          "_KDD32",
+          "_KDD1",
+          "_KDD37",
+          "_KDD39"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "LS-SVMlab",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "SVM",
+        "subname": "Least Squares SVM",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "LS-SVMlab",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "Detection Rate",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "FPR",
+        "type": "external",
+        "metrics": [
+          "_fpr"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "ROC curve",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "attack_classification",
+      "traffic_classification"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "replicable"
+  }
+}

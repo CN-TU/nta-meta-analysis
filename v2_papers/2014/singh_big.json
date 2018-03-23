@@ -1,0 +1,254 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Big data analytics framework for peer-to-peer botnet detection using random forests",
+    "authors": [
+      "Singh, Kamaldeep",
+      "Guntuku, Sharath Chandra",
+      "Thakur, Abhishek",
+      "Hota, Chittaranjan"
+    ],
+    "publication_name": "Information Sciences",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2014,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 10,
+    "bibtex": {
+      "type": "article",
+      "volume": "278",
+      "pages": "488--497",
+      "publisher": "Elsevier"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "19-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "private testbed generated traffic",
+        "availability": "private",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 2014,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "tshark",
+        "availability": "public"
+      },
+      {
+        "name": "Apache Hive",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Information Gain Attribute Evaluation with Ranker Algorithm",
+        "type": "filter",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "add": [
+                  "ipHeaderLength",
+                  "tcpHeaderLength"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpPshTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "add": [
+                  "ipHeaderLength",
+                  "tcpHeaderLength"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "tcpPshTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ],
+        "main_goal": "botnet_detection"
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "Apache Mahout",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Random Forest",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "Apache Mahout",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "True positive rate",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "False positive rate",
+        "type": "external",
+        "metrics": [
+          "_fpr"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "Precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "botnet_detection",
+    "subgoals": [
+      "botnet_detection"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "big_data_oriented",
+      "fast_processing"
+    ],
+    "reproducibility": "no"
+  }
+}
