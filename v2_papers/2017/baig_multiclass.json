@@ -1,0 +1,233 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "A multiclass cascade of artificial neural network for network intrusion detection",
+    "authors": [
+      "Baig, Mirza M",
+      "Awais, Mian M",
+      "El-Alfy, El-Sayed M"
+    ],
+    "publication_name": "Journal of Intelligent & Fuzzy Systems",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2017,
+    "organization_publishers": [
+      "_ios_press"
+    ],
+    "pages_number_of": 9,
+    "bibtex": {
+      "type": "article",
+      "volume": "32",
+      "pages": "2875--2883",
+      "number": "4",
+      "publisher": "IOS Press"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "26-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "UNSW-NB15",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "mixed",
+        "generation_year": 2015,
+        "covered_period": "hours",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "KDD99",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD1",
+          "_KDD2",
+          "_KDD3",
+          "_KDD4",
+          "_KDD5",
+          "_KDD6",
+          "_KDD7",
+          "_KDD8",
+          "_KDD9",
+          "_KDD10",
+          "_KDD11",
+          "_KDD12",
+          "_KDD13",
+          "_KDD14",
+          "_KDD15",
+          "_KDD16",
+          "_KDD17",
+          "_KDD18",
+          "_KDD19",
+          "_KDD20",
+          "_KDD21",
+          "_KDD22",
+          "_KDD23",
+          "_KDD24",
+          "_KDD25",
+          "_KDD26",
+          "_KDD27",
+          "_KDD28",
+          "_KDD29",
+          "_KDD30",
+          "_KDD31",
+          "_KDD32",
+          "_KDD33",
+          "_KDD34",
+          "_KDD35",
+          "_KDD36",
+          "_KDD37",
+          "_KDD38",
+          "_KDD39",
+          "_KDD40",
+          "_KDD41"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "Neural Network",
+        "subname": "Boosting-based Neural Network Cascade",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "own_proposed",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "confusion matrix",
+        "type": "external",
+        "metrics": [
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "recall",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "F1-score",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection",
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ]
+  }
+}
