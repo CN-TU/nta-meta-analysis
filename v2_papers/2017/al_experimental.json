@@ -1,0 +1,309 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Experimental Evaluation of a Multi-layer Feed-Forward Artificial Neural Network Classifier for Network Intrusion Detection System",
+    "authors": [
+      "Al-Zewairi, Malek",
+      "Almajali, Sufyan",
+      "Awajan, Arafat"
+    ],
+    "publication_name": "2017 International Conference on New Trends in Computing Sciences (ICTCS)",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2017,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "167--172",
+      "organization": "IEEE"
+    },
+    "access_open": false,
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "26-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "UNSW-NB15",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "mixed",
+        "generation_year": 2015,
+        "covered_period": "hours",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [],
+    "normalization_type": "zscore",
+    "transformations": [],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "Gedeon method",
+        "type": "filter",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          "__service",
+          "protocolIdentifier",
+          "__state",
+          "__swin",
+          {
+            "apply": [
+              {
+                "mean": [
+                  "ipTTL"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "ipTTL"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "__ctSrvDst",
+          "__dwin",
+          "__ctStateTTL",
+          "__transDepth",
+          "__djit",
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          "__sjit",
+          "__ctDstSportLtm",
+          "__sloss",
+          "destinationTransportPort",
+          {
+            "apply": [
+              {
+                "divide": [
+                  {
+                    "multiply": [
+                      "octetTotalCount",
+                      8
+                    ]
+                  },
+                  "_flowDurationSeconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          "__ctDstSrcLtm",
+          "__ctSrvSrc",
+          {
+            "apply": [
+              {
+                "divide": [
+                  {
+                    "multiply": [
+                      "octetTotalCount",
+                      8
+                    ]
+                  },
+                  "_flowDurationSeconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "__dloss",
+          "__synackTime",
+          "__ackdatTime",
+          "__dtcpb",
+          "__ctSrcLtm",
+          {
+            "add": [
+              "__synackTime",
+              "__ackdatTime"
+            ]
+          },
+          "flowEndSeconds",
+          "__stcpb",
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          "flowStartSeconds",
+          "_flowDurationSeconds"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "H2O",
+        "detail": "v3.10.5.1",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Neural Network",
+        "subname": "Multilayer Feedforward Neural Network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "H2O",
+            "detail": "v3.10.5.1",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "AUC",
+        "type": "external",
+        "metrics": [
+          "roc/uac"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "F1",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "recall",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "specificity",
+        "type": "external",
+        "metrics": [
+          "_specificity"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "time",
+        "type": "internal",
+        "metrics": [
+          "time-based"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [
+      "anomaly_detection"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "reproducible"
+  }
+}
