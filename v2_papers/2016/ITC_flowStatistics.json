@@ -1,0 +1,307 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "Internet traffic classification based on flows' statistical properties with machine learning ",
+    "authors": [
+      "Alina Vlăduţu",
+      " Dragoş Comăneci",
+      "Ciprian Dobre"
+    ],
+    "publication_name": "Management of the Internet of things and big data",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2016,
+    "organization_publishers": [
+      "wiley"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "",
+      "volume": "",
+      "issue": "",
+      "pages": ""
+    },
+    "access_open": false,
+    "curated_by": "Meghdouri, f.",
+    "curated_last_revision": "11-04-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "Ixia BreakingPoint application traffic emulator",
+        "availability": "private",
+        "format": "packet",
+        "types": [],
+        "generation": "synthetic",
+        "generation_year": "missing",
+        "covered_period": "missing",
+        "details": [
+          "raw"
+        ],
+        "subsets": [],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "own_java_scripts",
+        "detail": "used to build the framework",
+        "availability": "private"
+      },
+      {
+        "name": "jpcap",
+        "detail": "java library to parse packets",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "missing",
+    "transformations": [
+      "flow_extraction"
+    ],
+    "final_data_format": "numerical_vectors",
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": false,
+        "features": [
+          "packetTotalCount",
+          "flowDurationMilliseconds",
+          "octetTotalCount",
+          {
+            "add": [
+              {
+                "apply": [
+                  "octetTotalCount",
+                  {
+                    "select_slice": [
+                      0,
+                      10
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "minimum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "maximum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "stdev": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "minimum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "maximum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "stdev": [
+              "_interPacketTimeMicroseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          "flowDurationMilliseconds",
+          "first10senders",
+          {
+            "add": [
+              {
+                "apply": [
+                  "_interPacketTimeMicroseconds",
+                  {
+                    "select_slice": [
+                      0,
+                      10
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "add": [
+              {
+                "apply": [
+                  "ipTotalLength",
+                  {
+                    "select_slice": [
+                      0,
+                      10
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "first10differences",
+          "packetTotalCount",
+          {
+            "minimum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "maximum": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "mean": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "stdev": [
+              "ipTotalLength"
+            ]
+          },
+          {
+            "minimum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "maximum": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "mean": [
+              "_interPacketTimeMicroseconds"
+            ]
+          },
+          {
+            "stdev": [
+              "_interPacketTimeMicroseconds"
+            ]
+          }
+        ],
+        "key_features": [
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "sourceTransportPort",
+          "destinationTransportPort",
+          "protocolIdentifier"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "Weka",
+        "detail": "Java-based machine learning framework",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Clustering",
+        "subname": "K-means",
+        "learning": "unsupervised",
+        "role": "intermediate",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "Decision Tree",
+        "subname": "C4.5",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "vote",
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "K-means clustering",
+        "type": "internal",
+        "source": "own_proposed"
+      },
+      {
+        "name": "normal classification metrics",
+        "type": "internal",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [],
+    "reproducibility": "replicable"
+  }
+}
