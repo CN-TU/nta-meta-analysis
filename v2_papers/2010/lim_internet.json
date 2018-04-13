@@ -3,12 +3,12 @@
   "reference": {
     "title": "Internet Traffic Classification Demystified: On the Sources of the Discriminative Power",
     "authors": [
-      "Yeon-sup Lim",
-      "Hyun-chul Kim",
-      "Jiwoong Jeong",
-      "Chong-kwon Kim",
-      "Ted “Taekyoung\" Kwon",
-      "Yanghee Choi"
+      "Lim, Yeon-sup",
+      "Kim, Hyun-chul",
+      "Jeong, Jiwoong",
+      "Kim, Chong-kwon",
+      "Kwon, Ted “Taekyoung\"",
+      "Choi, Yanghee"
     ],
     "publication_name": "Co-NEXT '10 Proceedings of the 6th International COnference",
     "publication_type": "peer_reviewed_conference",
@@ -18,15 +18,13 @@
     ],
     "pages_number_of": 12,
     "bibtex": {
-      "type": "",
-      "volume": "",
-      "issue": "",
-      "pages": ""
+      "type": "inproceedings",
+      "pages": "9"
     },
     "access_open": true,
     "curated_by": "Meghdouri. f.",
     "curated_last_revision": "10-04-2018",
-    "curated_revision_number": 1
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -136,7 +134,6 @@
               "flowDurationMilliseconds"
             ]
           },
-          {},
           {
             "maximum": [
               "ipTotalLength"
@@ -183,8 +180,8 @@
           "tcpPshTotalCount",
           "tcpAckTotalCount",
           "tcpUrgTotalCount",
-          "tcpCweTotalCount",
-          "tcpEceTotalCount"
+          "tcpCwrTotalCount",
+          "_tcpEceTotalCount"
         ],
         "key_features": [
           "sourceIPv4Address",
