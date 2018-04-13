@@ -15,15 +15,15 @@
     ],
     "pages_number_of": 12,
     "bibtex": {
-      "type": "",
-      "volume": "",
-      "issue": "",
-      "pages": ""
+      "type": "article",
+      "volume": "6",
+      "issue": "2",
+      "pages": "110--121"
     },
     "access_open": false,
     "curated_by": "Meghdouri, f.",
     "curated_last_revision": "11-04-2018",
-    "curated_revision_number": 1
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
