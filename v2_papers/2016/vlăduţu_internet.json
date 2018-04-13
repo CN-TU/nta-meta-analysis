@@ -1,11 +1,11 @@
 {
   "version": "v2.1",
   "reference": {
-    "title": "Internet traffic classification based on flows' statistical properties with machine learning ",
+    "title": "Internet traffic classification based on flows' statistical properties with machine learning",
     "authors": [
-      "Alina Vlăduţu",
-      " Dragoş Comăneci",
-      "Ciprian Dobre"
+      "Vlăduţu, Alina",
+      "Comăneci, Dragoş",
+      "Dobre, Ciprian"
     ],
     "publication_name": "Management of the Internet of things and big data",
     "publication_type": "peer_reviewed_journal",
@@ -15,15 +15,14 @@
     ],
     "pages_number_of": 14,
     "bibtex": {
-      "type": "",
-      "volume": "",
-      "issue": "",
-      "pages": ""
+      "type": "article",
+      "volume": "27",
+      "issue": "3"
     },
     "access_open": false,
     "curated_by": "Meghdouri, f.",
     "curated_last_revision": "11-04-2018",
-    "curated_revision_number": 1
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -150,7 +149,7 @@
         "bidirectional": true,
         "features": [
           "flowDurationMilliseconds",
-          "first10senders",
+          "__first10senders",
           {
             "add": [
               {
@@ -181,7 +180,7 @@
               }
             ]
           },
-          "first10differences",
+          "__first10differences",
           "packetTotalCount",
           {
             "minimum": [
