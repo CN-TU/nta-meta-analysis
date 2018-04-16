@@ -7,7 +7,7 @@
       "Kim, Hyun-chul",
       "Jeong, Jiwoong",
       "Kim, Chong-kwon",
-      "Kwon, Ted “Taekyoung\"",
+      "Kwon, Ted Taekyoung",
       "Choi, Yanghee"
     ],
     "publication_name": "Co-NEXT '10 Proceedings of the 6th International COnference",
@@ -19,11 +19,13 @@
     "pages_number_of": 12,
     "bibtex": {
       "type": "inproceedings",
+      "booktitle": "Proceedings of the 6th International COnference",
+      "organization": "ACM"
     },
     "access_open": true,
-    "curated_by": "Meghdouri. f.",
+    "curated_by": "Meghdouri, f.",
     "curated_last_revision": "10-04-2018",
-    "curated_revision_number": 2
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -179,7 +181,7 @@
           "tcpPshTotalCount",
           "tcpAckTotalCount",
           "tcpUrgTotalCount",
-          "tcpCwrTotalCount",
+          "_tcpCwrTotalCount",
           "_tcpEceTotalCount"
         ],
         "key_features": [
