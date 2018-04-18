@@ -14,7 +14,7 @@
     ],
     "pages_number_of": 10,
     "bibtex": {
-      "type": "conference",
+      "type": "inproceedings",
       "pages": "1723--1732"
     },
     "access_open": true,
