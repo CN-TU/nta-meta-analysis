@@ -1,0 +1,684 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "machine learning for encrypted malware traffic classification: accounting for noisy labels and non-stationarity",
+    "authors": [
+      "Anderson, Blake",
+      "McGrew, David"
+    ],
+    "publication_name": " acm sigkdd international conference on knowledge discovery and data mining",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2017,
+    "organization_publishers": [
+      "acm"
+    ],
+    "pages_number_of": 10,
+    "bibtex": {
+      "type": "conference",
+      "pages": "1723--1732"
+    },
+    "access_open": true,
+    "curated_by": "fiv",
+    "curated_last_revision": "22-03-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "anderson2015-2016",
+        "availability": "private",
+        "format": "_packet_and_flow",
+        "types": [
+          "ip",
+          "tls"
+        ],
+        "generation": "captured",
+        "generation_year": [
+          2015,
+          2016
+        ],
+        "covered_period": "months",
+        "details": [
+          "preprocessed",
+          "_labeled",
+          "_malware_sandbox"
+        ],
+        "subsets": [
+          "pre_May",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "September(Ent2)"
+        ],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "joy",
+        "detail": "v2.0",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "zscore",
+    "transformations": [
+      "map",
+      "flow_extraction"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "study_based",
+        "role": "competitor",
+        "main_goal": "traffic_classification",
+        "active_timeout": 600,
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      },
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "active_timeout": 600,
+        "idle_timeout": 600,
+        "bidirectional": true,
+        "features": [
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "octetTotalCount"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "minimum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "mean": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "maximum": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              {
+                "stdev": [
+                  "_interPacketTimeMicroseconds"
+                ]
+              },
+              "backward"
+            ]
+          },
+          "protocolIdentifier",
+          "_flowDurationSeconds",
+          {
+            "apply": [
+              "packetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "packetTotalCount",
+              "backward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "forward"
+            ]
+          },
+          {
+            "apply": [
+              "octetTotalCount",
+              "backward"
+            ]
+          },
+          "__arrayOfFirst50payloadLengthsAsMarkovStates",
+          "__arrayOfFirst50IATasMarkovStates",
+          "__tlsBinarymapping197hexCodesInOfferedCiphersuites"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "scikit-learn",
+        "detail": "python",
+        "availability": "public"
+      },
+      {
+        "name": "keras",
+        "detail": "python",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "linear regression",
+        "learning": "statistics/model_fit",
+        "role": "competitor",
+        "type": "regression",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "logistic regression",
+        "learning": "statistics/model_fit",
+        "role": "competitor",
+        "type": "regression",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false,
+        "subname": "l1 and l2"
+      },
+      {
+        "name": "decision tree",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true,
+        "subname": "optimized CART"
+      },
+      {
+        "name": "random forest",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "name": "support vector machine",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true,
+        "subname": "gaussian and polynimial kernels"
+      },
+      {
+        "name": "neural network",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "keras",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true,
+        "subname": "multi-layer perceptron"
+      },
+      {
+        "name": "grid search",
+        "learning": "nest",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true,
+        "role": "validation"
+      },
+      {
+        "name": "cross-validation",
+        "subname": "10-fold",
+        "learning": "nest",
+        "role": "validation",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "__mili_percentage_fdr"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "subgoals": [
+      "classification_of_encrypted_traffic",
+      "__hypothesis_testing",
+      "__feature_set_testing"
+    ],
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification",
+      "__suitable_for_encrypted_traffic",
+      "__algorithm_testing",
+      "improved_data_description"
+    ],
+    "main_goal": "traffic_classification",
+    "focus_main": "algorithm",
+    "reproducibility": "repeatable"
+  }
+}
