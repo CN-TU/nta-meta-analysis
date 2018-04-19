@@ -1,0 +1,234 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "histogram-based traffic anomaly detection",
+    "authors": [
+      "Kind, Andreas",
+      "Stoecklin, Mark Ph.",
+      "Dimitropoulos, Xenofontas"
+    ],
+    "publication_name": "ieee transactions on network service management",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2009,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "article",
+      "volume": "6",
+      "issue": "2",
+      "pages": "110--121"
+    },
+    "access_open": false,
+    "curated_by": "fiv",
+    "curated_last_revision": "18-04-2017",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "campus-trace_IBMresZurich-2004",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2004,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "data_center_traffic-2007",
+        "availability": "private",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2007,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "darpa_IDeval-2000",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2000,
+        "covered_period": "days",
+        "details": [],
+        "subsets": [],
+        "anonymized": false
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": true,
+    "tools": [],
+    "normalization_type": "no",
+    "transformations": [
+      "__histograms",
+      "map",
+      "__feature_reduction"
+    ],
+    "final_data_format": "__numerical_series",
+    "feature_selections": [
+      {
+        "name": "PCA",
+        "type": "feature_reduction",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [],
+    "flow_aggregations": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "active_timeout": 3600,
+        "features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "flowDurationMilliseconds",
+          "tcpControlBits"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "ingressInterface",
+          "ipClassOfService"
+        ]
+      }
+    ]
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": [],
+    "algorithms": [
+      {
+        "name": "hierarchical clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "parameters_provided": false
+      },
+      {
+        "name": "hierarchical clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "__normalized_euclidean",
+        "parameters_provided": false
+      },
+      {
+        "name": "hierarchical clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "mahalanobis",
+        "parameters_provided": false
+      },
+      {
+        "name": "hierarchical clustering",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "manhattan",
+        "parameters_provided": false
+      },
+      {
+        "name": "number_of_clusters_optimization",
+        "subname": "Calinski-Harabasz_index",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "statistics",
+        "metric/decision_criteria": "error/fitting_function",
+        "parameters_provided": false
+      },
+      {
+        "name": "negligible_cluster_removal",
+        "subname": "0.05p",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "statistics",
+        "metric/decision_criteria": "error/fitting_function",
+        "parameters_provided": true
+      },
+      {
+        "name": "anomaly_detection",
+        "subname": "threshold_eq_3std.dev",
+        "learning": "statistics/model_fit",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "__normalized_euclidean",
+        "parameters_provided": true
+      },
+      {
+        "name": "anomaly_detection",
+        "subname": "entropy_based",
+        "learning": "statistics/model_fit",
+        "role": "competitor",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "probabilistic",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "subgoals": [],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "__focus_on_enterprise_network_traffic",
+      "improved_detection_rates",
+      "__generic_solution"
+    ],
+    "reproducibility": "no"
+  }
+}
