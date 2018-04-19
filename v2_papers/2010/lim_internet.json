@@ -22,7 +22,7 @@
       "booktitle": "Proceedings of the 6th International COnference",
       "organization": "ACM"
     },
-    "access_open": true,
+    "access_open": false,
     "curated_by": "Meghdouri, f.",
     "curated_last_revision": "10-04-2018",
     "curated_revision_number": 3
@@ -44,7 +44,7 @@
       },
       {
         "name": "WIDE-I",
-        "availability": "private",
+        "availability": "public_on_demand",
         "format": "packet",
         "generation": "captured",
         "generation_year": 2006,
@@ -53,11 +53,11 @@
           "raw"
         ],
         "subsets": [],
-        "anonymized": true
+        "anonymized": false
       },
       {
         "name": "WIDE-II",
-        "availability": "private",
+        "availability": "public_on_demand",
         "format": "packet",
         "generation": "captured",
         "generation_year": 2007,
@@ -66,7 +66,7 @@
           "raw"
         ],
         "subsets": [],
-        "anonymized": true
+        "anonymized": false
       },
       {
         "name": "KAIST-I",
@@ -282,6 +282,7 @@
     "claimed_improvements": [
       "new_phenomena_disclosed",
       "improved_traffic_classification"
-    ]
+    ],
+    "reproducibility": "reproducible"
   }
 }
