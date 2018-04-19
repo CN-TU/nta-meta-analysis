@@ -83,7 +83,7 @@
     "feature_selections": [
       {
         "name": "constant-removal",
-        "type": "feature_reduction",
+        "type": "filter",
         "classifier": "none",
         "role": "main"
       },
@@ -126,17 +126,7 @@
         "name": "hierarchical cluster analysis",
         "subname": "hca",
         "learning": "unsupervised",
-        "role": "intermediate",
-        "type": "clustering",
-        "metric/decision_criteria": "euclidean",
-        "source": "referenced",
-        "parameters_provided": false
-      },
-      {
-        "name": "clustering",
-        "subname": "K-means",
-        "learning": "unsupervised",
-        "role": "intermediate",
+        "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
@@ -146,7 +136,7 @@
   },
   "evaluation": {
     "algorithm_comparison": false,
-    "internal_validation": true,
+    "internal_validation": false,
     "external_validation": true,
     "dpi-based_validation": false,
     "port-based_validation": false,
@@ -167,7 +157,7 @@
   },
   "result": {
     "main_goal": "anomaly_detection",
-    "focus_main": "_new_approach",
+    "focus_main": "methodology/framework",
     "claimed_improvements": [
       "improved_data_description",
       "big_data_oriented",
