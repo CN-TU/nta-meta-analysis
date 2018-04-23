@@ -1,0 +1,227 @@
+{
+  "version": "v2.1",
+  "reference": {
+    "title": "An intrusion detection system using network traffic profiling and online sequential extreme learning machine",
+    "authors": [],
+    "publication_name": "Expert Systems With Applications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2015,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 15,
+    "bibtex": {
+      "type": "article",
+      "volume": "42",
+      "issue": "22",
+      "pages": "8609--8624",
+      "issn": "0957-4174",
+      "doi": "https://doi.org/10.1016/j.eswa.2015.07.015",
+      "url": "http://www.sciencedirect.com/science/article/pii/S0957417415004753"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "23-04-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "NSL-KDD",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "synthetic",
+        "generation_year": 2009,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [],
+        "anonymized": false
+      },
+      {
+        "name": "Kyoto 2006+",
+        "generation_year": [
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "subsets": [],
+        "availability": "public",
+        "format": "flow",
+        "types": [],
+        "generation": "captured",
+        "covered_period": "years",
+        "details": [
+          "preprocessed",
+          "no_payload"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "weka",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "filtering",
+      "sampling"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": [
+      {
+        "name": "correlation based",
+        "type": "filter",
+        "role": "intermediate"
+      },
+      {
+        "name": "consistency based",
+        "type": "filter",
+        "role": "intermediate"
+      },
+      {
+        "name": "CFS",
+        "type": "filter",
+        "role": "intermediate"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "anomaly_detection",
+        "bidirectional": true,
+        "features": [
+          "_KDD1",
+          "_KDD2",
+          "_KDD3",
+          "_KDD4",
+          "_KDD5",
+          "_KDD6",
+          "_KDD12",
+          "_KDD23",
+          "_KDD24",
+          "_KDD26",
+          "_KDD29",
+          "_KDD30",
+          "_KDD32",
+          "_KDD33",
+          "_KDD34",
+          "_KDD35",
+          "_KDD36",
+          "_KDD37",
+          "_KDD38",
+          "_KDD39",
+          "_KDD40"
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "WEKA",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "OS-ELM",
+        "subname": "online sequential learning for SLFN",
+        "learning": "supervised",
+        "role": "main",
+        "type": "anomaly_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": [],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "confusion matrix",
+        "type": "external",
+        "metrics": [
+          "incomplete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "accuracy",
+        "type": "external",
+        "metrics": [
+          "accuracy"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "precision",
+        "type": "external",
+        "metrics": [
+          "precision"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "F1-score",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "anomaly_detection",
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "reduced_computational_resources"
+    ],
+    "reproducibility": "replicable"
+  }
+}
