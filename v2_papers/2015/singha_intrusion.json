@@ -2,7 +2,11 @@
   "version": "v2.1",
   "reference": {
     "title": "An intrusion detection system using network traffic profiling and online sequential extreme learning machine",
-    "authors": [],
+    "authors": [
+      "Singh, Raman",
+      "Kumar, Harish",
+      "Singla, R.K."
+    ],
     "publication_name": "Expert Systems With Applications",
     "publication_type": "peer_reviewed_journal",
     "year": 2015,
