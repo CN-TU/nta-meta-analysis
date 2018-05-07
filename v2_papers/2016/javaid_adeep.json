@@ -14,7 +14,7 @@
     "organization_publishers": [
       "springer"
     ],
-    "pages_number_of": 0,
+    "pages_number_of": 6,
     "bibtex": {
       "type": "inproceedings",
       "pages": "21--26",
@@ -22,8 +22,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "23-04-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "07-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [

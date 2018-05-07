@@ -12,7 +12,7 @@
     "organization_publishers": [
       "ieee"
     ],
-    "pages_number_of": 0,
+    "pages_number_of": 4,
     "bibtex": {
       "type": "article",
       "volume": "18",
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "22-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "07-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
