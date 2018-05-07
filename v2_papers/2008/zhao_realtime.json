@@ -16,14 +16,14 @@
     ],
     "pages_number_of": 5,
     "bibtex": {
-      "type": "peer_reviewed_journal",
+      "type": "article",
       "issue": "15",
       "pages": "68--72"
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "07-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
