@@ -7,9 +7,9 @@
       "Comăneci, Dragoş",
       "Dobre, Ciprian"
     ],
-    "publication_name": "Management of the Internet of things and big data",
+    "publication_name": "International Journal of Network Management",
     "publication_type": "peer_reviewed_journal",
-    "year": 2016,
+    "year": 2017,
     "organization_publishers": [
       "wiley"
     ],
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "Meghdouri, f.",
-    "curated_last_revision": "11-04-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "08-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -77,9 +77,7 @@
           "flowDurationMilliseconds",
           "octetTotalCount",
           {
-            "add": [
-              {
-                "apply": [
+            "apply": [
                   "octetTotalCount",
                   {
                     "select_slice": [
@@ -88,8 +86,6 @@
                     ]
                   }
                 ]
-              }
-            ]
           },
           {
             "minimum": [
@@ -148,81 +144,839 @@
         "idle_timeout": "missing",
         "bidirectional": true,
         "features": [
-          "flowDurationMilliseconds",
-          "__first10senders",
-          {
-            "add": [
-              {
-                "apply": [
-                  "_interPacketTimeMicroseconds",
-                  {
-                    "select_slice": [
-                      0,
-                      10
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "add": [
-              {
-                "apply": [
-                  "ipTotalLength",
-                  {
-                    "select_slice": [
-                      0,
-                      10
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "__first10differences",
-          "packetTotalCount",
-          {
-            "minimum": [
-              "ipTotalLength"
-            ]
-          },
-          {
-            "maximum": [
-              "ipTotalLength"
-            ]
-          },
-          {
-            "mean": [
-              "ipTotalLength"
-            ]
-          },
-          {
-            "stdev": [
-              "ipTotalLength"
-            ]
-          },
-          {
-            "minimum": [
-              "_interPacketTimeMicroseconds"
-            ]
-          },
-          {
-            "maximum": [
-              "_interPacketTimeMicroseconds"
-            ]
-          },
-          {
-            "mean": [
-              "_interPacketTimeMicroseconds"
-            ]
-          },
-          {
-            "stdev": [
-              "_interPacketTimeMicroseconds"
-            ]
-          }
-        ],
+                "flowDurationMilliseconds",
+                {
+                  "get": [
+                    0,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    1,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    2,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    3,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    4,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    5,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    6,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    7,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    8,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    9,
+                    {
+                      "map": [
+                        "flowDirection",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    0,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    1,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    2,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    3,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    4,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    5,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    6,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    7,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    8,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    9,
+                    {
+                      "map": [
+                        "_interPacketTimeMicroseconds",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    0,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    1,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    2,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    3,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    4,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    5,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    6,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    7,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    8,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "get": [
+                    9,
+                    {
+                      "map": [
+                        "ipTotalLength",
+                        {
+                          "select": [
+                            true
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        0,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        1,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        1,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        2,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        2,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        3,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        3,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        4,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        4,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        5,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        5,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        6,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        6,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        7,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        7,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        8,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        8,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        9,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "subtract": [
+                    {
+                      "get": [
+                        9,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "get": [
+                        10,
+                        {
+                          "map": [
+                            "_interPacketTimeMicroseconds",
+                            {
+                              "select": [
+                                true
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "packetTotalCount",
+                {
+                  "minimum": [
+                    "ipTotalLength"
+                  ]
+                },
+                {
+                  "maximum": [
+                    "ipTotalLength"
+                  ]
+                },
+                {
+                  "mean": [
+                    "ipTotalLength"
+                  ]
+                },
+                {
+                  "stdev": [
+                    "ipTotalLength"
+                  ]
+                },
+                {
+                  "minimum": [
+                    "_interPacketTimeMicroseconds"
+                  ]
+                },
+                {
+                  "maximum": [
+                    "_interPacketTimeMicroseconds"
+                  ]
+                },
+                {
+                  "mean": [
+                    "_interPacketTimeMicroseconds"
+                  ]
+                },
+                {
+                  "stdev": [
+                    "_interPacketTimeMicroseconds"
+                  ]
+                }
+              ],
         "key_features": [
           "sourceIPv4Address",
           "destinationIPv4Address",
@@ -247,8 +1001,7 @@
     ],
     "algorithms": [
       {
-        "name": "Clustering",
-        "subname": "K-means",
+        "name": "K-means",
         "learning": "unsupervised",
         "role": "intermediate",
         "type": "clustering",
@@ -270,23 +1023,18 @@
   },
   "evaluation": {
     "algorithm_comparison": false,
-    "internal_validation": true,
-    "external_validation": false,
+    "internal_validation": false,
+    "external_validation": true,
     "dpi-based_validation": false,
     "port-based_validation": false,
-    "pre-knowledge-based_validation": false,
+    "pre-knowledge-based_validation": true,
     "manual_verification": false,
     "implementation_in_real_scenario": false,
     "train_test_separation": true,
     "methods": [
       {
-        "name": "K-means clustering",
-        "type": "internal",
-        "source": "own_proposed"
-      },
-      {
         "name": "normal classification metrics",
-        "type": "internal",
+        "type": "external",
         "metrics": [
           "accuracy"
         ],
@@ -300,7 +1048,9 @@
       "application_classification"
     ],
     "focus_main": "methodology/framework",
-    "claimed_improvements": [],
+     "claimed_improvements": [
+      "new_phenomena_disclosed"
+    ],
     "reproducibility": "replicable"
   }
 }
