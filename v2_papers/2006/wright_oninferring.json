@@ -78,7 +78,7 @@
         "bidirectional": true,
         "features": [
           {
-            "map": [
+            "apply": [
               {
                 "multiply": [
                   "octetTotalCount",
@@ -103,7 +103,7 @@
             ]
           },
           {
-            "map": [
+            "apply": [
               "flowStartMilliseconds",
               {
                 "select": [
