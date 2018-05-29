@@ -1,0 +1,546 @@
+{
+  "version": "v2.1.1",
+  "reference": {
+    "title": "Hierarchical learning for fine grained internet traffic classification",
+    "authors": [
+      "Grimaudo, Luigi",
+      "Mellia, Marco",
+      "Baralis, Elena"
+    ],
+    "publication_name": "2012 8th International Wireless Communications and Mobile Computing Conference (IWCMC)",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2012,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 6,
+    "bibtex": {
+      "type": "inproceedings",
+      "pages": "463--468",
+      "doi": "10.1109/IWCMC.2012.6314248",
+      "ISSN": "2376-6492"
+    },
+    "access_open": false,
+    "curated_by": "vormayr, g.",
+    "curated_last_revision": "09-05-2018",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "hours",
+        "subsets": [
+          "h.12 - h.9"
+        ],
+        "anonymized": false,
+        "types": [
+          "ip"
+        ]
+      },
+      {
+        "name": "_private_packets",
+        "availability": "private",
+        "format": "packet",
+        "generation": "captured",
+        "generation_year": "missing",
+        "covered_period": "hours",
+        "subsets": [
+          "h.15",
+          "h.19"
+        ],
+        "anonymized": false,
+        "types": [
+          "ip"
+        ]
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "Tstat",
+        "detail": "TCP Statistic and Analysis Tool",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [
+      {
+        "name": "minimum-Redundancy-Maximum-Relevance",
+        "type": "filter",
+        "classifier": "none",
+        "role": "main"
+      }
+    ],
+    "packets": [],
+    "flows": [
+      {
+        "selection": "feature_selection",
+        "role": "main",
+        "main_goal": "traffic_classification",
+        "bidirectional": true,
+        "features": [
+          "tcpDestinationPort",
+          {
+            "greater": [
+              "tcpRstTotalCount",
+              0
+            ]
+          },
+          "__pureACK",
+          "__uniqueBytes",
+          {
+            "count": [
+              {
+                "select": [
+                  {
+                    "greater": [
+                      "_transportPayloadLength",
+                      0
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "octetDeltaCount",
+          "__hasTCPWindowScale",
+          "__hasTCPTimestamp",
+          "tcpWindowScale",
+          "__serverSentSACK",
+          "__mss",
+          {
+            "maximum": [
+              "__segmentSize"
+            ]
+          },
+          {
+            "minimum": [
+              "__segmentSize"
+            ]
+          },
+          {
+            "minimum": [
+              "__rwnd"
+            ]
+          },
+          {
+            "maximum": [
+              "__rwnd"
+            ]
+          },
+          {
+            "minimum": [
+              "__cwnd"
+            ]
+          },
+          {
+            "maximum": [
+              "__cwnd"
+            ]
+          },
+          "__initialCWND",
+          {
+            "stdev": [
+              "__rtt"
+            ]
+          },
+          "minimumTTL",
+          "maximumTTL",
+          "flowEndNanoseconds",
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  0,
+                  1,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  1,
+                  2,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  4,
+                  5,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  6,
+                  7,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  7,
+                  8,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  9,
+                  10,
+                  {
+                    "select": [
+                      {
+                        "greater": [
+                          "_transportPayloadLength",
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "packetTotalCount",
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  0,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  1,
+                  2
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  2,
+                  3
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  3,
+                  4
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  6,
+                  7
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  7,
+                  8
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  8,
+                  9
+                ]
+              }
+            ]
+          },
+          {
+            "apply": [
+              "_transportPayloadLength",
+              {
+                "select_slice": [
+                  9,
+                  10
+                ]
+              }
+            ]
+          }
+        ],
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "sourceTransportPort",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": []
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "rapid miner",
+        "availability": "commercial"
+      }
+    ],
+    "algorithms": [
+      {
+        "name": "Naive Bayes",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Naive Bayes with Kernel Estimation Method",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "probabilistic",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "_rule_based",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Decision Tree",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "mutual_information",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "Neural Network",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "SVM",
+        "subname": "Support Vector Machine",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "name": "KNN",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": true,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "f-1",
+        "type": "external",
+        "metrics": [
+          "f-1"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "recall",
+        "type": "external",
+        "metrics": [
+          "recall"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "training time",
+        "type": "external",
+        "metrics": [
+          "time-based"
+        ]
+      },
+      {
+        "name": "training memory requirement",
+        "type": "external",
+        "metrics": [
+          "computing_resources-based"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "traffic_classification",
+    "subgoals": [
+      "application_classification",
+      "traffic_classification"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "fast_processing",
+      "reduced_computational_resources",
+      "improved_traffic_classification"
+    ],
+    "reproducibility": "repeatable"
+  }
+}

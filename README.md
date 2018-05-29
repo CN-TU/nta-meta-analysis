@@ -1,7 +1,7 @@
 # nta-meta-analysis
 
 [![Documentation Status](https://readthedocs.org/projects/nta-meta-analysis/badge/?version=latest)](https://nta-meta-analysis.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.org/CN-TU/nta-meta-analysis.svg?branch=master)](https://travis-ci.org/CN-TU/nta-meta-analysis)
+[![Build Status](https://travis-ci.org/CN-TU/nta-meta-analysis.svg?branch=master)](https://travis-ci.org/CN-TU/nta-meta-analysis) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1243050.svg)](https://doi.org/10.5281/zenodo.1243050)
 
 This repository contains work performed by the Communications Network Group at TU Wien, Institute of Telecommunications.
 
