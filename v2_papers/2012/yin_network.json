@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Network traffic classification via HMM under the guidance of syntactic structure",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -41,7 +41,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -53,14 +53,13 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "name": "_own_csharp_tools",
+        "name": "own_csharp_tools",
         "availability": "private"
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "time_series",
-    "feature_selections": [],
     "packets": [
       {
         "selection": "expert_knowledge",
@@ -103,8 +102,7 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -113,7 +111,7 @@
     "anomaly_detection": false,
     "tools": [
       {
-        "name": "weka",
+        "name": "WEKA",
         "availability": "public"
       }
     ],
@@ -126,7 +124,7 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "availability": "public"
           }
         ],
@@ -134,14 +132,14 @@
         "parameters_provided": false
       },
       {
-        "name": "neural network",
+        "name": "Neural Network",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "error/fitting_function",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "availability": "public"
           }
         ],
@@ -149,14 +147,14 @@
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "availability": "public"
           }
         ],
@@ -164,12 +162,11 @@
         "parameters_provided": false
       },
       {
-        "name": "HMM",
+        "name": "Hidden Markov Model (HMM)",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }

@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Internet Traffic Classification Using Bayesian Analysis Techniques",
     "authors": [
@@ -21,13 +21,13 @@
     },
     "access_open": false,
     "curated_by": "maloku, b.",
-    "curated_last_revision": "05-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "name": "genome_campus",
+        "name": "Genome campus",
         "availability": "private",
         "format": "flow",
         "types": [
@@ -54,7 +54,7 @@
         "anonymized": false
       },
       {
-        "name": "genome_campus-2004",
+        "name": "Genome campus",
         "availability": "private",
         "format": "flow",
         "types": [
@@ -66,7 +66,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -95,13 +95,12 @@
     "final_data_format": "mixed_vectors",
     "feature_selections": [
       {
-        "name": "feature selection with fast correlation based-filter (FCBF) ",
+        "name": "Fast Correlation-Based Filter (FCBF)",
         "type": "wrapper",
-        "classifier": "naive_bayes",
+        "classifier": "Naive Bayes",
         "role": "main"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "in_dataset",
@@ -311,18 +310,17 @@
           "tcpDestinationPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "Naïve Bayes",
+        "name": "Naive Bayes",
         "subname": "Naïve Bayes",
         "learning": "supervised",
         "role": "competitor",
@@ -330,7 +328,7 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "detail": "3.4",
             "availability": "public"
           }
@@ -347,7 +345,7 @@
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "detail": "3.4",
             "availability": "public"
           }
@@ -356,7 +354,7 @@
         "parameters_provided": false
       },
       {
-        "name": "Naïve Bayes with FCBF prefiltering",
+        "name": "Naive Bayes",
         "subname": "Naïve Bayes with FCBF prefiltering",
         "learning": "supervised",
         "role": "competitor",
@@ -364,7 +362,7 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "detail": "3.4",
             "availability": "public"
           }
@@ -381,7 +379,7 @@
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
-            "name": "weka",
+            "name": "WEKA",
             "detail": "3.4",
             "availability": "public"
           }
@@ -403,7 +401,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -419,7 +417,7 @@
         "source": "popular"
       },
       {
-        "name": "accuracy by bytes",
+        "name": "Byte Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"

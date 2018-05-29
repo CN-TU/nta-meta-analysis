@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Analysis and Prediction of Real Network Traffic",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "05-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -72,10 +72,8 @@
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -347,15 +345,14 @@
         ],
         "key_features": []
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "ARMA",
@@ -364,7 +361,6 @@
         "role": "competitor",
         "type": "regression",
         "metric/decision_criteria": "error/fitting_function",
-        "tools": [],
         "source": "referenced"
       },
       {
@@ -374,7 +370,6 @@
         "role": "main",
         "type": "regression",
         "metric/decision_criteria": "error/fitting_function",
-        "tools": [],
         "source": "referenced"
       },
       {
@@ -384,7 +379,6 @@
         "role": "main",
         "type": "regression",
         "metric/decision_criteria": "error/fitting_function",
-        "tools": [],
         "source": "referenced"
       }
     ]
@@ -419,7 +413,7 @@
     ]
   },
   "result": {
-    "main_goal": "_traffic_rate_prediction",
+    "main_goal": "network_properties_monitoring",
     "subgoals": [
       "traffic_rate_prediction"
     ],

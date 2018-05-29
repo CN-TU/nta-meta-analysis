@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "Identifying and Discriminating Between Web and Peer-to-Peer Traffic in the Network Core",
     "authors": [
@@ -24,13 +24,12 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "10-07-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "_private_packets",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -51,7 +50,8 @@
           "April 9",
           "tcp"
         ],
-        "anonymized": false
+        "anonymized": false,
+        "name": "_private_packets"
       }
     ]
   },
@@ -60,14 +60,12 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
     "transformations": [
       "log"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -102,22 +100,20 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "k nearest neighbors",
+        "name": "K-nearest Neighbors (KNN)",
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -135,7 +131,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [],
         "source": "popular"

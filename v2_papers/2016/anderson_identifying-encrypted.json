@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "identifying encrypted malware traffic with contextual flow data",
     "authors": [
@@ -19,8 +19,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "30-01-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -31,7 +31,7 @@
         "types": [
           "dns",
           "http",
-          "_tls"
+          "tls"
         ],
         "generation": "captured",
         "generation_year": 2016,
@@ -39,7 +39,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -49,7 +49,7 @@
         "types": [
           "dns",
           "http",
-          "_tls"
+          "tls"
         ],
         "generation": "captured",
         "generation_year": 2016,
@@ -78,7 +78,7 @@
       }
     ],
     "normalization_type": "zscore",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
@@ -182,7 +182,7 @@
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "Gaussian kernel, exhaustive parameter search CV",
         "learning": "supervised",
         "role": "competitor",

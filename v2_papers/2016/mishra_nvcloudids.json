@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "NvCloudIDS: A security architecture to detect intrusions at network and virtualization layer in cloud environment",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "09-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -40,7 +40,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -53,8 +53,7 @@
         "generation": "mixed",
         "generation_year": "missing",
         "covered_period": "missing",
-        "details": [],
-        "subsets": []
+        "subsets": "none"
       }
     ]
   },
@@ -63,9 +62,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "mixed_vectors",
     "feature_selections": [
       {
@@ -75,7 +74,6 @@
         "role": "main"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -171,15 +169,14 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Random Forest",
@@ -187,7 +184,6 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -197,7 +193,6 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -207,7 +202,6 @@
         "learning": "supervised",
         "role": "main",
         "type": "classification",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       }
@@ -225,7 +219,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -233,18 +227,18 @@
         "source": "popular"
       },
       {
-        "name": "FPR",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       },
       {
-        "name": "ROC",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       }

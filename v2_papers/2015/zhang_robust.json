@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Robust network traffic classification",
     "authors": [
@@ -26,8 +26,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "05-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -41,8 +41,7 @@
         "generation": "captured",
         "generation_year": 2006,
         "covered_period": "minutes",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": true
       },
       {
@@ -58,7 +57,6 @@
           2009
         ],
         "covered_period": "hours",
-        "details": [],
         "subsets": [
           "18-03-2008",
           "31-03-2009"
@@ -78,7 +76,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -99,10 +97,8 @@
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -202,15 +198,14 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": true,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "K-means",
@@ -219,7 +214,6 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "parameters_provided": true,
         "source": "referenced"
       },
@@ -230,28 +224,25 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": true
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "One-class SVM",
         "learning": "unsupervised",
         "role": "competitor",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "Random forest",
+        "name": "Random Forest",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -262,7 +253,6 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       }
@@ -288,15 +278,15 @@
         "source": "popular"
       },
       {
-        "name": "FPR",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       },
       {
-        "name": "f-1",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"
@@ -312,7 +302,7 @@
         "source": "popular"
       },
       {
-        "name": "byte accuracy",
+        "name": "Byte Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -320,10 +310,10 @@
         "source": "popular"
       },
       {
-        "name": "FNR",
+        "name": "False Negative Rate",
         "type": "external",
         "metrics": [
-          "_fnr"
+          "false_negative_rate"
         ],
         "source": "popular"
       }

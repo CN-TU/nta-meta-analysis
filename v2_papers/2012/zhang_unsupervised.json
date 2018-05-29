@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Unsupervised traffic classification using flow statistical properties and IP packet payload",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "07-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -30,12 +30,10 @@
         "name": "_private_packets",
         "availability": "private",
         "format": "packet",
-        "types": [],
         "generation": "captured",
         "generation_year": 2010,
         "covered_period": "days",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -45,12 +43,10 @@
     "packet_analysis_oriented": true,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -237,15 +233,14 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Latent Semantic Analysis",
@@ -253,12 +248,11 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "K-Means",
+        "name": "K-means",
         "learning": "supervised",
         "role": "main",
         "type": "clustering",
@@ -288,7 +282,7 @@
         "parameters_provided": false
       },
       {
-        "name": "k-Nearest-Neighbors",
+        "name": "K-nearest Neighbors (KNN)",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -303,7 +297,7 @@
         "parameters_provided": false
       },
       {
-        "name": "Support Vector Machine",
+        "name": "Support Vector Machine (SVM)",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -333,7 +327,7 @@
         "parameters_provided": false
       },
       {
-        "name": "Neural Nets",
+        "name": "Neural Network",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -348,7 +342,7 @@
         "parameters_provided": false
       },
       {
-        "name": "Bayes Net",
+        "name": "Bayesian Network",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -376,7 +370,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "Clustering Accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"

@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Network forensic analysis using growing hierarchical SOM",
     "authors": [
@@ -19,8 +19,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "07-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -38,7 +38,6 @@
           2008
         ],
         "covered_period": "minutes",
-        "details": [],
         "subsets": [
           "2006",
           "2007",
@@ -53,11 +52,10 @@
     "packet_analysis_oriented": true,
     "flow_analysis_oriented": false,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
     "packets": [
       {
         "selection": "expert_knowledge",
@@ -70,16 +68,14 @@
           "ipTotalLength"
         ]
       }
-    ],
-    "flows": [],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Growing Hierarchical Self-Organizing Map",
@@ -87,7 +83,6 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -97,7 +92,6 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -118,7 +112,7 @@
         "name": "Recognition rate",
         "type": "external",
         "metrics": [
-          "_recall"
+          "recall"
         ],
         "source": "popular"
       },

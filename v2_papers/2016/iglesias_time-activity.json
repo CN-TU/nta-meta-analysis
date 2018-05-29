@@ -1,12 +1,12 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "time-activity footprints in ip traffic",
     "authors": [
       "Iglesias, Félix",
       "Zseby, Tanja"
     ],
-    "publication_name": "computer networks",
+    "publication_name": "Computer Networks",
     "publication_type": "peer_reviewed_journal",
     "year": 2016,
     "organization_publishers": [
@@ -21,13 +21,13 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "20-01-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
       {
-        "name": "mawi-2015",
+        "name": "MAWI",
         "availability": "public",
         "format": "packet",
         "types": [

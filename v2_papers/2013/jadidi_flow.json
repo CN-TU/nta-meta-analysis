@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "Flow-Based Anomaly Detection Using Neural Network Optimized with GSA Algorithm",
     "authors": [
@@ -21,13 +21,12 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "03-07-2017",
-    "curated_revision_number": 4
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "A Labeled Data Set For Flow-based Intrusion Detection",
         "availability": "public",
         "format": "flow",
         "types": [
@@ -43,7 +42,8 @@
         "subsets": [
           "SSH",
           "HTTP"
-        ]
+        ],
+        "name": "A Labeled Data Set For Flow-based Intrusion Detection"
       }
     ]
   },
@@ -54,9 +54,9 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "tool": "_own_matlab_scripts",
         "detail": "Matlab R2012a",
-        "availability": "private"
+        "availability": "private",
+        "name": "own_matlab_scripts"
       }
     ],
     "normalization_type": "range",
@@ -65,8 +65,6 @@
       "feature_operation"
     ],
     "final_data_format": "mixed_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -89,24 +87,22 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "mlp",
+        "name": "Multilayer Perceptron (MLP)",
         "subname": "multi layer perceptron",
         "learning": "supervised",
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       }
@@ -124,7 +120,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"

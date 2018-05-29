@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Robust network traffic identification with unknown applications",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "16-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -40,7 +40,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -50,12 +50,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -269,15 +267,14 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": false,
     "semisupervised_learning": true,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Application Signature with Flow Correlation (ASFC)",
@@ -285,7 +282,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "no",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       },
@@ -295,27 +291,24 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "_popular",
         "parameters_provided": false
       },
       {
-        "name": "Bayes Network",
+        "name": "Bayesian Network",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "_popular",
         "parameters_provided": false
       },
       {
-        "name": "k nearest neighbors",
+        "name": "K-nearest Neighbors (KNN)",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "_popular",
         "parameters_provided": false
       },
@@ -326,18 +319,16 @@
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "parameters_provided": true,
         "source": "referenced"
       },
       {
-        "name": "support vector machine",
+        "name": "Support Vector Machine (SVM)",
         "subname": "single-class",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": "partially"
       }

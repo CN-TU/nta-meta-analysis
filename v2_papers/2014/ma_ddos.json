@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "DDoS Detection Method Based on Chaos Analysis of Network Traffic Entropy",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "07-05-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -37,8 +37,7 @@
         "generation": "synthetic",
         "generation_year": 1998,
         "covered_period": "weeks",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -48,15 +47,13 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
     "transformations": [
       "entropy",
       "time_series"
     ],
     "final_data_format": "time_series",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -78,15 +75,14 @@
         "key_features": [],
         "_comment": "all packets belong to the same flow"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Autoregressive model",
@@ -94,7 +90,6 @@
         "learning": "unsupervised",
         "role": "main",
         "type": "anomaly_detection",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": true
       }
@@ -112,7 +107,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "true positive rate",
+        "name": "True Positive Rate",
         "type": "external",
         "metrics": [
           "recall"
@@ -120,10 +115,10 @@
         "source": "popular"
       },
       {
-        "name": "false positive rate",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       }

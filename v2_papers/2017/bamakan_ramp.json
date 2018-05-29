@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Ramp loss K-Support Vector Classification-Regression; a robust and sparse multi-class approach to the intrusion detection problem",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "23-04-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -40,7 +40,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -56,7 +56,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -66,12 +66,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "in_dataset",
@@ -101,8 +99,7 @@
         ],
         "_comment": "UNSW-NB15 data"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -117,7 +114,7 @@
     ],
     "algorithms": [
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "Ramp-KSVCR",
         "learning": "supervised",
         "role": "main",
@@ -133,35 +130,32 @@
         "parameters_provided": true
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "K-SVCR",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "1-vs-all SVM",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "1-vs-1 SVM",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -179,7 +173,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -203,10 +197,10 @@
         "source": "popular"
       },
       {
-        "name": "False alarm rate",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       },

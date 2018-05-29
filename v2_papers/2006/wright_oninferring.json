@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "on inferring application protocol behaviors in encrypted network traffic",
     "authors": [
@@ -19,13 +19,12 @@
     },
     "access_open": true,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "03-07-2017",
-    "curated_revision_number": 5
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 6
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "modified, collected traffic from uplink of george mason university",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -46,7 +45,8 @@
           "SSH",
           "Telnet",
           "AOL Instant"
-        ]
+        ],
+        "name": "modified, collected traffic from uplink of george mason university"
       }
     ]
   },
@@ -55,10 +55,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
     "transformations": [
-      "no",
       "log"
     ],
     "final_data_format": "numerical_vectors",
@@ -126,10 +125,10 @@
     "unsupervised_learning": false,
     "semisupervised_learning": true,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "hidden markov model",
+        "name": "Hidden Markov Model (HMM)",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -147,7 +146,7 @@
         "parameters_provided": false
       },
       {
-        "name": "k nearest neighbors",
+        "name": "K-nearest Neighbors (KNN)",
         "learning": "semisupervised",
         "role": "main",
         "type": "clustering",
@@ -182,7 +181,7 @@
         "type": "external",
         "metrics": [
           "incomplete_confusion_matrix",
-          "roc/uac",
+          "roc/auc",
           "complete_confusion_matrix"
         ],
         "source": "popular"

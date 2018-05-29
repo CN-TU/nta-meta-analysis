@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Botnet Detection Based on Traffic Monitoring",
     "authors": [
@@ -24,8 +24,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "02-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": []
@@ -37,15 +37,13 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "name": "argus",
+        "name": "Argus",
         "availability": "public"
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "mixed_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -76,15 +74,14 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "clustering by hand in plotted graphs",
@@ -92,7 +89,6 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       }

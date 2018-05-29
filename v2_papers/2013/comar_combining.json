@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Combining supervised and unsupervised learning for zero-day malware detection",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "20-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -38,8 +38,7 @@
         "generation": "captured",
         "generation_year": "missing",
         "covered_period": "missing",
-        "details": [],
-        "subsets": []
+        "subsets": "none"
       }
     ]
   },
@@ -55,25 +54,22 @@
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "tool_based",
         "role": "main",
         "main_goal": "attack_classification"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Random Forest",
@@ -81,51 +77,46 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "One-class SVM with RBF kernel with profiling",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "One-class SVM with WL kernel with profiling",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "One-class SVM with WL kernel",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "One-class SVM with RBF kernel",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -143,15 +134,15 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "AUC",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
       {
-        "name": "F-1",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"

@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "Unsupervised host behavior classification from connection patterns",
     "authors": [
@@ -28,13 +28,12 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "04-07-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "MAWI",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -56,7 +55,8 @@
           "22-01-2008",
           "50_other_testing_subsets"
         ],
-        "anonymized": true
+        "anonymized": true,
+        "name": "MAWI"
       }
     ]
   },
@@ -65,15 +65,12 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": false,
     "flow_aggregation_analysis_oriented": true,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "_non_linear_normalization",
     "transformations": [
       "entropy"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
-    "flows": [],
     "flow_aggregations": [
       {
         "selection": "expert_knowledge",
@@ -241,13 +238,12 @@
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Minimum Spanning Tree Clustering",
         "learning": "unsupervised",
         "role": "main",
-        "tools": [],
         "parameters_provided": true,
         "source": "own_proposed",
         "type": "clustering",
@@ -273,7 +269,7 @@
         "source": "popular"
       },
       {
-        "name": "time",
+        "name": "Time",
         "type": "internal",
         "metrics": [
           "time-based"

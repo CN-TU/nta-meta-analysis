@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "Timely and Continuous Machine-Learning-Based Classification for Interactive IP Traffic",
     "authors": [
@@ -8,7 +8,7 @@
       "Branch, Philip",
       "Zander, Sebastian"
     ],
-    "publication_name": "IEEE/ACM Transactions on Networking",
+    "publication_name": "IEEE/ACM Transactions on Networking (TON)",
     "publication_type": "peer_reviewed_journal",
     "year": 2012,
     "organization_publishers": [
@@ -24,13 +24,12 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "05-07-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "_private_packets",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -47,10 +46,10 @@
           "September 2005",
           "Game: Wolfenstein:ET"
         ],
-        "anonymized": false
+        "anonymized": false,
+        "name": "_private_packets"
       },
       {
-        "dataset_name": "_private_packets",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -62,12 +61,11 @@
           2007
         ],
         "covered_period": "months",
-        "details": [],
-        "subsets": [],
-        "anonymized": false
+        "subsets": "none",
+        "anonymized": false,
+        "name": "_private_packets"
       },
       {
-        "dataset_name": "_private_packets",
         "availability": "private",
         "format": "flow",
         "types": [
@@ -83,7 +81,8 @@
         "subsets": [
           "common applications"
         ],
-        "anonymized": false
+        "anonymized": false,
+        "name": "_private_packets"
       }
     ]
   },
@@ -94,8 +93,8 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "tool": "netmate",
-        "availability": "public"
+        "availability": "public",
+        "name": "netmate"
       }
     ],
     "normalization_type": "no",
@@ -104,8 +103,6 @@
       "sampling"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -183,8 +180,7 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -193,28 +189,28 @@
     "anomaly_detection": false,
     "tools": [
       {
-        "tool": "weka",
-        "availability": "public"
+        "availability": "public",
+        "name": "WEKA"
       }
     ],
     "algorithms": [
       {
-        "name": "naive_bayes",
+        "name": "Naive Bayes",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "tool": "weka",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "decision_tree",
+        "name": "Decision Tree",
         "subname": "c4.5 decision tree",
         "learning": "supervised",
         "role": "main",
@@ -222,8 +218,8 @@
         "metric/decision_criteria": "mutual_information",
         "tools": [
           {
-            "tool": "weka",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
@@ -243,13 +239,13 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "recall",
+        "name": "Recall",
         "type": "external",
         "metrics": [],
         "source": "popular"
       },
       {
-        "name": "precission",
+        "name": "Precision",
         "type": "external",
         "metrics": [],
         "source": "popular"

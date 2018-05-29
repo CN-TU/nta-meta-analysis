@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Robust Smartphone App Identification Via Encrypted Network Traffic Analysis",
     "authors": [
@@ -20,9 +20,9 @@
       "publisher": "IEEE"
     },
     "access_open": false,
-    "curated_by": "dferreira",
-    "curated_last_revision": "19-09-2017",
-    "curated_revision_number": 1
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -57,12 +57,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -547,8 +545,7 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -589,7 +586,7 @@
         "metric/decision_criteria": "mutual_information",
         "tools": [
           {
-            "name": "sckit-learn",
+            "name": "scikit-learn",
             "availability": "public"
           }
         ],
@@ -625,7 +622,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "precision",
+        "name": "Precision",
         "type": "external",
         "metrics": [
           "precision"
@@ -633,10 +630,10 @@
         "source": "popular"
       },
       {
-        "name": "recall",
+        "name": "Recall",
         "type": "external",
         "metrics": [
-          "_recall"
+          "recall"
         ],
         "source": "popular"
       },

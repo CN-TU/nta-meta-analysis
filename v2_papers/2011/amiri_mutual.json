@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Mutual information-based feature selection for intrusion detection systems",
     "authors": [
@@ -25,8 +25,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "13-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -55,9 +55,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
@@ -76,7 +76,6 @@
         "type": "filter"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -207,8 +206,7 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -223,7 +221,7 @@
     ],
     "algorithms": [
       {
-        "name": "SVM",
+        "name": "Support Vector Machine (SVM)",
         "subname": "Least Squares SVM",
         "learning": "supervised",
         "role": "main",
@@ -260,15 +258,15 @@
         "source": "popular"
       },
       {
-        "name": "FPR",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       },
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -276,15 +274,15 @@
         "source": "popular"
       },
       {
-        "name": "ROC curve",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
       {
-        "name": "time",
+        "name": "Time",
         "type": "internal",
         "metrics": [
           "time-based"

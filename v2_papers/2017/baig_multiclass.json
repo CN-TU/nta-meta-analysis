@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "A multiclass cascade of artificial neural network for network intrusion detection",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "26-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -41,7 +41,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -57,7 +57,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -67,12 +67,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "in_dataset",
@@ -143,15 +141,14 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Neural Network",
@@ -160,7 +157,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false
       }
@@ -186,7 +182,7 @@
         "source": "popular"
       },
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -194,7 +190,7 @@
         "source": "popular"
       },
       {
-        "name": "precision",
+        "name": "Precision",
         "type": "external",
         "metrics": [
           "precision"
@@ -202,7 +198,7 @@
         "source": "popular"
       },
       {
-        "name": "recall",
+        "name": "Recall",
         "type": "external",
         "metrics": [
           "recall"
@@ -210,7 +206,7 @@
         "source": "popular"
       },
       {
-        "name": "F1-score",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"

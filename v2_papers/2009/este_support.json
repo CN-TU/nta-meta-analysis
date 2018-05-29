@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "Support vector Machines for TCP traffic classification",
     "authors": [
@@ -7,7 +7,7 @@
       "Gringoli, Franceso",
       "Salgarelli, Luca"
     ],
-    "publication_name": "computer networks",
+    "publication_name": "Computer Networks",
     "publication_type": "peer_reviewed_journal",
     "year": 2009,
     "organization_publishers": [
@@ -22,13 +22,12 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "03-07-2017",
-    "curated_revision_number": 4
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "traffic at border router of faculty at università degli studi di brescia",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -45,10 +44,10 @@
           "mail services",
           "p2p",
           "interactive"
-        ]
+        ],
+        "name": "traffic at border router of faculty at università degli studi di brescia"
       },
       {
-        "dataset_name": "lbnl/icsi",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -58,7 +57,7 @@
           2004,
           2005
         ],
-        "covered_period": "_months",
+        "covered_period": "months",
         "details": [
           "raw",
           "no_payload",
@@ -69,10 +68,10 @@
           "16-12-2004",
           "06-01-2005",
           "07-01-2005"
-        ]
+        ],
+        "name": "lbnl/icsi"
       },
       {
-        "dataset_name": "caida-oc48",
         "availability": "public_on_demand",
         "format": "packet",
         "types": [
@@ -91,7 +90,8 @@
         "subsets": [
           "14-08-2002 16:15-17:00 utc",
           "14-08-2002 18:00-18:10 utc"
-        ]
+        ],
+        "name": "caida-oc48"
       }
     ]
   },
@@ -100,15 +100,13 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
     "transformations": [
       "filtering",
       "time_series"
     ],
     "final_data_format": "time_series",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -166,35 +164,32 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "support vector machine",
+        "name": "Support Vector Machine (SVM)",
         "subname": "single-class",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": "partially"
       },
       {
-        "name": "support vector machine",
+        "name": "Support Vector Machine (SVM)",
         "subname": "multi-class",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": "partially"
       }

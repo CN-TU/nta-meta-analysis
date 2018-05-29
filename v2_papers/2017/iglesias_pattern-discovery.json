@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "pattern discovery in internet background radiation",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "20-01-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -74,7 +74,7 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "name": "_own_perl_scripts",
+        "name": "own_perl_scripts",
         "availability": "private"
       }
     ],
@@ -85,8 +85,6 @@
       "flow_extraction"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -298,8 +296,7 @@
           "sourceIPv4Address"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
@@ -339,7 +336,7 @@
         "parameters_provided": false
       },
       {
-        "name": "k-medoids",
+        "name": "K-medoids",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -362,7 +359,7 @@
         "metric/decision_criteria": "vote",
         "tools": [
           {
-            "name": "own_matlab_tools",
+            "name": "own_matlab_scripts",
             "availability": "private"
           }
         ],
@@ -442,8 +439,7 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [
-    ],
+    "subgoals": [],
     "focus_main": "features",
     "claimed_improvements": [
       "improved_traffic_classification",

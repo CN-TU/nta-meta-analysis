@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks",
     "authors": [
@@ -25,8 +25,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "05-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -40,7 +40,6 @@
         "generation": "captured",
         "generation_year": 2008,
         "covered_period": "minutes",
-        "details": [],
         "subsets": [
           "05-03-2008",
           "12-03-2008",
@@ -56,14 +55,12 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
     "transformations": [
       "class_separation"
     ],
     "final_data_format": "mixed_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -263,35 +260,32 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "Adaboost with Decision Stumps",
+        "name": "AdaBoost",
         "subname": "BStump",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
       {
-        "name": "Decision tree",
+        "name": "Decision Tree",
         "subname": "Boosting decision trees",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -302,7 +296,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -313,7 +306,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -324,7 +316,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": true
       }
@@ -366,7 +357,7 @@
         "source": "popular"
       },
       {
-        "name": "F1 Scores",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"
@@ -374,7 +365,7 @@
         "source": "popular"
       },
       {
-        "name": "Training Tme",
+        "name": "Training Time",
         "type": "internal",
         "metrics": [
           "time-based"

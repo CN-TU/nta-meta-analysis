@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "An autonomous labeling approach to support vector machines algorithms for network traffic anomaly detection",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "19-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -37,8 +37,7 @@
         "generation": "synthetic",
         "generation_year": 1998,
         "covered_period": "weeks",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -48,12 +47,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "role": "main",
@@ -140,8 +137,7 @@
         ],
         "selection": "expert_knowledge"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -161,7 +157,7 @@
     ],
     "algorithms": [
       {
-        "name": "Support Vector Machine",
+        "name": "Support Vector Machine (SVM)",
         "subname": "one-class support vector machine",
         "learning": "supervised",
         "role": "main",
@@ -182,7 +178,6 @@
         "role": "validation",
         "type": "heuristics",
         "metric/decision_criteria": "no",
-        "tools": [],
         "parameters_provided": false
       }
     ]
@@ -199,26 +194,26 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "ROC Curve",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
       {
-        "name": "detection rate",
+        "name": "Detection Rate",
         "type": "external",
         "metrics": [
-          "_false_negative_rate"
+          "false_negative_rate"
         ],
         "source": "popular"
       },
       {
-        "name": "false alarm",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_false_positive_rate"
+          "false_positive_rate"
         ],
         "source": "popular"
       }

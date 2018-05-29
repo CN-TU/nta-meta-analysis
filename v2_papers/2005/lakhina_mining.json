@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Mining Anomalies Using Traffic Feature Distributions",
     "authors": [
@@ -22,13 +22,13 @@
     },
     "access_open": false,
     "curated_by": "maloku, b.",
-    "curated_last_revision": "27-11-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "name": "abilene",
+        "name": "Abilene",
         "availability": "public",
         "format": "flow",
         "types": [
@@ -46,7 +46,7 @@
         "anonymized": true
       },
       {
-        "name": "geant",
+        "name": "GÉANT",
         "availability": "public_on_demand",
         "format": "flow",
         "types": [
@@ -101,8 +101,6 @@
       "time_series"
     ],
     "final_data_format": "time_series",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -208,15 +206,14 @@
           }
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "multiway subspace method",
@@ -225,29 +222,26 @@
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "hierarchical agglomerative",
+        "name": "Hierarchical Agglomerative Clustering",
         "subname": "hierarchical agglomerative",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "k-means",
+        "name": "K-means",
         "subname": "k-means",
         "learning": "unsupervised",
         "role": "competitor",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -265,10 +259,10 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "detection rate",
+        "name": "Detection Rate",
         "type": "external",
         "metrics": [
-          "_recall"
+          "recall"
         ],
         "source": "popular"
       },
