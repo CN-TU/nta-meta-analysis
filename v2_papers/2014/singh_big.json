@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Big data analytics framework for peer-to-peer botnet detection using random forests",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "19-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -41,7 +41,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -62,7 +62,7 @@
       }
     ],
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
@@ -71,7 +71,6 @@
         "role": "main"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -162,8 +161,7 @@
         ],
         "main_goal": "botnet_detection"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -206,7 +204,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "True positive rate",
+        "name": "True Positive Rate",
         "type": "external",
         "metrics": [
           "recall"
@@ -214,10 +212,10 @@
         "source": "popular"
       },
       {
-        "name": "False positive rate",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
-          "_fpr"
+          "false_positive_rate"
         ],
         "source": "popular"
       },
@@ -230,7 +228,7 @@
         "source": "popular"
       },
       {
-        "name": "time",
+        "name": "Time",
         "type": "internal",
         "metrics": [
           "time-based"

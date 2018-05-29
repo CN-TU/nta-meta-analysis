@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Diagnosing Network-Wide Traffic Anomalies",
     "authors": [
@@ -7,7 +7,7 @@
       "Crovella, Mark",
       "Diot, Christophe"
     ],
-    "publication_name": "SIGCOMM",
+    "publication_name": "ACM SIGCOMM conference on Internet Measurement",
     "publication_type": "peer_reviewed_conference",
     "year": 2004,
     "organization_publishers": [
@@ -19,32 +19,28 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "23-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "name": "abilene",
+        "name": "Abilene",
         "availability": "public_on_demand",
         "format": "flow",
-        "types": [],
         "generation": "captured",
         "generation_year": "missing",
         "covered_period": "days",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": true
       },
       {
         "name": "sprint-europe",
         "availability": "private",
         "format": "flow",
-        "types": [],
         "generation": "captured",
         "generation_year": "missing",
         "covered_period": "days",
-        "details": [],
         "subsets": [
           "07-07",
           "11-08"
@@ -74,8 +70,6 @@
       "time_series"
     ],
     "final_data_format": "time_series",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -131,7 +125,7 @@
     "unsupervised_learning": false,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Fourier Transform",
@@ -139,7 +133,6 @@
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -149,7 +142,6 @@
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
@@ -159,7 +151,6 @@
         "role": "main",
         "type": "statistics",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       }
@@ -177,7 +168,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "recall",
+        "name": "Recall",
         "type": "external",
         "metrics": [
           "recall"
@@ -185,7 +176,7 @@
         "source": "popular"
       },
       {
-        "name": "precision",
+        "name": "Precision",
         "type": "external",
         "metrics": [
           "precision"
@@ -212,7 +203,9 @@
   },
   "result": {
     "main_goal": "anomaly_detection",
-    "subgoals": [],
+    "subgoals": [
+      "anomaly_detection"
+    ],
     "focus_main": "methodology/framework",
     "claimed_improvements": [
       "improved_detection_rates",

@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Anomalous Payload-based Network Intrusion Detection",
     "authors": [
@@ -18,8 +18,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "26-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -70,11 +70,10 @@
     "packet_analysis_oriented": true,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
     "packets": [
       {
         "selection": "expert_knowledge",
@@ -180,15 +179,14 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "PAYL",
@@ -196,7 +194,6 @@
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "mahalanobis",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": false,
         "subname": "payload-based anomaly detection"
@@ -215,10 +212,10 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "Receiver Operating Characteristics",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
@@ -226,13 +223,13 @@
         "name": "Performance",
         "type": "internal",
         "metrics": [
-          "__memory",
+          "_memory",
           "time-based"
         ],
         "source": "popular"
       },
       {
-        "name": "detection rate",
+        "name": "Detection Rate",
         "type": "external",
         "metrics": [
           "recall"
@@ -240,7 +237,7 @@
         "source": "popular"
       },
       {
-        "name": "false positive rate",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
           "accuracy"

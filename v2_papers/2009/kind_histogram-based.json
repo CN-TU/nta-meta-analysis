@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "histogram-based traffic anomaly detection",
     "authors": [
@@ -7,7 +7,7 @@
       "Stoecklin, Mark Ph.",
       "Dimitropoulos, Xenofontas"
     ],
-    "publication_name": "ieee transactions on network service management",
+    "publication_name": "IEEE Transactions on Network and Service Management",
     "publication_type": "peer_reviewed_journal",
     "year": 2009,
     "organization_publishers": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "18-04-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -37,8 +37,7 @@
         "generation": "captured",
         "generation_year": 2004,
         "covered_period": "days",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -51,12 +50,11 @@
         "generation": "captured",
         "generation_year": 2007,
         "covered_period": "days",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
-        "name": "darpa_IDeval-2000",
+        "name": "DARPA IDeval",
         "availability": "public",
         "format": "flow",
         "types": [
@@ -65,8 +63,7 @@
         "generation": "captured",
         "generation_year": 2000,
         "covered_period": "days",
-        "details": [],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -76,23 +73,21 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": false,
     "flow_aggregation_analysis_oriented": true,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
     "transformations": [
-      "__histograms",
+      "_histograms",
       "map",
-      "__feature_reduction"
+      "_feature_reduction"
     ],
-    "final_data_format": "__numerical_series",
+    "final_data_format": "_numerical_series",
     "feature_selections": [
       {
-        "name": "PCA",
+        "name": "Principal Component Analysis (PCA)",
         "type": "feature_reduction",
         "role": "main"
       }
     ],
-    "packets": [],
-    "flows": [],
     "flow_aggregations": [
       {
         "selection": "expert_knowledge",
@@ -126,10 +121,10 @@
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": true,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "hierarchical clustering",
+        "name": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -137,7 +132,7 @@
         "parameters_provided": false
       },
       {
-        "name": "hierarchical clustering",
+        "name": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -145,7 +140,7 @@
         "parameters_provided": false
       },
       {
-        "name": "hierarchical clustering",
+        "name": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -153,7 +148,7 @@
         "parameters_provided": false
       },
       {
-        "name": "hierarchical clustering",
+        "name": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -222,12 +217,14 @@
   },
   "result": {
     "main_goal": "anomaly_detection",
-    "subgoals": [],
+    "subgoals": [
+      "anomaly_detection"
+    ],
     "focus_main": "methodology/framework",
     "claimed_improvements": [
-      "__focus_on_enterprise_network_traffic",
+      "_focus_on_enterprise_network_traffic",
       "improved_detection_rates",
-      "__generic_solution"
+      "_generic_solution"
     ],
     "reproducibility": "no"
   }

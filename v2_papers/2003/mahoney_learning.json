@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Learning rules for anomaly detection of hostile network traffic",
     "authors": [
@@ -14,19 +14,19 @@
     ],
     "pages_number_of": 4,
     "bibtex": {
-      "type": "INPROCEEDINGS",
+      "type": "inproceedings",
       "pages": "601--604",
       "doi": "10.1109/ICDM.2003.1250987"
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "24-04-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
       {
-        "name": "darpa-ideval-1999",
+        "name": "DARPA IDeval",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -38,7 +38,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -69,7 +69,7 @@
     "packet_analysis_oriented": true,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
     "transformations": [
       "sampling"
@@ -356,7 +356,7 @@
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "LERAD",
@@ -382,7 +382,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "true positives",
+        "name": "True Positive Rate",
         "type": "external",
         "metrics": [
           "incomplete_confusion_matrix"

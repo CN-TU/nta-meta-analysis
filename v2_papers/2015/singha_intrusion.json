@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "An intrusion detection system using network traffic profiling and online sequential extreme learning machine",
     "authors": [
@@ -7,7 +7,7 @@
       "Kumar, Harish",
       "Singla, R.K."
     ],
-    "publication_name": "Expert Systems With Applications",
+    "publication_name": "Expert Systems with Applications",
     "publication_type": "peer_reviewed_journal",
     "year": 2015,
     "organization_publishers": [
@@ -25,8 +25,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "23-04-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -43,7 +43,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       },
       {
@@ -60,10 +60,9 @@
           2014,
           2015
         ],
-        "subsets": [],
+        "subsets": "none",
         "availability": "public",
         "format": "flow",
-        "types": [],
         "generation": "captured",
         "covered_period": "years",
         "details": [
@@ -81,7 +80,7 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "name": "weka",
+        "name": "WEKA",
         "availability": "public"
       }
     ],
@@ -93,22 +92,21 @@
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
-        "name": "correlation based",
+        "name": "Correlation-based Feature Selection (CFS)",
         "type": "filter",
         "role": "intermediate"
       },
       {
-        "name": "consistency based",
+        "name": "Consistency-based Feature Selection",
         "type": "filter",
         "role": "intermediate"
       },
       {
-        "name": "CFS",
+        "name": "Correlation-based Feature Selection (CFS)",
         "type": "filter",
         "role": "intermediate"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -146,8 +144,7 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -168,7 +165,6 @@
         "role": "main",
         "type": "anomaly_detection",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -194,7 +190,7 @@
         "source": "popular"
       },
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -202,7 +198,7 @@
         "source": "popular"
       },
       {
-        "name": "precision",
+        "name": "Precision",
         "type": "external",
         "metrics": [
           "precision"
@@ -210,7 +206,7 @@
         "source": "popular"
       },
       {
-        "name": "F1-score",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"

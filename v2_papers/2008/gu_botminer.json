@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "BotMiner: clustering analysis of network traffic for protocol- and structure-independent botnet detection",
     "authors": [
@@ -23,14 +23,13 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "19-05-2017",
-    "curated_revision_number": 2,
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3,
     "1st_author": "gu, g."
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "traffic on backbone router at college of computing at georgia tech",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -43,10 +42,10 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": []
+        "subsets": "none",
+        "name": "traffic on backbone router at college of computing at georgia tech"
       },
       {
-        "dataset_name": "mix of campus traffic with botnet traffic",
         "availability": "private",
         "format": "packet",
         "types": [
@@ -68,7 +67,8 @@
           "http-2",
           "p2p-storm",
           "p2p-nugache"
-        ]
+        ],
+        "name": "mix of campus traffic with botnet traffic"
       }
     ]
   },
@@ -79,22 +79,22 @@
     "flow_aggregation_analysis_oriented": true,
     "tools": [
       {
-        "tool": "fcapture",
         "detail": "https://github.com/fatshaw/work/tree/master/github/fcapture",
         "availability": "public",
-        "_comment": "deprecated"
+        "_comment": "deprecated",
+        "name": "fcapture"
       },
       {
-        "tool": "_own_java_scripts",
-        "availability": "private"
+        "availability": "private",
+        "name": "own_java_scripts"
       },
       {
-        "tool": "_own_r_scripts",
-        "availability": "private"
+        "availability": "private",
+        "name": "own_r_scripts"
       },
       {
-        "tool": "snort",
-        "availability": "public"
+        "availability": "public",
+        "name": "Snort"
       }
     ],
     "normalization_type": "_quantile",
@@ -103,9 +103,6 @@
       "flow_extraction"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
-    "flows": [],
     "flow_aggregations": [
       {
         "selection": "expert_knowledge",
@@ -114,7 +111,7 @@
         "active_timeout": 86400,
         "features": [
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -125,7 +122,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -136,7 +133,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -152,7 +149,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -168,7 +165,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -179,7 +176,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -190,7 +187,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -206,7 +203,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -222,7 +219,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -233,7 +230,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -244,7 +241,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -260,7 +257,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -276,7 +273,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -287,7 +284,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -298,7 +295,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -314,7 +311,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -330,7 +327,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -341,7 +338,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -352,7 +349,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -368,7 +365,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -384,7 +381,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -395,7 +392,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -406,7 +403,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -422,7 +419,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -438,7 +435,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -449,7 +446,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -460,7 +457,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -476,7 +473,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -492,7 +489,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -503,7 +500,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -514,7 +511,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -530,7 +527,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -546,7 +543,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -557,7 +554,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -568,7 +565,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -584,7 +581,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -600,7 +597,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -611,7 +608,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -622,7 +619,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -638,7 +635,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -654,7 +651,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -665,7 +662,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -676,7 +673,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -692,7 +689,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -708,7 +705,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -719,7 +716,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -730,7 +727,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -746,7 +743,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -762,7 +759,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -773,7 +770,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -784,7 +781,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -800,7 +797,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -816,7 +813,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -827,7 +824,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -838,7 +835,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -854,7 +851,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -870,7 +867,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -881,7 +878,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -892,7 +889,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -908,7 +905,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -924,7 +921,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -935,7 +932,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -946,7 +943,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -962,7 +959,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -978,7 +975,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -989,7 +986,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1000,7 +997,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1016,7 +1013,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1032,7 +1029,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1043,7 +1040,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1054,7 +1051,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1070,7 +1067,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1086,7 +1083,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1097,7 +1094,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1108,7 +1105,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1124,7 +1121,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1140,7 +1137,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1151,7 +1148,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1162,7 +1159,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1178,7 +1175,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1284,16 +1281,15 @@
     "unsupervised_learning": true,
     "semisupervised_learning": false,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
-        "name": "k-means",
+        "name": "K-means",
         "subname": "x-means",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced"
       },
       {
@@ -1303,7 +1299,6 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "own_proposed"
       },
       {
@@ -1315,8 +1310,8 @@
         "metric/decision_criteria": "_multiple",
         "tools": [
           {
-            "tool": "snort",
-            "availability": "public"
+            "availability": "public",
+            "name": "snort"
           }
         ],
         "source": "own_proposed",
@@ -1329,7 +1324,6 @@
         "role": "main",
         "type": "heuristics",
         "metric/decision_criteria": "vote",
-        "tools": [],
         "source": "own_proposed",
         "parameters_provided": true
       }
@@ -1347,7 +1341,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "false positive rate",
+        "name": "False Positive Rate",
         "type": "external",
         "metrics": [
           "incomplete_confusion_matrix"
@@ -1355,7 +1349,7 @@
         "source": "popular"
       },
       {
-        "name": "detection rate",
+        "name": "Detection Rate",
         "type": "external",
         "metrics": [
           "incomplete_confusion_matrix"

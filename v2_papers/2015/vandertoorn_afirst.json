@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "A first look at HTTP(S) intrusion detection using NetFlow/IPFIX",
     "authors": [
@@ -16,15 +16,15 @@
     ],
     "pages_number_of": 4,
     "bibtex": {
-      "type": "INPROCEEDINGS",
+      "type": "inproceedings",
       "pages": "862--865",
       "doi": "10.1109/INM.2015.7140395",
       "issn": "1573-0077"
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "23-04-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -54,9 +54,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": false,
     "flow_aggregation_analysis_oriented": true,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "missing",
     "flow_aggregations": [
       {
@@ -152,7 +152,7 @@
         "source": "referenced"
       },
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -168,7 +168,7 @@
     ],
     "focus_main": "methodology/framework",
     "claimed_improvements": [
-      "__method_viable"
+      "_method_viable"
     ],
     "reproducibility": "no"
   }

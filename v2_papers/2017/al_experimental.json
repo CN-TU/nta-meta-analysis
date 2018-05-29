@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Experimental Evaluation of a Multi-layer Feed-Forward Artificial Neural Network Classifier for Network Intrusion Detection System",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "26-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -39,7 +39,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -49,9 +49,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "zscore",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
@@ -60,7 +60,6 @@
         "role": "main"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -191,8 +190,7 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -238,7 +236,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"
@@ -246,15 +244,15 @@
         "source": "popular"
       },
       {
-        "name": "AUC",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
       {
-        "name": "F1",
+        "name": "F1-Score",
         "type": "external",
         "metrics": [
           "f-1"
@@ -262,7 +260,7 @@
         "source": "popular"
       },
       {
-        "name": "precision",
+        "name": "Precision",
         "type": "external",
         "metrics": [
           "precision"
@@ -270,7 +268,7 @@
         "source": "popular"
       },
       {
-        "name": "recall",
+        "name": "Recall",
         "type": "external",
         "metrics": [
           "recall"
@@ -286,7 +284,7 @@
         "source": "popular"
       },
       {
-        "name": "time",
+        "name": "Time",
         "type": "internal",
         "metrics": [
           "time-based"

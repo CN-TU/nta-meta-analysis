@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "machine learning for encrypted malware traffic classification: accounting for noisy labels and non-stationarity",
     "authors": [
@@ -19,8 +19,8 @@
     },
     "access_open": true,
     "curated_by": "fiv",
-    "curated_last_revision": "22-03-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -74,8 +74,6 @@
       "flow_extraction"
     ],
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "study_based",
@@ -486,8 +484,7 @@
           "destinationTransportPort"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -524,7 +521,7 @@
         "parameters_provided": true
       },
       {
-        "name": "logistic regression",
+        "name": "Logistic Regression",
         "learning": "statistics/model_fit",
         "role": "competitor",
         "type": "regression",
@@ -541,7 +538,7 @@
         "subname": "l1 and l2"
       },
       {
-        "name": "decision tree",
+        "name": "Decision Tree",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -558,7 +555,7 @@
         "subname": "optimized CART"
       },
       {
-        "name": "random forest",
+        "name": "Random Forest",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -574,7 +571,7 @@
         "parameters_provided": true
       },
       {
-        "name": "support vector machine",
+        "name": "Support Vector Machine (SVM)",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -591,7 +588,7 @@
         "subname": "gaussian and polynimial kernels"
       },
       {
-        "name": "neural network",
+        "name": "Neural Network",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -658,7 +655,7 @@
         "type": "external",
         "metrics": [
           "accuracy",
-          "__mili_percentage_fdr"
+          "_mili_percentage_fdr"
         ],
         "source": "popular"
       }
@@ -667,14 +664,14 @@
   "result": {
     "subgoals": [
       "classification_of_encrypted_traffic",
-      "__hypothesis_testing",
-      "__feature_set_testing"
+      "_hypothesis_testing",
+      "_feature_set_testing"
     ],
     "claimed_improvements": [
       "improved_detection_rates",
       "improved_traffic_classification",
-      "__suitable_for_encrypted_traffic",
-      "__algorithm_testing",
+      "_suitable_for_encrypted_traffic",
+      "_algorithm_testing",
       "improved_data_description"
     ],
     "main_goal": "traffic_classification",

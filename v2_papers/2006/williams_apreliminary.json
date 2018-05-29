@@ -1,5 +1,5 @@
 {
-  "version": "v2",
+  "version": "v2.2.0",
   "reference": {
     "title": "a preliminary performance comparison of five machine learning algorithms for practical ip traffic flow classification",
     "authors": [
@@ -7,7 +7,7 @@
       "Zander, Sebastian",
       "Armitage, Grenville"
     ],
-    "publication_name": "acm sigcomm computer communication review",
+    "publication_name": "ACM SIGCOMM Computer Communication Review",
     "publication_type": "peer_reviewed_conference",
     "year": 2006,
     "organization_publishers": [
@@ -22,13 +22,12 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "19-05-2017",
-    "curated_revision_number": 2
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
       {
-        "dataset_name": "nlanr auckland-vi",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -46,10 +45,10 @@
           "auckland-vi-20010611",
           "auckland-vi-20010612"
         ],
-        "anonymized": true
+        "anonymized": true,
+        "name": "nlanr auckland-vi"
       },
       {
-        "dataset_name": "nlanr leipzig-ii",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -66,10 +65,10 @@
         "subsets": [
           "leipzig-ii-20030221"
         ],
-        "anonymized": true
+        "anonymized": true,
+        "name": "nlanr leipzig-ii"
       },
       {
-        "dataset_name": "nlanr nzix-ii",
         "availability": "public",
         "format": "packet",
         "types": [
@@ -86,7 +85,8 @@
         "subsets": [
           "nzix-ii-20000706"
         ],
-        "anonymized": true
+        "anonymized": true,
+        "name": "nlanr nzix-ii"
       }
     ]
   },
@@ -97,9 +97,9 @@
     "flow_aggregation_analysis_oriented": false,
     "tools": [
       {
-        "tool": "netmate",
         "detail": "none",
-        "availability": "public"
+        "availability": "public",
+        "name": "netmate"
       }
     ],
     "normalization_type": "no",
@@ -110,13 +110,13 @@
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
-        "name": "consistency-based feature selection",
+        "name": "Consistency-based Feature Selection",
         "type": "filter",
         "classifier": "none",
         "role": "competitor"
       },
       {
-        "name": "correlation-based feature selection",
+        "name": "Correlation-based Feature Selection (CFS)",
         "type": "filter",
         "classifier": "none",
         "role": "main"
@@ -599,14 +599,14 @@
     "anomaly_detection": false,
     "tools": [
       {
-        "tool": "weka",
         "detail": "none",
-        "availability": "public"
+        "availability": "public",
+        "name": "WEKA"
       }
     ],
     "algorithms": [
       {
-        "name": "naive_bayes",
+        "name": "Naive Bayes",
         "subname": "naive bayes with discretization",
         "learning": "supervised",
         "role": "main",
@@ -614,16 +614,16 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "tool": "weka",
             "detail": "none",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "naive_bayes",
+        "name": "Naive Bayes",
         "subname": "naive bayes with kernel density estimation",
         "learning": "supervised",
         "role": "main",
@@ -631,16 +631,16 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "tool": "weka",
             "detail": "none",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "decision_tree",
+        "name": "Decision Tree",
         "subname": "c4.5 decision tree",
         "learning": "supervised",
         "role": "main",
@@ -648,32 +648,32 @@
         "metric/decision_criteria": "mutual_information",
         "tools": [
           {
-            "tool": "weka",
             "detail": "none",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "bayes_network",
+        "name": "Bayesian Network",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "tool": "weka",
             "detail": "none",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "decision_tree",
+        "name": "Decision Tree",
         "subname": "naive bayes decision tree",
         "learning": "supervised",
         "role": "main",
@@ -681,9 +681,9 @@
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
-            "tool": "weka",
             "detail": "none",
-            "availability": "public"
+            "availability": "public",
+            "name": "WEKA"
           }
         ],
         "source": "referenced",
@@ -703,7 +703,7 @@
     "train_test_separation": true,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"

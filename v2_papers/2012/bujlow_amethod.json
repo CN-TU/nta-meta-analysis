@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "A method for classification of network traffic based on C5.0 Machine Learning Algorithm",
     "authors": [
@@ -20,8 +20,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -37,7 +37,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -47,11 +47,10 @@
     "packet_analysis_oriented": true,
     "flow_analysis_oriented": false,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "mixed_vectors",
-    "feature_selections": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -546,8 +545,7 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -559,8 +557,7 @@
         "name": "C5.0",
         "availability": "public"
       }
-    ],
-    "algorithms": []
+    ]
   },
   "evaluation": {
     "algorithm_comparison": false,
@@ -582,7 +579,7 @@
         "source": "popular"
       },
       {
-        "name": "Training time",
+        "name": "Training Time",
         "type": "internal",
         "metrics": [
           "time-based"
@@ -593,7 +590,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "algorithm",
     "claimed_improvements": [
       "improved_traffic_classification"

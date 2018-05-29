@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Kitsune: An Ensemble of Autoencoders for Online Network Intrusion Detection",
     "authors": [
@@ -20,8 +20,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "20-02-2018",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -38,7 +38,7 @@
         "details": [
           "raw"
         ],
-        "subsets": [],
+        "subsets": "none",
         "anonymized": false
       }
     ]
@@ -48,12 +48,10 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
     "flows": [
       {
         "selection": "expert_knowledge",
@@ -489,8 +487,7 @@
         ],
         "_name": "SrcMAC-IP"
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
@@ -591,19 +588,19 @@
         "source": "popular"
       },
       {
-        "name": "FNR",
+        "name": "False Negative Rate",
         "type": "external",
         "metrics": [
-          "_fnr"
+          "false_negative_rate"
         ],
         "source": "popular",
         "_note": "false negative rate"
       },
       {
-        "name": "AUC",
+        "name": "Area Under Curve/Receiver Operating Characteristics",
         "type": "external",
         "metrics": [
-          "roc/uac"
+          "roc/auc"
         ],
         "source": "popular"
       },
@@ -611,7 +608,7 @@
         "name": "Equal Error Rate",
         "type": "external",
         "metrics": [
-          "_fnr",
+          "false_negative_rate",
           "recall"
         ],
         "source": "popular"

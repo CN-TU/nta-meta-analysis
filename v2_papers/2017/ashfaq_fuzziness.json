@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Fuzziness based semi-supervised learning approach for intrusion detection system",
     "authors": [
@@ -23,9 +23,9 @@
       "publisher": "Elsevier"
     },
     "access_open": false,
-    "curated_by": "dferreira",
-    "curated_last_revision": "23-04-2018",
-    "curated_revision_number": 2
+    "curated_by": "ferreira, d.",
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -38,7 +38,7 @@
         "details": [
           "preprocessed"
         ],
-        "subsets": []
+        "subsets": "none"
       }
     ]
   },
@@ -47,21 +47,17 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "range",
-    "transformations": [],
-    "final_data_format": "numerical_vectors",
-    "feature_selections": [],
-    "packets": [],
-    "flows": [],
-    "flow_aggregations": []
+    "transformations": "none",
+    "final_data_format": "numerical_vectors"
   },
   "analysis_method": {
     "supervised_learning": false,
     "unsupervised_learning": false,
     "semisupervised_learning": true,
     "anomaly_detection": false,
-    "tools": [],
+    "tools": "missing",
     "algorithms": [
       {
         "name": "Fuzziness based divide-and-conquer",
@@ -69,7 +65,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "error/fitting_function",
-        "tools": [],
         "source": "own_referenced"
       },
       {
@@ -79,7 +74,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "error/fitting_function",
-        "tools": [],
         "source": "own_proposed"
       }
     ]
@@ -96,7 +90,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "accuracy",
+        "name": "Accuracy",
         "type": "external",
         "metrics": [
           "accuracy"

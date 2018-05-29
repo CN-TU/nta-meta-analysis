@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Network Traffic Classification Using K-means Clustering",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "05-02-2017",
-    "curated_revision_number": 1
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 2
   },
   "data": {
     "datasets": [
@@ -37,7 +37,6 @@
         "generation": "captured",
         "generation_year": 2003,
         "covered_period": "minutes",
-        "details": [],
         "subsets": [
           "20-08-2003-01:37",
           "20-08-2003-04:39",
@@ -66,13 +65,13 @@
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
-        "name": "CFS",
+        "name": "Correlation-based Feature Selection (CFS)",
         "type": "filter",
         "classifier": "none",
         "role": "main"
       },
       {
-        "name": "Consistency-based subset evaluation",
+        "name": "Consistency-based Feature Selection",
         "type": "wrapper",
         "classifier": "exact_matching",
         "role": "main"
@@ -102,7 +101,6 @@
         "role": "main"
       }
     ],
-    "packets": [],
     "flows": [
       {
         "selection": "feature_selection",
@@ -250,8 +248,7 @@
           "protocolIdentifier"
         ]
       }
-    ],
-    "flow_aggregations": []
+    ]
   },
   "analysis_method": {
     "supervised_learning": false,
@@ -272,17 +269,16 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       },
       {
-        "name": "C4.5",
+        "name": "Decision Tree",
+        "subname": "C4.5 Decision Tree",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": true
       }
@@ -311,7 +307,7 @@
         "name": "Recall",
         "type": "external",
         "metrics": [
-          "_recall"
+          "recall"
         ],
         "source": "popular"
       }
@@ -319,7 +315,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "methodology/framework",
     "claimed_improvements": [
       "improved_traffic_classification"

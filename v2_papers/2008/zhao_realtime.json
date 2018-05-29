@@ -1,5 +1,5 @@
 {
-  "version": "v2.1",
+  "version": "v2.2.0",
   "reference": {
     "title": "Real-time feature selection in traffic classification",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "07-05-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "29-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -35,7 +35,6 @@
           "ipv4"
         ],
         "generation_year": "missing",
-        "details": [],
         "subsets": [
           "Dataset1",
           "Dataset2"
@@ -49,9 +48,9 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [],
+    "tools": "missing",
     "normalization_type": "no",
-    "transformations": [],
+    "transformations": "none",
     "final_data_format": "numerical_vectors",
     "feature_selections": [
       {
@@ -219,7 +218,6 @@
         ]
       }
     ],
-    "flow_aggregations": [],
     "_comment": "The features in the paper are not 100% clear to me, but I think that is what they meant."
   },
   "analysis_method": {
@@ -235,12 +233,12 @@
     ],
     "algorithms": [
       {
-        "name": "CS4.5",
+        "name": "Decision Tree",
+        "subname": "C4.5 Decision Tree",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -250,7 +248,6 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "missing",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -259,17 +256,15 @@
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "K-Means",
+        "name": "K-means",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       },
@@ -279,7 +274,6 @@
         "role": "main",
         "type": "clustering",
         "metric/decision_criteria": "probabilistic",
-        "tools": [],
         "source": "referenced",
         "parameters_provided": false
       }
@@ -316,7 +310,7 @@
         "name": "Recall",
         "type": "external",
         "metrics": [
-          "_recall"
+          "recall"
         ],
         "source": "popular"
       }
@@ -324,7 +318,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "features",
     "claimed_improvements": [
       "data_stream_oriented"
