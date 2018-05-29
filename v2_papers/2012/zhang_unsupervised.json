@@ -267,7 +267,8 @@
         "parameters_provided": false
       },
       {
-        "name": "C4.5",
+        "name": "Decision Tree",
+        "subname": "C4.5 Decision Tree",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
