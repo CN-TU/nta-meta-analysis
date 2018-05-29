@@ -191,7 +191,7 @@
       {
         "name": "FpNormal",
         "type": "missing",
-        "metrics": [],
+        "metrics": "missing",
         "source": "missing"
       }
     ]

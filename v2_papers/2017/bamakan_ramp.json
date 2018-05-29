@@ -207,7 +207,9 @@
       {
         "name": "Matthews correlation coefficient",
         "type": "external",
-        "metrics": [],
+        "metrics": [
+          "_matthews_correlation"
+        ],
         "source": "referenced"
       },
       {

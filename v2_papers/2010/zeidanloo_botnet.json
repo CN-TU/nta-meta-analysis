@@ -28,7 +28,7 @@
     "curated_revision_number": 2
   },
   "data": {
-    "datasets": []
+    "datasets": "missing"
   },
   "preprocessing": {
     "performed_feature_selection": false,
@@ -103,8 +103,7 @@
     "pre-knowledge-based_validation": false,
     "manual_verification": false,
     "implementation_in_real_scenario": false,
-    "train_test_separation": false,
-    "methods": []
+    "train_test_separation": false
   },
   "result": {
     "main_goal": "botnet_detection",

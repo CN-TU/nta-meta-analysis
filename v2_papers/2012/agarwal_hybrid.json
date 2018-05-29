@@ -174,7 +174,7 @@
             ]
           }
         ],
-        "key_features": []
+        "key_features": "none"
       },
       {
         "selection": "expert_knowledge",
@@ -219,7 +219,7 @@
             ]
           }
         ],
-        "key_features": []
+        "key_features": "none"
       }
     ]
   },

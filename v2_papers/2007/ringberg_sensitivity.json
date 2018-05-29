@@ -307,7 +307,9 @@
   },
   "result": {
     "main_goal": "anomaly_detection",
-    "subgoals": [],
+    "subgoals": [
+      "anomaly_detection"
+    ],
     "focus_main": "methodology/framework",
     "claimed_improvements": [
       "_challenges_of_existing_methods_disclosed"

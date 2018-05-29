@@ -63,7 +63,7 @@
         "features": [
           "packetTotalCount"
         ],
-        "key_features": [],
+        "key_features": "none",
         "main_goal": "ddos_detection",
         "selection": "expert_knowledge"
       },
@@ -137,7 +137,9 @@
       {
         "name": "Packet ratio after filtering",
         "type": "external",
-        "metrics": [],
+        "metrics": [
+          "_packet_ratio"
+        ],
         "source": "popular"
       }
     ]

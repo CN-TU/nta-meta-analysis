@@ -117,7 +117,7 @@
         "bidirectional": true,
         "features": [
           {
-            "map": [
+            "apply": [
               {
                 "multiply": [
                   {

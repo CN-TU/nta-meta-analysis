@@ -265,7 +265,6 @@
       {
         "name": "cluster comparison",
         "type": "external",
-        "metrics": [],
         "source": "popular"
       },
       {

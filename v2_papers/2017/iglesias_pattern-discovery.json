@@ -439,7 +439,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "features",
     "claimed_improvements": [
       "improved_traffic_classification",

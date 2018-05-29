@@ -557,8 +557,7 @@
         "name": "C5.0",
         "availability": "public"
       }
-    ],
-    "algorithms": []
+    ]
   },
   "evaluation": {
     "algorithm_comparison": false,
@@ -591,7 +590,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "algorithm",
     "claimed_improvements": [
       "improved_traffic_classification"

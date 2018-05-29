@@ -111,7 +111,7 @@
         "active_timeout": 86400,
         "features": [
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -122,7 +122,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -133,7 +133,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -149,7 +149,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -165,7 +165,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -176,7 +176,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -187,7 +187,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -203,7 +203,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -219,7 +219,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -230,7 +230,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -241,7 +241,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -257,7 +257,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -273,7 +273,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -284,7 +284,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -295,7 +295,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -311,7 +311,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -327,7 +327,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -338,7 +338,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -349,7 +349,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -365,7 +365,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -381,7 +381,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -392,7 +392,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -403,7 +403,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -419,7 +419,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -435,7 +435,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -446,7 +446,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -457,7 +457,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -473,7 +473,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -489,7 +489,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -500,7 +500,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -511,7 +511,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -527,7 +527,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -543,7 +543,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -554,7 +554,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -565,7 +565,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -581,7 +581,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -597,7 +597,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -608,7 +608,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -619,7 +619,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -635,7 +635,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -651,7 +651,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -662,7 +662,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -673,7 +673,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -689,7 +689,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -705,7 +705,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -716,7 +716,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -727,7 +727,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -743,7 +743,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -759,7 +759,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -770,7 +770,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -781,7 +781,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -797,7 +797,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -813,7 +813,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -824,7 +824,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -835,7 +835,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -851,7 +851,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -867,7 +867,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -878,7 +878,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -889,7 +889,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -905,7 +905,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -921,7 +921,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -932,7 +932,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -943,7 +943,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -959,7 +959,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -975,7 +975,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -986,7 +986,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -997,7 +997,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1013,7 +1013,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1029,7 +1029,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1040,7 +1040,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1051,7 +1051,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1067,7 +1067,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1083,7 +1083,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1094,7 +1094,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1105,7 +1105,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1121,7 +1121,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1137,7 +1137,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "_flowStartHours",
@@ -1148,7 +1148,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   "packetTotalCount",
@@ -1159,7 +1159,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {
@@ -1175,7 +1175,7 @@
             ]
           },
           {
-            "count": [
+            "length": [
               {
                 "quantile_range": [
                   {

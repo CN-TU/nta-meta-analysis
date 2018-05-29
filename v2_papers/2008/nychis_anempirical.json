@@ -172,8 +172,7 @@
     "train_test_separation": false,
     "methods": [
       {
-        "name": "Visual inspection",
-        "metrics": []
+        "name": "Visual inspection"
       }
     ]
   },

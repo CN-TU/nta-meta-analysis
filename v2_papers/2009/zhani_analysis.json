@@ -113,7 +113,7 @@
             ]
           }
         ],
-        "key_features": []
+        "key_features": "none"
       },
       {
         "selection": "feature_selection",
@@ -343,7 +343,7 @@
             ]
           }
         ],
-        "key_features": []
+        "key_features": "none"
       }
     ]
   },

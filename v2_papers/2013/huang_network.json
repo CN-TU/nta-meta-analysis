@@ -119,7 +119,9 @@
       {
         "name": "Visual inspection",
         "type": "internal",
-        "metrics": [],
+        "metrics": [
+          "_visual"
+        ],
         "source": "popular"
       }
     ]

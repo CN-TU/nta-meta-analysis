@@ -241,13 +241,17 @@
       {
         "name": "Recall",
         "type": "external",
-        "metrics": [],
+        "metrics": [
+          "recall"
+        ],
         "source": "popular"
       },
       {
         "name": "Precision",
         "type": "external",
-        "metrics": [],
+        "metrics": [
+          "precision"
+        ],
         "source": "popular"
       }
     ]

@@ -317,7 +317,9 @@
   },
   "result": {
     "main_goal": "traffic_classification",
-    "subgoals": [],
+    "subgoals": [
+      "traffic_classification"
+    ],
     "focus_main": "features",
     "claimed_improvements": [
       "data_stream_oriented"
