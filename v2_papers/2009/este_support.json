@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "29-05-2018",
-    "curated_revision_number": 5
+    "curated_last_revision": "30-05-2018",
+    "curated_revision_number": 6
   },
   "data": {
     "datasets": [
@@ -112,8 +112,8 @@
         "selection": "expert_knowledge",
         "role": "validation",
         "main_goal": "application_classification",
-        "active_timeout": 0,
-        "idle_timeout": 0,
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
         "bidirectional": true,
         "features": [
           {
