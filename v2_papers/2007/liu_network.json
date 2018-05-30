@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "29-05-2018",
-    "curated_revision_number": 2
+    "curated_last_revision": "30-05-2018",
+    "curated_revision_number": 3
   },
   "data": {
     "datasets": [
@@ -106,8 +106,8 @@
         "selection": "feature_selection",
         "role": "main",
         "main_goal": "traffic_classification",
-        "active_timeout": 0,
-        "idle_timeout": 0,
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
         "bidirectional": true,
         "features": [
           {
