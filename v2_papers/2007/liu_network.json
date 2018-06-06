@@ -1,5 +1,5 @@
 {
-  "version": "v2.2.0",
+  "version": "v2.3.0",
   "reference": {
     "title": "Network Traffic Classification Using K-means Clustering",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "30-05-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "06-06-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
