@@ -1,5 +1,5 @@
 {
-  "version": "v2.2.0",
+  "version": "v2.3.0",
   "reference": {
     "title": "time-activity footprints in ip traffic",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "29-05-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "06-06-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
