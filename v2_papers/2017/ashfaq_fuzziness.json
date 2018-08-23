@@ -60,16 +60,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Fuzziness based divide-and-conquer",
-        "learning": "semisupervised",
-        "role": "main",
-        "type": "classification",
-        "metric/decision_criteria": "error/fitting_function",
-        "source": "own_referenced"
-      },
-      {
-        "name": "Fuzziness based divide-and-conquer",
-        "subname": "with neural network random weights",
+        "name": "neural network",
+        "subname": "with random weights and membership fuzziness calculation",
         "learning": "semisupervised",
         "role": "main",
         "type": "classification",
