@@ -559,7 +559,8 @@
         "source": "referenced"
       },
       {
-        "name": "pcStream2",
+        "name": "stream clustering",
+        "subname": "pcStream2",
         "learning": "unsupervised",
         "role": "competitor",
         "type": "clustering",
@@ -631,7 +632,9 @@
     "focus_main": "algorithm",
     "claimed_improvements": [
       "improved_detection_rates",
-      "reduced_computational_resources"
+      "reduced_computational_resources",
+      "good_transportability",
+      "data_stream_oriented"
     ]
   }
 }
