@@ -131,11 +131,11 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "graph matching",
-        "learning": "no",
+        "name": "graph modeling",
+        "learning": "statistics/model_fit",
         "role": "main",
-        "type": "_graph_matching",
-        "metric/decision_criteria": "_heuristic",
+        "type": "heuristic",
+        "metric/decision_criteria": "exact_matching",
         "source": "own_proposed",
         "parameters_provided": false
       }
