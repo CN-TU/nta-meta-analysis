@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "maloku, b.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "16-10-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -96,8 +96,7 @@
     "feature_selections": [
       {
         "name": "Fast Correlation-Based Filter (FCBF)",
-        "type": "wrapper",
-        "classifier": "Naive Bayes",
+        "type": "filter",
         "role": "main"
       }
     ],
