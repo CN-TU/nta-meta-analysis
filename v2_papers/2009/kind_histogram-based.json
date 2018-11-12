@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "histogram-based traffic anomaly detection",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -124,7 +124,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Hierarchical Agglomerative Clustering",
+        "family": "hierarchical_clustering",
+        "detail": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -132,7 +133,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Hierarchical Agglomerative Clustering",
+        "family": "hierarchical_clustering",
+        "detail": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -140,7 +142,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Hierarchical Agglomerative Clustering",
+        "family": "hierarchical_clustering",
+        "detail": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -148,7 +151,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Hierarchical Agglomerative Clustering",
+        "family": "hierarchical_clustering",
+        "detail": "Hierarchical Agglomerative Clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -156,38 +160,38 @@
         "parameters_provided": false
       },
       {
-        "name": "number_of_clusters_optimization",
-        "subname": "Calinski-Harabasz_index",
+        "family": "cluster_validation",
+        "detail": "Calinski-Harabasz index",
         "learning": "statistics/model_fit",
         "role": "main",
-        "type": "statistics",
+        "type": "validation_optimization",
         "metric/decision_criteria": "error/fitting_function",
         "parameters_provided": false
       },
       {
-        "name": "negligible_cluster_removal",
-        "subname": "0.05p",
+        "family": "statistics",
+        "detail": "cluster removal 0.05p",
         "learning": "statistics/model_fit",
         "role": "main",
-        "type": "statistics",
+        "type": "outlier_detection",
         "metric/decision_criteria": "error/fitting_function",
         "parameters_provided": true
       },
       {
-        "name": "anomaly_detection",
-        "subname": "threshold_eq_3std.dev",
+        "family": "statistics",
+        "detail": "3std dev.dev",
         "learning": "statistics/model_fit",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "outlier_detection",
         "metric/decision_criteria": "__normalized_euclidean",
         "parameters_provided": true
       },
       {
-        "name": "anomaly_detection",
-        "subname": "entropy_based",
+        "family": "entropy_based",
+        "detail": "anomaly detection",
         "learning": "statistics/model_fit",
         "role": "competitor",
-        "type": "anomaly_detection",
+        "type": "outlier_detection",
         "metric/decision_criteria": "probabilistic",
         "parameters_provided": false
       }
@@ -216,7 +220,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_anomalies",
     "subgoals": [
       "anomaly_detection"
     ],
