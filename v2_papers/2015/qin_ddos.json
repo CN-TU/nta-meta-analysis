@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "DDoS attack detection using flow entropy and clustering technique",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -581,7 +581,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "K-means",
+        "family": "kmeans_clustering",
+        "detail": "none",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -622,7 +623,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "ddos_detection",
       "anomaly_detection"

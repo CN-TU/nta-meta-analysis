@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "BotMiner: clustering analysis of network traffic for protocol- and structure-independent botnet detection",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4,
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5,
     "1st_author": "gu, g."
   },
   "data": {
@@ -1284,8 +1284,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "K-means",
-        "subname": "x-means",
+        "family": "kmeans_clustering",
+        "detail": "X-means clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -1293,8 +1293,8 @@
         "source": "referenced"
       },
       {
-        "name": "two step clustering",
-        "subname": "using x-means",
+        "family": "two_step_clustering",
+        "detail": "two step clustering using x-means",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -1302,8 +1302,8 @@
         "source": "own_proposed"
       },
       {
-        "name": "a-plane clustering",
-        "subname": "a-plane two step clustering algorithm",
+        "family": "two_step_clustering",
+        "detail": "two step clustering using a-plane",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -1318,11 +1318,11 @@
         "parameters_provided": false
       },
       {
-        "name": "cross-plane correlation",
-        "subname": "cross-plane correlation with davies-bouldin validation index for dendogram cut",
+        "family": "_crossplane_correlation_clustering",
+        "detail": "cross-plane correlation with davies-bouldin validation index for dendogram cut",
         "learning": "no",
         "role": "main",
-        "type": "heuristics",
+        "type": "clustering",
         "metric/decision_criteria": "vote",
         "source": "own_proposed",
         "parameters_provided": true
@@ -1359,7 +1359,7 @@
     ]
   },
   "result": {
-    "main_goal": "botnet_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "botnet_detection",
       "p2p_botnet_detection"

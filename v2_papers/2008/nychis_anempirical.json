@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "An empirical evaluation of entropy-based traffic anomaly detection",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -140,20 +140,21 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Wavelet Analysis",
-        "subname": "Wavelet Analysis as done by Barford et al. (2002)",
+        "family": "wavelet_transform",
+        "detail": "Wavelet Analysis as done by Barford et al. (2002)",
         "learning": "unsupervised",
         "role": "competitor",
-        "type": "anomaly_detection",
+        "type": "space_transformation",
         "metric/decision_criteria": "no",
         "source": "referenced",
         "parameters_provided": true
       },
       {
-        "name": "Entropy-based Traffic Anomaly Detection",
+        "family": "entropy_based ",
+        "detail": "Entropy-based (time series)",
         "learning": "unsupervised",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "modeling",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": true
@@ -177,7 +178,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_anomalies",
     "subgoals": [
       "ddos_detection",
       "attack_classification",

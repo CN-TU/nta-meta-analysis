@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Analysis and Prediction of Real Network Traffic",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": true,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -355,29 +355,29 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "ARMA",
-        "subname": "AutoRegressive Moving Average",
+        "family": "autoregressive_models",
+        "detail": "ARMA",
         "learning": "supervised",
         "role": "competitor",
-        "type": "regression",
+        "type": "modeling",
         "metric/decision_criteria": "error/fitting_function",
         "source": "referenced"
       },
       {
-        "name": "ARIMA",
-        "subname": "Integrated AutoRegressive Moving Average",
+        "family": "autoregressive_models",
+        "detail": "ARIMA",
         "learning": "supervised",
         "role": "main",
-        "type": "regression",
+        "type": "modeling",
         "metric/decision_criteria": "error/fitting_function",
         "source": "referenced"
       },
       {
-        "name": "neurofuzzy",
-        "subname": "α_SNF",
+        "family": "neural_networks",
+        "detail": "neurofuzzy sfm",
         "learning": "supervised",
         "role": "main",
-        "type": "regression",
+        "type": "classification",
         "metric/decision_criteria": "error/fitting_function",
         "source": "referenced"
       }
@@ -413,7 +413,7 @@
     ]
   },
   "result": {
-    "main_goal": "network_properties_monitoring",
+    "main_goal": "_monitor_network_properties",
     "subgoals": [
       "traffic_rate_prediction"
     ],

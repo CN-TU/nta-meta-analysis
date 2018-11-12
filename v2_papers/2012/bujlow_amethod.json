@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "A method for classification of network traffic based on C5.0 Machine Learning Algorithm",
     "authors": [
@@ -20,8 +20,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -589,7 +589,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

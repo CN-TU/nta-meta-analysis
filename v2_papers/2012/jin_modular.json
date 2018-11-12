@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "A Modular Machine Learning System for Flow-Level Traffic Classification in Large Networks",
     "authors": [
@@ -25,8 +25,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -270,8 +270,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "AdaBoost",
-        "subname": "BStump",
+        "family": "ensemble",
+        "detail": "Adaboost Bstump",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -280,8 +280,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Decision Tree",
-        "subname": "Boosting decision trees",
+        "family": "decision_tree",
+        "detail": "Boosting decision trees",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -290,8 +290,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Maximum entropy",
-        "subname": "L1-Maxent",
+        "family": "entropy_based",
+        "detail": "L1-Maxent",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -300,8 +300,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Naive Bayes",
-        "subname": "Weka implementation of Naive Bayes",
+        "family": "bayesian",
+        "detail": "Naive bayes – weka",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -310,11 +310,11 @@
         "parameters_provided": true
       },
       {
-        "name": "Traffic Activity Graph",
-        "subname": "Colored Traffic Activity Graph",
+        "family": "statistics",
+        "detail": "Colored Traffic Activity Graph",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "space_transformation",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": true
@@ -375,7 +375,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

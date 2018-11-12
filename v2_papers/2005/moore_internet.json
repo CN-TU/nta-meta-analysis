@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Internet Traffic Classification Using Bayesian Analysis Techniques",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "maloku, b.",
-    "curated_last_revision": "16-10-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -319,8 +319,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Naive Bayes",
-        "subname": "Naïve Bayes",
+        "family": "bayesian",
+        "detail": "naive bayes",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -336,11 +336,11 @@
         "parameters_provided": false
       },
       {
-        "name": "Naı̈ve Bayes with kernel density estimation",
-        "subname": "Naı̈ve Bayes with kernel density estimation",
+        "family": "bayesian",
+        "detail": "Naive Bayes with Kernel Estimation Method",
         "learning": "supervised",
         "role": "competitor",
-        "type": "statistics",
+        "type": "classification",
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
@@ -353,8 +353,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Naive Bayes",
-        "subname": "Naïve Bayes with FCBF prefiltering",
+        "family": "bayesian",
+        "detail": "Naive Bayes with FCBF prefiltering",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -370,11 +370,11 @@
         "parameters_provided": false
       },
       {
-        "name": "Naı̈ve Bayes with kernel density estimation and FCBF prefiltering",
-        "subname": "Naı̈ve Bayes with kernel density estimation and FCBF prefiltering",
+        "family": "bayesian",
+        "detail": "Naive Bayes with Kernel Estimation Method and FCBF prefiltering",
         "learning": "supervised",
         "role": "main",
-        "type": "statistics",
+        "type": "classification",
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
@@ -426,7 +426,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

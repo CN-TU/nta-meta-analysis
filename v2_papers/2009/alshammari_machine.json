@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Machine Learning Based Encrypted Traffic Classification: Identifying SSH and Skype",
     "authors": [
@@ -20,8 +20,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -325,7 +325,8 @@
     ],
     "algorithms": [
       {
-        "name": "Support Vector Machine (SVM)",
+        "family": "svm",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -340,7 +341,24 @@
         "parameters_provided": true
       },
       {
-        "name": "RIPPER",
+        "family": "signature",
+        "detail": "RIPPER",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "specific_detection",
+        "metric/decision_criteria": "mutual_information",
+        "tools": [
+          {
+            "name": "WEKA",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "family": "ensemble",
+        "detail": "Adaboost",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -355,22 +373,8 @@
         "parameters_provided": true
       },
       {
-        "name": "AdaBoost",
-        "learning": "supervised",
-        "role": "competitor",
-        "type": "classification",
-        "metric/decision_criteria": "mutual_information",
-        "tools": [
-          {
-            "name": "WEKA",
-            "availability": "public"
-          }
-        ],
-        "source": "referenced",
-        "parameters_provided": true
-      },
-      {
-        "name": "Naive Bayes",
+        "family": "bayesian",
+        "detail": "naive bayes",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -385,8 +389,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Decision Tree",
-        "subname": "C4.5",
+        "family": "decision_tree",
+        "detail": "C4.5",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -432,7 +436,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "application_classification",
       "classification_of_encrypted_traffic",

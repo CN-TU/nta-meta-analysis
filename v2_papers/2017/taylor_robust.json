@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Robust Smartphone App Identification Via Encrypted Network Traffic Analysis",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -564,7 +564,8 @@
     ],
     "algorithms": [
       {
-        "name": "Random Forest",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -579,7 +580,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Ambiguity detection",
+        "family": "_ambiguity_detection",
+        "detail": "Ambiguity detection – two phase classification",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -594,10 +596,11 @@
         "parameters_provided": true
       },
       {
-        "name": "Classification validation",
+        "family": "crossvalidation",
+        "detail": "none",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "validation_optimization",
         "metric/decision_criteria": "mutual_information",
         "tools": [
           {
@@ -648,7 +651,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

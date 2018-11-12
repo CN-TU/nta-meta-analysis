@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "DDoS Detection Method Based on Chaos Analysis of Network Traffic Entropy",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -85,11 +85,11 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Autoregressive model",
-        "subname": "Autoregressive model with Lyuponov exponent to detect separation",
+        "family": "autoregressive_models",
+        "detail": "Autoregressive model with Lyuponov exponent to detect separation",
         "learning": "unsupervised",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "modeling",
         "source": "own_proposed",
         "parameters_provided": true
       }
@@ -125,7 +125,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "anomaly_detection"
     ],

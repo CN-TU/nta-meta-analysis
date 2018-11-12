@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Bayesian Neural Networks for Internet Traffic Classification",
     "authors": [
@@ -24,8 +24,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -375,7 +375,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Naive Bayes",
+        "family": "bayesian",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -384,8 +385,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Neural Network",
-        "subname": "bayesian",
+        "family": "neural_networks",
+        "detail": "bayesian neural network",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -425,7 +426,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

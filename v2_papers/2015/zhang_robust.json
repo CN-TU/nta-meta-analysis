@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Robust network traffic classification",
     "authors": [
@@ -26,8 +26,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -208,37 +208,38 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "K-means",
-        "subname": "K-means using with manual labeling of a subset of flows",
+        "family": "kmeans_clustering",
+        "detail": "K-means using with manual labeling of a subset of flows",
         "learning": "semisupervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "parameters_provided": true,
         "source": "referenced"
       },
       {
-        "name": "K-means",
-        "subname": "K-means with Robust Traffic Classification (RTC)",
+        "family": "kmeans_clustering",
+        "detail": "K-means with Robust Traffic Classification (RTC)",
         "learning": "semisupervised",
         "role": "main",
-        "type": "classification",
+        "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": true
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "One-class SVM",
+        "family": "svm",
+        "detail": "single-class svm",
         "learning": "unsupervised",
         "role": "competitor",
-        "type": "anomaly_detection",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "Random Forest",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -247,8 +248,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Random Forest",
-        "subname": "Random Forest with BoF-based Traffic Classification",
+        "family": "random_forest",
+        "detail": "Random Forest with BoF-based Traffic Classification",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -320,7 +321,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "attack_classification",
       "traffic_classification",

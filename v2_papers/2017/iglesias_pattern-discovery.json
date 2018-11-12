@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "pattern discovery in internet background radiation",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "fiv",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -319,8 +319,8 @@
     ],
     "algorithms": [
       {
-        "name": "fuzzy clustering",
-        "subname": "gustafson-kessel",
+        "family": "fuzzy_clustering",
+        "detail": "Gustafson-kessel fuzzy clustering",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -336,7 +336,8 @@
         "parameters_provided": false
       },
       {
-        "name": "K-medoids",
+        "family": "kmedoids_clustering",
+        "detail": "none",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -352,7 +353,8 @@
         "parameters_provided": false
       },
       {
-        "name": "clustering consensus",
+        "family": "_clustering_consensus",
+        "detail": "none",
         "learning": "nest",
         "role": "main",
         "type": "clustering",
@@ -367,11 +369,11 @@
         "parameters_provided": false
       },
       {
-        "name": "mad-based outlier removal",
-        "subname": "double mad",
+        "family": "statistics",
+        "detail": "Mad-based outlier removal",
         "learning": "statistics/model_fit",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "tools": [
           {
@@ -438,7 +440,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "detect_anomalies",
     "subgoals": [
       "traffic_classification"
     ],

@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Mining Anomalies Using Traffic Feature Distributions",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "maloku, b.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -216,18 +216,18 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "multiway subspace method",
-        "subname": "multiway subspace method",
+        "family": "_multiway_space_transformation",
+        "detail": "multiway subspace method",
         "learning": "unsupervised",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "space_transformation",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "Hierarchical Agglomerative Clustering",
-        "subname": "hierarchical agglomerative",
+        "family": "hierarchical_clustering",
+        "detail": "agglomerative",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -236,8 +236,8 @@
         "parameters_provided": false
       },
       {
-        "name": "K-means",
-        "subname": "k-means",
+        "family": "kmeans_clustering",
+        "detail": "none",
         "learning": "unsupervised",
         "role": "competitor",
         "type": "clustering",
@@ -285,7 +285,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_anomalies",
     "subgoals": [
       "anomaly_detection",
       "attack_classification"

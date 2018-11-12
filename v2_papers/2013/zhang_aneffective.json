@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "An effective feature selection approach for network intrusion detection",
     "authors": [
@@ -20,8 +20,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -123,10 +123,11 @@
     ],
     "algorithms": [
       {
-        "name": "Bayesian Network",
+        "family": "bayesian",
+        "detail": "bayesian network",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "modeling",
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
@@ -186,7 +187,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "attack_classification",
       "traffic_classification"
