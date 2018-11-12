@@ -150,7 +150,7 @@
         "parameters_provided": true
       },
       {
-        "family": "entropy_based ",
+        "family": "entropy_based",
         "detail": "Entropy-based (time series)",
         "learning": "unsupervised",
         "role": "main",
