@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "NvCloudIDS: A security architecture to detect intrusions at network and virtualization layer in cloud environment",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -179,7 +179,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Random Forest",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -188,17 +189,18 @@
         "parameters_provided": false
       },
       {
-        "name": "Logistic Regression",
+        "family": "glm_regression",
+        "detail": "logistic",
         "learning": "supervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "regression",
         "metric/decision_criteria": "probabilistic",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "Ensemble",
-        "subname": "Ensemble of Random Forests weighed according to a Logistic Regression",
+        "family": "random_forest",
+        "detail": "Ensemble of Random Forests weighed according to a Logistic Regression",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -245,7 +247,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "anomaly_detection"
     ],

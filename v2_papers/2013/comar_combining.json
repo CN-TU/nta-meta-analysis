@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Combining supervised and unsupervised learning for zero-day malware detection",
     "authors": [
@@ -23,8 +23,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -72,7 +72,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Random Forest",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -81,41 +82,41 @@
         "parameters_provided": false
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "One-class SVM with RBF kernel with profiling",
+        "family": "svm",
+        "detail": "One-class SVM with RBF kernel with profiling",
         "learning": "supervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": false
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "One-class SVM with WL kernel with profiling",
+        "family": "svm",
+        "detail": "One-class SVM with WL kernel with profiling",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": false
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "One-class SVM with WL kernel",
+        "family": "svm",
+        "detail": "One-class SVM with WL kernel",
         "learning": "supervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "One-class SVM with RBF kernel",
+        "family": "svm",
+        "detail": "One-class SVM with RBF kernel",
         "learning": "supervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
         "parameters_provided": false
@@ -152,7 +153,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "attack_classification",
       "anomaly_detection"

@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "a preliminary performance comparison of five machine learning algorithms for practical ip traffic flow classification",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -606,8 +606,8 @@
     ],
     "algorithms": [
       {
-        "name": "Naive Bayes",
-        "subname": "naive bayes with discretization",
+        "family": "bayesian",
+        "detail": "naive bayes with discretization",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -623,8 +623,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Naive Bayes",
-        "subname": "naive bayes with kernel density estimation",
+        "family": "bayesian",
+        "detail": "Naive Bayes with Kernel Estimation Method",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -640,8 +640,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Decision Tree",
-        "subname": "c4.5 decision tree",
+        "family": "decision_tree",
+        "detail": "C4.5",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -657,10 +657,11 @@
         "parameters_provided": false
       },
       {
-        "name": "Bayesian Network",
+        "family": "bayesian",
+        "detail": "bayesian network",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "modeling",
         "metric/decision_criteria": "probabilistic",
         "tools": [
           {
@@ -673,8 +674,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Decision Tree",
-        "subname": "naive bayes decision tree",
+        "family": "decision_tree",
+        "detail": "naive bayes decision tree",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -721,7 +722,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

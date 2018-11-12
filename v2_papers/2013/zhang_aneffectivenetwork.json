@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "An Effective Network Traffic Classification Method with Unknown Flow Detection",
     "authors": [
@@ -24,8 +24,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -286,8 +286,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Decision Tree",
-        "subname": "C4.5 Decision Tree",
+        "family": "decision_tree",
+        "detail": "C4.5",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -296,7 +296,8 @@
         "parameters_provided": false
       },
       {
-        "name": "K-nearest Neighbors (KNN)",
+        "family": "knn",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -305,7 +306,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Naive Bayes",
+        "family": "bayesian",
+        "detail": "naive bayes",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -314,30 +316,31 @@
         "parameters_provided": false
       },
       {
-        "name": "Bayesian Network",
+        "family": "bayesian",
+        "detail": "bayesian network",
         "learning": "supervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "modeling",
         "metric/decision_criteria": "probabilistic",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "K-means",
-        "subname": "K-means using with manual labeling of a subset of flows",
+        "family": "kmeans_clustering",
+        "detail": "K-means using with manual labeling of a subset of flows",
         "learning": "semisupervised",
         "role": "competitor",
-        "type": "classification",
+        "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
         "parameters_provided": true
       },
       {
-        "name": "K-means",
-        "subname": "K-means with label propagation through bag of flows",
+        "family": "kmeans_clustering",
+        "detail": "K-means with label propagation through bag of flows",
         "learning": "semisupervised",
         "role": "main",
-        "type": "classification",
+        "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
         "parameters_provided": true
@@ -390,7 +393,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "application_classification",
       "traffic_classification"

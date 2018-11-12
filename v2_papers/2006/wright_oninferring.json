@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "on inferring application protocol behaviors in encrypted network traffic",
     "authors": [
@@ -19,8 +19,8 @@
     },
     "access_open": true,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 7
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 8
   },
   "data": {
     "datasets": [
@@ -128,34 +128,38 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Hidden Markov Model (HMM)",
+        "family": "markov_process",
+        "detail": "Hidden Markov Model (HMM)",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "modeling",
         "metric/decision_criteria": "probabilistic",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "viterbi",
+        "family": "markov_process",
+        "detail": "viterbi",
         "learning": "supervised",
         "role": "main",
-        "type": "classification",
+        "type": "modeling",
         "metric/decision_criteria": "probabilistic",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "K-nearest Neighbors (KNN)",
+        "family": "knn",
+        "detail": "none",
         "learning": "semisupervised",
         "role": "main",
-        "type": "clustering",
+        "type": "classification",
         "metric/decision_criteria": "mutual_information",
         "source": "referenced",
         "parameters_provided": false
       },
       {
-        "name": "vector quantization",
+        "family": "_vector_quantization",
+        "detail": "vector quantization",
         "learning": "semisupervised",
         "role": "main",
         "type": "clustering",
@@ -189,7 +193,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "application_classification",
       "classification_of_encrypted_traffic",

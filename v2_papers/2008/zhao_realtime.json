@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Real-time feature selection in traffic classification",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -233,8 +233,8 @@
     ],
     "algorithms": [
       {
-        "name": "Decision Tree",
-        "subname": "C4.5 Decision Tree",
+        "family": "decision_tree",
+        "detail": "C4.5",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -243,7 +243,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Random Forest",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -252,7 +253,8 @@
         "parameters_provided": false
       },
       {
-        "name": "Naive Bayes",
+        "family": "bayesian",
+        "detail": "none",
         "role": "main",
         "type": "classification",
         "metric/decision_criteria": "probabilistic",
@@ -260,7 +262,8 @@
         "parameters_provided": false
       },
       {
-        "name": "K-means",
+        "family": "kmeans_clustering",
+        "detail": "none",
         "learning": "unsupervised",
         "role": "main",
         "type": "clustering",
@@ -269,10 +272,11 @@
         "parameters_provided": false
       },
       {
-        "name": "Expectation Maximization",
+        "family": "parameter_search",
+        "detail": "Expectation Maximization",
         "learning": "unsupervised",
         "role": "main",
-        "type": "clustering",
+        "type": "validation_optimization",
         "metric/decision_criteria": "probabilistic",
         "source": "referenced",
         "parameters_provided": false
@@ -317,7 +321,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification"
     ],

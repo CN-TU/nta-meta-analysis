@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Fuzziness based semi-supervised learning approach for intrusion detection system",
     "authors": [
@@ -24,8 +24,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "23-08-2018",
-    "curated_revision_number": 5
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 6
   },
   "data": {
     "datasets": [
@@ -60,8 +60,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "neural network",
-        "subname": "with random weights and membership fuzziness calculation",
+        "family": "neural_networks",
+        "detail": "with random weights and membership fuzziness calculation",
         "learning": "semisupervised",
         "role": "main",
         "type": "classification",
@@ -92,7 +92,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "anomaly_detection"
     ],

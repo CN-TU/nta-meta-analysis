@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Network Traffic Classification Using Correlation Information",
     "authors": [
@@ -25,8 +25,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -295,7 +295,8 @@
     ],
     "algorithms": [
       {
-        "name": "Nearest Neighbor",
+        "family": "knn",
+        "detail": "none",
         "learning": "supervised",
         "role": "validation",
         "type": "classification",
@@ -310,8 +311,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Nearest Neighbor",
-        "subname": "Average Nearest Neighbor (AVG-NN)",
+        "family": "knn",
+        "detail": "average knn",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -326,8 +327,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Nearest Neighbor",
-        "subname": "Minimum Nearest Neighbor (MIN-NN)",
+        "family": "knn",
+        "detail": "minimum knn",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -342,8 +343,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Nearest Neighbor",
-        "subname": "Majority Vote Nearest Neighbor (MVT-NN)",
+        "family": "knn",
+        "detail": "majority-vote knn",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -389,7 +390,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "traffic_classification",
       "application_classification"

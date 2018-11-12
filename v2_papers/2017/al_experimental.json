@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Experimental Evaluation of a Multi-layer Feed-Forward Artificial Neural Network Classifier for Network Intrusion Detection System",
     "authors": [
@@ -21,8 +21,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -206,8 +206,8 @@
     ],
     "algorithms": [
       {
-        "name": "Neural Network",
-        "subname": "Multilayer Feedforward Neural Network",
+        "family": "neural_networks",
+        "detail": "Multilayer Feedforward Neural Network",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -294,7 +294,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "anomaly_detection"
     ],

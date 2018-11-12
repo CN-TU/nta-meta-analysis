@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "machine learning for encrypted malware traffic classification: accounting for noisy labels and non-stationarity",
     "authors": [
@@ -19,8 +19,8 @@
     },
     "access_open": true,
     "curated_by": "fiv",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -505,7 +505,8 @@
     ],
     "algorithms": [
       {
-        "name": "linear regression",
+        "family": "glm_regression",
+        "detail": "linear",
         "learning": "statistics/model_fit",
         "role": "competitor",
         "type": "regression",
@@ -521,7 +522,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Logistic Regression",
+        "family": "glm_regression",
+        "detail": "l1 and l2 logistic regression",
         "learning": "statistics/model_fit",
         "role": "competitor",
         "type": "regression",
@@ -534,28 +536,11 @@
           }
         ],
         "source": "referenced",
-        "parameters_provided": false,
-        "subname": "l1 and l2"
+        "parameters_provided": false
       },
       {
-        "name": "Decision Tree",
-        "learning": "supervised",
-        "role": "competitor",
-        "type": "classification",
-        "metric/decision_criteria": "euclidean",
-        "tools": [
-          {
-            "name": "scikit-learn",
-            "detail": "python",
-            "availability": "public"
-          }
-        ],
-        "source": "referenced",
-        "parameters_provided": true,
-        "subname": "optimized CART"
-      },
-      {
-        "name": "Random Forest",
+        "family": "decision_tree",
+        "detail": "optimized CART",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -571,7 +556,8 @@
         "parameters_provided": true
       },
       {
-        "name": "Support Vector Machine (SVM)",
+        "family": "random_forest",
+        "detail": "none",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -584,11 +570,28 @@
           }
         ],
         "source": "referenced",
-        "parameters_provided": true,
-        "subname": "gaussian and polynimial kernels"
+        "parameters_provided": true
       },
       {
-        "name": "Neural Network",
+        "family": "svm",
+        "detail": "gaussian and polynomial kernels",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "tools": [
+          {
+            "name": "scikit-learn",
+            "detail": "python",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "family": "neural_networks",
+        "detail": "mlp",
         "learning": "supervised",
         "role": "competitor",
         "type": "classification",
@@ -601,13 +604,14 @@
           }
         ],
         "source": "referenced",
-        "parameters_provided": true,
-        "subname": "multi-layer perceptron"
+        "parameters_provided": true
       },
       {
-        "name": "grid search",
+        "family": "parameter_search",
+        "detail": "grid",
         "learning": "nest",
-        "type": "classification",
+        "role": "validation",
+        "type": "validation_optimization",
         "metric/decision_criteria": "error/fitting_function",
         "tools": [
           {
@@ -617,15 +621,14 @@
           }
         ],
         "source": "referenced",
-        "parameters_provided": true,
-        "role": "validation"
+        "parameters_provided": true
       },
       {
-        "name": "cross-validation",
-        "subname": "10-fold",
+        "family": "crossvalidation",
+        "detail": "10-fold",
         "learning": "nest",
         "role": "validation",
-        "type": "classification",
+        "type": "validation_optimization",
         "metric/decision_criteria": "error/fitting_function",
         "tools": [
           {
@@ -674,7 +677,7 @@
       "_algorithm_testing",
       "improved_data_description"
     ],
-    "main_goal": "traffic_classification",
+    "main_goal": "detect_attacks",
     "focus_main": "algorithm",
     "reproducibility": "repeatable"
   }

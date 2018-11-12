@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Anomalous Payload-based Network Intrusion Detection",
     "authors": [
@@ -18,8 +18,8 @@
     },
     "access_open": false,
     "curated_by": "bachl, m.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 3
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 4
   },
   "data": {
     "datasets": [
@@ -189,14 +189,14 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "PAYL",
+        "family": "signature",
+        "detail": "payload-based anomaly detection",
         "learning": "unsupervised",
         "role": "main",
-        "type": "anomaly_detection",
+        "type": "specific_detection",
         "metric/decision_criteria": "mahalanobis",
         "source": "own_proposed",
-        "parameters_provided": false,
-        "subname": "payload-based anomaly detection"
+        "parameters_provided": false
       }
     ]
   },
@@ -247,7 +247,7 @@
     ]
   },
   "result": {
-    "main_goal": "anomaly_detection",
+    "main_goal": "detect_attacks",
     "subgoals": [
       "attack_classification"
     ],

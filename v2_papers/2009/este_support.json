@@ -1,5 +1,5 @@
 {
-  "version": "v2.3.0",
+  "version": "v3.0.0",
   "reference": {
     "title": "Support vector Machines for TCP traffic classification",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "access_open": false,
     "curated_by": "vormayr, g.",
-    "curated_last_revision": "06-06-2018",
-    "curated_revision_number": 7
+    "curated_last_revision": "12-11-2018",
+    "curated_revision_number": 8
   },
   "data": {
     "datasets": [
@@ -174,8 +174,8 @@
     "tools": "missing",
     "algorithms": [
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "single-class",
+        "family": "svm",
+        "detail": "Multi-class svm",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -184,8 +184,8 @@
         "parameters_provided": "partially"
       },
       {
-        "name": "Support Vector Machine (SVM)",
-        "subname": "multi-class",
+        "family": "svm",
+        "detail": "single-class svm",
         "learning": "supervised",
         "role": "main",
         "type": "classification",
@@ -217,7 +217,7 @@
     ]
   },
   "result": {
-    "main_goal": "traffic_classification",
+    "main_goal": "classify_traffic",
     "subgoals": [
       "application_classification"
     ],
