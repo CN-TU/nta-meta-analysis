@@ -202,7 +202,18 @@
     "unsupervised_learning": false,
     "semisupervised_learning": true,
     "anomaly_detection": true,
-    "tools": "missing",
+    "tools": [
+      {
+        "name": "l7-filter",
+        "availability": "public",
+        "detail": "none"
+      },
+      {
+        "name": "tstat",
+        "availability": "public",
+        "detail": "none"
+      }
+    ],
     "algorithms": [
       {
         "family": "kmeans_clustering",
