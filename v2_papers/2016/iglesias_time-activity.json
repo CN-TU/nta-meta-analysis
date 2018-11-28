@@ -138,9 +138,9 @@
           "__numberOfActivityIntervals"
         ],
         "key_features": [
+          "__60SecondTimeWindowID",
           "sourceIPv4Address",
-          "destinationIPv4Address",
-          "protocolIdentifier"
+          "destinationIPv4Address"
         ]
       },
       {
@@ -178,12 +178,14 @@
           }
         ],
         "key_features": [
+          "__60SecondTimeWindowID",
           "sourceIPv4Address",
-          "destinationIPv4Address",
-          "protocolIdentifier"
+          "destinationIPv4Address"
         ]
       }
-    ]
+    ],
+    "packets": "none",
+    "flow_aggregations": "none"
   },
   "analysis_method": {
     "supervised_learning": false,
