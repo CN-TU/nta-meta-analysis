@@ -26,8 +26,8 @@
     },
     "access_open": false,
     "curated_by": "ferreira, d.",
-    "curated_last_revision": "12-11-2018",
-    "curated_revision_number": 4
+    "curated_last_revision": "28-11-2018",
+    "curated_revision_number": 5
   },
   "data": {
     "datasets": [
@@ -42,7 +42,8 @@
         "generation_year": 2006,
         "covered_period": "minutes",
         "subsets": "none",
-        "anonymized": true
+        "anonymized": true,
+        "details": "none"
       },
       {
         "name": "WIDE",
@@ -61,7 +62,8 @@
           "18-03-2008",
           "31-03-2009"
         ],
-        "anonymized": true
+        "anonymized": true,
+        "details": "none"
       },
       {
         "name": "ISP Australia",
@@ -86,16 +88,7 @@
     "packet_analysis_oriented": false,
     "flow_analysis_oriented": true,
     "flow_aggregation_analysis_oriented": false,
-    "tools": [
-      {
-        "name": "l7-filter",
-        "availability": "public"
-      },
-      {
-        "name": "tstat",
-        "availability": "public"
-      }
-    ],
+    "tools": "none",
     "normalization_type": "no",
     "transformations": "none",
     "final_data_format": "numerical_vectors",
@@ -196,9 +189,13 @@
           "sourceTransportPort",
           "destinationIPv4Address",
           "destinationTransportPort"
-        ]
+        ],
+        "active_timeout": "missing"
       }
-    ]
+    ],
+    "feature_selections": "none",
+    "packets": "none",
+    "flow_aggregations": "none"
   },
   "analysis_method": {
     "supervised_learning": true,
@@ -215,7 +212,8 @@
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "parameters_provided": true,
-        "source": "referenced"
+        "source": "referenced",
+        "tools": "none"
       },
       {
         "family": "kmeans_clustering",
@@ -225,7 +223,8 @@
         "type": "clustering",
         "metric/decision_criteria": "euclidean",
         "source": "own_proposed",
-        "parameters_provided": true
+        "parameters_provided": true,
+        "tools": "none"
       },
       {
         "family": "svm",
@@ -235,7 +234,8 @@
         "type": "outlier_detection",
         "metric/decision_criteria": "euclidean",
         "source": "referenced",
-        "parameters_provided": false
+        "parameters_provided": false,
+        "tools": "none"
       },
       {
         "family": "random_forest",
@@ -245,7 +245,8 @@
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
         "source": "referenced",
-        "parameters_provided": false
+        "parameters_provided": false,
+        "tools": "none"
       },
       {
         "family": "random_forest",
@@ -255,7 +256,8 @@
         "type": "classification",
         "metric/decision_criteria": "mutual_information",
         "source": "own_proposed",
-        "parameters_provided": false
+        "parameters_provided": false,
+        "tools": "none"
       }
     ]
   },
