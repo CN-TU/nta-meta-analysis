@@ -1,0 +1,200 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "deep packet: a novel approach for encrypted traffic classification using deep learning",
+    "authors": [
+      "Lotfollahi, Mohammad",
+      "Jafari Siavoshani, Mahdi",
+      "Shirali Hossein Zade, Ramin",
+      "Saberian, Mohammdsadegh"
+    ],
+    "publication_name": "soft computing",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2020,
+    "organization_publishers": [
+      "springer"
+    ],
+    "pages_number_of": 14,
+    "bibtex": {
+      "type": "article",
+      "volume": "24",
+      "issue": "3",
+      "pages": "1999--2012"
+    },
+    "access_open": true,
+    "curated_by": "iglesias, felix",
+    "curated_last_revision": "03-02-2020",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "iscxvpn-2016",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "_vpn"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2016,
+        "covered_period": "missing",
+        "details": [
+          "_encrypted"
+        ],
+        "subsets": "none",
+        "anonymized": "missing"
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "deep packet toolkit",
+        "detail": "none",
+        "availability": "private"
+      }
+    ],
+    "normalization_type": "no",
+    "transformations": [
+      "sampling",
+      "filtering"
+    ],
+    "final_data_format": "__vectors_of_x_bytes",
+    "feature_selections": "none",
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "application_classification",
+        "features": [
+          "__firstXbytes"
+        ]
+      }
+    ],
+    "flows": "none",
+    "flow_aggregations": "none"
+  },
+  "analysis_method": {
+    "unsupervised_learning": false,
+    "tools": [
+      {
+        "name": "deep packet toolkit",
+        "detail": "none",
+        "availability": "private"
+      },
+      {
+        "name": "keras",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "tensorflow",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "family": "neural_networks",
+        "detail": "convolutional neural network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "keras",
+            "detail": "none",
+            "availability": "public"
+          },
+          {
+            "name": "tensorflow",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      },
+      {
+        "family": "neural_networks",
+        "detail": "stacked autoencoder",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "keras",
+            "detail": "none",
+            "availability": "public"
+          },
+          {
+            "name": "tensorflow",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ],
+    "supervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": false
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "recall",
+          "precision",
+          "f-1"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "comparison-referenced-works",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "false_positive_rate",
+          "recall"
+        ],
+        "source": "referenced"
+      }
+    ],
+    "port-based_validation": true,
+    "pre-knowledge-based_validation": true
+  },
+  "result": {
+    "main_goal": "classify_traffic",
+    "subgoals": [
+      "application_classification",
+      "classification_of_encrypted_traffic",
+      "_traffic_characterization"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "improved_traffic_classification",
+      "_feature_extraction",
+      "_valid_for_encrypted_traffic",
+      "_first_to_use_deep_learning_for_traffic_classification"
+    ],
+    "reproducibility": "replicable"
+  }
+}

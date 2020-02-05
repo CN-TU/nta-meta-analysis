@@ -1,0 +1,184 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "multivariate network traffic analysis using clustered patterns",
+    "authors": [
+      "Kim, Jinoh",
+      "Sim, Alex",
+      "Tierney, Brian",
+      "Suh, Sang",
+      "Kim, Ikkyun"
+    ],
+    "publication_name": "computing",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2019,
+    "organization_publishers": [
+      "springer"
+    ],
+    "pages_number_of": 23,
+    "bibtex": {
+      "type": "article",
+      "volume": "101",
+      "issue": "4",
+      "pages": "339--361"
+    },
+    "curated_by": "iglesias, felix",
+    "curated_last_revision": "03-02-2020",
+    "curated_revision_number": 1,
+    "access_open": true
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "kddcup-1999",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      },
+      {
+        "name": "unibs-2009",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2009,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "esnet-2016",
+        "availability": "public",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "captured",
+        "generation_year": 2016,
+        "covered_period": "minutes",
+        "details": [
+          "preprocessed",
+          "_tstat"
+        ],
+        "subsets": [
+          "09-05-2016"
+        ],
+        "anonymized": "missing"
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": "missing",
+    "normalization_type": "quartile",
+    "transformations": [
+      "log",
+      "sampling"
+    ],
+    "final_data_format": "numerical_vectors",
+    "feature_selections": "none",
+    "packets": "none",
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "network_properties_monitoring",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          "flowDurationMilliseconds",
+          "mean(packetTotalCount)",
+          "octetTotalCount"
+        ],
+        "key_features": "missing"
+      }
+    ],
+    "flow_aggregations": "none"
+  },
+  "analysis_method": {
+    "supervised_learning": false,
+    "unsupervised_learning": true,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": "missing",
+    "algorithms": [
+      {
+        "family": "kmeans_clustering",
+        "detail": "none",
+        "learning": "unsupervised",
+        "role": "main",
+        "type": "clustering",
+        "metric/decision_criteria": "euclidean",
+        "tools": "missing",
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": true,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": false,
+    "methods": [
+      {
+        "name": "degree of changes",
+        "type": "internal",
+        "metrics": [
+          "error_distance"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "likelihood of attacks",
+        "type": "internal",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "own_proposed"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "detect_anomalies",
+    "subgoals": [
+      "network_properties_monitoring",
+      "traffic_visualization"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "enhanced_functionality",
+      "data_stream_oriented",
+      "_multivariate_analysis"
+    ],
+    "reproducibility": "repeatable"
+  }
+}
