@@ -1,0 +1,149 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "intelligent intrusion detection systems using artificial neural networks",
+    "authors": [
+      "Shenfield, Alex",
+      "Day, David",
+      "Ayesh, Aladdin"
+    ],
+    "publication_name": "ict express",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2018,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 5,
+    "bibtex": {
+      "type": "article",
+      "volume": "4",
+      "issue": "2",
+      "pages": "95--99"
+    },
+    "access_open": true,
+    "curated_by": "iglesias, felix",
+    "curated_last_revision": "04-02-2020",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "exploit_db-2017",
+        "availability": "public",
+        "format": "missing",
+        "types": [
+          "missing"
+        ],
+        "generation": "missing",
+        "generation_year": "missing",
+        "covered_period": "missing",
+        "details": "none",
+        "subsets": "missing",
+        "anonymized": "missing"
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": "missing",
+    "normalization_type": "missing",
+    "transformations": "missing",
+    "final_data_format": "missing",
+    "feature_selections": "none",
+    "packets": [
+      {
+        "selection": "missing",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "features": "missing"
+      }
+    ],
+    "flows": "none",
+    "flow_aggregations": "none"
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "matlab",
+        "detail": "neural network toolbox",
+        "availability": "commercial"
+      }
+    ],
+    "algorithms": [
+      {
+        "family": "neural_networks",
+        "detail": "mlp",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "matlab",
+            "detail": "neural network toolbox",
+            "availability": "public_on_demand"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "crossvalidation",
+        "detail": "10-fold",
+        "learning": "nest",
+        "role": "main",
+        "type": "validation_optimization",
+        "metric/decision_criteria": "no",
+        "tools": [
+          {
+            "name": "matlab",
+            "detail": "neural network toolbox",
+            "availability": "public_on_demand"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "complete_confusion_matrix",
+          "roc/auc"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "detect_attacks",
+    "subgoals": [
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "no"
+  }
+}

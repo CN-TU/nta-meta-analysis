@@ -1,0 +1,229 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "Applying Convolutional Neural Network for Network Intrusion Detection",
+    "authors": [
+      "Vinayakumar, R.",
+      "Soman, K.P.",
+      "Poornachandran, Prabaharan"
+    ],
+    "publication_name": "international conference on advances in computing, communications and informatics",
+    "publication_type": "peer_reviewed_conference",
+    "year": 2017,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 7,
+    "bibtex": {
+      "pages": "1222--1228",
+      "type": "inproceedings"
+    },
+    "curated_by": "iglesias, f.",
+    "curated_last_revision": "02-02-2020",
+    "curated_revision_number": 1,
+    "access_open": false
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "kddcup-1999",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      },
+      {
+        "name": "nsl-kdd-2008",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "flow_analysis_oriented": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": "none",
+    "normalization_type": "no",
+    "transformations": [
+      "time_series"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": "none",
+    "packets": [
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "attack_classification"
+      }
+    ],
+    "flows": "none",
+    "flow_aggregations": "none",
+    "packet_analysis_oriented": true
+  },
+  "analysis_method": {
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "tensorflow",
+        "detail": "r0.12.0",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "family": "neural_networks",
+        "detail": "convolutional neural network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [
+          {
+            "name": "tensorflow",
+            "detail": "r0.12.0",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "neural_networks",
+        "detail": "multi-layer perceptron",
+        "learning": "supervised",
+        "role": "competitor",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [
+          {
+            "name": "tensorflow",
+            "detail": "r0.12.0",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "neural_networks",
+        "detail": "long short-term memory",
+        "learning": "supervised",
+        "role": "intermediate",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [
+          {
+            "name": "tensorflow",
+            "detail": "r0.12.0",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "neural_networks",
+        "detail": "gated recurrent units",
+        "learning": "supervised",
+        "role": "intermediate",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [
+          {
+            "name": "tensorflow",
+            "detail": "r0.12.0",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "neural_networks",
+        "detail": "recurrent neural network",
+        "learning": "supervised",
+        "role": "intermediate",
+        "type": "classification",
+        "metric/decision_criteria": "missing",
+        "tools": [
+          {
+            "name": "tensorflow",
+            "detail": "r0.12.0",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": "partially"
+      }
+    ],
+    "supervised_learning": true
+  },
+  "evaluation": {
+    "internal_validation": false,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "false_positive_rate",
+          "false_negative_rate",
+          "roc/auc"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "t-sne-visualization",
+        "type": "internal",
+        "metrics": "missing",
+        "source": "referenced"
+      }
+    ],
+    "algorithm_comparison": true,
+    "external_validation": true,
+    "train_test_separation": true
+  },
+  "result": {
+    "main_goal": "detect_attacks",
+    "subgoals": [
+      "attack_classification"
+    ],
+    "focus_main": "algorithm",
+    "claimed_improvements": [
+      "improved_detection_rates"
+    ],
+    "reproducibility": "replicable"
+  }
+}

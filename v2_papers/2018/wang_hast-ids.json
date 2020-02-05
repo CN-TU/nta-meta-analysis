@@ -1,0 +1,225 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "hast-ids: learning hierarchical spatial-temporal features using deep neural networks to improve intrusion detection",
+    "authors": [
+      "Wang, W.",
+      "Sheng, Y.",
+      "Wang, J.",
+      "Zeng, X.",
+      "Ye, X.",
+      "Huang, Y.",
+      "Zhu, M."
+    ],
+    "publication_name": "ieee access",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2018,
+    "organization_publishers": [
+      "ieee"
+    ],
+    "pages_number_of": 15,
+    "bibtex": {
+      "type": "article",
+      "volume": "6",
+      "pages": "1792--1806"
+    },
+    "curated_by": "iglesias, f.",
+    "curated_last_revision": "02-02-2020",
+    "curated_revision_number": 1,
+    "access_open": false
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "darpa-1998",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 1998,
+        "covered_period": "weeks",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      },
+      {
+        "name": "iscx-2012",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2010,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": "missing",
+    "normalization_type": "missing",
+    "transformations": [
+      "sampling",
+      "filtering"
+    ],
+    "final_data_format": "_2d_images",
+    "feature_selections": "none",
+    "packets": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "features": [
+          "__firstXbytes"
+        ]
+      }
+    ],
+    "flows": [
+      {
+        "selection": "expert_knowledge",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "features": [
+          "__firstXpackets"
+        ],
+        "key_features": "missing"
+      }
+    ],
+    "flow_aggregations": "none",
+    "packet_analysis_oriented": true,
+    "flow_analysis_oriented": true
+  },
+  "analysis_method": {
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "tools": [
+      {
+        "name": "keras",
+        "detail": "none",
+        "availability": "public"
+      },
+      {
+        "name": "tensorflow",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "algorithms": [
+      {
+        "family": "neural_networks",
+        "detail": "convolutional neural network",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "keras",
+            "detail": "none",
+            "availability": "public"
+          },
+          {
+            "name": "tensorflow",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      },
+      {
+        "family": "neural_networks",
+        "detail": "long short-term memory",
+        "learning": "supervised",
+        "role": "main",
+        "type": "classification",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": [
+          {
+            "name": "keras",
+            "detail": "none",
+            "availability": "public"
+          },
+          {
+            "name": "tensorflow",
+            "detail": "none",
+            "availability": "public"
+          }
+        ],
+        "source": "referenced",
+        "parameters_provided": false
+      }
+    ],
+    "supervised_learning": true
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "false_positive_rate",
+          "recall"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "comparison-referenced-works",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "false_positive_rate",
+          "recall"
+        ],
+        "source": "referenced"
+      },
+      {
+        "name": "t-sne-visualization",
+        "type": "internal",
+        "metrics": "missing",
+        "source": "referenced"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "detect_attacks",
+    "subgoals": [
+      "_feature_extraction"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "improved_detection_rates",
+      "_feature_extraction"
+    ],
+    "reproducibility": "replicable"
+  }
+}
