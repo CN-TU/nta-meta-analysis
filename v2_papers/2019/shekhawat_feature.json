@@ -1,0 +1,224 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "feature analysis of encrypted malicious traffic",
+    "authors": [
+      "Shekhawat, Anish Singh",
+      "Di Troia, Fabio",
+      "Stamp, Mark"
+    ],
+    "publication_name": "expert systems with applications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2019,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 12,
+    "bibtex": {
+      "type": "article",
+      "volume": "125",
+      "pages": "130--141"
+    },
+    "access_open": false,
+    "curated_by": "iglesias, felix",
+    "curated_last_revision": "03-02-2020",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "ctu-2013",
+        "availability": "public",
+        "format": "_packet_and_flow",
+        "types": [
+          "ip",
+          "_botnet"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2011,
+        "covered_period": "hours",
+        "details": [
+          "raw",
+          "preprocessed",
+          "_botnet"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      },
+      {
+        "name": "mcfp-2013",
+        "availability": "public",
+        "format": "_packet_and_flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2013,
+        "covered_period": "days",
+        "details": [
+          "preprocessed",
+          "raw"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": true,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": [
+      {
+        "name": "Bro",
+        "detail": "none",
+        "availability": "public"
+      }
+    ],
+    "normalization_type": "missing",
+    "transformations": [
+      "_log_files"
+    ],
+    "final_data_format": "mixed_vectors",
+    "feature_selections": [
+      {
+        "name": "recursive feature elimination",
+        "type": "wrapper",
+        "classifier": "svm",
+        "role": "competitor"
+      },
+      {
+        "name": "recursive feature elimination",
+        "type": "wrapper",
+        "classifier": "random forest",
+        "role": "competitor"
+      },
+      {
+        "name": "recursive feature elimination",
+        "type": "wrapper",
+        "classifier": "xgboost",
+        "role": "main"
+      }
+    ],
+    "packets": "none",
+    "flows": [
+      {
+        "selection": "tool_based",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "destinationTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": "none"
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": false,
+    "algorithms": [
+      {
+        "family": "svm",
+        "detail": "none",
+        "learning": "supervised",
+        "type": "classification",
+        "metric/decision_criteria": "euclidean",
+        "source": "referenced",
+        "role": "competitor",
+        "tools": "missing",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "random_forest",
+        "detail": "none",
+        "learning": "supervised",
+        "type": "classification",
+        "source": "referenced",
+        "role": "competitor",
+        "metric/decision_criteria": "missing",
+        "tools": "missing",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "ensemble",
+        "detail": "xgboost",
+        "learning": "supervised",
+        "type": "classification",
+        "source": "referenced",
+        "role": "main",
+        "metric/decision_criteria": "error/fitting_function",
+        "tools": "missing",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "crossvalidation",
+        "detail": "none",
+        "learning": "nest",
+        "role": "intermediate",
+        "type": "validation_optimization",
+        "source": "referenced",
+        "parameters_provided": "partially",
+        "metric/decision_criteria": "no",
+        "tools": "missing"
+      }
+    ],
+    "tools": "missing"
+  },
+  "evaluation": {
+    "algorithm_comparison": false,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": true,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "accuracy",
+          "roc/auc"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "feature correlation",
+        "type": "internal",
+        "metrics": [
+          "_correlation"
+        ],
+        "source": "popular"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "detect_attacks",
+    "subgoals": [
+      "classification_of_encrypted_traffic",
+      "_find_best_features",
+      "_find_best_feature_selection_method"
+    ],
+    "focus_main": "features",
+    "claimed_improvements": [
+      "improved_data_description",
+      "enhanced_functionality"
+    ],
+    "reproducibility": "replicable"
+  }
+}

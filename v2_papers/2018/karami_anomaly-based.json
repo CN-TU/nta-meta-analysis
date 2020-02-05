@@ -1,0 +1,284 @@
+{
+  "version": "v3.0.0",
+  "reference": {
+    "title": "an anomaly-based intrusion detection system in presence of benign outliers with visualization capabilities",
+    "authors": [
+      "Karami, Amin"
+    ],
+    "publication_name": "expert systems with applications",
+    "publication_type": "peer_reviewed_journal",
+    "year": 2018,
+    "organization_publishers": [
+      "elsevier"
+    ],
+    "pages_number_of": 25,
+    "bibtex": {
+      "type": "article",
+      "volume": "108",
+      "pages": "36--60"
+    },
+    "access_open": false,
+    "curated_by": "iglesias, felix",
+    "curated_last_revision": "04-02-2020",
+    "curated_revision_number": 1
+  },
+  "data": {
+    "datasets": [
+      {
+        "name": "iscx-2012",
+        "availability": "public_on_demand",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2010,
+        "covered_period": "days",
+        "details": [
+          "raw"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": true
+      },
+      {
+        "name": "nsl-kdd-2008",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ipv4"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 1999,
+        "covered_period": "weeks",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": [
+          "none"
+        ],
+        "anonymized": "missing"
+      },
+      {
+        "name": "aagm-2017",
+        "availability": "public_on_demand",
+        "format": "flow",
+        "types": [
+          "ip"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2016,
+        "covered_period": "days",
+        "details": [
+          "preprocessed"
+        ],
+        "subsets": "missing",
+        "anonymized": "missing"
+      },
+      {
+        "name": "unsw-nb-2015",
+        "availability": "public",
+        "format": "packet",
+        "types": [
+          "ip"
+        ],
+        "generation": "altered_captured",
+        "generation_year": 2015,
+        "covered_period": "days",
+        "details": [
+          "preprocessed",
+          "raw"
+        ],
+        "subsets": "missing",
+        "anonymized": true
+      }
+    ]
+  },
+  "preprocessing": {
+    "performed_feature_selection": false,
+    "packet_analysis_oriented": false,
+    "flow_analysis_oriented": true,
+    "flow_aggregation_analysis_oriented": false,
+    "tools": "missing",
+    "normalization_type": "missing",
+    "transformations": "missing",
+    "final_data_format": "mixed_vectors",
+    "feature_selections": "none",
+    "packets": "none",
+    "flows": [
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "sourceTransportPort"
+        ]
+      },
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "sourceTransportPort"
+        ]
+      },
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "sourceTransportPort"
+        ]
+      },
+      {
+        "selection": "in_dataset",
+        "role": "main",
+        "main_goal": "attack_classification",
+        "active_timeout": "missing",
+        "idle_timeout": "missing",
+        "bidirectional": true,
+        "key_features": [
+          "protocolIdentifier",
+          "sourceIPv4Address",
+          "destinationIPv4Address",
+          "destinationTransportPort",
+          "sourceTransportPort"
+        ]
+      }
+    ],
+    "flow_aggregations": "none"
+  },
+  "analysis_method": {
+    "supervised_learning": true,
+    "unsupervised_learning": false,
+    "semisupervised_learning": false,
+    "anomaly_detection": true,
+    "tools": "missing",
+    "algorithms": [
+      {
+        "family": "neural_networks",
+        "detail": "roulette wheel som ",
+        "learning": "supervised",
+        "role": "main",
+        "type": "outlier_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": "missing",
+        "source": "own_proposed",
+        "parameters_provided": true
+      },
+      {
+        "family": "neural_networks",
+        "detail": "som",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "outlier_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": "missing",
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "neural_networks",
+        "detail": "fuzzy som",
+        "learning": "unsupervised",
+        "role": "competitor",
+        "type": "outlier_detection",
+        "metric/decision_criteria": "euclidean",
+        "tools": "missing",
+        "source": "referenced",
+        "parameters_provided": "partially"
+      },
+      {
+        "family": "crossvalidation",
+        "detail": "5-fold",
+        "learning": "nest",
+        "role": "validation",
+        "type": "validation_optimization",
+        "metric/decision_criteria": "no",
+        "tools": "missing",
+        "source": "referenced",
+        "parameters_provided": true
+      }
+    ]
+  },
+  "evaluation": {
+    "algorithm_comparison": true,
+    "internal_validation": false,
+    "external_validation": true,
+    "dpi-based_validation": false,
+    "port-based_validation": false,
+    "pre-knowledge-based_validation": false,
+    "manual_verification": false,
+    "implementation_in_real_scenario": false,
+    "train_test_separation": true,
+    "methods": [
+      {
+        "name": "normal classification metrics",
+        "type": "external",
+        "metrics": [
+          "precision",
+          "accuracy",
+          "recall",
+          "f-1",
+          "false_positive_rate",
+          "complete_confusion_matrix"
+        ],
+        "source": "popular"
+      },
+      {
+        "name": "visualization capabilities",
+        "type": "internal",
+        "metrics": [
+          "heuristic"
+        ],
+        "source": "own_proposed"
+      },
+      {
+        "name": "usability test",
+        "type": "external",
+        "metrics": [
+          "_questionnaire"
+        ],
+        "source": "referenced"
+      }
+    ]
+  },
+  "result": {
+    "main_goal": "detect_attacks",
+    "subgoals": [
+      "anomaly_detection",
+      "traffic_visualization",
+      "anomaly_detection"
+    ],
+    "focus_main": "methodology/framework",
+    "claimed_improvements": [
+      "enhanced_functionality",
+      "improved_data_description",
+      "improved_detection_rates",
+      "_better_visualization"
+    ],
+    "reproducibility": "replicable"
+  }
+}
